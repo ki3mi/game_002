@@ -1,0 +1,296 @@
+fileFormatVersion: 2
+guid: 822d3308d03bdbd4ab488cb08504ccf3
+ModelImporter:
+  serializedVersion: 24600
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Anclaje_Metal
+    second: {fileID: 2100000, guid: ea287c81eeb89e34d8d3046806b8007a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Anclaje_Tapa
+    second: {fileID: 2100000, guid: 3ca444d00d5372e4e8a879ea5cdd6740, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Cable_Fase_Marron
+    second: {fileID: 2100000, guid: d01595ce689c5d84c9702a8b1b417202, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Cable_Neutro_Azul
+    second: {fileID: 2100000, guid: 4a7dd4cd05cb68042b00234e6ad695ca, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Cable_Tierra_Verde
+    second: {fileID: 2100000, guid: eeec9cb490799234c931c088ee4ae76b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Control_Acento_Azul
+    second: {fileID: 2100000, guid: 6f9501142401d564ca8ca9d7190a3058, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Control_Barra_Cobre
+    second: {fileID: 2100000, guid: a486da0652f950944a97e0e17df9d05b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Control_Capacitor_Aluminio
+    second: {fileID: 2100000, guid: a679c1a88623e604abcbb89f98b0918d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Control_Display_Verde
+    second: {fileID: 2100000, guid: 3cd310819bcec484b9e44a7ca4c9a64e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Control_Indicador_Ambar
+    second: {fileID: 2100000, guid: 44e02030a2c4b0740ab7afa3b8ee2ea8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Control_Indicador_Rojo
+    second: {fileID: 2100000, guid: 54e680aedbac0ab49805df6d0f5ae5ba, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Control_Indicador_Verde
+    second: {fileID: 2100000, guid: 3ccf3494e7b23ca4d9f5cacf4ce9b65c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Control_Mando_Grafito
+    second: {fileID: 2100000, guid: 47e7da1e64d62664f8d6df52c92f1da5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Control_Metal_Borde
+    second: {fileID: 2100000, guid: a7f39cf977fd7294fad3587687c8b787, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Control_Metal_GrisAzulado
+    second: {fileID: 2100000, guid: 98dc887ed384e374495778cba63dc996, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Control_Metal_Interior
+    second: {fileID: 2100000, guid: 754674fcd17c164459dcc182a424c58a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Control_Modulo_Cuerpo
+    second: {fileID: 2100000, guid: 9a5f71bbd09fe3144a33635be0258b96, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Control_Modulo_Frente
+    second: {fileID: 2100000, guid: 27afe1c222f74a8489a9b362a670df92, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Control_Pantalla
+    second: {fileID: 2100000, guid: c026f30c1ff89d645b61b4fbfa33195b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Control_Receso_Grafito
+    second: {fileID: 2100000, guid: cd20255331bf39741b6675f2bdf6ca22, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Control_Zocalo_Grafito
+    second: {fileID: 2100000, guid: b6a942d91ad91e54ba6b1022cff3330f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_TGD_Banda_Azul
+    second: {fileID: 2100000, guid: f65f89f73b2877345b6af77d17a4d9b2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_TGD_Indicador_Ambar
+    second: {fileID: 2100000, guid: 8678c1b86a8fa8742842adc14f5cce6f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_TGD_Indicador_Rojo
+    second: {fileID: 2100000, guid: 5e95b22cf2a04e24fa6c4b40cf54a328, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_TGD_Indicador_Verde
+    second: {fileID: 2100000, guid: 32cb2d9e1c604804196fb3b3f3c256f9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_TGD_Metal_CantoClaro
+    second: {fileID: 2100000, guid: 82c820d55574f8f4196ba217ca7d47b6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_TGD_Metal_GrisAzulado
+    second: {fileID: 2100000, guid: 45a969345b7964a4aaf51c6147c055d1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_TGD_Metal_Interior
+    second: {fileID: 2100000, guid: 6c76682b670d50e4a9a93143db9ae52c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_TGD_Proteccion_Frente
+    second: {fileID: 2100000, guid: efdfd82043edbca49b55d3164fba95cf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_TGD_Receso_Grafito
+    second: {fileID: 2100000, guid: 46ef2cad6a22f0e4087b7e2b0058de9e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_TGD_Sello
+    second: {fileID: 2100000, guid: f10fbb587378d4c4cb58d2369aa600f7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Tablero_EtiquetaNeutra
+    second: {fileID: 2100000, guid: 19a780ef0f0672e43a9c4b4b6443deec, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Tablero_InteriorGris
+    second: {fileID: 2100000, guid: 459fc1af30ab59443a61beccdd59dc86, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Tablero_MetalGrisAzulado
+    second: {fileID: 2100000, guid: 31360e02989fc304c8ef11daf7655dca, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Tablero_PlasticCrema
+    second: {fileID: 2100000, guid: a6162cd1e1e0cfe4eac05dada12feccb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Tablero_RecesoOscuro
+    second: {fileID: 2100000, guid: c12cdd4f5630b124495f77c102feb1c5, type: 2}
+  materials:
+    materialImportMode: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+    searchTexturesGlobally: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    preBakeConvexCollisionMesh: 0
+    preBakeTriangleCollisionMesh: 0
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 1
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    generateMeshLods: 0
+    meshLodGenerationFlags: 0
+    maximumMeshLod: -1
+    importUVs: -1
+    importVertexColors: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+    calculateBlendshapeNormalsDeltaFromImportedNormals: 0
+  referencedClips: []
+  importAnimation: 0
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 0
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
