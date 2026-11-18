@@ -189,6 +189,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9174569279377328963}
+  - component: {fileID: 2787749659097326331}
   m_Layer: 0
   m_Name: PuertaExteriorMetalica
   m_TagString: Untagged
@@ -220,6 +221,23 @@ Transform:
   - {fileID: 5845655557379656910}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2787749659097326331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 578684426486061331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b348e7b045d16764e9b483d394689b44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PuertaAssets.PuertaInteractable
+  hinges:
+  - {fileID: 6792338346806495907}
+  openAngle: 95
+  transitionSeconds: 0.25
+  localAxis: {x: 0, y: 1, z: 0}
 --- !u!1 &677069730829814382
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,6 +247,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6792338346806495907}
+  - component: {fileID: 1901109835395681088}
   m_Layer: 0
   m_Name: PuertaExteriorMetalica_PivoteBisagra
   m_TagString: Untagged
@@ -262,6 +281,27 @@ Transform:
   - {fileID: 6670934171572725086}
   m_Father: {fileID: 9174569279377328963}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1901109835395681088
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677069730829814382}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.768, y: 2, z: 0.178}
+  m_Center: {x: -0.384, y: 1, z: 0}
 --- !u!1 &1231616045388081330
 GameObject:
   m_ObjectHideFlags: 0
@@ -633,6 +673,7 @@ GameObject:
   - component: {fileID: 6099947993466486184}
   - component: {fileID: 5003276199881681947}
   - component: {fileID: 1236011389657308734}
+  - component: {fileID: 3562288610151782385}
   m_Layer: 0
   m_Name: PuertaExteriorMetalica_Bisagra_PlacaMarco_02
   m_TagString: Untagged
@@ -712,6 +753,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3562288610151782385
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4282244894392990158}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.04000002, y: 0.10500002, z: 0.025}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4692150534120752223
 GameObject:
   m_ObjectHideFlags: 0
@@ -723,6 +785,7 @@ GameObject:
   - component: {fileID: 5845655557379656910}
   - component: {fileID: 3433255157934733687}
   - component: {fileID: 1246731468025411633}
+  - component: {fileID: 4823708580571982169}
   m_Layer: 0
   m_Name: PuertaExteriorMetalica_Umbral
   m_TagString: Untagged
@@ -802,6 +865,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4823708580571982169
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4692150534120752223}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.88, y: 0.025, z: 0.12}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5052672893115519327
 GameObject:
   m_ObjectHideFlags: 0
@@ -903,6 +987,7 @@ GameObject:
   - component: {fileID: 2471393569982246446}
   - component: {fileID: 5018755821950837466}
   - component: {fileID: 2195540860897142200}
+  - component: {fileID: 5497615861493907361}
   m_Layer: 0
   m_Name: PuertaExteriorMetalica_Bisagra_PlacaMarco_01
   m_TagString: Untagged
@@ -982,6 +1067,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5497615861493907361
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5085605146803927744}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.04000002, y: 0.10500002, z: 0.025}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5177962670050013109
 GameObject:
   m_ObjectHideFlags: 0
@@ -993,6 +1099,7 @@ GameObject:
   - component: {fileID: 6843633602674094797}
   - component: {fileID: 4404107996137305394}
   - component: {fileID: 7174513541418171944}
+  - component: {fileID: 8458558704002146514}
   m_Layer: 0
   m_Name: PuertaExteriorMetalica_Marco_JambaIzquierda
   m_TagString: Untagged
@@ -1072,6 +1179,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8458558704002146514
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5177962670050013109}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.04399997, y: 2.08, z: 0.1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6021229206523930410
 GameObject:
   m_ObjectHideFlags: 0
@@ -1173,6 +1301,7 @@ GameObject:
   - component: {fileID: 7551484676950052292}
   - component: {fileID: 535735119354357844}
   - component: {fileID: 2309643368321547840}
+  - component: {fileID: 7816890447826624235}
   m_Layer: 0
   m_Name: PuertaExteriorMetalica_Marco_Dintel
   m_TagString: Untagged
@@ -1252,6 +1381,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7816890447826624235
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6243722917822970834}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.792, y: 0.04400015, z: 0.1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7171774136489415619
 GameObject:
   m_ObjectHideFlags: 0
@@ -1533,6 +1683,7 @@ GameObject:
   - component: {fileID: 2180959957552162928}
   - component: {fileID: 7406939730691091121}
   - component: {fileID: 4392506376765690432}
+  - component: {fileID: 1850290670465411732}
   m_Layer: 0
   m_Name: PuertaExteriorMetalica_Marco_JambaDerecha
   m_TagString: Untagged
@@ -1612,6 +1763,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1850290670465411732
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8301473886726690686}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.04399997, y: 2.08, z: 0.1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8905483073205736819
 GameObject:
   m_ObjectHideFlags: 0

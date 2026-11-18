@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 4273739062613382453}
   - component: {fileID: 6863219145652577877}
   - component: {fileID: 8772600083546790644}
+  - component: {fileID: 2114061133186591901}
   m_Layer: 0
   m_Name: VentanaCorredera_Marco
   m_TagString: Untagged
@@ -180,6 +181,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2114061133186591901
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198477668041341169}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.295, y: 1.095, z: 0.0735}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3975837252016786724
 GameObject:
   m_ObjectHideFlags: 0
@@ -279,6 +301,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8616579996136789337}
+  - component: {fileID: 6473547649343911172}
   m_Layer: 0
   m_Name: VentanaCorredera_HojaIzquierda
   m_TagString: Untagged
@@ -304,6 +327,27 @@ Transform:
   - {fileID: 158805565991641393}
   m_Father: {fileID: 4029078787796460471}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6473547649343911172
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4394147823707185672}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.6145, y: 0.98499995, z: 0.03}
+  m_Center: {x: 0, y: -0.000000029802322, z: 0.0039999997}
 --- !u!1 &5848022981872588203
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,6 +449,7 @@ GameObject:
   - component: {fileID: 3255943134388262931}
   - component: {fileID: 5842020848086333813}
   - component: {fileID: 1881854517604677350}
+  - component: {fileID: 5926107606292524074}
   m_Layer: 0
   m_Name: VentanaCorredera_HojaDerecha_Marco
   m_TagString: Untagged
@@ -484,6 +529,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5926107606292524074
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6657573280467238515}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.6145, y: 0.98499995, z: 0.025}
+  m_Center: {x: 0, y: -0.000000029802322, z: 0}
 --- !u!1 &6894311848132115255
 GameObject:
   m_ObjectHideFlags: 0
@@ -495,6 +561,7 @@ GameObject:
   - component: {fileID: 3159093137772919820}
   - component: {fileID: 1363158520715300826}
   - component: {fileID: 6259380891477949258}
+  - component: {fileID: 8097794494011256386}
   m_Layer: 0
   m_Name: VentanaCorredera_Rieles
   m_TagString: Untagged
@@ -574,6 +641,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8097794494011256386
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6894311848132115255}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.205, y: 0.025, z: 0.045}
+  m_Center: {x: 0, y: 0.05, z: 0}
 --- !u!1 &7183071147065663503
 GameObject:
   m_ObjectHideFlags: 0
@@ -583,6 +671,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4029078787796460471}
+  - component: {fileID: 3654893677118644692}
   m_Layer: 0
   m_Name: VentanaCorredera
   m_TagString: Untagged
@@ -609,6 +698,26 @@ Transform:
   - {fileID: 3159093137772919820}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3654893677118644692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7183071147065663503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76bfe74a3255db14c8742fec6538ce25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VentanaAssets.VentanaInteractable
+  motionType: 0
+  slidingSashes:
+  - {fileID: 3670961840237742954}
+  - {fileID: 8616579996136789337}
+  hingePivot: {fileID: 0}
+  slideDistance: 0.35
+  openAngle: 38
+  transitionSeconds: 0.25
 --- !u!1 &7365002846782299968
 GameObject:
   m_ObjectHideFlags: 0
@@ -618,6 +727,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3670961840237742954}
+  - component: {fileID: 7677743468803952241}
   m_Layer: 0
   m_Name: VentanaCorredera_HojaDerecha
   m_TagString: Untagged
@@ -643,6 +753,27 @@ Transform:
   - {fileID: 8874932065381726915}
   m_Father: {fileID: 4029078787796460471}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &7677743468803952241
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7365002846782299968}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.6145, y: 0.98499995, z: 0.030000001}
+  m_Center: {x: 0, y: -0.000000029802322, z: 0.0040000007}
 --- !u!1 &7553051514648144590
 GameObject:
   m_ObjectHideFlags: 0
@@ -744,6 +875,7 @@ GameObject:
   - component: {fileID: 5374443872273144492}
   - component: {fileID: 5933691587320306374}
   - component: {fileID: 6945450500986178612}
+  - component: {fileID: 6318353507319989482}
   m_Layer: 0
   m_Name: VentanaCorredera_HojaIzquierda_Marco
   m_TagString: Untagged
@@ -823,3 +955,24 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6318353507319989482
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9031962501192439946}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.6145, y: 0.98499995, z: 0.025}
+  m_Center: {x: 0, y: -0.000000029802322, z: 0}

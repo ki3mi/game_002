@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1254161778258974612}
+  - component: {fileID: 5751240544117645939}
+  - component: {fileID: 7687685414217141894}
   m_Layer: 0
   m_Name: ProyectorTecho
   m_TagString: Untagged
@@ -62,6 +64,45 @@ Transform:
   - {fileID: 8820474556390748846}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5751240544117645939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442357205465169432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a3ae808a3ba3547b73ef44d2cfd9a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ProyectorAssets.ProyectorInteractable
+  stateRenderers:
+  - {fileID: 2362633792801458210}
+  - {fileID: 5537178241414958508}
+  startPowered: 0
+  onColor: {r: 0.12, g: 0.78, b: 0.36, a: 1}
+  offColor: {r: 0.2, g: 0.08, b: 0.08, a: 1}
+--- !u!65 &7687685414217141894
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442357205465169432}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.303, y: 0.40000004, z: 0.2422}
+  m_Center: {x: -0.00050000846, y: -0.20000002, z: 0.0011000037}
 --- !u!1 &705635445565792685
 GameObject:
   m_ObjectHideFlags: 0

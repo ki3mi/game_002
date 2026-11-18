@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 135683475078776000}
   - component: {fileID: 9060648629869525217}
   - component: {fileID: 8910433418729090125}
+  - component: {fileID: 4103362793068407597}
   m_Layer: 0
   m_Name: AccesoServicio_HojaMarco
   m_TagString: Untagged
@@ -180,6 +181,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4103362793068407597
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4004823823057473236}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.2, y: 2, z: 0.04}
+  m_Center: {x: -0.6, y: 1, z: 0}
 --- !u!1 &4347711547907392939
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,6 +391,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7485797988954695509}
+  - component: {fileID: 4953762689084493829}
   m_Layer: 0
   m_Name: AccesoServicio_PivoteBisagra
   m_TagString: Untagged
@@ -394,6 +417,27 @@ Transform:
   - {fileID: 3075423561997801025}
   m_Father: {fileID: 609884650078122855}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &4953762689084493829
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4854441582808598277}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.225, y: 2, z: 0.062}
+  m_Center: {x: -0.6125, y: 1, z: 0.011}
 --- !u!1 &6606788043905891367
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,6 +449,7 @@ GameObject:
   - component: {fileID: 8790706495377999382}
   - component: {fileID: 2803432354041869792}
   - component: {fileID: 6995961380988651213}
+  - component: {fileID: 9152282005250293539}
   m_Layer: 0
   m_Name: AccesoServicio_Postes
   m_TagString: Untagged
@@ -484,6 +529,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &9152282005250293539
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6606788043905891367}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.37, y: 2, z: 0.08}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &7949403131670283163
 GameObject:
   m_ObjectHideFlags: 0
@@ -493,6 +559,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 609884650078122855}
+  - component: {fileID: 7225623632866216155}
   m_Layer: 0
   m_Name: AccesoServicio
   m_TagString: Untagged
@@ -519,6 +586,23 @@ Transform:
   - {fileID: 8790706495377999382}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7225623632866216155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7949403131670283163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6af95cef58b70d499d09a6c8c3754f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AccesoEscolarAssets.AccesoEscolarInteractable
+  hinges:
+  - {fileID: 7485797988954695509}
+  openAngle: 95
+  transitionSeconds: 0.25
+  localAxis: {x: 0, y: 1, z: 0}
 --- !u!1 &8015614387381399271
 GameObject:
   m_ObjectHideFlags: 0

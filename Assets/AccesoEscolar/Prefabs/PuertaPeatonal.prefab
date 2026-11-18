@@ -189,6 +189,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4250688072990550698}
+  - component: {fileID: 197076568780435600}
   m_Layer: 0
   m_Name: PuertaPeatonal
   m_TagString: Untagged
@@ -212,6 +213,23 @@ Transform:
   - {fileID: 6223339970130955489}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &197076568780435600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3310718991120629027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6af95cef58b70d499d09a6c8c3754f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AccesoEscolarAssets.AccesoEscolarInteractable
+  hinges:
+  - {fileID: 7615642232559638402}
+  openAngle: 95
+  transitionSeconds: 0.25
+  localAxis: {x: 0, y: 1, z: 0}
 --- !u!1 &4365064426565643052
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,6 +366,7 @@ GameObject:
   - component: {fileID: 1381072180553456180}
   - component: {fileID: 4634289171804578146}
   - component: {fileID: 8708448067413670901}
+  - component: {fileID: 5911678881916508990}
   m_Layer: 0
   m_Name: PuertaPeatonal_MarcoHoja
   m_TagString: Untagged
@@ -427,6 +446,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5911678881916508990
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6027227936843666120}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.16, y: 1.64, z: 0.045}
+  m_Center: {x: -0.58, y: 0.90000004, z: 0}
 --- !u!1 &6053113770148146669
 GameObject:
   m_ObjectHideFlags: 0
@@ -528,6 +568,7 @@ GameObject:
   - component: {fileID: 8749826604867968735}
   - component: {fileID: 3266699180904089497}
   - component: {fileID: 9018265231245763887}
+  - component: {fileID: 8916059706844665808}
   m_Layer: 0
   m_Name: PuertaPeatonal_Postes
   m_TagString: Untagged
@@ -607,6 +648,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8916059706844665808
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7129572930223263556}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.4, y: 1.8, z: 0.1}
+  m_Center: {x: 0, y: 0.9, z: 0}
 --- !u!1 &8342042549323518319
 GameObject:
   m_ObjectHideFlags: 0
@@ -706,6 +768,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7615642232559638402}
+  - component: {fileID: 237526067547837005}
   m_Layer: 0
   m_Name: PuertaPeatonal_PivoteBisagraIzquierda
   m_TagString: Untagged
@@ -732,3 +795,24 @@ Transform:
   - {fileID: 3205310441359534212}
   m_Father: {fileID: 6223339970130955489}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &237526067547837005
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8808539321601216133}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.238, y: 1.64, z: 0.1}
+  m_Center: {x: -0.601, y: 0.90000004, z: 0}

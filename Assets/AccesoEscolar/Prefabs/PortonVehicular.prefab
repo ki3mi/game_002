@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4927857368335337916}
   - component: {fileID: 5809458979075038154}
   - component: {fileID: 4495931543151139122}
+  - component: {fileID: 3621884305496354425}
   m_Layer: 0
   m_Name: PortonVehicular_Postes
   m_TagString: Untagged
@@ -90,6 +91,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3621884305496354425
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303569348115627774}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4.38, y: 1.95, z: 0.14}
+  m_Center: {x: 0, y: 0.975, z: 0}
 --- !u!1 &931972251016654645
 GameObject:
   m_ObjectHideFlags: 0
@@ -279,6 +301,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1918240390707061889}
+  - component: {fileID: 2527153476344327052}
   m_Layer: 0
   m_Name: PortonVehicular_PivoteDerecho
   m_TagString: Untagged
@@ -303,6 +326,27 @@ Transform:
   - {fileID: 5593365689549026270}
   m_Father: {fileID: 1583609657802744275}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2527153476344327052
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2122457210172032163}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.14, y: 1.7199999, z: 0.1655}
+  m_Center: {x: 1.07, y: 0.94, z: 0.025250003}
 --- !u!1 &2993512166667714372
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,6 +392,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2298313040346349964}
+  - component: {fileID: 8798153505118709696}
   m_Layer: 0
   m_Name: PortonVehicular_PivoteIzquierdo
   m_TagString: Untagged
@@ -371,6 +416,27 @@ Transform:
   - {fileID: 8253052331747882722}
   m_Father: {fileID: 1583609657802744275}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8798153505118709696
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5448070615570941096}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.045, y: 1.7199999, z: 0.125}
+  m_Center: {x: -1.0225, y: 0.94, z: 0.0050000027}
 --- !u!1 &7453700240385113329
 GameObject:
   m_ObjectHideFlags: 0
@@ -650,6 +716,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 802679224706769988}
+  - component: {fileID: 3413857649653514741}
   m_Layer: 0
   m_Name: PortonVehicular
   m_TagString: Untagged
@@ -673,3 +740,21 @@ Transform:
   - {fileID: 1583609657802744275}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3413857649653514741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9012173927712297457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6af95cef58b70d499d09a6c8c3754f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AccesoEscolarAssets.AccesoEscolarInteractable
+  hinges:
+  - {fileID: 2298313040346349964}
+  - {fileID: 1918240390707061889}
+  openAngle: 95
+  transitionSeconds: 0.25
+  localAxis: {x: 0, y: 1, z: 0}

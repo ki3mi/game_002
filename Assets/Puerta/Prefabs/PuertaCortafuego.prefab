@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4021276881816340758}
   - component: {fileID: 7984289326631294877}
   - component: {fileID: 5608981490872780199}
+  - component: {fileID: 5565353939173526631}
   m_Layer: 0
   m_Name: PuertaCortafuego_Bisagra_PlacaMarco_02
   m_TagString: Untagged
@@ -90,6 +91,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5565353939173526631
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 678490271917005210}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.051999986, y: 0.09200001, z: 0.025}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1081185452791092442
 GameObject:
   m_ObjectHideFlags: 0
@@ -461,6 +483,7 @@ GameObject:
   - component: {fileID: 7357384856913832228}
   - component: {fileID: 8900471394103263715}
   - component: {fileID: 3517463039820505096}
+  - component: {fileID: 8448538563228042907}
   m_Layer: 0
   m_Name: PuertaCortafuego_Marco_JambaIzquierda
   m_TagString: Untagged
@@ -540,6 +563,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8448538563228042907
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2305967374254267452}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.060000002, y: 2.16, z: 0.15}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2530033086523479446
 GameObject:
   m_ObjectHideFlags: 0
@@ -641,6 +685,7 @@ GameObject:
   - component: {fileID: 910718030175022287}
   - component: {fileID: 2075866320287852352}
   - component: {fileID: 7921461805246750892}
+  - component: {fileID: 3296180825867263513}
   m_Layer: 0
   m_Name: PuertaCortafuego_Marco_JambaDerecha
   m_TagString: Untagged
@@ -720,6 +765,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3296180825867263513
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2671699767444904680}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.060000002, y: 2.16, z: 0.15}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3046958858469471098
 GameObject:
   m_ObjectHideFlags: 0
@@ -819,6 +885,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7232095158205261811}
+  - component: {fileID: 3271466780333610119}
   m_Layer: 0
   m_Name: PuertaCortafuego
   m_TagString: Untagged
@@ -842,6 +909,23 @@ Transform:
   - {fileID: 7646374781000665558}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3271466780333610119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4178063511924143262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b348e7b045d16764e9b483d394689b44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PuertaAssets.PuertaInteractable
+  hinges:
+  - {fileID: 1519552810966448881}
+  openAngle: 95
+  transitionSeconds: 0.25
+  localAxis: {x: 0, y: 1, z: 0}
 --- !u!1 &4697078078364461090
 GameObject:
   m_ObjectHideFlags: 0
@@ -943,6 +1027,7 @@ GameObject:
   - component: {fileID: 6249063833690021567}
   - component: {fileID: 178172239765660973}
   - component: {fileID: 6603532074685642946}
+  - component: {fileID: 3556750980352499255}
   m_Layer: 0
   m_Name: PuertaCortafuego_Bisagra_PlacaMarco_03
   m_TagString: Untagged
@@ -1022,6 +1107,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3556750980352499255
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4781743402268798051}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.051999986, y: 0.09200001, z: 0.025}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4798954681456763512
 GameObject:
   m_ObjectHideFlags: 0
@@ -1163,6 +1269,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1519552810966448881}
+  - component: {fileID: 4761050765307563391}
   m_Layer: 0
   m_Name: PuertaCortafuego_PivoteBisagra
   m_TagString: Untagged
@@ -1197,6 +1304,27 @@ Transform:
   - {fileID: 3720454685000930099}
   m_Father: {fileID: 7646374781000665558}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &4761050765307563391
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5392041523950744466}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.90099996, y: 2.1069999, z: 0.12699999}
+  m_Center: {x: -0.4395, y: 1.0584999, z: 0.04349999}
 --- !u!1 &5685538444084736359
 GameObject:
   m_ObjectHideFlags: 0
@@ -1748,6 +1876,7 @@ GameObject:
   - component: {fileID: 4984315539610336153}
   - component: {fileID: 4593963443897502379}
   - component: {fileID: 851382005111699388}
+  - component: {fileID: 39439779857625063}
   m_Layer: 0
   m_Name: PuertaCortafuego_Bisagra_PlacaMarco_01
   m_TagString: Untagged
@@ -1827,6 +1956,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &39439779857625063
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7589269082189164276}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.051999986, y: 0.09199999, z: 0.025}
+  m_Center: {x: 0, y: -0.000000007450581, z: 0}
 --- !u!1 &7846804775302478292
 GameObject:
   m_ObjectHideFlags: 0
@@ -1928,6 +2078,7 @@ GameObject:
   - component: {fileID: 3678208993811479437}
   - component: {fileID: 4019498156811359727}
   - component: {fileID: 7749786615319298290}
+  - component: {fileID: 4584801666288758325}
   m_Layer: 0
   m_Name: PuertaCortafuego_Marco_Dintel
   m_TagString: Untagged
@@ -2007,6 +2158,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4584801666288758325
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7965626137953936413}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.9, y: 0.059999943, z: 0.15}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8885647830253123653
 GameObject:
   m_ObjectHideFlags: 0

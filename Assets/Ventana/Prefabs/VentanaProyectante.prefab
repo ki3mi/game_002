@@ -279,6 +279,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6153821154623555676}
+  - component: {fileID: 5714211276894826015}
   m_Layer: 0
   m_Name: VentanaProyectante_PivoteSuperior
   m_TagString: Untagged
@@ -308,6 +309,27 @@ Transform:
   - {fileID: 1058196530804286750}
   m_Father: {fileID: 3598030834672549285}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5714211276894826015
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709480645067725663}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.5, y: 0.5, z: 0.065000005}
+  m_Center: {x: 0, y: -0.25, z: -0.014999997}
 --- !u!1 &2377984052198540638
 GameObject:
   m_ObjectHideFlags: 0
@@ -409,6 +431,7 @@ GameObject:
   - component: {fileID: 8496066728457958500}
   - component: {fileID: 4463010280165627419}
   - component: {fileID: 2292457032639927628}
+  - component: {fileID: 8699897196237170051}
   m_Layer: 0
   m_Name: VentanaProyectante_MarcoDerecho
   m_TagString: Untagged
@@ -488,6 +511,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8699897196237170051
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2814308547341483351}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.045000017, y: 0.6, z: 0.1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3724916928417029902
 GameObject:
   m_ObjectHideFlags: 0
@@ -589,6 +633,7 @@ GameObject:
   - component: {fileID: 179229091515365854}
   - component: {fileID: 3385289126737752400}
   - component: {fileID: 3627165583945377532}
+  - component: {fileID: 2884842567696796600}
   m_Layer: 0
   m_Name: VentanaProyectante_MarcoInferior
   m_TagString: Untagged
@@ -668,6 +713,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2884842567696796600
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3896943808079503848}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.51, y: 0.045, z: 0.1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4104608394530616378
 GameObject:
   m_ObjectHideFlags: 0
@@ -717,6 +783,7 @@ GameObject:
   - component: {fileID: 7273386258343361415}
   - component: {fileID: 5383308392857934303}
   - component: {fileID: 9090967663227685357}
+  - component: {fileID: 7213129348464482908}
   m_Layer: 0
   m_Name: VentanaProyectante_MarcoSuperior
   m_TagString: Untagged
@@ -796,6 +863,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7213129348464482908
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4702652619335530751}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.51, y: 0.044999957, z: 0.1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5235378844914018649
 GameObject:
   m_ObjectHideFlags: 0
@@ -1165,6 +1253,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7098842361190490578}
+  - component: {fileID: 3061816981366355162}
   m_Layer: 0
   m_Name: VentanaProyectante
   m_TagString: Untagged
@@ -1188,6 +1277,24 @@ Transform:
   - {fileID: 3598030834672549285}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3061816981366355162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7727757904404876679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76bfe74a3255db14c8742fec6538ce25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VentanaAssets.VentanaInteractable
+  motionType: 1
+  slidingSashes: []
+  hingePivot: {fileID: 6153821154623555676}
+  slideDistance: 0.35
+  openAngle: 38
+  transitionSeconds: 0.25
 --- !u!1 &8476266178813995131
 GameObject:
   m_ObjectHideFlags: 0
@@ -1199,6 +1306,7 @@ GameObject:
   - component: {fileID: 3581638159653988834}
   - component: {fileID: 8397101719418998556}
   - component: {fileID: 4444068855047784637}
+  - component: {fileID: 8730261782211015245}
   m_Layer: 0
   m_Name: VentanaProyectante_MarcoIzquierdo
   m_TagString: Untagged
@@ -1278,3 +1386,24 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8730261782211015245
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8476266178813995131}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.045000017, y: 0.6, z: 0.1}
+  m_Center: {x: 0, y: 0, z: 0}
