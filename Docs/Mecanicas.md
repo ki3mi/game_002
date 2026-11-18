@@ -1,4 +1,4 @@
-# Mecánicas de Luz de vereda
+# Mecánicas de EcoElectry
 
 La premisa, los objetivos educativos y los ejemplos de nivel están en el [documento de contexto](Context.md).
 

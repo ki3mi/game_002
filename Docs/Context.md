@@ -1,14 +1,18 @@
-# Luz de vereda
+# EcoElectry
+
+## Identidad visual
+
+El logo de **EcoElectry** será una **E al cuadrado (E²)** con un rayo en el centro de la E.
 
 ## Concepto del juego
 
-*Luz de vereda* es un juego de puzles de construcción y simulación en 3D low poly. El jugador encarna a un electricista de un programa municipal de electrificación que diseña e instala sistemas de energía renovable. Empieza en un colegio rural y, a medida que demuestra sus competencias, recibe encargos para abastecer otros establecimientos y servicios del municipio. La meta de la campaña es construir el sistema energético de una ciudad sostenible.
+*EcoElectry* es un juego de puzles de construcción y simulación en 3D low poly. El jugador encarna a un electricista de un programa municipal de electrificación que diseña e instala sistemas de energía renovable. Empieza en un colegio rural y, a medida que demuestra sus competencias, recibe encargos para abastecer otros establecimientos y servicios del municipio. La meta de la campaña es construir el sistema energético de una ciudad sostenible.
 
 En cada nivel, el jugador recorre el establecimiento, conoce sus necesidades y construye una instalación con piezas modulares. Trabaja en primera persona al realizar conexiones, configurar equipos y hacer verificaciones. Al pulsar **Probar**, puede ver si su diseño mantiene en funcionamiento las actividades previstas durante una jornada simulada.
 
 Las condiciones del mapa cambian el problema. Un árbol proyecta sombra sobre el patio, una ladera encarece el transporte entre sedes o varios días nublados reducen la energía disponible. El jugador puede resolver un mismo encargo con distintas combinaciones de ubicación, generación, almacenamiento y consumo.
 
-Consulta las reglas y los sistemas de juego en [Mecánicas de Luz de vereda](Mecanicas.md).
+Consulta las reglas y los sistemas de juego en [Mecánicas de EcoElectry](Mecanicas.md).
 
 ## Progresión de la campaña
 

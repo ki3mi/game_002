@@ -1,6 +1,6 @@
 # Nivel 01 · La primera aula
 
-[Contexto de Luz de vereda](Context.md) · [Mecánicas generales](Mecanicas.md)
+[Contexto de EcoElectry](Context.md) · [Mecánicas generales](Mecanicas.md)
 
 ## Encargo
 
