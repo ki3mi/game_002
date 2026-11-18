@@ -5,7 +5,7 @@ La premisa, los objetivos educativos y los ejemplos de nivel están en el [docum
 ## Ciclo de juego y economía
 
 1. **Inspeccionar.** El encargo muestra los servicios obligatorios, sus horarios, el presupuesto y el objetivo de excelencia. El jugador recorre el lugar y puede adelantar la hora para observar cómo se mueve la sombra.
-2. **Construir y verificar.** Arma los recintos necesarios con bloques encajables, ubica los equipos y traza el cableado. Entra en primera persona al conectar, configurar o verificar el equipo. La interfaz actualiza el costo en créditos según las piezas, los equipos, el cableado y, cuando corresponde, los postes y el transporte. El presupuesto es independiente para cada colegio.
+2. **Construir y verificar.** Arma los recintos necesarios con bloques encajables, ubica los equipos y traza el cableado. Entra en primera persona al conectar, configurar o verificar el equipo. La interfaz actualiza el costo en créditos según las piezas, los equipos, el cableado y, cuando corresponde, los postes y el transporte. Cada encargo tiene su propio presupuesto.
 3. **Probar.** La simulación avanza por las franjas del escenario. La generación cubre primero el consumo del momento. El excedente carga la batería y la energía almacenada cubre los déficits mientras quede reserva. Si se interrumpe un servicio obligatorio, el informe indica la hora y el motivo.
 4. **Ajustar o entregar.** El jugador puede mover, sustituir y retirar piezas, y repetir la prueba cuantas veces quiera. Cada intento se evalúa por el costo de su diseño final. Una estrella basta para avanzar y se puede volver a mejorar la solución.
 
@@ -18,19 +18,23 @@ La premisa, los objetivos educativos y los ejemplos de nivel están en el [docum
 | **★★** | Cumple todos los requisitos obligatorios dentro del presupuesto, con el objetivo de excelencia pendiente. |
 | **★★★** | Cumple todos los requisitos obligatorios y el objetivo de excelencia dentro del presupuesto. Representa una instalación perfecta para ese encargo. |
 
-El presupuesto admite un costo igual a su límite. Un colegio puede pedir como objetivo de excelencia terminar con una reserva mínima de batería o mantener el servicio durante una prueba adicional de clima adverso.
+El presupuesto admite un costo igual a su límite. Un encargo puede pedir como objetivo de excelencia terminar con una reserva mínima de batería o mantener el servicio durante una prueba adicional de clima adverso.
 
 ### Créditos de campaña e ingresos diarios
 
-La campaña utiliza la misma unidad, **créditos**, para dos cifras que aparecen por separado. El **presupuesto del encargo** es la referencia con la que se evalúa el costo de una instalación. El **saldo de campaña** acumula las ganancias y se gasta en comprar mejoras del árbol de habilidades. El saldo de campaña no modifica el presupuesto con el que se calculan las estrellas.
+La campaña utiliza la misma unidad, **créditos**, para dos cifras que aparecen por separado. El **presupuesto del encargo** es la asignación del programa municipal con la que se evalúa el costo de una instalación. El **saldo de campaña** acumula los aportes de operación y se gasta en comprar mejoras del árbol de habilidades. Las estrellas se calculan con el presupuesto asignado al encargo.
 
-Cada colegio completado con al menos una estrella aporta una cantidad fija de créditos al cierre de cada **día de campaña**. Al entregar por primera vez un encargo válido, termina el día y se abona la suma de los aportes de todos los colegios completados, incluido el nuevo. La jornada que se reproduce al pulsar **Probar** pertenece a la simulación del colegio. Repetir una prueba o volver a entregar un nivel anterior no adelanta el día de campaña ni añade otro aporte para el mismo colegio.
+Cada establecimiento incorporado al programa con al menos una estrella genera un aporte base de operación, definido por su nivel y tamaño. Al entregar por primera vez un encargo válido, termina el **día de campaña** y se suman los aportes de todos los establecimientos en servicio, incluido el recién incorporado. Después se aplican los potenciadores obtenidos por instalaciones destacadas. La jornada que se reproduce al pulsar **Probar** pertenece a la simulación del encargo. Repetir una prueba o volver a entregar un nivel anterior no adelanta el día de campaña ni añade otro aporte para el mismo establecimiento.
 
-Los primeros encargos introducen las herramientas y los cables básicos. Los encargos posteriores ofrecen presupuestos de obra mayores y exigen competencias que el jugador demuestra en prácticas guiadas. A medida que incorpora colegios, crece su saldo diario y puede comprar más mejoras para proyectos complejos. Las prácticas que habilitan encargos obligatorios se completan sin gastar créditos, de modo que el orden de compra de mejoras queda a elección del jugador.
+Las prácticas guiadas y la entrega de encargos abren nuevos tipos de establecimientos y situaciones. El jugador empieza con instalaciones escolares y avanza a trabajos que incorporan servicios continuos, como la refrigeración de un puesto de salud, o cargas flexibles, como una estación de bombeo con tanque. Los encargos de mayor escala ofrecen presupuestos de obra más amplios. A medida que el jugador incorpora establecimientos, crecen sus ingresos diarios. Las prácticas que habilitan encargos obligatorios se completan sin gastar créditos, de modo que el orden de compra de mejoras queda a elección del jugador.
+
+### Desafío final de ciudad
+
+El encargo final combina varios sectores urbanos en una red de generación renovable, distribución y almacenamiento. El jugador prueba el suministro en un día normal y en un escenario de baja generación. El informe muestra qué sectores cumplieron sus horarios y qué servicios críticos sufrieron interrupciones. La campaña se completa cuando la red cubre los requisitos de todos los sectores en ambas pruebas. El presupuesto y el objetivo de excelencia se evalúan con el sistema de estrellas de los demás encargos.
 
 ## Cámara e interacción
 
-- **Exploración y planificación.** La cámara empieza en tercera persona. El jugador puede alternar manualmente entre tercera y primera persona mientras recorre el colegio, inspecciona el entorno o decide dónde ubicar los equipos.
+- **Exploración y planificación.** La cámara empieza en tercera persona. El jugador puede alternar manualmente entre tercera y primera persona mientras recorre el establecimiento, inspecciona el entorno o decide dónde ubicar los equipos.
 - **Instalación, configuración y verificación.** Al iniciar una intervención, el juego cambia automáticamente a primera persona y mantiene esa vista mientras el jugador manipula cables, bornes, controles o instrumentos. En esta vista se muestran las manos, la herramienta seleccionada y el punto de trabajo.
 - **Regreso a la exploración.** Al terminar o cancelar la intervención, se recupera la vista que el jugador tenía antes de iniciarla.
 
@@ -62,9 +66,9 @@ En *La escuela en la ladera*, el jugador puede montar un recinto compacto cerca 
 
 ## Cableado y centrales alejadas
 
-El jugador traza la ruta entre la fuente, el tablero y los equipos del colegio. El cableado oculto dentro de paredes, techos y suelos se representa únicamente con **líneas punteadas** que indican por dónde pasa. En exteriores, el jugador puede tender **cables visibles suspendidos entre postes eléctricos**. La longitud del recorrido y la cantidad de postes afectan el costo del diseño.
+El jugador traza la ruta entre la fuente, el tablero y los equipos que debe alimentar. El cableado oculto dentro de paredes, techos y suelos se representa únicamente con **líneas punteadas** que indican por dónde pasa. En exteriores, el jugador puede tender **cables visibles suspendidos entre postes eléctricos**. La longitud del recorrido y la cantidad de postes afectan el costo del diseño.
 
-En ciertos niveles, la fuente renovable se instala lejos del establecimiento. El jugador debe construir un **recinto de protección para los equipos de la central**, como el tablero y las baterías, y tender la conexión desde allí hasta el colegio. En esos encargos, completar el recinto y conectar ambas ubicaciones son requisitos obligatorios. La construcción, los postes y el cableado cuentan en el presupuesto del nivel.
+En ciertos niveles, la fuente renovable se instala lejos del establecimiento. El jugador debe construir un **recinto de protección para los equipos de la central**, como el tablero y las baterías, y tender la conexión desde allí hasta el establecimiento. En esos encargos, completar el recinto y conectar ambas ubicaciones son requisitos obligatorios. La construcción, los postes y el cableado cuentan en el presupuesto del nivel.
 
 ### Familias de cables y desbloqueo
 
@@ -72,7 +76,7 @@ En ciertos niveles, la fuente renovable se instala lejos del establecimiento. El
 | --- | --- | --- |
 | Fotovoltaico | En la primera práctica con paneles solares. | Conecta los paneles con los equipos de la central. |
 | Para canalización interior | Al aprender a distribuir energía desde el tablero. | Alimenta luminarias y otros equipos por rutas ocultas en paredes, techos o suelos. |
-| Para tendido aéreo | Antes del primer encargo con una central alejada. | Conecta el recinto con el colegio mediante un tramo suspendido entre postes. |
+| Para tendido aéreo | Antes del primer encargo con una central alejada. | Conecta el recinto con el establecimiento mediante un tramo suspendido entre postes. |
 
 Un mismo encargo puede introducir dos familias si el montaje requiere ambas. Cada familia se habilita después de una práctica con su recorrido y sus conexiones. En niveles posteriores se pueden introducir variantes de mayor capacidad para alimentar más equipos en un mismo tramo.
 
@@ -81,6 +85,10 @@ Un mismo encargo puede introducir dos familias si el montaje requiere ambas. Cad
 El jugador debe ordenar y proteger los cables y revisar sus conexiones antes de probar la instalación. En la simulación, un cortocircuito puede ocurrir si dos conductores expuestos que deben permanecer separados entran en contacto, por ejemplo en un borne mal montado o en un tramo con aislamiento dañado. El cruce visual de dos rutas en el mapa puede darse con ambos cables aislados.
 
 Durante la prueba, un cortocircuito activa la protección del circuito afectado e interrumpe el servicio que alimenta. El informe marca el tramo sospechoso. El jugador vuelve a la instalación desenergizada, inspecciona o verifica el tramo en primera persona, corrige el montaje y repite la prueba. Si el corte impide prestar un servicio obligatorio, el nivel queda incompleto.
+
+### Descargas y guardado automático
+
+Si el jugador manipula un cable o borne bajo tensión durante una corrección, recibe una descarga y reaparece en el último punto de guardado automático cercano a la zona de trabajo. El guardado registra el diseño, el estado del circuito y la tarea pendiente antes de la intervención. Al reaparecer, un aviso indica por qué ocurrió la descarga para que el jugador pueda corregir la causa y retomar el trabajo.
 
 ## Progresión del electricista
 
@@ -103,11 +111,15 @@ El cuaderno de campo muestra el árbol y las condiciones de cada nodo. Las **com
 | Diagnóstico | Localizar un fallo con el multímetro. | **Inspección rápida.** El informe acota el fallo a menos puntos del circuito para agilizar la revisión. |
 | Planificación energética | Programar una carga flexible en una práctica. | **Comparación de diseños.** Permite ver juntas dos pruebas para comparar el costo y la reserva de energía. |
 
-### Volver a colegios anteriores
+### Volver a encargos anteriores
 
-El jugador puede reabrir un colegio completado y partir de una copia de su mejor instalación o de un diseño nuevo. Puede usar las competencias, las familias de cables y las mejoras que ya tenga desbloqueadas, siempre que las piezas sean compatibles con el mapa y el encargo. La revisión se evalúa con los mismos requisitos, presupuesto y objetivo de excelencia. El juego conserva la mejor calificación conseguida.
+El jugador puede reabrir un encargo completado y partir de una copia de su mejor instalación o de un diseño nuevo. Puede usar las competencias, las familias de cables y las mejoras que ya tenga desbloqueadas, siempre que las piezas sean compatibles con el mapa y el encargo. La revisión se evalúa con los mismos requisitos, presupuesto y objetivo de excelencia. El juego conserva la mejor calificación conseguida.
 
-Por ejemplo, el jugador termina un colegio con una estrella porque el tendido cuesta demasiado. Después de aprender canalización interior y comprar **Aprovechamiento de cable**, vuelve para revisar el recorrido. Puede llevar parte del tendido por una ruta interior más directa y reducir los sobrantes previstos. Si el nuevo diseño cumple el encargo y entra en el presupuesto, obtiene dos estrellas. Si también cumple el objetivo de excelencia, obtiene tres.
+#### Potenciadores por mejorar instalaciones
+
+Los encargos con recompensa muestran en el mapa de campaña su **potenciador único** y la calificación necesaria para desbloquearlo. Así, un establecimiento pequeño puede seguir siendo valioso aunque su aporte base sea bajo. El potenciador se obtiene una sola vez al alcanzar la calificación indicada, tanto en la primera entrega como al mejorar el diseño en una visita posterior. Queda activo en los siguientes cierres de campaña.
+
+Por ejemplo, *La primera aula* ofrece **+5 % de créditos al cierre del día** al alcanzar tres estrellas. Si el jugador vuelve con **Aprovechamiento de cable** y alcanza la calificación, el bono se aplica a los ingresos de todos los establecimientos en servicio. Con un aporte base conjunto de 200 créditos, cobraría 210 en el siguiente cierre. Si hay varios potenciadores porcentuales, sus porcentajes se suman y se aplican una vez al total base.
 
 ### Prácticas con herramientas eléctricas
 
