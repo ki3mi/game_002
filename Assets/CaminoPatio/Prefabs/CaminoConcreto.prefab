@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3838886420793767558
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 94adc2bd47f50af4ea05927613619e60, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 94adc2bd47f50af4ea05927613619e60, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 94adc2bd47f50af4ea05927613619e60, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 94adc2bd47f50af4ea05927613619e60, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 94adc2bd47f50af4ea05927613619e60, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 94adc2bd47f50af4ea05927613619e60, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 94adc2bd47f50af4ea05927613619e60, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 94adc2bd47f50af4ea05927613619e60, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 94adc2bd47f50af4ea05927613619e60, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 94adc2bd47f50af4ea05927613619e60, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5436791971665487663, guid: 94adc2bd47f50af4ea05927613619e60, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: fa04f2ce014986044b0fc5b24d05ca6c, type: 2}
+    - target: {fileID: -3049681469626733503, guid: 94adc2bd47f50af4ea05927613619e60, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: fa04f2ce014986044b0fc5b24d05ca6c, type: 2}
+    - target: {fileID: -243274781166901661, guid: 94adc2bd47f50af4ea05927613619e60, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d250548204ce8b549b1124a4f56a7975, type: 2}
+    - target: {fileID: 919132149155446097, guid: 94adc2bd47f50af4ea05927613619e60, type: 3}
+      propertyPath: m_Name
+      value: CaminoConcreto
+      objectReference: {fileID: 0}
+    - target: {fileID: 3910491072141506294, guid: 94adc2bd47f50af4ea05927613619e60, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: fa04f2ce014986044b0fc5b24d05ca6c, type: 2}
+    - target: {fileID: 6564548915962547617, guid: 94adc2bd47f50af4ea05927613619e60, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d250548204ce8b549b1124a4f56a7975, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 94adc2bd47f50af4ea05927613619e60, type: 3}

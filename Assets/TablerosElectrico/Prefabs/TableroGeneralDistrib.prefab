@@ -1,0 +1,1716 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &603467499530656043
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4652267033696606867}
+  - component: {fileID: 4279325566088439383}
+  - component: {fileID: 8471328218628254233}
+  m_Layer: 0
+  m_Name: TableroGeneralDistrib
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4652267033696606867
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 603467499530656043}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8417718137358468590}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4279325566088439383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 603467499530656043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ce9512205bae614397d8f5ec87ec242, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TablerosEnergia.ModularBoard
+  kind: 1
+  slots:
+  - {fileID: 760089266223351491}
+  - {fileID: 2777077306204640}
+  - {fileID: 6307520950042705234}
+  - {fileID: 6922427617190317504}
+  - {fileID: 7921185942262882645}
+  - {fileID: 7730775253487144983}
+  - {fileID: 6290359753543307720}
+  - {fileID: 7433309222389359846}
+  - {fileID: 4731295893748972619}
+  - {fileID: 3874519210613896678}
+  - {fileID: 199115371597176219}
+  - {fileID: 5584183040472055442}
+  - {fileID: 3993993886784421974}
+  - {fileID: 8790295189512586559}
+  - {fileID: 7191713038770596188}
+  - {fileID: 6370382037708479342}
+  - {fileID: 8540745461059082475}
+  - {fileID: 3025117035283966398}
+  incomingPorts:
+  - {fileID: 3196954576495848612}
+  - {fileID: 5614287359101562326}
+  - {fileID: 4042943454793048034}
+  cableMaterials:
+  - {fileID: 2100000, guid: d01595ce689c5d84c9702a8b1b417202, type: 2}
+  - {fileID: 2100000, guid: 4a7dd4cd05cb68042b00234e6ad695ca, type: 2}
+  - {fileID: 2100000, guid: eeec9cb490799234c931c088ee4ae76b, type: 2}
+  upstreamBoard: {fileID: 0}
+  upstreamOutputId: 
+--- !u!114 &8471328218628254233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 603467499530656043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 346167f085abc864ba825a04b2c3e5bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TablerosEnergia.BoardStatusIndicators
+  red: {fileID: 7673096442413923603}
+  amber: {fileID: 8494545773704971529}
+  green: {fileID: 6252852421807017447}
+--- !u!1001 &8312245721204007429
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4652267033696606867}
+    m_Modifications:
+    - target: {fileID: -9117167796062591991, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8601587512728760281, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8459159602939899326, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7839952742902544713, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7576621677457293238, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7494015714941013605, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7428298138819344692, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7163810735841807232, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6759600006691353081, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6758195172155061634, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6669366668062425744, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6565185754886702447, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6356997008281506791, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5469767184965104147, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5370347554745269289, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4897923894944495633, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4784653715109314018, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4641751755311849438, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -2667913203647160040, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1247301739482524745, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1228839662364826151, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1192714115683801741, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1041183982228693998, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -543457556144990944, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -162103368980985285, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 753842998797117137, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      propertyPath: m_Name
+      value: TableroGeneralDistrib
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437704737836883382, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3881632969840945555, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4306937753480334231, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4490193837453649541, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4760497151186750760, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132531356023305534, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7456480036100123798, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7738790186299396468, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8068923640097730714, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8313461867528562395, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8342280605943936517, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4363354638128173371, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7230491628467163329}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: -7350684908304236059, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2119786166244434925}
+    - targetCorrespondingSourceObject: {fileID: -7350684908304236059, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 760089266223351491}
+    - targetCorrespondingSourceObject: {fileID: -2151782969902233631, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6631175407945481344}
+    - targetCorrespondingSourceObject: {fileID: -2151782969902233631, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2777077306204640}
+    - targetCorrespondingSourceObject: {fileID: -4399977812165803506, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6584681395621337671}
+    - targetCorrespondingSourceObject: {fileID: -4399977812165803506, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6307520950042705234}
+    - targetCorrespondingSourceObject: {fileID: 6574131983562963800, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8716272145691293230}
+    - targetCorrespondingSourceObject: {fileID: 6574131983562963800, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6922427617190317504}
+    - targetCorrespondingSourceObject: {fileID: 8836177535960803425, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 764761367875814354}
+    - targetCorrespondingSourceObject: {fileID: 8836177535960803425, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7921185942262882645}
+    - targetCorrespondingSourceObject: {fileID: -2115025544751696718, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2145774467559842427}
+    - targetCorrespondingSourceObject: {fileID: -2115025544751696718, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7730775253487144983}
+    - targetCorrespondingSourceObject: {fileID: -4381194671106251198, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1265308192845954408}
+    - targetCorrespondingSourceObject: {fileID: -4381194671106251198, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6290359753543307720}
+    - targetCorrespondingSourceObject: {fileID: 4860176417325361479, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5764860672402576233}
+    - targetCorrespondingSourceObject: {fileID: 4860176417325361479, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7433309222389359846}
+    - targetCorrespondingSourceObject: {fileID: -1819563606307044371, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7908607475379480018}
+    - targetCorrespondingSourceObject: {fileID: -1819563606307044371, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4731295893748972619}
+    - targetCorrespondingSourceObject: {fileID: -4307754636726538765, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2858612937523705024}
+    - targetCorrespondingSourceObject: {fileID: -4307754636726538765, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3874519210613896678}
+    - targetCorrespondingSourceObject: {fileID: 693234164779465596, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5866260618405626794}
+    - targetCorrespondingSourceObject: {fileID: 693234164779465596, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 199115371597176219}
+    - targetCorrespondingSourceObject: {fileID: 2224969313122683042, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4145682201374530679}
+    - targetCorrespondingSourceObject: {fileID: 2224969313122683042, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5584183040472055442}
+    - targetCorrespondingSourceObject: {fileID: -8356907647277143906, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7076749295766009064}
+    - targetCorrespondingSourceObject: {fileID: -8356907647277143906, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3993993886784421974}
+    - targetCorrespondingSourceObject: {fileID: -8991527684087889343, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2840424399287980352}
+    - targetCorrespondingSourceObject: {fileID: -8991527684087889343, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8790295189512586559}
+    - targetCorrespondingSourceObject: {fileID: -4540547370649132231, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2277549583344503397}
+    - targetCorrespondingSourceObject: {fileID: -4540547370649132231, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7191713038770596188}
+    - targetCorrespondingSourceObject: {fileID: -3131960541609513191, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1077048703131456527}
+    - targetCorrespondingSourceObject: {fileID: -3131960541609513191, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6370382037708479342}
+    - targetCorrespondingSourceObject: {fileID: 348597432617787337, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3808706762221164134}
+    - targetCorrespondingSourceObject: {fileID: 348597432617787337, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8540745461059082475}
+    - targetCorrespondingSourceObject: {fileID: -307441036442960955, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1600509417758421843}
+    - targetCorrespondingSourceObject: {fileID: -307441036442960955, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3025117035283966398}
+  m_SourcePrefab: {fileID: 100100000, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+--- !u!1 &1230305762182366 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8313461867528562395, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &44679146764964864 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8342280605943936517, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &204913638011485719 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -1041183982228693998, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &231365196640453546 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -1121679865838001745, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &259629831985587566 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -1098486309045385365, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &387793287466984553 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8519315716508223084, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &639730434750568896 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -307441036442960955, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1600509417758421843
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639730434750568896}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.136, y: 0.191, z: 0.15}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3025117035283966398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639730434750568896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7871190b13d2f6348ba97b6cabd018fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TablerosEnergia.BoardSlot
+  slotId: TGD_MAIN
+  displayName: Seccionador principal
+  acceptedPart: 1
+  role: 2
+  estimatedWatts: 0
+  componentPrefab: {fileID: 6686500996022622610, guid: 9ea11dee86bdced49b205c246e5947b1, type: 3}
+  blankCover: {fileID: 387793287466984553}
+  wires:
+  - {fileID: 5551628754355389568}
+  - {fileID: 5866524463672011778}
+  feedWires: []
+  outputPort: {fileID: 0}
+--- !u!1 &719291531904338532 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8836177535960803425, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &764761367875814354
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 719291531904338532}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.056, y: 0.105, z: 0.071}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7921185942262882645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 719291531904338532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7871190b13d2f6348ba97b6cabd018fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TablerosEnergia.BoardSlot
+  slotId: TGD_AREAS
+  displayName: Areas comunes
+  acceptedPart: 0
+  role: 1
+  estimatedWatts: 0
+  componentPrefab: {fileID: 7030591165319990213, guid: 7cd7dbb1a61d758408284e0f9ef62041, type: 3}
+  blankCover: {fileID: 9017680145232132113}
+  wires:
+  - {fileID: 6096870692585262620}
+  - {fileID: 5867370342306031739}
+  feedWires: []
+  outputPort: {fileID: 2176868178908257043}
+--- !u!1 &805659766991484709 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -543457556144990944, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1052453256910776382 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -162103368980985285, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1258848160204072420 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -2151782969902233631, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &6631175407945481344
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1258848160204072420}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.056, y: 0.105, z: 0.071}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2777077306204640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1258848160204072420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7871190b13d2f6348ba97b6cabd018fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TablerosEnergia.BoardSlot
+  slotId: TGD_AULA1
+  displayName: Aula 1
+  acceptedPart: 0
+  role: 1
+  estimatedWatts: 0
+  componentPrefab: {fileID: 7030591165319990213, guid: 7cd7dbb1a61d758408284e0f9ef62041, type: 3}
+  blankCover: {fileID: 3330961487214226503}
+  wires:
+  - {fileID: 5137618476750417896}
+  - {fileID: 5718466910611285482}
+  feedWires: []
+  outputPort: {fileID: 8369617421935416634}
+--- !u!1 &1270243844796618555 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7132531356023305534, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1296733263579223735 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -2115025544751696718, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &2145774467559842427
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296733263579223735}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.056, y: 0.105, z: 0.071}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7730775253487144983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296733263579223735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7871190b13d2f6348ba97b6cabd018fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TablerosEnergia.BoardSlot
+  slotId: TGD_AUTOM
+  displayName: Automatizacion
+  acceptedPart: 0
+  role: 1
+  estimatedWatts: 0
+  componentPrefab: {fileID: 7030591165319990213, guid: 7cd7dbb1a61d758408284e0f9ef62041, type: 3}
+  blankCover: {fileID: 5641505521579995121}
+  wires:
+  - {fileID: 2063093097480770207}
+  - {fileID: 2029337437342435190}
+  feedWires: []
+  outputPort: {fileID: 3981556375051266116}
+--- !u!1 &1450645507753512595 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7456480036100123798, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1576430810356862254 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7402681975962431275, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1577557272462565864 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -1819563606307044371, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &7908607475379480018
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1577557272462565864}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.056, y: 0.105, z: 0.071}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4731295893748972619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1577557272462565864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7871190b13d2f6348ba97b6cabd018fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TablerosEnergia.BoardSlot
+  slotId: TGD_Fila1_08
+  displayName: Circuito TGD_Fila1_08
+  acceptedPart: 0
+  role: 0
+  estimatedWatts: 1040
+  componentPrefab: {fileID: 7030591165319990213, guid: 7cd7dbb1a61d758408284e0f9ef62041, type: 3}
+  blankCover: {fileID: 3786260090753896100}
+  wires:
+  - {fileID: 1747031468703986545}
+  - {fileID: 5534405171648872999}
+  feedWires: []
+  outputPort: {fileID: 0}
+--- !u!4 &1654332339084711090 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7326891561142580919, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1747031468703986545 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7738790186299396468, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1825416234374790579 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7642090790868737974, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2029337437342435190 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -1192714115683801741, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2063093097480770207 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8068923640097730714, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2137327077059545052 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -1228839662364826151, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2156017903983063474 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -1247301739482524745, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2176868178908257043 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7885465819512944918, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2865154029415551652 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -3127726741201096543, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2869370250413149468 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -3131960541609513191, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1077048703131456527
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2869370250413149468}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.056, y: 0.105, z: 0.071}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6370382037708479342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2869370250413149468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7871190b13d2f6348ba97b6cabd018fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TablerosEnergia.BoardSlot
+  slotId: TGD_Fila2_07
+  displayName: Circuito TGD_Fila2_07
+  acceptedPart: 0
+  role: 0
+  estimatedWatts: 995
+  componentPrefab: {fileID: 7030591165319990213, guid: 7cd7dbb1a61d758408284e0f9ef62041, type: 3}
+  blankCover: {fileID: 5708022644257049392}
+  wires:
+  - {fileID: 1230305762182366}
+  - {fileID: 6965036339583123379}
+  feedWires: []
+  outputPort: {fileID: 0}
+--- !u!1 &2911301474957777245 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6574131983562963800, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &8716272145691293230
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2911301474957777245}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.056, y: 0.105, z: 0.071}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6922427617190317504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2911301474957777245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7871190b13d2f6348ba97b6cabd018fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TablerosEnergia.BoardSlot
+  slotId: TGD_LAB
+  displayName: Laboratorio
+  acceptedPart: 0
+  role: 1
+  estimatedWatts: 0
+  componentPrefab: {fileID: 7030591165319990213, guid: 7cd7dbb1a61d758408284e0f9ef62041, type: 3}
+  blankCover: {fileID: 259629831985587566}
+  wires:
+  - {fileID: 8224231805212870156}
+  - {fileID: 2137327077059545052}
+  feedWires: []
+  outputPort: {fileID: 1654332339084711090}
+--- !u!1 &3000149842701402909 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -2667913203647160040, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3196954576495848612 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -2375971721674486111, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3330961487214226503 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -2494162264978289086, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3470542220355472194 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4860176417325361479, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &5764860672402576233
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3470542220355472194}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.056, y: 0.105, z: 0.071}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7433309222389359846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3470542220355472194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7871190b13d2f6348ba97b6cabd018fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TablerosEnergia.BoardSlot
+  slotId: TGD_Fila1_07
+  displayName: Circuito TGD_Fila1_07
+  acceptedPart: 0
+  role: 0
+  estimatedWatts: 995
+  componentPrefab: {fileID: 7030591165319990213, guid: 7cd7dbb1a61d758408284e0f9ef62041, type: 3}
+  blankCover: {fileID: 1576430810356862254}
+  wires:
+  - {fileID: 8731696034475377876}
+  - {fileID: 5081560043505077142}
+  feedWires: []
+  outputPort: {fileID: 0}
+--- !u!1 &3488558915539469383 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -4381194671106251198, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1265308192845954408
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3488558915539469383}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.056, y: 0.105, z: 0.071}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6290359753543307720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3488558915539469383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7871190b13d2f6348ba97b6cabd018fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TablerosEnergia.BoardSlot
+  slotId: TGD_Fila1_06
+  displayName: Circuito TGD_Fila1_06
+  acceptedPart: 0
+  role: 0
+  estimatedWatts: 950
+  componentPrefab: {fileID: 7030591165319990213, guid: 7cd7dbb1a61d758408284e0f9ef62041, type: 3}
+  blankCover: {fileID: 8617089758918386284}
+  wires:
+  - {fileID: 805659766991484709}
+  - {fileID: 1052453256910776382}
+  feedWires: []
+  outputPort: {fileID: 0}
+--- !u!1 &3552119230010683181 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4760497151186750760, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3578993965323640843 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -4399977812165803506, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &6584681395621337671
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3578993965323640843}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.056, y: 0.105, z: 0.071}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6307520950042705234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3578993965323640843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7871190b13d2f6348ba97b6cabd018fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TablerosEnergia.BoardSlot
+  slotId: TGD_AULA2
+  displayName: Aula 2
+  acceptedPart: 0
+  role: 1
+  estimatedWatts: 0
+  componentPrefab: {fileID: 7030591165319990213, guid: 7cd7dbb1a61d758408284e0f9ef62041, type: 3}
+  blankCover: {fileID: 231365196640453546}
+  wires:
+  - {fileID: 8933455884118258210}
+  - {fileID: 5675232322954731547}
+  feedWires: []
+  outputPort: {fileID: 7035224379344338177}
+--- !u!1 &3722149536513114428 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -4540547370649132231, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &2277549583344503397
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3722149536513114428}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.056, y: 0.105, z: 0.071}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7191713038770596188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3722149536513114428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7871190b13d2f6348ba97b6cabd018fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TablerosEnergia.BoardSlot
+  slotId: TGD_Fila2_06
+  displayName: Circuito TGD_Fila2_06
+  acceptedPart: 0
+  role: 0
+  estimatedWatts: 950
+  componentPrefab: {fileID: 7030591165319990213, guid: 7cd7dbb1a61d758408284e0f9ef62041, type: 3}
+  blankCover: {fileID: 7860283286374665226}
+  wires:
+  - {fileID: 44679146764964864}
+  - {fileID: 5054083504068190674}
+  feedWires: []
+  outputPort: {fileID: 0}
+--- !u!1 &3786260090753896100 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5174767966977256609, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3981556375051266116 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4907326127829109313, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3993778669590892534 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -4307754636726538765, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &2858612937523705024
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3993778669590892534}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.056, y: 0.105, z: 0.071}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3874519210613896678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3993778669590892534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7871190b13d2f6348ba97b6cabd018fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TablerosEnergia.BoardSlot
+  slotId: TGD_Fila2_01
+  displayName: Circuito TGD_Fila2_01
+  acceptedPart: 0
+  role: 0
+  estimatedWatts: 725
+  componentPrefab: {fileID: 7030591165319990213, guid: 7cd7dbb1a61d758408284e0f9ef62041, type: 3}
+  blankCover: {fileID: 9120133391721406217}
+  wires:
+  - {fileID: 7314243592162271823}
+  - {fileID: 5232714788102613394}
+  feedWires: []
+  outputPort: {fileID: 0}
+--- !u!1 &3996912597278134255 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4912553794097393130, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4042943454793048034 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5422453624977374695, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4058233804024451864 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5407338080732197149, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4355518941045245269 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -3518738376161433776, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5054083504068190674 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -5370347554745269289, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5081560043505077142 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3881632969840945555, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5137618476750417896 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -5469767184965104147, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5232714788102613394 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4306937753480334231, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5534405171648872999 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -4641751755311849438, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5551628754355389568 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4490193837453649541, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5614287359101562326 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4517941562555420627, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5641505521579995121 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -4822897732168577548, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5675232322954731547 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -4784653715109314018, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5708022644257049392 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -4868955060979898059, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5718466910611285482 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -4897923894944495633, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5752988561021268798 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4363354638128173371, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5776606667700363125 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -6669366668062425744, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5866524463672011778 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -6759600006691353081, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5867370342306031739 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -6758195172155061634, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6096870692585262620 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -6356997008281506791, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &6252852421807017447 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -6512874288207384606, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6321014452437506196 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -6565185754886702447, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6533408697813781097 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -6201364426033764244, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6947334545315325106 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -7839952742902544713, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6965036339583123379 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1437704737836883382, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7035224379344338177 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -7856208230427615484, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7252184190418867102 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -7494015714941013605, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7314243592162271823 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -7576621677457293238, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &7673096442413923603 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1812514127688834838, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7684856704853582816 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -7350684908304236059, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &2119786166244434925
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7684856704853582816}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.32, y: 0.084, z: 0.071}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &760089266223351491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7684856704853582816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7871190b13d2f6348ba97b6cabd018fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TablerosEnergia.BoardSlot
+  slotId: TGD_BORNERAS
+  displayName: Bornes de alimentacion
+  acceptedPart: 2
+  role: 3
+  estimatedWatts: 0
+  componentPrefab: {fileID: 590957291399215114, guid: f5e0cef8d4ab2484c9486773b59b7559, type: 3}
+  blankCover: {fileID: 4355518941045245269}
+  wires: []
+  feedWires:
+  - {fileID: 3552119230010683181}
+  - {fileID: 1270243844796618555}
+  - {fileID: 6947334545315325106}
+  outputPort: {fileID: 0}
+--- !u!1 &7760376443931616457 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -7428298138819344692, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7860283286374665226 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -7039599619001717233, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7907101296064375463 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2224969313122683042, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &4145682201374530679
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7907101296064375463}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.056, y: 0.105, z: 0.071}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5584183040472055442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7907101296064375463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7871190b13d2f6348ba97b6cabd018fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TablerosEnergia.BoardSlot
+  slotId: TGD_Fila2_03
+  displayName: Circuito TGD_Fila2_03
+  acceptedPart: 0
+  role: 0
+  estimatedWatts: 815
+  componentPrefab: {fileID: 7030591165319990213, guid: 7cd7dbb1a61d758408284e0f9ef62041, type: 3}
+  blankCover: {fileID: 4058233804024451864}
+  wires:
+  - {fileID: 8056393714813425285}
+  - {fileID: 3000149842701402909}
+  feedWires: []
+  outputPort: {fileID: 0}
+--- !u!1 &8056393714813425285 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -7163810735841807232, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8101037041384022084 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -8991527684087889343, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &2840424399287980352
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8101037041384022084}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.056, y: 0.105, z: 0.071}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8790295189512586559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8101037041384022084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7871190b13d2f6348ba97b6cabd018fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TablerosEnergia.BoardSlot
+  slotId: TGD_Fila2_05
+  displayName: Circuito TGD_Fila2_05
+  acceptedPart: 0
+  role: 0
+  estimatedWatts: 905
+  componentPrefab: {fileID: 7030591165319990213, guid: 7cd7dbb1a61d758408284e0f9ef62041, type: 3}
+  blankCover: {fileID: 3996912597278134255}
+  wires:
+  - {fileID: 7252184190418867102}
+  - {fileID: 5776606667700363125}
+  feedWires: []
+  outputPort: {fileID: 0}
+--- !u!1 &8224231805212870156 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -9117167796062591991, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8369617421935416634 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8683540681102084289, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8417718137358468590 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &8494545773704971529 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 484619720505108236, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8614665863673150924 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 348597432617787337, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &3808706762221164134
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8614665863673150924}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.056, y: 0.105, z: 0.071}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8540745461059082475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8614665863673150924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7871190b13d2f6348ba97b6cabd018fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TablerosEnergia.BoardSlot
+  slotId: TGD_Fila2_08
+  displayName: Circuito TGD_Fila2_08
+  acceptedPart: 0
+  role: 0
+  estimatedWatts: 1040
+  componentPrefab: {fileID: 7030591165319990213, guid: 7cd7dbb1a61d758408284e0f9ef62041, type: 3}
+  blankCover: {fileID: 6533408697813781097}
+  wires:
+  - {fileID: 6321014452437506196}
+  - {fileID: 204913638011485719}
+  feedWires: []
+  outputPort: {fileID: 0}
+--- !u!1 &8617089758918386284 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -8877428245837086615, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8731696034475377876 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 753842998797117137, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8773012458958680135 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -8459159602939899326, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8846718650853890425 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 693234164779465596, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &5866260618405626794
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8846718650853890425}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.056, y: 0.105, z: 0.071}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &199115371597176219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8846718650853890425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7871190b13d2f6348ba97b6cabd018fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TablerosEnergia.BoardSlot
+  slotId: TGD_Fila2_02
+  displayName: Circuito TGD_Fila2_02
+  acceptedPart: 0
+  role: 0
+  estimatedWatts: 770
+  componentPrefab: {fileID: 7030591165319990213, guid: 7cd7dbb1a61d758408284e0f9ef62041, type: 3}
+  blankCover: {fileID: 1825416234374790579}
+  wires:
+  - {fileID: 2156017903983063474}
+  - {fileID: 1450645507753512595}
+  feedWires: []
+  outputPort: {fileID: 0}
+--- !u!1 &8933455884118258210 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -8601587512728760281, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &9017680145232132113 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1044337176525363732, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &9120133391721406217 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 993676549986958604, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &9177574856368900763 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -8356907647277143906, guid: 675ef15a130200347a7c7ce4fedb3c75, type: 3}
+  m_PrefabInstance: {fileID: 8312245721204007429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &7076749295766009064
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9177574856368900763}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.056, y: 0.105, z: 0.071}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3993993886784421974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9177574856368900763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7871190b13d2f6348ba97b6cabd018fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TablerosEnergia.BoardSlot
+  slotId: TGD_Fila2_04
+  displayName: Circuito TGD_Fila2_04
+  acceptedPart: 0
+  role: 0
+  estimatedWatts: 860
+  componentPrefab: {fileID: 7030591165319990213, guid: 7cd7dbb1a61d758408284e0f9ef62041, type: 3}
+  blankCover: {fileID: 2865154029415551652}
+  wires:
+  - {fileID: 7760376443931616457}
+  - {fileID: 8773012458958680135}
+  feedWires: []
+  outputPort: {fileID: 0}
+--- !u!1001 &8755191283394238979
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5752988561021268798}
+    m_Modifications:
+    - target: {fileID: 1566977885884776384, guid: f2df60a24171ac0418c15bd5cd171696, type: 3}
+      propertyPath: m_Name
+      value: TableroGeneralDistrib_Puerta
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150308044690934466, guid: f2df60a24171ac0418c15bd5cd171696, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150308044690934466, guid: f2df60a24171ac0418c15bd5cd171696, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150308044690934466, guid: f2df60a24171ac0418c15bd5cd171696, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150308044690934466, guid: f2df60a24171ac0418c15bd5cd171696, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150308044690934466, guid: f2df60a24171ac0418c15bd5cd171696, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150308044690934466, guid: f2df60a24171ac0418c15bd5cd171696, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150308044690934466, guid: f2df60a24171ac0418c15bd5cd171696, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150308044690934466, guid: f2df60a24171ac0418c15bd5cd171696, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150308044690934466, guid: f2df60a24171ac0418c15bd5cd171696, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150308044690934466, guid: f2df60a24171ac0418c15bd5cd171696, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8345004959461870327, guid: f2df60a24171ac0418c15bd5cd171696, type: 3}
+      propertyPath: startOpen
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f2df60a24171ac0418c15bd5cd171696, type: 3}
+--- !u!4 &7230491628467163329 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2150308044690934466, guid: f2df60a24171ac0418c15bd5cd171696, type: 3}
+  m_PrefabInstance: {fileID: 8755191283394238979}
+  m_PrefabAsset: {fileID: 0}
