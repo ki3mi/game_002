@@ -1,0 +1,992 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e33452006b199140b4859704f448441, type: 3}
+  m_Name: GridModelCatalog
+  m_EditorClassIdentifier: EcoElectry.Unity::EcoElectry.Unity.Construction.GridModelCatalog
+  previewShader: {fileID: 4800000, guid: 5c6c32e681e973a4b910d877f0cc104f, type: 3}
+  models:
+  - id: 23c602673285f6f4eac330f183416998
+    label: Silla Escolar
+    family: Silla
+    source: {fileID: 2962912160887973090, guid: 23c602673285f6f4eac330f183416998, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.38000003, z: 0}
+      m_Extent: {x: 0.23499998, y: 0.38000003, z: 0.225}
+    scale: 1
+  - id: a72c6165007f7b54f9b6ad3efcd6587f
+    label: Panel Solar 1
+    family: Panel
+    source: {fileID: 3263466479489164873, guid: a72c6165007f7b54f9b6ad3efcd6587f, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.51960695, z: -0.10797614}
+      m_Extent: {x: 0.65, y: 0.51960695, z: 0.43797612}
+    scale: 1
+  - id: 50b59ed4312fabd448d1d57c3c79ebf8
+    label: "Bater\xEDa 1"
+    family: "Bater\xEDa"
+    source: {fileID: 1753516244648022147, guid: 50b59ed4312fabd448d1d57c3c79ebf8, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.195, z: 0}
+      m_Extent: {x: 0.302, y: 0.195, z: 0.13}
+    scale: 1
+  - id: 6b100fd2cd4a1994899025b7d007adf9
+    label: "\xC1rbol Peque\xF1o"
+    family: "\xC1rbol"
+    source: {fileID: 2746549547341218490, guid: 6b100fd2cd4a1994899025b7d007adf9, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 2.324965, z: 0}
+      m_Extent: {x: 1.460715, y: 2.324965, z: 2.146435}
+    scale: 0.93177754
+  - id: 708d82d9ee4e4ee47b7730d039f695e0
+    label: Puerta Interior
+    family: Puerta
+    source: {fileID: 86198675774682718, guid: 708d82d9ee4e4ee47b7730d039f695e0, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 1.0919999, z: 0}
+      m_Extent: {x: 0.46, y: 1.0919999, z: 0.06}
+    scale: 1
+  - id: 321aadaa5f246f8489ba98f7dd529fbb
+    label: Tubo LED
+    family: Luminaria Interior
+    source: {fileID: 1692731863446411288, guid: 321aadaa5f246f8489ba98f7dd529fbb, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.014, z: 0}
+      m_Extent: {x: 0.60599995, y: 0.014, z: 0.014}
+    scale: 1
+  - id: 3d5edc6d628024f4cb4962257c9a3e16
+    label: Acceso Servicio
+    family: Acceso Escolar
+    source: {fileID: 7949403131670283163, guid: 3d5edc6d628024f4cb4962257c9a3e16, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 1, z: 0.001000002}
+      m_Extent: {x: 0.685, y: 1, z: 0.041}
+    scale: 1
+  - id: 673c580266763ad41956b1dd41f1bf66
+    label: Porton Vehicular
+    family: Acceso Escolar
+    source: {fileID: 9012173927712297457, guid: 673c580266763ad41956b1dd41f1bf66, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 1.131, z: 0.019000001}
+      m_Extent: {x: 2.19, y: 1.131, z: 0.089}
+    scale: 0.913242
+  - id: f40265c01dd03b84b950f9b67ecfaea9
+    label: Puerta Peatonal
+    family: Acceso Escolar
+    source: {fileID: 3310718991120629027, guid: f40265c01dd03b84b950f9b67ecfaea9, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 1.125, z: 0}
+      m_Extent: {x: 0.7, y: 1.125, z: 0.05}
+    scale: 1
+  - id: 9eb494f1c90ccb940a15134c830dea19
+    label: "\xC1rbol Grande"
+    family: "\xC1rbol"
+    source: {fileID: 1257080502375461521, guid: 9eb494f1c90ccb940a15134c830dea19, type: 3}
+    visualBounds:
+      m_Center: {x: -0.008944511, y: 6.858, z: -0.036681175}
+      m_Extent: {x: 4.785184, y: 6.858, z: 4.8343143}
+    scale: 0.328084
+  - id: c121312fdb7626542965e5a3bfdacbf8
+    label: "\xC1rbol Mediano"
+    family: "\xC1rbol"
+    source: {fileID: 656334134274762611, guid: c121312fdb7626542965e5a3bfdacbf8, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 3.4874473, z: 0}
+      m_Extent: {x: 2.1910725, y: 3.4874473, z: 3.2196524}
+    scale: 0.62118506
+  - id: dc3b55ca285daf94bb9aec1267ce899c
+    label: Arbusto Bajo
+    family: Arbusto
+    source: {fileID: 6834850161891893020, guid: dc3b55ca285daf94bb9aec1267ce899c, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.325, z: 0}
+      m_Extent: {x: 0.5, y: 0.325, z: 0.45}
+    scale: 1
+  - id: 9d6774c5103b8b543942e34f1b8e11c6
+    label: Arbusto Florido
+    family: Arbusto
+    source: {fileID: 8868906352627588553, guid: 9d6774c5103b8b543942e34f1b8e11c6, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.5775, z: 0}
+      m_Extent: {x: 0.56715643, y: 0.5775, z: 0.51003766}
+    scale: 1
+  - id: 89574a82d63551440bfd737af1603f2f
+    label: Seto
+    family: Arbusto
+    source: {fileID: 6829816214183689627, guid: 89574a82d63551440bfd737af1603f2f, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.6, z: 0}
+      m_Extent: {x: 1, y: 0.6, z: 0.36}
+    scale: 1
+  - id: 748c077ca485ec74aa2aa8eec7923f81
+    label: "Bater\xEDa 2"
+    family: "Bater\xEDa"
+    source: {fileID: 607659734686117867, guid: 748c077ca485ec74aa2aa8eec7923f81, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.188, z: 0}
+      m_Extent: {x: 0.302, y: 0.188, z: 0.19600001}
+    scale: 1
+  - id: 38a578ace43868b44b19c95b9f133585
+    label: "Bater\xEDa 3"
+    family: "Bater\xEDa"
+    source: {fileID: 8939593360032533370, guid: 38a578ace43868b44b19c95b9f133585, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.348, z: 0}
+      m_Extent: {x: 0.7, y: 0.348, z: 0.33200002}
+    scale: 1
+  - id: 860c8d7ca5fab0c47964c7ab8046cb4d
+    label: Cable Fase
+    family: Cable
+    source: {fileID: 6013475034637364939, guid: 860c8d7ca5fab0c47964c7ab8046cb4d, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.0032, z: -0.0016000271}
+      m_Extent: {x: 0.60797894, y: 0.0032, z: 0.3289944}
+    scale: 1
+  - id: 61cdbb958e608a5488f12b970560c0ac
+    label: Cable Neutro
+    family: Cable
+    source: {fileID: 9171403726714931681, guid: 61cdbb958e608a5488f12b970560c0ac, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.0032, z: -0.0016000271}
+      m_Extent: {x: 0.60797894, y: 0.0032, z: 0.3289944}
+    scale: 1
+  - id: c7c85120a297f51438ca749709ba17b2
+    label: Cable Tierra
+    family: Cable
+    source: {fileID: 3279298160390274345, guid: c7c85120a297f51438ca749709ba17b2, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.0032, z: 0}
+      m_Extent: {x: 0.6084208, y: 0.0032, z: 0.3292104}
+    scale: 1
+  - id: 7a0636a067482e244ad5b9fb6448fc0c
+    label: Caja Derivacion
+    family: "Caja Conexi\xF3n"
+    source: {fileID: 1121066680255509512, guid: 7a0636a067482e244ad5b9fb6448fc0c, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.058, z: 0}
+      m_Extent: {x: 0.075, y: 0.058, z: 0.0335}
+    scale: 1
+  - id: f357663ad4bedf54ba899dee257c60dd
+    label: Caja Empalme
+    family: "Caja Conexi\xF3n"
+    source: {fileID: 5706425868732217991, guid: f357663ad4bedf54ba899dee257c60dd, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.0465, z: 0}
+      m_Extent: {x: 0.0465, y: 0.0465, z: 0.031}
+    scale: 1
+  - id: ed91e3fa7decb01459a82533074f4a88
+    label: Caja Estanca Exterior
+    family: "Caja Conexi\xF3n"
+    source: {fileID: 267035141438517088, guid: ed91e3fa7decb01459a82533074f4a88, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.088, z: 0.0006000027}
+      m_Extent: {x: 0.076, y: 0.088, z: 0.0406}
+    scale: 1
+  - id: b5e18819809716b4c8d8485a226f89a0
+    label: Camino Adoquinado
+    family: Camino Patio
+    source: {fileID: 1958234180847152779, guid: b5e18819809716b4c8d8485a226f89a0, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.05, z: 0}
+      m_Extent: {x: 1, y: 0.05, z: 2}
+    scale: 1
+  - id: 921963b66b92e5243b0076aa4f169275
+    label: Camino Afirmado
+    family: Camino Patio
+    source: {fileID: 2202622388652597519, guid: 921963b66b92e5243b0076aa4f169275, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.05, z: 0}
+      m_Extent: {x: 0.75, y: 0.05, z: 1.2}
+    scale: 1
+  - id: 731d681f334d9b549979978e8ac10f96
+    label: Camino Concreto
+    family: Camino Patio
+    source: {fileID: 4145316125404990423, guid: 731d681f334d9b549979978e8ac10f96, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.05, z: 0}
+      m_Extent: {x: 0.6, y: 0.05, z: 1.2}
+    scale: 1
+  - id: 2ce594d045d67674591b98f7c4a8c382
+    label: Canaleta Bajo Piso
+    family: Canaleta
+    source: {fileID: 3178554191577058752, guid: 2ce594d045d67674591b98f7c4a8c382, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.019, z: 0}
+      m_Extent: {x: 1, y: 0.019, z: 0.125}
+    scale: 1
+  - id: 34382a0e36bbe3a408b8dc443dc5bada
+    label: Canaleta Industrial
+    family: Canaleta
+    source: {fileID: 1563477550680324431, guid: 34382a0e36bbe3a408b8dc443dc5bada, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.029999997, z: 0}
+      m_Extent: {x: 1, y: 0.029999997, z: 0.05}
+    scale: 1
+  - id: d53ed5bbcd27ce747a2afc77155cfb19
+    label: Canaleta Superficial
+    family: Canaleta
+    source: {fileID: 9206033038384767575, guid: d53ed5bbcd27ce747a2afc77155cfb19, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.008, z: 0.02}
+      m_Extent: {x: 1, y: 0.008, z: 0.02}
+    scale: 1
+  - id: 355920d29a8bd9649972ae3ac0967c14
+    label: Carpeta Con Bandeja
+    family: Carpeta Escolar
+    source: {fileID: 2919442802402977644, guid: 355920d29a8bd9649972ae3ac0967c14, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.415, z: 0}
+      m_Extent: {x: 0.3, y: 0.415, z: 0.5}
+    scale: 1
+  - id: 960a224ef2a90b24eb3e25a00f664010
+    label: Carpeta Doble
+    family: Carpeta Escolar
+    source: {fileID: 3667203753747914940, guid: 960a224ef2a90b24eb3e25a00f664010, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.39999998, z: 0}
+      m_Extent: {x: 0.6, y: 0.39999998, z: 0.55}
+    scale: 1
+  - id: 8ae38c4f067fdca40a936190ed565293
+    label: Carpeta Individual
+    family: Carpeta Escolar
+    source: {fileID: 7495641631908561785, guid: 8ae38c4f067fdca40a936190ed565293, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.39999998, z: 0}
+      m_Extent: {x: 0.3, y: 0.39999998, z: 0.5}
+    scale: 1
+  - id: c6b2027ef6c53624b80aface406017b6
+    label: Cerca Madera
+    family: Cerca
+    source: {fileID: 4412433837788942828, guid: c6b2027ef6c53624b80aface406017b6, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.6, z: 0}
+      m_Extent: {x: 0.9145, y: 0.6, z: 0.06}
+    scale: 1
+  - id: b478539fd7f293f4b9baa690e5150929
+    label: Cerca Malla
+    family: Cerca
+    source: {fileID: 2893024306106682662, guid: b478539fd7f293f4b9baa690e5150929, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.9, z: 0}
+      m_Extent: {x: 1.5, y: 0.9, z: 0.05}
+    scale: 1
+  - id: 50817d5807ef325489b34255d29404a2
+    label: Cerca Reja Metalica
+    family: Cerca
+    source: {fileID: 5042109942892751961, guid: 50817d5807ef325489b34255d29404a2, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 1, z: 0}
+      m_Extent: {x: 1.455, y: 1, z: 0.07}
+    scale: 1
+  - id: f5e0cef8d4ab2484c9486773b59b7559
+    label: Borneras Cableado
+    family: Componentes Tableros
+    source: {fileID: 590957291399215114, guid: f5e0cef8d4ab2484c9486773b59b7559, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.0010282248, z: 0.0047714636}
+      m_Extent: {x: 0.16, y: 0.043028224, z: 0.03722854}
+    scale: 1
+  - id: 9a7fc6dd150b3c840b000f870e296085
+    label: Contactor
+    family: Componentes Tableros
+    source: {fileID: 1313913875586466713, guid: 9a7fc6dd150b3c840b000f870e296085, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0, z: 0.0037500001}
+      m_Extent: {x: 0.04, y: 0.0525, z: 0.04475}
+    scale: 1
+  - id: e8902ff4a99594e4eb2f348cabac8fef
+    label: Interruptor Diferencial
+    family: Componentes Tableros
+    source: {fileID: 7441396940063371730, guid: e8902ff4a99594e4eb2f348cabac8fef, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0, z: 0.0065}
+      m_Extent: {x: 0.028, y: 0.0525, z: 0.0355}
+    scale: 1
+  - id: f9b6d39aafcb98d43a5873499f44f96e
+    label: Medidor Energia
+    family: Componentes Tableros
+    source: {fileID: 2119188549453663152, guid: f9b6d39aafcb98d43a5873499f44f96e, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0, z: 0.0040000007}
+      m_Extent: {x: 0.048, y: 0.048, z: 0.04}
+    scale: 1
+  - id: 83c718ebb51dffe4fb3efb89760b0ded
+    label: Computadora All In One
+    family: Computadora
+    source: {fileID: 8408217057577478884, guid: 83c718ebb51dffe4fb3efb89760b0ded, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.1897, z: 0}
+      m_Extent: {x: 0.26965, y: 0.1897, z: 0.2125}
+    scale: 1
+  - id: ef2464a22462c7847a60723005e0d890
+    label: Computadora Compacta
+    family: Computadora
+    source: {fileID: 1808890337207713890, guid: ef2464a22462c7847a60723005e0d890, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.24805501, z: 0.000000014901161}
+      m_Extent: {x: 0.39495, y: 0.24805501, z: 0.20700002}
+    scale: 1
+  - id: 1ef16dfea95e24b4cac1d8a51855262c
+    label: Computadora Escritorio
+    family: Computadora
+    source: {fileID: 4326530077472189079, guid: 1ef16dfea95e24b4cac1d8a51855262c, type: 3}
+    visualBounds:
+      m_Center: {x: -0.000000059604645, y: 0.24805501, z: 0.000000014901161}
+      m_Extent: {x: 0.39794993, y: 0.24805501, z: 0.24055001}
+    scale: 1
+  - id: 33804fe6ccb31fe4d81b378c87a3567e
+    label: Controlador MPPT
+    family: Controlador Carga
+    source: {fileID: 2583638601134398330, guid: 33804fe6ccb31fe4d81b378c87a3567e, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.065, z: 0}
+      m_Extent: {x: 0.093, y: 0.065, z: 0.035}
+    scale: 1
+  - id: 439fd9848f4fa8e4e82f79374b834717
+    label: Controlador MPPT Doble
+    family: Controlador Carga
+    source: {fileID: 3566430429116570994, guid: 439fd9848f4fa8e4e82f79374b834717, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.221, z: 0}
+      m_Extent: {x: 0.155, y: 0.221, z: 0.0635}
+    scale: 1
+  - id: b9863aa23451ef74489835d6abb80eac
+    label: Controlador PWM
+    family: Controlador Carga
+    source: {fileID: 2473969572048392014, guid: b9863aa23451ef74489835d6abb80eac, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.04745, z: 0}
+      m_Extent: {x: 0.08, y: 0.04745, z: 0.02465}
+    scale: 1
+  - id: 7eb5f4fb8c2438d45ae575bd9f0e6860
+    label: Docente De Pie
+    family: Docente
+    source: {fileID: 4552982676411711087, guid: 7eb5f4fb8c2438d45ae575bd9f0e6860, type: 3}
+    visualBounds:
+      m_Center: {x: -0.006595582, y: 0.875, z: 0.052295588}
+      m_Extent: {x: 0.3674044, y: 0.875, z: 0.1687044}
+    scale: 1
+  - id: efe6cab32fcff3746a0a9a673286f1d2
+    label: Docente Frente Pizarra
+    family: Docente
+    source: {fileID: 8386738462375296387, guid: efe6cab32fcff3746a0a9a673286f1d2, type: 3}
+    visualBounds:
+      m_Center: {x: -0.04309556, y: 0.875, z: 0.19265336}
+      m_Extent: {x: 0.4039044, y: 0.875, z: 0.30906218}
+    scale: 1
+  - id: d11cfcfe312832146b7d42cf3b89dacd
+    label: Docente Sentado
+    family: Docente
+    source: {fileID: 767351575087016811, guid: d11cfcfe312832146b7d42cf3b89dacd, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.69499993, z: 0}
+      m_Extent: {x: 0.32593763, y: 0.69499993, z: 0.393}
+    scale: 1
+  - id: ca15831b779bb7842a7ba8c8a12ae211
+    label: Aula Modular Ampliada
+    family: Edificio Aula
+    source: {fileID: 1693445392858927283, guid: ca15831b779bb7842a7ba8c8a12ae211, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 2.1385803, z: -0.0029044151}
+      m_Extent: {x: 6.4, y: 2.1385803, z: 4.7109785}
+    scale: 0.3125
+  - id: 89e5f6cb9a9792b4c87f9e0b55069672
+    label: Aula Modular Basica
+    family: Edificio Aula
+    source: {fileID: 919132149155446097, guid: 89e5f6cb9a9792b4c87f9e0b55069672, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 2.5, z: 0}
+      m_Extent: {x: 4.475, y: 2.5, z: 4.985}
+    scale: 0.4012036
+  - id: 4c158dafada950f4fa8b0359a5dcdcfd
+    label: Aula Modular Doble
+    family: Edificio Aula
+    source: {fileID: 7679888150419142601, guid: 4c158dafada950f4fa8b0359a5dcdcfd, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 2.5, z: 0.2574997}
+      m_Extent: {x: 8.95, y: 2.5, z: 5.2425}
+    scale: 0.2234637
+  - id: e356b99d51607474cbbbb65071b2a98c
+    label: Laboratorio Ciencias
+    family: Edificio Laboratorio
+    source: {fileID: 1251078852132232457, guid: e356b99d51607474cbbbb65071b2a98c, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 2.395, z: -0.00000047683716}
+      m_Extent: {x: 5.5, y: 2.395, z: 4.935505}
+    scale: 0.36363637
+  - id: c83f0fcbf80a9934b8ea96171c50f419
+    label: "Laboratorio El\xE9ctrico"
+    family: Edificio Laboratorio
+    source: {fileID: 2400872732300183448, guid: c83f0fcbf80a9934b8ea96171c50f419, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 2.31, z: 0}
+      m_Extent: {x: 5.3, y: 2.31, z: 4.3}
+    scale: 0.37735847
+  - id: 6fe7627a8a798b646ba584e9e17d9a82
+    label: Laboratorio Informatica
+    family: Edificio Laboratorio
+    source: {fileID: 4630988601292216719, guid: 6fe7627a8a798b646ba584e9e17d9a82, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 2.1425, z: 0}
+      m_Extent: {x: 4.9, y: 2.1425, z: 3.9}
+    scale: 0.40816325
+  - id: 53f561d0197850944b295eec10f3a140
+    label: Escritorio Basico
+    family: Escritorio Docente
+    source: {fileID: 8677557345763903161, guid: 53f561d0197850944b295eec10f3a140, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.36499998, z: 0}
+      m_Extent: {x: 0.6, y: 0.36499998, z: 0.3}
+    scale: 1
+  - id: 4ba9bdcc174a34345bfa9494909f5a90
+    label: Escritorio Con Cajones
+    family: Escritorio Docente
+    source: {fileID: 1374150761138423651, guid: 4ba9bdcc174a34345bfa9494909f5a90, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.375, z: 0}
+      m_Extent: {x: 0.6, y: 0.375, z: 0.3}
+    scale: 1
+  - id: 1787475d21909ad4e9cd955030936a71
+    label: Escritorio Modular
+    family: Escritorio Docente
+    source: {fileID: 4074895707219024321, guid: 1787475d21909ad4e9cd955030936a71, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.375, z: 0}
+      m_Extent: {x: 0.70000005, y: 0.375, z: 0.70000005}
+    scale: 1
+  - id: 4b1f34a9a56832d4bb6843c9511b6eec
+    label: Estudiante Caminando
+    family: Estudiante
+    source: {fileID: 6094258986792508566, guid: 4b1f34a9a56832d4bb6843c9511b6eec, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.75, z: 0.048000008}
+      m_Extent: {x: 0.2851891, y: 0.75, z: 0.3625}
+    scale: 1
+  - id: ab1a35a7234cf414aab632cf7724efd1
+    label: Estudiante De Pie
+    family: Estudiante
+    source: {fileID: 5131132425784505374, guid: ab1a35a7234cf414aab632cf7724efd1, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.75, z: -0.052250013}
+      m_Extent: {x: 0.3061891, y: 0.75, z: 0.20775001}
+    scale: 1
+  - id: 862602230f8ca9940a8312725dcabba6
+    label: Estudiante Sentado
+    family: Estudiante
+    source: {fileID: 8219340195415258799, guid: 862602230f8ca9940a8312725dcabba6, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.57, z: -0.0018081665}
+      m_Extent: {x: 0.255, y: 0.57, z: 0.28280815}
+    scale: 1
+  - id: b738ac833cda8134cbb7525f9efcfc91
+    label: Interruptor Pared
+    family: Interruptor
+    source: {fileID: 910786060320251945, guid: b738ac833cda8134cbb7525f9efcfc91, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0, z: 0.011900001}
+      m_Extent: {x: 0.037, y: 0.054, z: 0.0069000004}
+    scale: 1
+  - id: 9ea11dee86bdced49b205c246e5947b1
+    label: Interruptor Seccionador
+    family: Interruptor
+    source: {fileID: 6686500996022622610, guid: 9ea11dee86bdced49b205c246e5947b1, type: 3}
+    visualBounds:
+      m_Center: {x: 0.0040000007, y: 0.019500002, z: 0.01625}
+      m_Extent: {x: 0.068, y: 0.0955, z: 0.07525}
+    scale: 1
+  - id: 7cd7dbb1a61d758408284e0f9ef62041
+    label: Interruptor Termomagnetico
+    family: Interruptor
+    source: {fileID: 7030591165319990213, guid: 7cd7dbb1a61d758408284e0f9ef62041, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0, z: 0.0067444984}
+      m_Extent: {x: 0.028, y: 0.0525, z: 0.0357445}
+    scale: 1
+  - id: e40742b38752fa74eb2a0ba0c39905ec
+    label: Inversor Hibrido
+    family: Inversor
+    source: {fileID: 5185749589098537743, guid: e40742b38752fa74eb2a0ba0c39905ec, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.31, z: 0.0009999871}
+      m_Extent: {x: 0.165, y: 0.31, z: 0.137}
+    scale: 1
+  - id: e1693f1272507e04c9cea8080929fafd
+    label: Inversor String
+    family: Inversor
+    source: {fileID: 2204009947494717085, guid: e1693f1272507e04c9cea8080929fafd, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.23499998, z: 0}
+      m_Extent: {x: 0.2175, y: 0.23499998, z: 0.088}
+    scale: 1
+  - id: 9cc01583da52b5546b43eadc4b33447c
+    label: Microinversor
+    family: Inversor
+    source: {fileID: 1123827223545147794, guid: 9cc01583da52b5546b43eadc4b33447c, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.017099999, z: 0.000000007450581}
+      m_Extent: {x: 0.124, y: 0.017099999, z: 0.11750001}
+    scale: 1
+  - id: ef434817393d94a46919c7eaf6d6779a
+    label: Luminaria Solar Jardin
+    family: Luminaria Exterior
+    source: {fileID: 7979738510409546340, guid: ef434817393d94a46919c7eaf6d6779a, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.3, z: 0}
+      m_Extent: {x: 0.105, y: 0.3, z: 0.105}
+    scale: 1
+  - id: 114e442dc6a55a2429b8c84be14a87c9
+    label: Luminaria Solar Mural
+    family: Luminaria Exterior
+    source: {fileID: 5362964883818905270, guid: 114e442dc6a55a2429b8c84be14a87c9, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.0325, z: 0.075}
+      m_Extent: {x: 0.1175, y: 0.065, z: 0.075}
+    scale: 1
+  - id: 58b51c65d6612df4182fcd5191819bf9
+    label: Luminaria Solar Poste
+    family: Luminaria Exterior
+    source: {fileID: 6215948657608369236, guid: 58b51c65d6612df4182fcd5191819bf9, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 1.75, z: 0}
+      m_Extent: {x: 0.215, y: 1.75, z: 0.215}
+    scale: 1
+  - id: d261464e21d6e2445824e6521e3f7ba1
+    label: Luminaria Emergencia
+    family: Luminaria Interior
+    source: {fileID: 6335027858082134208, guid: d261464e21d6e2445824e6521e3f7ba1, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.056, z: 0.016}
+      m_Extent: {x: 0.1145, y: 0.056, z: 0.016}
+    scale: 1
+  - id: c599f9377997db841be7cdedef2bb3d4
+    label: Panel LED
+    family: Luminaria Interior
+    source: {fileID: 2339916366314891667, guid: c599f9377997db841be7cdedef2bb3d4, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: -0.017, z: 0}
+      m_Extent: {x: 0.2975, y: 0.017, z: 0.2975}
+    scale: 1
+  - id: a24491835de48314c9bdae92e163d023
+    label: Monitor Amplio
+    family: Monitor
+    source: {fileID: 8076860930925608913, guid: a24491835de48314c9bdae92e163d023, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.267335, z: 0}
+      m_Extent: {x: 0.30534, y: 0.267335, z: 0.09614}
+    scale: 1
+  - id: 3a962e92b7140b6479a3eb4c19a3b6cf
+    label: Monitor Basico
+    family: Monitor
+    source: {fileID: 1870705377590996515, guid: 3a962e92b7140b6479a3eb4c19a3b6cf, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.192085, z: 0}
+      m_Extent: {x: 0.25213, y: 0.192085, z: 0.0855}
+    scale: 1
+  - id: 5a9717aff29254e4a89b961a82e0d5f6
+    label: Monitor Ultrawide
+    family: Monitor
+    source: {fileID: 4458174064854347685, guid: 5a9717aff29254e4a89b961a82e0d5f6, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.271415, z: 0}
+      m_Extent: {x: 0.40673, y: 0.271415, z: 0.120215}
+    scale: 1
+  - id: 905f5a6f93e4cdc4ebf626df8c94f4d3
+    label: Loma Fondo
+    family: "Monta\xF1a"
+    source: {fileID: 7351833385421787752, guid: 905f5a6f93e4cdc4ebf626df8c94f4d3, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 6, z: 0}
+      m_Extent: {x: 45, y: 6, z: 28}
+    scale: 0.044444446
+  - id: 4cb7d57152a250245b4da51ea690b332
+    label: "Monta\xF1a Alta"
+    family: "Monta\xF1a"
+    source: {fileID: 2696114044542085791, guid: 4cb7d57152a250245b4da51ea690b332, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 9, z: 0}
+      m_Extent: {x: 14, y: 9, z: 7}
+    scale: 0.14285715
+  - id: 8fb09fb412775fd4d887897d0a02709a
+    label: "Monta\xF1a Fondo"
+    family: "Monta\xF1a"
+    source: {fileID: 3733429242294076360, guid: 8fb09fb412775fd4d887897d0a02709a, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 12, z: 0}
+      m_Extent: {x: 48, y: 12, z: 8}
+    scale: 0.041666668
+  - id: 00c5bc8594db5b441a41a585bc8ecdc8
+    label: Panel Solar 2
+    family: Panel
+    source: {fileID: 5096886114596696717, guid: 00c5bc8594db5b441a41a585bc8ecdc8, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.056000017, z: 0}
+      m_Extent: {x: 0.65, y: 0.056000017, z: 0.65}
+    scale: 1
+  - id: 6b78ab8aa73bebe4ca6f1bfa3f4530fb
+    label: Panel Solar 3
+    family: Panel
+    source: {fileID: 3045644644481418090, guid: 6b78ab8aa73bebe4ca6f1bfa3f4530fb, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.5123557, z: 0.46910447}
+      m_Extent: {x: 0.65, y: 0.5062851, z: 0.46910447}
+    scale: 1
+  - id: c7b279fcb8eae734c88508c62aceaf7d
+    label: Personal Administrativo
+    family: Personal Escuela
+    source: {fileID: 6549609844189591023, guid: c7b279fcb8eae734c88508c62aceaf7d, type: 3}
+    visualBounds:
+      m_Center: {x: -0.00019136071, y: 0.85, z: 0.08199999}
+      m_Extent: {x: 0.32180864, y: 0.85, z: 0.204}
+    scale: 1
+  - id: ddca3fe4926582b4d8c5dcc6da70a266
+    label: Personal Limpieza
+    family: Personal Escuela
+    source: {fileID: 471075716553525974, guid: ddca3fe4926582b4d8c5dcc6da70a266, type: 3}
+    visualBounds:
+      m_Center: {x: 0.014999986, y: 0.85, z: 0.026950002}
+      m_Extent: {x: 0.625, y: 0.85, z: 0.17055}
+    scale: 1
+  - id: 53b5073fa4b42684295d4cdb9fd318f1
+    label: Personal Mantenimiento
+    family: Personal Escuela
+    source: {fileID: 3060930347566483230, guid: 53b5073fa4b42684295d4cdb9fd318f1, type: 3}
+    visualBounds:
+      m_Center: {x: 0.06525001, y: 0.89, z: 0.030230254}
+      m_Extent: {x: 0.43825, y: 0.89, z: 0.15976971}
+    scale: 1
+  - id: 90c5b95f199fca14fb5e8604307d4499
+    label: Pizarra Blanca
+    family: Pizarra
+    source: {fileID: 3859487023109326417, guid: 90c5b95f199fca14fb5e8604307d4499, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.6, z: 0.060000002}
+      m_Extent: {x: 0.9, y: 0.6, z: 0.060000002}
+    scale: 1
+  - id: 5fe8be8004fcdd941bbc2680673da604
+    label: Pizarra Digital
+    family: Pizarra
+    source: {fileID: 9082888654573157169, guid: 5fe8be8004fcdd941bbc2680673da604, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.532, z: 0}
+      m_Extent: {x: 0.873, y: 0.532, z: 0.056}
+    scale: 1
+  - id: dfa89228a03ab2c48839a2bd2bf74aac
+    label: Pizarra Tiza
+    family: Pizarra
+    source: {fileID: 4570356832074957175, guid: dfa89228a03ab2c48839a2bd2bf74aac, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.59999996, z: 0.07}
+      m_Extent: {x: 1.1999999, y: 0.59999996, z: 0.07}
+    scale: 1
+  - id: 4ce3f8aa6883d0944b57df5eefc31825
+    label: "Poste El\xE9ctrico"
+    family: Poste
+    source: {fileID: 5316208355368182389, guid: 4ce3f8aa6883d0944b57df5eefc31825, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 3.81, z: 0}
+      m_Extent: {x: 0.9, y: 3.81, z: 0.105}
+    scale: 0.5905512
+  - id: 06596c9c71265e94382fbe16c7d3db32
+    label: Poste Luz
+    family: Poste
+    source: {fileID: 6211623604687648748, guid: 06596c9c71265e94382fbe16c7d3db32, type: 3}
+    visualBounds:
+      m_Center: {x: 0.33160466, y: 3.8096862, z: 0}
+      m_Extent: {x: 0.45005172, y: 3.8096862, z: 0.11844708}
+    scale: 0.59059983
+  - id: 2b8cd09917535ac4fa716f3afc0e0d46
+    label: Poste Transformador
+    family: Poste
+    source: {fileID: 2196063648607155516, guid: 2b8cd09917535ac4fa716f3afc0e0d46, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 3.81, z: 0.22325002}
+      m_Extent: {x: 0.9, y: 3.81, z: 0.34575}
+    scale: 0.5905512
+  - id: 01dbbcd9e33a0aa4d8ff10e4e9a4c99e
+    label: Proyector Corto Alcance
+    family: Proyector
+    source: {fileID: 5602670060975208416, guid: 01dbbcd9e33a0aa4d8ff10e4e9a4c99e, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.0572, z: 0.000000007450581}
+      m_Extent: {x: 0.14365001, y: 0.0572, z: 0.1163}
+    scale: 1
+  - id: 78736c4de64c1184f8229db1d9ea8443
+    label: Proyector Portatil
+    family: Proyector
+    source: {fileID: 4803270497425128932, guid: 78736c4de64c1184f8229db1d9ea8443, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.026999999, z: 0}
+      m_Extent: {x: 0.146, y: 0.026999999, z: 0.1065}
+    scale: 1
+  - id: bd5f58980dc350c4a98bd893e408f3ea
+    label: Proyector Techo
+    family: Proyector
+    source: {fileID: 442357205465169432, guid: bd5f58980dc350c4a98bd893e408f3ea, type: 3}
+    visualBounds:
+      m_Center: {x: -0.00050000846, y: -0.20000002, z: 0.0011000037}
+      m_Extent: {x: 0.1515, y: 0.20000002, z: 0.1211}
+    scale: 1
+  - id: 61e55429cdd2bb1489658934a22658bc
+    label: Puerta Cortafuego
+    family: Puerta
+    source: {fileID: 4178063511924143262, guid: 61e55429cdd2bb1489658934a22658bc, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 1.08, z: 0.023999996}
+      m_Extent: {x: 0.51, y: 1.08, z: 0.099}
+    scale: 1
+  - id: d42b6c341680f0b4aa82e646ca4ae434
+    label: Puerta Exterior Metalica
+    family: Puerta
+    source: {fileID: 578684426486061331, guid: d42b6c341680f0b4aa82e646ca4ae434, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 1.0816001, z: 0.029500004}
+      m_Extent: {x: 0.44, y: 1.0816001, z: 0.0895}
+    scale: 1
+  - id: 27302094d4ff8dd40b83cf83e6256429
+    label: "Sala El\xE9ctrica Amplia"
+    family: "Sala El\xE9ctrica"
+    source: {fileID: 6546693231650618655, guid: 27302094d4ff8dd40b83cf83e6256429, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 2.125, z: 0}
+      m_Extent: {x: 4.35, y: 2.125, z: 3.35}
+    scale: 0.4597701
+  - id: 03762c2a2a1fcc4448e8d0f8076ff210
+    label: "Sala El\xE9ctrica Compacta"
+    family: "Sala El\xE9ctrica"
+    source: {fileID: 3571481776964460417, guid: 03762c2a2a1fcc4448e8d0f8076ff210, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 1.5, z: 0}
+      m_Extent: {x: 1.7, y: 1.5, z: 1.4}
+    scale: 1
+  - id: 564990d7a126b924498974e5d29a24e9
+    label: "Sala El\xE9ctrica Exterior"
+    family: "Sala El\xE9ctrica"
+    source: {fileID: 1253019774099743806, guid: 564990d7a126b924498974e5d29a24e9, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 1.4, z: 0}
+      m_Extent: {x: 1.5, y: 1.4, z: 1.2}
+    scale: 1
+  - id: df552c0eb01055244925ab753d852ebc
+    label: Sensor Consumo
+    family: Sensor
+    source: {fileID: 5207314157348103059, guid: df552c0eb01055244925ab753d852ebc, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.047, z: 0}
+      m_Extent: {x: 0.0095, y: 0.047, z: 0.034500003}
+    scale: 1
+  - id: 6f93c84a76b6c5145a3917f00ab0ef35
+    label: Sensor Luminosidad
+    family: Sensor
+    source: {fileID: 2236815172907820518, guid: 6f93c84a76b6c5145a3917f00ab0ef35, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.059, z: 0.0000000018626451}
+      m_Extent: {x: 0.0425, y: 0.059, z: 0.024500001}
+    scale: 1
+  - id: 2bdcefe2eb2709c468a8d801a1135293
+    label: Sensor Presencia
+    family: Sensor
+    source: {fileID: 3816851335708186374, guid: 2bdcefe2eb2709c468a8d801a1135293, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: -0.0315, z: 0}
+      m_Extent: {x: 0.053, y: 0.0315, z: 0.053}
+    scale: 1
+  - id: c67f9ec99d682714881c3933a8731dd0
+    label: Silla Apilable
+    family: Silla
+    source: {fileID: 4874988253858236895, guid: c67f9ec99d682714881c3933a8731dd0, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.4, z: -0.000000029802322}
+      m_Extent: {x: 0.23, y: 0.4, z: 0.26999998}
+    scale: 1
+  - id: f5779596a8977064cb4a7539e9ccbc00
+    label: Silla Docente
+    family: Silla
+    source: {fileID: 4474013696121761420, guid: f5779596a8977064cb4a7539e9ccbc00, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.42499998, z: 0}
+      m_Extent: {x: 0.225, y: 0.42499998, z: 0.26}
+    scale: 1
+  - id: 794eb4f1cb484b04aa6f3323a2089bc2
+    label: Suelo Baldosa Exterior
+    family: Suelo Patio
+    source: {fileID: 7471372636291949685, guid: 794eb4f1cb484b04aa6f3323a2089bc2, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.04, z: 0}
+      m_Extent: {x: 1.135, y: 0.04, z: 1.135}
+    scale: 1
+  - id: 8dd2c0d094d72b5489067e6d83846125
+    label: Suelo Concreto
+    family: Suelo Patio
+    source: {fileID: 8311942559602171529, guid: 8dd2c0d094d72b5489067e6d83846125, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.0508, z: 0}
+      m_Extent: {x: 0.762, y: 0.0508, z: 0.762}
+    scale: 1
+  - id: adf891e9321496844a8374d834ed5ca3
+    label: Suelo Grava
+    family: Suelo Patio
+    source: {fileID: 6570845966894723948, guid: adf891e9321496844a8374d834ed5ca3, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.049999997, z: 0}
+      m_Extent: {x: 1.125, y: 0.049999997, z: 1.125}
+    scale: 1
+  - id: d6a5ad72099678a43b35296e95e51ee4
+    label: Tablero Control Autom
+    family: "Tableros El\xE9ctrico"
+    source: {fileID: 2610949102243926255, guid: d6a5ad72099678a43b35296e95e51ee4, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 1.0962499, z: 0.22655374}
+      m_Extent: {x: 0.74854845, y: 1.10375, z: 0.52655375}
+    scale: 1
+  - id: b270058a67da7a740bc2791dbc31ec3d
+    label: Tablero Control Autom Puerta Derecha
+    family: "Tableros El\xE9ctrico"
+    source: {fileID: 5111941812523166680, guid: b270058a67da7a740bc2791dbc31ec3d, type: 3}
+    visualBounds:
+      m_Center: {x: 0.24999994, y: -1.0000002, z: -0.007000044}
+      m_Extent: {x: 0.25, y: 1, z: 0.044000022}
+    scale: 1
+  - id: 9470230786097904eb504bfb20c8f9ba
+    label: Tablero Control Autom Puerta Izquierda
+    family: "Tableros El\xE9ctrico"
+    source: {fileID: 451440128445820570, guid: 9470230786097904eb504bfb20c8f9ba, type: 3}
+    visualBounds:
+      m_Center: {x: -0.24999994, y: -1.0000002, z: -0.007000044}
+      m_Extent: {x: 0.25, y: 1, z: 0.044000022}
+    scale: 1
+  - id: c5d7925e4fd886e4fa298e3839324f89
+    label: Tablero Distribucion
+    family: "Tableros El\xE9ctrico"
+    source: {fileID: 3623792535181919956, guid: c5d7925e4fd886e4fa298e3839324f89, type: 3}
+    visualBounds:
+      m_Center: {x: 0.06361674, y: 0.23175, z: 0.2897027}
+      m_Extent: {x: 0.29361674, y: 0.23825, z: 0.2897027}
+    scale: 1
+  - id: acac7eb86cb6d1e4eaf930444e679abd
+    label: Tablero Distribucion Puerta
+    family: "Tableros El\xE9ctrico"
+    source: {fileID: 7485613600927361887, guid: acac7eb86cb6d1e4eaf930444e679abd, type: 3}
+    visualBounds:
+      m_Center: {x: -0.22399999, y: 0.195, z: 0.012250009}
+      m_Extent: {x: 0.22399999, y: 0.195, z: 0.018500008}
+    scale: 1
+  - id: 78cad5556b50c724c84153a840caf3ac
+    label: Tablero General Distrib
+    family: "Tableros El\xE9ctrico"
+    source: {fileID: 603467499530656043, guid: 78cad5556b50c724c84153a840caf3ac, type: 3}
+    visualBounds:
+      m_Center: {x: -0.013500035, y: 0.32475004, z: 0.27700004}
+      m_Extent: {x: 0.2885, y: 0.33275002, z: 0.41450006}
+    scale: 1
+  - id: f2df60a24171ac0418c15bd5cd171696
+    label: Tablero General Distrib Puerta
+    family: "Tableros El\xE9ctrico"
+    source: {fileID: 1566977885884776384, guid: f2df60a24171ac0418c15bd5cd171696, type: 3}
+    visualBounds:
+      m_Center: {x: 0.275, y: -0.325, z: -0.00049999915}
+      m_Extent: {x: 0.275, y: 0.325, z: 0.025499996}
+    scale: 1
+  - id: d25c093ea416a004a852aa3a9de08189
+    label: Techo Paneles Dos Aguas
+    family: Techo Paneles
+    source: {fileID: 4319480122100262780, guid: d25c093ea416a004a852aa3a9de08189, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.6352635, z: 0}
+      m_Extent: {x: 2.921995, y: 0.6352635, z: 3.06}
+    scale: 0.6535948
+  - id: b369dcdfda35cf143b4cb3c74c2b212e
+    label: Techo Paneles Inclinado
+    family: Techo Paneles
+    source: {fileID: 7656636866972375871, guid: b369dcdfda35cf143b4cb3c74c2b212e, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.72180146, z: 0}
+      m_Extent: {x: 3.3, y: 0.72180146, z: 2.1470366}
+    scale: 0.6060606
+  - id: f0833d64bc70f0f48a6a27f9ee430695
+    label: Techo Paneles Plano
+    family: Techo Paneles
+    source: {fileID: 6466261418191949837, guid: f0833d64bc70f0f48a6a27f9ee430695, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.32161528, z: 0}
+      m_Extent: {x: 3.2, y: 0.32161528, z: 2.2}
+    scale: 0.625
+  - id: 2eb8d7ea4ffe7e441b93b8a6642d40aa
+    label: Tomacorriente Doble
+    family: Tomacorriente
+    source: {fileID: 8826722998000401582, guid: 2eb8d7ea4ffe7e441b93b8a6642d40aa, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.05715, z: 0.015999999}
+      m_Extent: {x: 0.0349, y: 0.05715, z: 0.015999999}
+    scale: 1
+  - id: 373649b40de122d4aba439de642127d1
+    label: Tomacorriente Industrial
+    family: Tomacorriente
+    source: {fileID: 8159843205467259492, guid: 373649b40de122d4aba439de642127d1, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.0695, z: 0.0475}
+      m_Extent: {x: 0.03675, y: 0.0695, z: 0.0475}
+    scale: 1
+  - id: 26dd5ee0148034f40b57de332cdd1401
+    label: Tomacorriente Simple
+    family: Tomacorriente
+    source: {fileID: 3715089216858320594, guid: 26dd5ee0148034f40b57de332cdd1401, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.043, z: -0.0051000006}
+      m_Extent: {x: 0.043, y: 0.043, z: 0.0141}
+    scale: 1
+  - id: 92af92526d5cf2942a4be1eccdf3ca3f
+    label: Ventana Corredera
+    family: Ventana
+    source: {fileID: 7183071147065663503, guid: 92af92526d5cf2942a4be1eccdf3ca3f, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.5475, z: 0}
+      m_Extent: {x: 0.6475, y: 0.5475, z: 0.03675}
+    scale: 1
+  - id: 08d37a3bf25d46b459974c2d9d421792
+    label: Ventana Fija
+    family: Ventana
+    source: {fileID: 1319220072091963241, guid: 08d37a3bf25d46b459974c2d9d421792, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.6, z: 0}
+      m_Extent: {x: 0.605, y: 0.6, z: 0.06}
+    scale: 1
+  - id: 3f127c0a59ae39448a6150708e656e23
+    label: Ventana Proyectante
+    family: Ventana
+    source: {fileID: 7727757904404876679, guid: 3f127c0a59ae39448a6150708e656e23, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.3, z: 0.0012500025}
+      m_Extent: {x: 0.3, y: 0.3, z: 0.051250003}
+    scale: 1
+  - id: 2f6787435346c5c4fab3d64023626033
+    label: Ventilador Industrial
+    family: Ventilador
+    source: {fileID: 8327909046875014768, guid: 2f6787435346c5c4fab3d64023626033, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.42419615, z: 0}
+      m_Extent: {x: 0.4, y: 0.42419615, z: 0.23}
+    scale: 1
+  - id: 38efaf2c695f31349b83b35d962290a7
+    label: Ventilador Pared
+    family: Ventilador
+    source: {fileID: 1152186470753156333, guid: 38efaf2c695f31349b83b35d962290a7, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: 0.037500024, z: 0.19}
+      m_Extent: {x: 0.234, y: 0.36650002, z: 0.19}
+    scale: 1
+  - id: 7b0fa4b52b38d284a8e655e4885162c9
+    label: Ventilador Techo
+    family: Ventilador
+    source: {fileID: 8845642882023520647, guid: 7b0fa4b52b38d284a8e655e4885162c9, type: 3}
+    visualBounds:
+      m_Center: {x: 0, y: -0.219964, z: -0.15123665}
+      m_Extent: {x: 0.6436733, y: 0.219964, z: 0.5574374}
+    scale: 1

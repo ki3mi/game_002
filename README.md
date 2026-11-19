@@ -20,6 +20,23 @@ El diseño aborda el **ODS 7** mediante decisiones sobre generación renovable, 
 
 [`SampleScene.unity`](Assets/ResourcePack/Scenes/SampleScene.unity) sigue disponible como referencia en `ResourcePack`. El [diseño del nivel 01](Docs/Nivel01-LaPrimeraAula.md) describe el recorrido que se implementará sobre la escena base.
 
+## Sandbox eléctrico
+
+Abre [SandboxElectrical.unity](Assets/EcoElectry/Content/Scenes/SandboxElectrical.unity) y pulsa **Play**. Usa **WASD** para caminar, arrastra con el botón derecho para mirar y usa el botón **Cámara** o la tecla **C** para alternar entre primera y tercera persona. Pulsa **Esc** para salir de una intervención. El panel lateral conserva las acciones de montaje eléctrico, cableado y herramientas.
+
+En la barra inferior **Modelos**, elige una familia o cambia de página para encontrar una pieza. Apunta a la grilla del suelo y haz clic cuando la huella esté verde. Cada celda mide **0,5 × 0,5 m**. Pulsa **R** para girar, **Esc** para cancelar o **Deshacer** para retirar la última pieza. La barra sirve para componer el escenario. El montaje eléctrico usa los anclajes del panel lateral. **Reiniciar caso** retira las piezas de la grilla y restaura la instalación del caso.
+
+El menú **Tools > EcoElectry > Actualizar catálogo de modelos** incorpora los recursos de `ResourcePack` y del contenido de EcoElectry. Calcula la huella según las dimensiones de cada prefab y reduce proporcionalmente los modelos muy grandes para que quepan en el taller.
+
+| Caso | Cómo reproducirlo |
+| --- | --- |
+| Instalación desde cero | Coloca el panel, la batería y la luminaria. Traza **Salida solar → Entrada FV** con cable fotovoltaico. Usa cable interior para **Borne de batería → Entrada batería** y **Salida aula → Borne de luminaria**. En el ramal del aula añade **Suelo izq. → Muro izq. → Techo izq. → Techo der. → Muro der.** entre los dos bornes. Pela y fija ambos extremos de cada tramo y verifica continuidad. Activa el panel y la batería, cierra las cuchillas y pulsa **Probar**. |
+| Conexión abierta y descarga | Pulsa **Probar** y cierra el informe. Intenta fijar el borne de la luminaria con el tablero en servicio para comprobar la reaparición. Abre las cuchillas, aísla el panel y la batería, y mide continuidad. Fija el extremo de la luminaria y repite la prueba con la instalación en servicio. |
+| Cortocircuito | Prueba el caso y comprueba el disparo de la protección. Cierra el informe, abre las cuchillas, aísla las fuentes, corrige el contacto en **Salida aula** y rearma la protección. Pon la instalación en servicio y vuelve a probar. |
+| Reserva insuficiente | Prueba con la luminaria estándar para observar el corte a las 19:00. Cambia a la eficiente y repite. El cruce en planta de los cables de entrada mantiene el circuito operativo. |
+
+Los datos y las referencias a los prefabs del circuito están en [SandboxElectrical.asset](Assets/EcoElectry/Content/Definitions/Levels/SandboxElectrical.asset).
+
 ## Documentación
 
 | Documento | Contenido |

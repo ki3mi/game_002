@@ -4,7 +4,7 @@ using UnityEngine;
 namespace EcoElectry.Unity.Levels
 {
     [CreateAssetMenu(menuName = "EcoElectry/Definición de nivel")]
-    public sealed class LevelDefinition : ScriptableObject
+    public class LevelDefinition : ScriptableObject
     {
         [SerializeField] private string levelId;
         [SerializeField, Min(0)] private int budgetCredits;

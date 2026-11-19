@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04bf37d96e4c94648838c3acf188fb18, type: 3}
+  m_Name: SandboxElectrical
+  m_EditorClassIdentifier: EcoElectry.Unity::EcoElectry.Unity.Electrical.SandboxDefinition
+  levelId: sandbox-electrical
+  budgetCredits: 0
+  minimumBatteryReservePercent: 0
+  cases:
+  - id: build
+    label: "Instalaci\xF3n desde cero"
+    preset: 0
+    generation: 6
+    capacity: 6
+    demand: 4
+    panelOffset: {x: 0, y: 0, z: 0}
+    batteryOffset: {x: 0, y: 0, z: 0}
+    routeOffset: {x: 0, y: 0, z: 0}
+  - id: open
+    label: "Conexi\xF3n abierta"
+    preset: 1
+    generation: 6
+    capacity: 6
+    demand: 4
+    panelOffset: {x: 0.55, y: 0, z: -0.55}
+    batteryOffset: {x: -0.69, y: 0, z: 0.3}
+    routeOffset: {x: 0.1, y: 0, z: -0.19}
+  - id: short
+    label: Cortocircuito
+    preset: 2
+    generation: 6
+    capacity: 6
+    demand: 4
+    panelOffset: {x: -0.34, y: 0, z: -0.56}
+    batteryOffset: {x: 0, y: 0, z: 0}
+    routeOffset: {x: 0, y: 0, z: -0.23}
+  - id: low-energy
+    label: Reserva insuficiente
+    preset: 3
+    generation: 2
+    capacity: 6
+    demand: 4
+    panelOffset: {x: 0.6, y: 0, z: -0.38}
+    batteryOffset: {x: -2.7, y: 0, z: 2.11}
+    routeOffset: {x: 0, y: 0, z: 0}
+  solarPanel: {fileID: 3263466479489164873, guid: a72c6165007f7b54f9b6ad3efcd6587f, type: 3}
+  battery: {fileID: 1753516244648022147, guid: 50b59ed4312fabd448d1d57c3c79ebf8, type: 3}
+  board: {fileID: 603467499530656043, guid: 78cad5556b50c724c84153a840caf3ac, type: 3}
+  lamp: {fileID: 1692731863446411288, guid: 321aadaa5f246f8489ba98f7dd529fbb, type: 3}
+  isolator: {fileID: 6686500996022622610, guid: 9ea11dee86bdced49b205c246e5947b1, type: 3}
+  protection: {fileID: 7030591165319990213, guid: 7cd7dbb1a61d758408284e0f9ef62041, type: 3}
+  placementCatalog: {fileID: 11400000, guid: 99ba946cbe67dca44b865666db190b67, type: 2}
+  gridOrigin: {x: -7.5, y: 0, z: -5.5}
+  gridSize: {x: 30, y: 16}
+  gridCellSize: 0.5
