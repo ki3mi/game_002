@@ -8,6 +8,7 @@ namespace EcoElectry.Unity.Levels
     {
         [SerializeField] private LevelDefinition definition;
 
+        public LevelDefinition Definition => definition;
         public LevelSession Session { get; private set; }
 
         private void Awake()
