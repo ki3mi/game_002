@@ -71,7 +71,7 @@ El responsable de desarrollo integra el modelo en el prefab, configura sus conex
 
 ## Migración del proyecto actual
 
-1. Usar `Assets/Scenes/SampleScene.unity` como referencia para comprobar el comportamiento existente. Incorporar el código nuevo en la estructura propuesta y validar primero un recorrido completo de *La primera aula*.
+1. Usar `Assets/ResourcePack/Scenes/SampleScene.unity` como referencia para comprobar el comportamiento existente. Incorporar el código nuevo en la estructura propuesta y validar primero un recorrido completo de *La primera aula*.
 2. Revisar `FPSPlayer` y `BoardDemoPlayer` como antecedentes del controlador común. Integrar sus interacciones útiles con el controlador de entrada y cámara definido para el juego. Mantener un solo controlador activo en cada escena jugable.
 3. Revisar `ModularBoard`, `BoardSlot`, `EnergyCircuit`, `EnergyGridRegistry` y los componentes de tablero como un grupo con referencias cruzadas. Reutilizar los componentes que controlan la presentación y aislar las decisiones de simulación en una sesión por nivel. Mientras exista código en `Assembly-CSharp`, las capas nuevas declaran sus propias dependencias y la integración con los prototipos se hace desde el código existente hasta migrar el grupo. [Referencias desde ensamblados personalizados en Unity](https://docs.unity3d.com/es/current/Manual/ScriptCompilationAssemblyDefinitionFiles.html)
 4. Mover scripts, escenas y prefabs en cambios pequeños desde Unity para conservar sus `.meta`. Separar reubicaciones de cambios de nombre, espacio de nombres o formato serializado. Después de cada cambio, reabrir las escenas afectadas y comprobar componentes, referencias y comportamiento antes de retirar la versión anterior.

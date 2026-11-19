@@ -1,0 +1,5 @@
+{
+    "name": "EcoElectry.Domain",
+    "rootNamespace": "EcoElectry.Domain",
+    "noEngineReferences": true
+}

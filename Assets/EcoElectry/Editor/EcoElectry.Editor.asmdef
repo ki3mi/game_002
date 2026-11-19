@@ -1,0 +1,7 @@
+{
+    "name": "EcoElectry.Editor",
+    "rootNamespace": "EcoElectry.Editor",
+    "references": ["EcoElectry.Domain", "EcoElectry.Unity"],
+    "includePlatforms": ["Editor"],
+    "autoReferenced": false
+}

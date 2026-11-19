@@ -15,9 +15,10 @@ El diseño aborda el **ODS 7** mediante decisiones sobre generación renovable, 
 
 1. Si obtuviste el repositorio mediante Git y faltan los archivos binarios de Git LFS, ejecuta `git lfs pull` en la raíz.
 2. En Unity Hub, agrega la carpeta raíz y abre el proyecto con **Unity `6000.6.0f1`**, la versión registrada en [ProjectVersion.txt](ProjectSettings/ProjectVersion.txt).
-3. En el Editor, abre [`SampleScene.unity`](Assets/Scenes/SampleScene.unity), la escena registrada en la configuración de compilación, y pulsa **Play** para revisar el estado actual del proyecto.
+3. En el Editor, abre [`Startup.unity`](Assets/EcoElectry/Content/Scenes/Startup.unity) y pulsa **Play**. La escena carga la base de *La primera aula*. Abre [`Level01-LaPrimeraAula.unity`](Assets/EcoElectry/Content/Scenes/Level01-LaPrimeraAula.unity) directamente para editarla.
+4. En **Window > General > Test Runner** puedes ejecutar las pruebas de configuración en **Edit Mode** y **Play Mode**. Usa **Tools > EcoElectry > Validar definiciones de nivel** para revisar los datos y los identificadores de nivel.
 
-El recorrido previsto para el primer nivel, *La primera aula*, está descrito en su documento de diseño.
+[`SampleScene.unity`](Assets/ResourcePack/Scenes/SampleScene.unity) sigue disponible como referencia en `ResourcePack`. El [diseño del nivel 01](Docs/Nivel01-LaPrimeraAula.md) describe el recorrido que se implementará sobre la escena base.
 
 ## Documentación
 
@@ -26,4 +27,4 @@ El recorrido previsto para el primer nivel, *La primera aula*, está descrito en
 | [Contexto](Docs/Context.md) | Premisa, identidad visual, ODS y progresión de la campaña. |
 | [Mecánicas](Docs/Mecanicas.md) | Construcción, cableado, simulación, estrellas, economía y habilidades. |
 | [Nivel 01 · La primera aula](Docs/Nivel01-LaPrimeraAula.md) | Diálogos, tareas del tutorial, prueba y criterios de entrega. |
-| [Arquitectura](Docs/Arquitectura.md) | Organización propuesta del código, escenas, datos, prefabs y modelos 3D. |
+| [Arquitectura](Docs/Arquitectura.md) | Organización del código, escenas, datos, prefabs y modelos 3D. |

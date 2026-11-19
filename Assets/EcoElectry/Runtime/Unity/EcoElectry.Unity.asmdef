@@ -1,0 +1,10 @@
+{
+    "name": "EcoElectry.Unity",
+    "rootNamespace": "EcoElectry.Unity",
+    "references": [
+        "EcoElectry.Application",
+        "EcoElectry.Domain",
+        "Unity.InputSystem",
+        "Unity.ugui"
+    ]
+}
