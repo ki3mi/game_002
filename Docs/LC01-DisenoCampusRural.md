@@ -7,6 +7,7 @@
 - **Prioridad:** P0
 - **Colaboración:** José, Elias y Jairo
 
+
 ---
 
 ## 1. Esquema del Campus (Vista Superior / Top-Down)
