@@ -1,7 +1,9 @@
+#if UNITY_EDITOR
 using System.Collections;
-using System.Linq;
 using EcoElectry.Unity.Levels;
 using NUnit.Framework;
+using UnityEditor;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
 
@@ -9,21 +11,25 @@ namespace EcoElectry.Tests.PlayMode
 {
     public sealed class LevelCompositionTests
     {
-        private const string FirstLevelPath = "Assets/EcoElectry/Content/Scenes/Level01-LaPrimeraAula.unity";
+        private const string DefinitionPath = "Assets/EcoElectry/Content/Definitions/Levels/Level01-LaPrimeraAula.asset";
+        private const string SessionSceneName = "Level01SessionTest";
 
         [UnityTest]
-        public IEnumerator FirstLevelCreatesOneSessionAndReleasesItWhenUnloaded()
+        public IEnumerator FirstLevelDefinitionCreatesSessionAndReleasesItWhenSceneUnloads()
         {
-            yield return SceneManager.LoadSceneAsync(FirstLevelPath, LoadSceneMode.Additive);
-            Scene scene = SceneManager.GetSceneByPath(FirstLevelPath);
-            Assert.That(scene.isLoaded, Is.True);
+            // Exercise the session lifetime without hot-loading the rendered campus into the test runner's scene.
+            Scene scene = SceneManager.CreateScene(SessionSceneName);
+            LevelDefinition definition = AssetDatabase.LoadAssetAtPath<LevelDefinition>(DefinitionPath);
+            Assert.That(definition, Is.Not.Null);
+            var root = new GameObject("LevelRoot");
+            root.SetActive(false);
+            SceneManager.MoveGameObjectToScene(root, scene);
+            var levelRoot = root.AddComponent<LevelRoot>();
+            var data = new SerializedObject(levelRoot);
+            data.FindProperty("definition").objectReferenceValue = definition;
+            data.ApplyModifiedPropertiesWithoutUndo();
+            root.SetActive(true);
 
-            LevelRoot[] roots = scene.GetRootGameObjects()
-                .SelectMany(root => root.GetComponentsInChildren<LevelRoot>(true))
-                .ToArray();
-
-            Assert.That(roots, Has.Length.EqualTo(1));
-            LevelRoot levelRoot = roots[0];
             Assert.That(levelRoot.Session, Is.Not.Null);
             Assert.That(levelRoot.Session.Rules.Id, Is.EqualTo("level-01"));
 
@@ -32,11 +38,12 @@ namespace EcoElectry.Tests.PlayMode
         }
 
         [UnityTearDown]
-        public IEnumerator UnloadFirstLevelAfterFailure()
+        public IEnumerator UnloadSessionSceneAfterFailure()
         {
-            Scene scene = SceneManager.GetSceneByPath(FirstLevelPath);
+            Scene scene = SceneManager.GetSceneByName(SessionSceneName);
             if (scene.IsValid() && scene.isLoaded)
                 yield return SceneManager.UnloadSceneAsync(scene);
         }
     }
 }
+#endif

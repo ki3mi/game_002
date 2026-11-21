@@ -2,13 +2,15 @@
 
 [Contexto de EcoElectry](Context.md) · [Mecánicas generales](Mecanicas.md)
 
+Para montar el entorno y el recorrido de exploración, consultar el [plan del mapa](Plan-Mapa-Nivel01.md) y el [inventario 3D](Inventario-3D-Nivel01.md).
+
 ## Encargo
 
 El electricista del programa municipal llega a un colegio rural. Una clase comunitaria necesita **luz continua de 18:00 a 20:00**. El encargo tiene un presupuesto de **100 créditos** y el objetivo de excelencia es terminar la clase con **al menos un 20 % de batería**.
 
 ## Llegada y conversaciones
 
-El jugador comienza en tercera persona junto a la entrada. Puede alternar la cámara durante la exploración. Dos NPC le presentan el establecimiento y activan tareas en el mapa.
+Tras recorrer la carretera del bosque, el jugador llega a la entrada del colegio en tercera persona. Durante el tutorial puede alternar la cámara al explorar. Dos NPC le presentan el establecimiento y activan tareas en el mapa.
 
 | NPC | Qué muestra | Tareas que añade |
 | --- | --- | --- |

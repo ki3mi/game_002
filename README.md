@@ -15,10 +15,12 @@ El diseño aborda el **ODS 7** mediante decisiones sobre generación renovable, 
 
 1. Si obtuviste el repositorio mediante Git y faltan los archivos binarios de Git LFS, ejecuta `git lfs pull` en la raíz.
 2. En Unity Hub, agrega la carpeta raíz y abre el proyecto con **Unity `6000.6.0f1`**, la versión registrada en [ProjectVersion.txt](ProjectSettings/ProjectVersion.txt).
-3. En el Editor, abre [`Startup.unity`](Assets/EcoElectry/Content/Scenes/Startup.unity) y pulsa **Play**. La escena carga la base de *La primera aula*. Abre [`Level01-LaPrimeraAula.unity`](Assets/EcoElectry/Content/Scenes/Level01-LaPrimeraAula.unity) directamente para editarla.
+3. En el Editor, abre [`Startup.unity`](Assets/EcoElectry/Content/Scenes/Startup.unity) y pulsa **Play** para cargar el mapa de *La primera aula*. También puedes abrir y recorrer [`Level01-LaPrimeraAula.unity`](Assets/EcoElectry/Content/Scenes/Level01-LaPrimeraAula.unity) directamente.
 4. En **Window > General > Test Runner** puedes ejecutar las pruebas de configuración en **Edit Mode** y **Play Mode**. Usa **Tools > EcoElectry > Validar definiciones de nivel** para revisar los datos y los identificadores de nivel.
 
-[`SampleScene.unity`](Assets/ResourcePack/Scenes/SampleScene.unity) sigue disponible como referencia en `ResourcePack`. El [diseño del nivel 01](Docs/Nivel01-LaPrimeraAula.md) describe el recorrido que se implementará sobre la escena base.
+El mapa empieza en la carretera del bosque. Usa **WASD** o las flechas para caminar, el ratón para mirar y **C** para alternar entre primera y tercera persona. Sigue la vía hasta la entrada peatonal y toma el patio como referencia para llegar a las aulas, la cancha o la sala eléctrica. **Esc** libera el cursor y un clic vuelve a capturarlo. [Plan del mapa](Docs/Plan-Mapa-Nivel01.md) · [Inventario 3D](Docs/Inventario-3D-Nivel01.md)
+
+[`SampleScene.unity`](Assets/ResourcePack/Scenes/SampleScene.unity) sigue disponible como referencia en `ResourcePack`. El [diseño del nivel 01](Docs/Nivel01-LaPrimeraAula.md) describe las tareas que se integrarán sobre el mapa.
 
 ## Sandbox eléctrico
 
