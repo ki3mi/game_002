@@ -74,3 +74,4 @@ El avance se organiza como una progresión incremental dentro del flujo continuo
 1. **Fase 1 — Estabilización y lectura del sistema:** Comprender el consumo de **Lectura**, **Informática** y **Presentación Audiovisual**, controlar interruptores/cuchillas en la **Sala Eléctrica** y atender **equipos olvidados**.
 2. **Fase 2 — Respaldo y respuesta a variaciones:** Gestionar la carga/descarga de batería y ajustar el uso ante **nubosidad** y **cortes** sin detener la actividad principal.
 3. **Fase 3 — Optimización y ampliación:** Incorporar mejoras de eficiencia (p. ej., luminarias de menor consumo, mejor captación en techos/patio o mayor capacidad de almacenamiento) para sostener mayor actividad simultánea con menor costo operativo.
+
