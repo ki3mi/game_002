@@ -8,6 +8,7 @@
 - **Colaboración:** Elias y José
 - **Dependencias:** LC-01 (#1), LC-05 (#5)
 
+
 ---
 
 ## 1. Objetivo y Alcance del Blockout
