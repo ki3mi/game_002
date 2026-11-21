@@ -69,3 +69,4 @@ Durante las pruebas con jugadores o compañeros, registrar qué tan claro result
 - [ ] Cortes de energía reflejados de forma real y comprensible en el suministro y en las clases.
 - [ ] Reglas de evaluación verificadas: ahorrar sin sostener actividades educativas no maximiza automáticamente el resultado.
 - [ ] Problemas clasificados por prioridad (`P0`, `P1`, `P2`), ajustes de balance acordados con **José** y pendientes finales documentados y revisados por todo el equipo.
+
