@@ -12,13 +12,14 @@ namespace EcoElectry.Tests.EditMode
     public sealed class Level01MapTests
     {
         private const string ScenePath = "Assets/EcoElectry/Content/Scenes/Level01-LaPrimeraAula.unity";
+        private const string TerrainPath = "Assets/EcoElectry/Content/Terrain/Level01/RuralTerrainData.asset";
 
         [Test]
         public void MapDependsOnLevel01AssetsAndSharedResources()
         {
             string[] dependencies = AssetDatabase.GetDependencies(ScenePath, true);
             Assert.That(dependencies, Does.Contain("Assets/EcoElectry/Content/Definitions/Levels/Level01-LaPrimeraAula.asset"));
-            Assert.That(dependencies, Does.Contain("Assets/EcoElectry/Content/Terrain/Level01/RuralTerrainData.asset"));
+            Assert.That(dependencies, Does.Contain(TerrainPath));
             Assert.That(dependencies, Does.Contain("Assets/EcoElectry/Content/Prefabs/Level01/PF_BasketballCourt.prefab"));
             Assert.That(dependencies, Does.Contain("Assets/EcoElectry/Content/Prefabs/Level01/PF_BasketballHoop.prefab"));
             Assert.That(dependencies, Does.Contain("Assets/EcoElectry/Content/Prefabs/Level01/PF_SchoolSign.prefab"));
@@ -45,6 +46,15 @@ namespace EcoElectry.Tests.EditMode
                 Assert.That(roots.SelectMany(root => root.GetComponentsInChildren<ThirdPersonExplorer>()).Count(), Is.EqualTo(1));
                 Assert.That(roots.SelectMany(root => root.GetComponentsInChildren<Camera>()).Count(camera => camera.enabled),
                     Is.EqualTo(1));
+
+                TerrainData terrainData = AssetDatabase.LoadAssetAtPath<TerrainData>(TerrainPath);
+                Assert.That(terrainData, Is.Not.Null, TerrainPath);
+                var terrain = roots.Single(root => root.name == "Terrain").GetComponentInChildren<Terrain>();
+                Assert.That(terrain, Is.Not.Null);
+                Assert.That(terrain.terrainData, Is.EqualTo(terrainData));
+                var terrainCollider = terrain.GetComponent<TerrainCollider>();
+                Assert.That(terrainCollider, Is.Not.Null);
+                Assert.That(terrainCollider.terrainData, Is.EqualTo(terrainData));
 
                 Transform school = roots.Single(root => root.name == "School").transform;
                 AssertLinked(school.Find("Entrance/PuertaPeatonal"), "PuertaPeatonal");
