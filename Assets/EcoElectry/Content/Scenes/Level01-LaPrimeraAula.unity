@@ -161,8 +161,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab0dbd59608947e89f09ee008d816539, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   definition: {fileID: 11400000, guid: 72b3e37da32845e6b5489575a280e1d2, type: 2}
 --- !u!1001 &3125200
 PrefabInstance:
@@ -5098,8 +5098,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_RenderShadows: 1
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
@@ -6065,8 +6065,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_UsePipelineSettings: 1
   m_AdditionalLightsShadowResolutionTier: 2
   m_CustomShadowLayers: 0
@@ -10329,8 +10329,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_IsGlobal: 1
   priority: 0
   blendDistance: 0
@@ -13686,6 +13686,76 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 2552915280011401116, guid: b478539fd7f293f4b9baa690e5150929, type: 3}
   m_PrefabInstance: {fileID: 1019674890}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1023106268
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1491146479}
+    m_Modifications:
+    - target: {fileID: 6336988508290569365, guid: e32680953dbd10b4f897045ed4644b84, type: 3}
+      propertyPath: InitialModule.startSizeY.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6336988508290569365, guid: e32680953dbd10b4f897045ed4644b84, type: 3}
+      propertyPath: InitialModule.startSizeZ.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6993990991482401827, guid: e32680953dbd10b4f897045ed4644b84, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6993990991482401827, guid: e32680953dbd10b4f897045ed4644b84, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6993990991482401827, guid: e32680953dbd10b4f897045ed4644b84, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6993990991482401827, guid: e32680953dbd10b4f897045ed4644b84, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6993990991482401827, guid: e32680953dbd10b4f897045ed4644b84, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6993990991482401827, guid: e32680953dbd10b4f897045ed4644b84, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6993990991482401827, guid: e32680953dbd10b4f897045ed4644b84, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6993990991482401827, guid: e32680953dbd10b4f897045ed4644b84, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6993990991482401827, guid: e32680953dbd10b4f897045ed4644b84, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6993990991482401827, guid: e32680953dbd10b4f897045ed4644b84, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8745398548506207033, guid: e32680953dbd10b4f897045ed4644b84, type: 3}
+      propertyPath: m_Name
+      value: PF_RainAroundPlayer
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e32680953dbd10b4f897045ed4644b84, type: 3}
+--- !u!4 &1023106269 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6993990991482401827, guid: e32680953dbd10b4f897045ed4644b84, type: 3}
+  m_PrefabInstance: {fileID: 1023106268}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1026062119
 GameObject:
@@ -19535,7 +19605,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 678208c0d16ed884fadcd8676a5e26aa, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: EcoElectry.Unity::EcoElectry.Unity.Player.ThirdPersonExplorer
   controls: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   spawn: {fileID: 238987373}
@@ -19585,6 +19655,7 @@ Transform:
   m_Children:
   - {fileID: 1106030844}
   - {fileID: 330585546}
+  - {fileID: 1023106269}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1503803761
