@@ -15,16 +15,22 @@ namespace EcoElectry.Unity.Player
         [SerializeField, Min(0.1f)] private float minimumInterval = 3f;
         [SerializeField, Min(0.1f)] private float maximumInterval = 6f;
         [SerializeField, Range(0.05f, 0.4f)] private float pulseDuration = 0.17f;
+        [SerializeField, Range(0f, 0.8f)] private float flickerDepth = 0.55f;
+        [SerializeField] private Vector2 flickerInterval = new Vector2(3f, 7f);
 
         private static readonly int Signal = Shader.PropertyToID("_Signal");
+        private static readonly int Grain = Shader.PropertyToID("_GrainInterference");
         private Camera targetCamera;
         private UniversalAdditionalCameraData cameraData;
         private Material material;
         private SignalPass pass;
         private System.Random sequence;
+        private CorridorFlicker flicker;
         private float nextPulse;
         private float bandCenter;
         private float direction;
+
+        internal float GrainInterference { get; set; }
 
         private void OnEnable()
         {
@@ -34,6 +40,7 @@ namespace EcoElectry.Unity.Player
             material = CoreUtils.CreateEngineMaterial(signalShader);
             pass = new SignalPass(material);
             sequence = new System.Random(421);
+            flicker = new CorridorFlicker(flickerInterval, Time.time);
             SchedulePulse(Time.time, 1.4f);
             RenderPipelineManager.beginCameraRendering += RenderSignal;
         }
@@ -53,19 +60,31 @@ namespace EcoElectry.Unity.Player
 
         private void RenderSignal(ScriptableRenderContext context, Camera camera)
         {
-            if (camera != targetCamera || displacement <= 0f) return;
-            float elapsed = Time.time - nextPulse;
-            if (elapsed < 0f) return;
+            if (camera != targetCamera) return;
+            float now = Time.time;
+            Vector3 glitch = GlitchAt(now);
+            float dimming = flickerDepth * flicker.Sample(now);
+            if (glitch.y == 0f && dimming == 0f && GrainInterference == 0f) return;
+
+            material.SetVector(Signal, new Vector4(glitch.x, glitch.y, glitch.z, dimming));
+            material.SetFloat(Grain, GrainInterference);
+            cameraData.scriptableRenderer.EnqueuePass(pass);
+        }
+
+        private Vector3 GlitchAt(float now)
+        {
+            if (displacement <= 0f) return Vector3.zero;
+            float elapsed = now - nextPulse;
+            if (elapsed < 0f) return Vector3.zero;
             if (elapsed >= pulseDuration)
             {
                 float interval = Mathf.Lerp(minimumInterval, Mathf.Max(minimumInterval, maximumInterval),
                     (float)sequence.NextDouble());
-                SchedulePulse(Time.time, interval);
-                return;
+                SchedulePulse(now, interval);
+                return Vector3.zero;
             }
 
-            material.SetVector(Signal, new Vector4(bandCenter, direction * displacement, elapsed / pulseDuration, 0f));
-            cameraData.scriptableRenderer.EnqueuePass(pass);
+            return new Vector3(bandCenter, direction * displacement, elapsed / pulseDuration);
         }
 
         private sealed class SignalPass : ScriptableRenderPass

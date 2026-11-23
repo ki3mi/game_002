@@ -1,4 +1,5 @@
 using System;
+using EcoElectry.Unity.Player;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -170,7 +171,7 @@ namespace EcoElectry.Editor.Levels
             var text = face.gameObject.AddComponent<TextMesh>();
             Font font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
             text.font = font;
-            text.GetComponent<MeshRenderer>().sharedMaterial = font.material;
+            ConfigureSignText(text);
             text.fontSize = 64;
             text.characterSize = width * .041f;
             text.anchor = TextAnchor.MiddleCenter;
@@ -179,14 +180,30 @@ namespace EcoElectry.Editor.Levels
             text.text = caption;
         }
 
+        internal static void ConfigureSignText(TextMesh text)
+        {
+            const string path = Materials + "/SignText.mat";
+            var material = AssetDatabase.LoadAssetAtPath<Material>(path);
+            if (material == null)
+            {
+                var shader = AssetDatabase.LoadAssetAtPath<Shader>(
+                    "Assets/EcoElectry/Content/Rendering/CorridorSignText.shader");
+                if (shader == null) throw new InvalidOperationException("Falta el shader de los rótulos.");
+                material = new Material(shader);
+                AssetDatabase.CreateAsset(material, path);
+            }
+            text.GetComponent<MeshRenderer>().sharedMaterial = material;
+            text.gameObject.AddComponent<CorridorSignText>();
+        }
+
         private void LightScene()
         {
             RenderSettings.skybox = null;
             RenderSettings.ambientMode = AmbientMode.Flat;
-            RenderSettings.ambientLight = new Color32(40,49,62,255);
+            RenderSettings.ambientLight = new Color32(34,42,54,255);
             RenderSettings.fog = true;
             RenderSettings.fogMode = FogMode.ExponentialSquared;
-            RenderSettings.fogColor = new Color32(30,37,46,255);
+            RenderSettings.fogColor = new Color32(26,32,41,255);
             RenderSettings.fogDensity = .032f;
             Fixture(new Vector3(0,2.93f,1.6f), true);
             Fixture(new Vector3(0,2.93f,9.0f), false);

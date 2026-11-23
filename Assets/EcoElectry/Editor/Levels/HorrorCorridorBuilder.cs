@@ -11,6 +11,7 @@ namespace EcoElectry.Editor.Levels
     {
         private const string ScenePath = "Assets/EcoElectry/Content/Scenes/HorrorCorridorPrototype.unity";
         private const string InputPath = "Assets/ResourcePack/InputSystem_Actions.inputactions";
+        private const string MusicPath = "Assets/Music/Untitled #9 (Smáskífa 1).mp3";
 
         [MenuItem("Tools/EcoElectry/Prototipos/Abrir pasillos de noche")]
         public static void OpenOrCreate()
@@ -32,8 +33,26 @@ namespace EcoElectry.Editor.Levels
             HorrorCorridorEnvironment.Build();
             Camera camera = CreateExplorer();
             HorrorCorridorImage.Build(camera);
+            AddMusic(camera);
             if (!EditorSceneManager.SaveScene(scene, ScenePath))
                 throw new InvalidOperationException("No se pudo guardar el prototipo de pasillos.");
+        }
+
+        internal static void AddMusic(Camera camera)
+        {
+            var clip = AssetDatabase.LoadAssetAtPath<AudioClip>(MusicPath);
+            if (clip == null)
+            {
+                Debug.LogWarning("No se encontró la música de los pasillos en " + MusicPath);
+                return;
+            }
+
+            var source = camera.gameObject.AddComponent<AudioSource>();
+            source.clip = clip;
+            source.playOnAwake = true;
+            source.loop = true;
+            source.spatialBlend = 0f;
+            source.volume = 0.32f;
         }
 
         private static Camera CreateExplorer()

@@ -10,6 +10,9 @@ namespace EcoElectry.Unity.Player
         [SerializeField] private Camera view;
         [SerializeField] private Light flashlight;
         [SerializeField] private string flashlightBinding = "<Keyboard>/f";
+        [SerializeField, Range(0f, 1f)] private float flashlightFlickerDepth = 0.88f;
+        [SerializeField] private Vector2 flashlightFlickerInterval = new Vector2(4f, 9f);
+        [SerializeField] private Key brightnessMenuKey = Key.B;
         [SerializeField, Min(0.1f)] private float walkSpeed = 1.7f;
         [SerializeField, Min(0.01f)] private float accelerationTime = 0.16f;
         [SerializeField, Min(0f)] private float mouseSensitivity = 0.12f;
@@ -23,6 +26,9 @@ namespace EcoElectry.Unity.Player
         private InputAction move;
         private InputAction look;
         private InputAction toggleLight;
+        private CorridorBrightness brightness;
+        private CorridorFlicker flashlightFlicker;
+        private float flashlightIntensity;
         private Vector3 velocity;
         private float fallSpeed;
         private float pitch;
@@ -42,6 +48,9 @@ namespace EcoElectry.Unity.Player
             }
 
             toggleLight = new InputAction("Flashlight", InputActionType.Button, flashlightBinding);
+            brightness = new CorridorBrightness(view, flashlight);
+            flashlightIntensity = flashlight.intensity;
+            flashlightFlicker = new CorridorFlicker(flashlightFlickerInterval, Time.time);
             flashlight.enabled = true;
             ApplyView();
         }
@@ -51,6 +60,7 @@ namespace EcoElectry.Unity.Player
             move?.Enable();
             look?.Enable();
             toggleLight?.Enable();
+            flashlightFlicker?.Restart(Time.time);
             if (UnityEngine.Application.isFocused) SetCursorLocked(true);
         }
 
@@ -59,6 +69,8 @@ namespace EcoElectry.Unity.Player
             move?.Disable();
             look?.Disable();
             toggleLight?.Disable();
+            brightness?.Close();
+            if (flashlightFlicker != null && flashlight != null) flashlight.intensity = flashlightIntensity;
             velocity = Vector3.zero;
             fallSpeed = 0f;
             bobWeight = 0f;
@@ -85,11 +97,40 @@ namespace EcoElectry.Unity.Player
 
         private void Update()
         {
-            if (Keyboard.current?.escapeKey.wasPressedThisFrame == true) SetCursorLocked(false);
+            var keyboard = Keyboard.current;
+            bool escapePressed = keyboard?.escapeKey.wasPressedThisFrame == true;
+            bool brightnessPressed = brightness != null && brightnessMenuKey != Key.None &&
+                keyboard?[brightnessMenuKey].wasPressedThisFrame == true;
+
+            if (brightness?.IsOpen == true)
+            {
+                if (brightnessPressed || escapePressed)
+                {
+                    brightness.Close();
+                    SetCursorLocked(true);
+                }
+                return;
+            }
+
+            if (brightnessPressed)
+            {
+                brightness.Open();
+                velocity = Vector3.zero;
+                bobWeight = 0f;
+                SetCursorLocked(false);
+                return;
+            }
+
+            if (escapePressed) SetCursorLocked(false);
             else if (Mouse.current?.leftButton.wasPressedThisFrame == true) SetCursorLocked(true);
             if (Time.deltaTime <= 0f) return;
 
-            if (toggleLight.WasPressedThisFrame()) flashlight.enabled = !flashlight.enabled;
+            if (toggleLight.WasPressedThisFrame())
+            {
+                flashlight.enabled = !flashlight.enabled;
+                flashlight.intensity = flashlightIntensity;
+                flashlightFlicker.Restart(Time.time);
+            }
 
             Vector2 delta = look.ReadValue<Vector2>();
             if (look.activeControl?.device is Gamepad) delta *= 110f * Time.deltaTime;
@@ -117,7 +158,17 @@ namespace EcoElectry.Unity.Player
             bobWeight = Mathf.Lerp(bobWeight, speedWeight, 1f - Mathf.Exp(-14f * dt));
         }
 
-        private void LateUpdate() => ApplyView();
+        private void LateUpdate()
+        {
+            ApplyView();
+            if (flashlight.enabled)
+                flashlight.intensity = flashlightIntensity * (1f - flashlightFlickerDepth * flashlightFlicker.Sample(Time.time));
+        }
+
+        private void OnGUI()
+        {
+            if (brightness?.IsOpen == true) brightness.Draw(brightnessMenuKey.ToString());
+        }
 
         private void ApplyView()
         {
