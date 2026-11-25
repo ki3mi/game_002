@@ -1,53 +1,30 @@
-# EcoElectry
+# Just a Wiring Job?
 
-## Identidad visual
+## Premisa
 
-El logo de **EcoElectry** será una **E al cuadrado (E²)** con un rayo en el centro de la E.
+*Just a Wiring Job?* es un juego de terror en primera persona con estética 3D low poly. El jugador es un electricista enviado a terminar trabajos que otros técnicos abandonaron por motivos desconocidos. Su primer encargo lo lleva a un colegio grande de estilo japonés. Durante el turno debe averiguar qué falló, recuperar las piezas que faltan y devolver el servicio a distintas secciones del edificio.
 
-## Concepto del juego
+El trabajo exige precisión. Mientras conecta cables en un tablero, puede oír ruidos o distinguir una silueta en el pasillo. Revisar el entorno con la linterna le ayuda a recuperar la calma y le quita tiempo para terminar la reparación. Si el miedo lo domina o vence el turno con trabajo pendiente, pierde la noche. [Reglas de juego](Mecanicas.md)
 
-*EcoElectry* es un juego de puzles de construcción y simulación en 3D low poly. El jugador encarna a un electricista de un programa municipal de electrificación que diseña e instala sistemas de energía renovable. Empieza en un colegio rural y, a medida que demuestra sus competencias, recibe encargos para abastecer otros establecimientos y servicios del municipio. La meta de la campaña es construir el sistema energético de una ciudad sostenible.
+## Prólogo y jornadas en el colegio
 
-En cada nivel, el jugador recorre el establecimiento, conoce sus necesidades y construye una instalación con piezas modulares. Trabaja en primera persona al realizar conexiones, configurar equipos y hacer verificaciones. Al pulsar **Probar**, puede ver si su diseño mantiene en funcionamiento las actividades previstas durante una jornada simulada.
-
-Las condiciones del mapa cambian el problema. Un árbol proyecta sombra sobre el patio, una ladera encarece el transporte entre sedes o varios días nublados reducen la energía disponible. El jugador puede resolver un mismo encargo con distintas combinaciones de ubicación, generación, almacenamiento y consumo.
-
-Consulta las reglas y los sistemas de juego en [Mecánicas de EcoElectry](Mecanicas.md).
-
-## Progresión de la campaña
-
-| Etapa | Encargos | Qué cambia en el reto |
-| --- | --- | --- |
-| **Veredas** | Aulas, colegios y centros comunitarios. | Aprender a instalar paneles y baterías, responder a la sombra y cubrir actividades con horarios definidos. |
-| **Pueblo** | Puestos de salud, mercados, estaciones de bombeo y alumbrado público. | Distinguir servicios continuos de los que pueden programarse, gestionar picos de consumo y conectar instalaciones alejadas. |
-| **Ciudad** | Barrios, edificios públicos y centrales renovables compartidas. | Coordinar generación, almacenamiento y demanda entre sectores que consumen energía en horarios distintos. |
-
-El programa municipal asigna un presupuesto de obra por encargo. Los establecimientos entregados y en servicio justifican aportes diarios de operación al programa. El jugador usa esos créditos para adquirir mejoras de oficio. Los potenciadores por instalaciones destacadas representan incentivos del programa a la calidad del trabajo.
-
-En el desafío final, el jugador integra sectores de la ciudad y prueba su red en una jornada normal y otra de baja generación. Para completar la campaña, debe cubrir los servicios obligatorios de cada sector con energía renovable, respetar sus horarios y mantener la continuidad de los servicios críticos durante ambas pruebas. El presupuesto y los objetivos de excelencia siguen determinando las estrellas.
-
-## ODS 7 y fuentes de energía
-
-Todas las instalaciones del juego se alimentan de fuentes renovables. La primera etapa usa energía solar fotovoltaica. En mapas posteriores se propone incorporar pequeñas turbinas eólicas donde haya viento aprovechable y microhidráulica donde el caudal del mapa permita usarla. Las baterías almacenan el excedente para usarlo más tarde y las luminarias eficientes reducen la demanda.
-
-El diseño traduce tres metas del ODS 7 a decisiones jugables. [Naciones Unidas en Colombia — ODS 7](https://colombia.un.org/es/sdgs/7)
-
-| Meta | Cómo se juega |
+| Hora | Qué ocurre |
 | --- | --- |
-| **7.1 · Acceso asequible y fiable** | Mantener los servicios de cada establecimiento en sus horarios y gestionar el costo de la instalación. |
-| **7.2 · Energía renovable** | Elegir la fuente y su ubicación según los recursos del mapa. |
-| **7.3 · Eficiencia energética** | Reducir el consumo para mantener el mismo servicio con menos energía. |
+| **16:00** | El jugador conduce por la carretera del bosque mientras recibe mensajes y notas de voz de su jefe por WhatsApp. El jefe explica el encargo y pregunta si recogió las llaves. |
+| **18:00** | Llega al colegio al oscurecer. Con el auto detenido, inspecciona el llavero en el inventario 3D, confirma al jefe que lo tiene y abre la entrada. Comienza la primera jornada de reparación. |
+| **17:00 del día siguiente** | Al terminar una sección, se cierra la jornada. El próximo turno comienza después de clases para evitar interrumpir la actividad escolar. |
+| **06:00** | Límite de cada turno. Si quedan reparaciones obligatorias pendientes, la jornada termina en derrota. |
 
-## ODS 4 y aprendizaje práctico
+La carretera, el estacionamiento y la fachada forman la escena exterior. Las puertas de acceso a las alas conducen a escenas interiores separadas. La unidad de avance es **una sección por jornada**. El ala de aulas es una candidata para la primera noche. Administración, laboratorios y gimnasio son posibles secciones posteriores.
 
-El juego contribuye al ODS 4, **Educación de calidad**, al introducir competencias técnicas básicas mediante retos de instalación y diagnóstico. Se vincula con la meta **4.4**, que promueve el desarrollo de competencias técnicas y profesionales. [Naciones Unidas en Colombia — ODS 4](https://colombia.un.org/es/sdgs/4)
+## Dirección artística
 
-## Primer nivel jugable · La primera aula
+El colegio usa formas low poly, pasillos largos, puertas con vidrio y mobiliario escolar reconocible. La luz ámbar del bosque cede a los azules apagados del exterior y al verde frío de algunos fluorescentes. Dentro, el haz cálido de la linterna y la luz de trabajo ayudan a leer el entorno y a distinguir cables, etiquetas y bornes.
 
-Una clase comunitaria necesita luz continua de 18:00 a 20:00. El presupuesto es de **100 créditos** y el objetivo de excelencia es terminar con al menos **20 % de batería**. El jugador cuenta con dos sitios para el panel: un patio con sombra parcial y una azotea soleada que exige una conexión más larga.
+La cámara de primera persona tiene un balanceo sutil ligado a los pasos, grano fino, viñeteado suave y colores apagados. Las interferencias más intensas aparecen en grabaciones y cámaras de seguridad. Los altavoces y el audio distorsionado pueden sugerir qué pasó con los técnicos anteriores.
 
-El [documento del nivel tutorial](Nivel01-LaPrimeraAula.md) detalla las conversaciones, las tareas guiadas, las comprobaciones y los valores del prototipo.
+Las primeras apariciones son **anomalías estáticas**, visibles como siluetas difusas en la penumbra. Su desaparición se expresa mediante dos efectos distintos. Cuando el jugador responde a tiempo, parpadea la linterna. Cuando se queda mirando demasiado, se oscurece brevemente toda la cámara.
 
-## Nivel avanzado · La escuela en la ladera
+## Prototipo de referencia
 
-La zona con mejor exposición solar está en una terraza alejada del aula. El jugador construye un recinto para el tablero y las baterías, elige por dónde llevar la línea aérea y continúa el recorrido por el interior de una pared al llegar al colegio. Una ruta más directa usa menos cable, mientras que bordear el terreno puede facilitar la ubicación de los postes.
+La escena independiente de pasillos sirve para evaluar el movimiento en primera persona, la imagen granulada, la lectura de las puertas y el uso de la linterna. Se abre directamente en Unity y se recorre con **WASD**, ratón y **F** para alternar la linterna. [Plan del prototipo](Plan-Prototipo-Pasillos.md) · [Guía de prueba](Prueba-Prototipo-Pasillos.md)
