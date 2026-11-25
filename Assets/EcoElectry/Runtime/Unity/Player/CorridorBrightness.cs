@@ -8,7 +8,7 @@ namespace EcoElectry.Unity.Player
 {
     internal sealed class CorridorBrightness
     {
-        private const string PreferenceKey = "EcoElectry.Corridor.Brightness";
+        private const string DefaultBrightnessPreferenceKey = "EcoElectry.Corridor.Brightness";
         private const string GrainPreferenceKey = "EcoElectry.Corridor.FilmGrain";
         private const int DefaultLevel = 100;
         private const int MinLevel = 1;
@@ -17,6 +17,7 @@ namespace EcoElectry.Unity.Player
         private static readonly int EmissionColor = Shader.PropertyToID("_EmissionColor");
 
         private readonly Camera view;
+        private readonly string brightnessPreferenceKey;
         private readonly Color ambient;
         private readonly Color fog;
         private readonly Color background;
@@ -33,9 +34,12 @@ namespace EcoElectry.Unity.Player
 
         internal bool IsOpen { get; private set; }
 
-        internal CorridorBrightness(Camera view, Light flashlight)
+        internal CorridorBrightness(Camera view, Light flashlight, string brightnessPreferenceKey)
         {
             this.view = view;
+            this.brightnessPreferenceKey = string.IsNullOrEmpty(brightnessPreferenceKey)
+                ? DefaultBrightnessPreferenceKey
+                : brightnessPreferenceKey;
             cameraSignal = view.GetComponent<CorridorSignalGlitch>();
             ambient = RenderSettings.ambientLight;
             fog = RenderSettings.fogColor;
@@ -61,7 +65,7 @@ namespace EcoElectry.Unity.Player
                 }
             }
 
-            level = Mathf.Clamp(PlayerPrefs.GetInt(PreferenceKey, DefaultLevel), MinLevel, MaxLevel);
+            level = Mathf.Clamp(PlayerPrefs.GetInt(this.brightnessPreferenceKey, DefaultLevel), MinLevel, MaxLevel);
             Apply();
 
             var volume = view.GetComponentInChildren<Volume>();
@@ -79,7 +83,7 @@ namespace EcoElectry.Unity.Player
         {
             IsOpen = false;
             if (!changed) return;
-            PlayerPrefs.SetInt(PreferenceKey, level);
+            PlayerPrefs.SetInt(brightnessPreferenceKey, level);
             if (grain != null) PlayerPrefs.SetInt(GrainPreferenceKey, grainLevel);
             PlayerPrefs.Save();
             changed = false;
