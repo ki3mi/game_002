@@ -37,6 +37,17 @@ namespace EcoElectry.Unity.Player
         private float pitch;
         private float phase;
         private float bobWeight;
+        internal bool IsImageMenuOpen => brightness?.IsOpen == true;
+
+        internal void ResetMovement()
+        {
+            velocity = Vector3.zero;
+            fallSpeed = 0f;
+            pitch = 0f;
+            phase = 0f;
+            bobWeight = 0f;
+            ApplyView();
+        }
 
         private void Awake()
         {
