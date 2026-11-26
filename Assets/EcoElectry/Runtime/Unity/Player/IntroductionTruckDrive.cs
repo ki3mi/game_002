@@ -21,7 +21,7 @@ namespace EcoElectry.Unity.Player
         [SerializeField] private Light[] lowBeams;
         [SerializeField] private Renderer[] headlightLenses;
         [SerializeField] private Material unlitLens;
-        [SerializeField, Min(1f)] private float forwardSpeed = 19f;
+        [SerializeField, Min(1f)] private float forwardSpeedKmh = 120f;
         [SerializeField, Min(0.5f)] private float reverseSpeed = 4.4f;
         [SerializeField, Min(0f)] private float wheelTorque = 440f;
         [SerializeField, Min(0f)] private float brakeTorque = 1450f;
@@ -32,6 +32,7 @@ namespace EcoElectry.Unity.Player
         private Quaternion steeringWheelRest;
         private float steerAngle;
         private bool parked;
+        internal bool ImageMenuOpen { get; set; }
 
         public float Speed => body != null ? body.linearVelocity.magnitude : 0f;
         public bool HasGroundContact { get; private set; }
@@ -66,8 +67,14 @@ namespace EcoElectry.Unity.Player
         {
             if (parked) return;
 
-            Vector2 input = drive.ReadValue<Vector2>();
+            Vector2 input = ImageMenuOpen ? Vector2.zero : drive.ReadValue<Vector2>();
+            float forwardSpeed = forwardSpeedKmh / 3.6f;
             float longitudinalSpeed = Vector3.Dot(body.linearVelocity, transform.forward);
+            if (HasGroundContact && longitudinalSpeed > forwardSpeed)
+            {
+                body.linearVelocity -= transform.forward * (longitudinalSpeed - forwardSpeed);
+                longitudinalSpeed = forwardSpeed;
+            }
             float speed = Mathf.Abs(longitudinalSpeed);
             float steerLimit = Mathf.Lerp(33f, 8.5f, Mathf.InverseLerp(2f, forwardSpeed, speed));
             float steerSpeed = Mathf.Abs(input.x) > 0.02f ? 64f : 100f;
@@ -77,10 +84,11 @@ namespace EcoElectry.Unity.Player
             bool braking = throttle && speed > 0.36f && input.y * longitudinalSpeed < 0f;
             float limit = input.y < 0f ? reverseSpeed : forwardSpeed;
             float torque = throttle && !braking
-                ? input.y * wheelTorque * Mathf.Clamp01((limit - speed) / 2.1f)
+                ? input.y * wheelTorque * Mathf.Clamp01((limit - speed) / (input.y < 0f ? 2.1f : 0.35f))
                 : 0f;
             float brake = 0f;
-            if (braking) brake = brakeTorque * Mathf.Abs(input.y);
+            if (ImageMenuOpen) brake = brakeTorque;
+            else if (braking) brake = brakeTorque * Mathf.Abs(input.y);
             else if (!throttle) brake = speed < 0.38f ? 420f : 110f;
             float overspeed = speed - (longitudinalSpeed < 0f ? reverseSpeed : forwardSpeed);
             if (overspeed > 0.12f) brake = Mathf.Max(brake, Mathf.Min(brakeTorque, overspeed * 240f));

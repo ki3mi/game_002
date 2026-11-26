@@ -488,9 +488,9 @@
         {
             "m_OutputSlot": {
                 "m_Node": {
-                    "m_Id": "117a3293c8724edbbbfb3e0e208d0dd8"
+                    "m_Id": "1e4d0e9e122042b58cbdcf9251a6571a"
                 },
-                "m_SlotId": 2
+                "m_SlotId": 0
             },
             "m_InputSlot": {
                 "m_Node": {
@@ -1538,20 +1538,6 @@
         {
             "m_OutputSlot": {
                 "m_Node": {
-                    "m_Id": "c35c890039964b6d84d86513b7a90a46"
-                },
-                "m_SlotId": 3
-            },
-            "m_InputSlot": {
-                "m_Node": {
-                    "m_Id": "d48e401d460842fb8a03d41a972bf08d"
-                },
-                "m_SlotId": 0
-            }
-        },
-        {
-            "m_OutputSlot": {
-                "m_Node": {
                     "m_Id": "c37efc3b7dc1496597aacca8227df00e"
                 },
                 "m_SlotId": 2
@@ -1678,9 +1664,9 @@
         {
             "m_OutputSlot": {
                 "m_Node": {
-                    "m_Id": "d9af4f78e0384e598b9b64ba704f86ed"
+                    "m_Id": "e82167542650450cae46c81096c7eb35"
                 },
-                "m_SlotId": 2
+                "m_SlotId": 3
             },
             "m_InputSlot": {
                 "m_Node": {
@@ -1701,6 +1687,20 @@
                     "m_Id": "c35c890039964b6d84d86513b7a90a46"
                 },
                 "m_SlotId": 1
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "c35c890039964b6d84d86513b7a90a46"
+                },
+                "m_SlotId": 3
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "1c12dc4cf9044889a57539fdaa95f09d"
+                },
+                "m_SlotId": 0
             }
         },
         {
@@ -8269,7 +8269,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "Occlusion",
     "m_StageCapability": 2,
-    "m_Value": 2.0,
+    "m_Value": 1.0,
     "m_DefaultValue": 1.0,
     "m_Labels": []
 }

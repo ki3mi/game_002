@@ -482,6 +482,7 @@ namespace EcoElectry.Editor.Levels
             BuildCampusSign(school, terrain, palette);
             BuildWalkway(school, terrain, palette);
             BuildCampusDecoration(school, terrain);
+            BuildFrontGardens(school, terrain, fencePrefab);
 
 
             Transform scaleRecord = Group(SceneManager.GetActiveScene(), school,
@@ -668,7 +669,7 @@ namespace EcoElectry.Editor.Levels
         }
 
         private static void CreateMeshObject(Transform parent, string assetPath, string name,
-            MeshBuilder builder, Material material, bool collider)
+            MeshBuilder builder, Material material, bool collider, List<Vector2> uv = null)
         {
             Mesh mesh = AssetDatabase.LoadAssetAtPath<Mesh>(assetPath);
             if (mesh == null)
@@ -680,6 +681,7 @@ namespace EcoElectry.Editor.Levels
             if (builder.Vertices.Count > 65000)
                 mesh.indexFormat = IndexFormat.UInt32;
             mesh.SetVertices(builder.Vertices);
+            if (uv != null) mesh.SetUVs(0, uv);
             mesh.SetTriangles(builder.Triangles, 0);
             mesh.RecalculateNormals();
             mesh.RecalculateBounds();
@@ -997,6 +999,7 @@ namespace EcoElectry.Editor.Levels
             label.characterSize = characterSize;
             label.color = color;
             label.text = text;
+            HorrorCorridorEnvironment.ConfigureSignText(label);
             MeshRenderer renderer = node.GetComponent<MeshRenderer>();
             renderer.shadowCastingMode = ShadowCastingMode.Off;
             renderer.receiveShadows = false;

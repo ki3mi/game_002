@@ -23,12 +23,14 @@ namespace EcoElectry.Unity.Levels
         private readonly HashSet<Collider> contacts = new();
         private readonly RaycastHit[] hits = new RaycastHit[48];
         private BoxCollider zone;
+        private IntroductionCabinImage cabinImage;
         private InputAction exit;
         private GUIStyle promptStyle;
         private float blockedUntil;
         private bool walking;
 
-        private bool CanExit => !walking && contacts.Count > 0 && InsideZone(vehicleBody.worldCenterOfMass) &&
+        private bool CanExit => !walking && cabinImage?.IsOpen != true &&
+                                contacts.Count > 0 && InsideZone(vehicleBody.worldCenterOfMass) &&
                                 vehicle.Speed <= exitSpeed && vehicle.HasGroundContact;
 
         private void Awake()
@@ -42,6 +44,7 @@ namespace EcoElectry.Unity.Levels
                 return;
             }
 
+            cabinImage = cockpitView.GetComponent<IntroductionCabinImage>();
             exit = new InputAction("Salir de la camioneta", InputActionType.Button, "<Keyboard>/e");
         }
 
@@ -181,7 +184,7 @@ namespace EcoElectry.Unity.Levels
 
         private void OnGUI()
         {
-            if (walking || exit == null) return;
+            if (walking || exit == null || cabinImage?.IsOpen == true) return;
             if (promptStyle == null)
             {
                 promptStyle = new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleCenter, wordWrap = true };

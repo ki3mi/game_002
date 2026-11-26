@@ -153,9 +153,12 @@ namespace EcoElectry.Unity.Player
             }
         }
 
-        private void Apply()
+        private void Apply() => ApplyEnvironment(level / 100f);
+
+        internal void RestoreEnvironment() => ApplyEnvironment(1f);
+
+        private void ApplyEnvironment(float multiplier)
         {
-            float multiplier = level / 100f;
             if (view.gameObject.scene == SceneManager.GetActiveScene())
             {
                 RenderSettings.ambientLight = ScaleColor(ambient, multiplier);

@@ -67,6 +67,8 @@ namespace EcoElectry.Editor.Levels
             OrientApproachSigns(level);
             OrientCampusSignText(level.Find("SchoolExterior/RotuloColegio"));
             KeepLargeFacadeMeshesUnbatched(level.Find("SchoolExterior/BuildingA"));
+            foreach (TextMesh sign in level.GetComponentsInChildren<TextMesh>(true))
+                HorrorCorridorEnvironment.ConfigureSignText(sign);
 
             ChunkRenderWindow chunks = level.GetComponent<ChunkRenderWindow>();
             if (chunks == null)
@@ -239,7 +241,8 @@ namespace EcoElectry.Editor.Levels
             RemoveChild(truck, CabinCameraName);
             Camera camera = CreateIntroductionCamera(truck, CabinCameraName, new Vector3(-0.455f, 1.55f, -0.12f), 68f);
             camera.transform.localRotation = Quaternion.Euler(3.5f, 0f, 0f);
-            HorrorCorridorImage.AddVolume(camera, profile);
+            ConfigureIntroductionCameraImage(camera, profile);
+            camera.gameObject.AddComponent<IntroductionCabinImage>();
             return camera;
         }
 
@@ -265,11 +268,7 @@ namespace EcoElectry.Editor.Levels
             capsule.minMoveDistance = 0f;
 
             Camera camera = CreateIntroductionCamera(player, WalkingCameraName, Vector3.up * 1.65f, 67f);
-            HorrorCorridorImage.Build(camera, profile);
-            var signal = new SerializedObject(camera.GetComponent<CorridorSignalGlitch>());
-            signal.FindProperty("displacement").floatValue = 0.0025f;
-            signal.FindProperty("flickerDepth").floatValue = 0.20f;
-            signal.ApplyModifiedPropertiesWithoutUndo();
+            ConfigureIntroductionCameraImage(camera, profile);
 
             Transform lamp = Group(player.gameObject.scene, camera.transform, "Linterna", new Vector3(0.1f, -0.12f, 0.02f));
             lamp.gameObject.isStatic = false;
@@ -285,10 +284,19 @@ namespace EcoElectry.Editor.Levels
             data.FindProperty("flashlightStartsOn").boolValue = false;
             data.FindProperty("flashlightFlickerDepth").floatValue = 0.36f;
             data.FindProperty("walkSpeed").floatValue = 2.25f;
-            data.FindProperty("brightnessPreferenceKey").stringValue = "EcoElectry.Introduction.Night.Brightness";
-            data.FindProperty("grainPreferenceKey").stringValue = "EcoElectry.Introduction.Night.Grain";
+            data.FindProperty("brightnessPreferenceKey").stringValue = IntroductionCabinImage.BrightnessKey;
+            data.FindProperty("grainPreferenceKey").stringValue = IntroductionCabinImage.GrainKey;
             data.ApplyModifiedPropertiesWithoutUndo();
             return capsule;
+        }
+
+        private static void ConfigureIntroductionCameraImage(Camera camera, VolumeProfile profile)
+        {
+            HorrorCorridorImage.Build(camera, profile);
+            var signal = new SerializedObject(camera.GetComponent<CorridorSignalGlitch>());
+            signal.FindProperty("displacement").floatValue = 0.0025f;
+            signal.FindProperty("flickerDepth").floatValue = 0.20f;
+            signal.ApplyModifiedPropertiesWithoutUndo();
         }
 
         private static Camera CreateIntroductionCamera(Transform parent, string name, Vector3 localPosition, float fov)
