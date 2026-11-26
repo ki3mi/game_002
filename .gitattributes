@@ -169,4 +169,7 @@ Packages/packages-lock.json linguist-generated
 
 # Exceptions for .asset files such as lightning pre-baking
 LightingData.asset     binary
+Assets/EcoElectry/Content/Terrain/Level00/FantasyForest_*.asset binary !eol !unity-yaml !linguist-language
+Assets/EcoElectry/Content/Terrain/Level00/Level00TerrainData.asset binary !eol !unity-yaml !linguist-language
 Assets/EcoElectry/Content/Terrain/Level01/RuralTerrainData.asset binary !eol !unity-yaml !linguist-language
+Assets/EcoElectry/ThirdParty/FantasyForest/Terrain/FantasyForestDemoTerrain.asset binary !eol !unity-yaml !linguist-language
