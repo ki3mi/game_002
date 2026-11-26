@@ -9,8 +9,8 @@ Crear `Assets/EcoElectry/Content/Scenes/Level00-Introduction.unity`. Guardar los
 | Recurso | Uso en esta etapa |
 | --- | --- |
 | **Fantasy Forest Environment Free Sample** | Partir de la escena de muestra, su terreno y sus prefabs de árbol y pasto. Copiar los datos de terreno antes de esculpirlos y prolongar el paisaje con módulos de terreno propios. |
-| **Ezereal Assets · Electric Truck** | Usar `Ezereal Car Controller/Prefabs/More Prefabs/Truck only/Electric Truck.prefab` como referencia del ancho, longitud y altura del vehículo. Colocarlo a escala original y dejar su `Rigidbody` cinemático en la instancia de prueba. Usar esa referencia al revisar las curvas, el estacionamiento y el espacio para bajar. |
-| **Kansai University (Takatsuki) · Building A** | Usar `Prefab/Building/A_Tou.prefab` como fachada principal. Ajustar la escala de una instancia o variante del nivel. El resto de edificaciones del paquete sirve como referencia de materiales, ritmo de ventanas y proporciones para los anexos. |
+| **Ezereal Assets · Electric Truck** | Usar `ThirdParty/Ezereal/ElectricTruck/Prefabs/Electric Truck.prefab` como referencia del ancho, longitud y altura del vehículo. Colocarlo a escala original y dejar su `Rigidbody` cinemático en la instancia de prueba. Usar esa referencia al revisar las curvas, el estacionamiento y el espacio para bajar. |
+| **Kansai University (Takatsuki) · Building A** | Usar `ThirdParty/Kansai/BuildingA/Prefabs/A_Tou.prefab` como fachada principal. Ajustar la escala de una instancia o variante del nivel. |
 | **ResourcePack** | Completar la vegetación con otras siluetas de árbol y arbusto, y revisar los prefabs de portón, entrada peatonal y cercas para el perímetro. Usar volúmenes provisionales para las piezas que aún no tengan un modelo apropiado. |
 
 ## Orden de montaje

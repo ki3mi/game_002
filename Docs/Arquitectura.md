@@ -18,6 +18,7 @@ Assets/EcoElectry/
     Models/          Modelos 3D, materiales y texturas
     Prefabs/         Jugador, NPC, estructuras, equipos y pantallas reutilizables
     Scenes/          Inicio, exterior, secciones interiores y escenas de prueba
+  ThirdParty/        Assets importados y dependencias, agrupados por paquete
   Editor/            Herramientas de edición y validación de contenido
   Tests/
     EditMode/        Reglas, datos y operaciones de guardado
@@ -25,6 +26,8 @@ Assets/EcoElectry/
 ```
 
 Usar nombres de archivo y espacios de nombres coherentes con su función, como `EcoElectry.Domain.Electrical` o `EcoElectry.Unity.Player`. Un componente reutilizable se implementa una vez y se configura por instancia, mediante datos o referencias serializadas. Los nombres de carpetas y archivos técnicos se escriben sin espacios ni tildes. Los textos que ve el jugador conservan el español.
+
+Los recursos importados de Ezereal, Fantasy Forest, Kansai e Idyllic Fantasy Nature se organizan en `Assets/EcoElectry/ThirdParty/`. Las variantes y escenas propias siguen en `Content/`. Idyllic Fantasy Nature se conserva completo para niveles futuros. Los paquetes originales de esta reorganización quedan como respaldo local en `Papelera/`, junto a `Assets/` y fuera de la importación de Unity.
 
 ## Capas y dependencias
 

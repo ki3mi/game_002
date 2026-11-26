@@ -6,7 +6,6 @@ using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
-using EcoElectry.Unity.Player;
 using Object = UnityEngine.Object;
 
 namespace EcoElectry.Editor.Levels
@@ -14,6 +13,7 @@ namespace EcoElectry.Editor.Levels
     internal static partial class Level00IntroductionBuilder
     {
         private const string ScenePath = "Assets/EcoElectry/Content/Scenes/Level00-Introduction.unity";
+        private const string ThirdPartyRoot = "Assets/EcoElectry/ThirdParty";
         private const string TerrainFolder = "Assets/EcoElectry/Content/Terrain/Level00";
         private const string MeshFolder = TerrainFolder + "/Meshes";
         private const string PrefabFolder = "Assets/EcoElectry/Content/Prefabs/Level00";
@@ -95,11 +95,10 @@ namespace EcoElectry.Editor.Levels
             TerrainGrid terrain = CreateTerrain(Group(scene, level, "Terrain"), Group(scene, level, "Forest"), path);
             BuildHighway(level, path, terrain, palette);
             BuildSchoolExterior(level, terrain, palette);
-            BuildMaintenance(level, terrain, palette);
+            BuildMaintenance(level, terrain);
             BuildForestTrail(level, terrain, palette);
             BuildMarkers(level, path, terrain);
-            BuildLighting(level);
-            BuildPlayer(level);
+            ConfigureNightIntroduction(level);
 
             EditorSceneManager.MarkSceneDirty(scene);
             if (!EditorSceneManager.SaveScene(scene, ScenePath))
@@ -371,7 +370,7 @@ namespace EcoElectry.Editor.Levels
             Vector3 right = Vector3.Cross(Vector3.up, tangent).normalized;
             Transform sign = Group(SceneManager.GetActiveScene(), parent,
                 "Senal_" + text.Replace(" ", "_"), point + right * 10.5f);
-            sign.rotation = Quaternion.LookRotation(-tangent, Vector3.up);
+            sign.rotation = Quaternion.LookRotation(tangent, Vector3.up);
             float width = large ? 3.6f : 1.6f;
             float height = large ? 1.15f : 0.72f;
             Block(sign, "Poste", new Vector3(0f, 1.15f, 0f), new Vector3(0.12f, 2.3f, 0.12f), palette.Steel);
@@ -410,22 +409,6 @@ namespace EcoElectry.Editor.Levels
             CreateMeshObject(parking, MeshFolder + "/Level00_ParkingMarkings.asset",
                 "Lineas de estacionamiento", markings, palette.Paint, false);
 
-            GameObject truckPrefab = LoadPrefab("Assets/Ezereal Assets/Ezereal Car Controller/Prefabs/More Prefabs/Truck only/Electric Truck.prefab");
-            GameObject truck = PlacePrefab(truckPrefab, parking, new Vector3(TruckX, y, TruckZ),
-                90f, Vector3.one, "ElectricTruck_Reference_Scale1");
-            Rigidbody body = truck.GetComponent<Rigidbody>();
-            if (body != null)
-            {
-                body.isKinematic = true;
-                body.useGravity = false;
-                PrefabUtility.RecordPrefabInstancePropertyModifications(body);
-            }
-            for (int i = 0; i < truck.GetComponentsInChildren<MonoBehaviour>(true).Length; i++)
-            {
-                MonoBehaviour behaviour = truck.GetComponentsInChildren<MonoBehaviour>(true)[i];
-                if (behaviour != null) behaviour.enabled = false;
-            }
-
             PlacePrefab(LoadPrefab("Assets/ResourcePack/Poste/Prefabs/PosteLuz.prefab"), parking,
                 new Vector3(170f, GroundAt(terrain, 170f, 3422f), 3422f), 0f, Vector3.one, "PosteLuz_Estacionamiento_Oeste");
             PlacePrefab(LoadPrefab("Assets/ResourcePack/Poste/Prefabs/PosteLuz.prefab"), parking,
@@ -443,7 +426,7 @@ namespace EcoElectry.Editor.Levels
         {
             Transform school = Group(SceneManager.GetActiveScene(), level, "SchoolExterior");
             Transform buildingGroup = Group(SceneManager.GetActiveScene(), school, "BuildingA");
-            GameObject buildingPrefab = LoadPrefab("Assets/Kansai University (Takatsuki)/Prefab/Building/A_Tou.prefab");
+            GameObject buildingPrefab = LoadPrefab(ThirdPartyRoot + "/Kansai/BuildingA/Prefabs/A_Tou.prefab");
             Bounds localBounds = PrefabLocalBounds(buildingPrefab);
             const float buildingScale = 0.65f;
             float buildingGround = GroundAt(terrain, SchoolX, SchoolZ);
@@ -543,12 +526,34 @@ namespace EcoElectry.Editor.Levels
             Transform sign = Group(SceneManager.GetActiveScene(), parent, "RotuloColegio",
                 new Vector3(235f, GroundAt(terrain, 235f, 3386f), 3386f));
             sign.rotation = Quaternion.Euler(0f, 180f, 0f);
-            sign.localScale = new Vector3(-1f, 1f, 1f);
             Block(sign, "Base", new Vector3(0f, 0.18f, 0f), new Vector3(5.4f, 0.36f, 0.55f), palette.Concrete);
             Block(sign, "Poste_I", new Vector3(-2.05f, 1.28f, 0f), new Vector3(0.20f, 2.56f, 0.20f), palette.Steel);
             Block(sign, "Poste_D", new Vector3(2.05f, 1.28f, 0f), new Vector3(0.20f, 2.56f, 0.20f), palette.Steel);
             Block(sign, "Placa", new Vector3(0f, 2.13f, 0f), new Vector3(4.65f, 0.86f, 0.14f), palette.Sign);
             Label(sign, new Vector3(0f, 2.13f, -0.085f), "COLEGIO", 4.35f, 0.60f, palette.SignText, 1.1f);
+            OrientCampusSignText(sign);
+        }
+
+        private static void OrientCampusSignText(Transform sign)
+        {
+            if (sign == null) return;
+            Vector3 baseScale = sign.localScale;
+            if (baseScale.x < 0f)
+            {
+                baseScale.x = -baseScale.x;
+                sign.localScale = baseScale;
+                foreach (Transform child in sign)
+                {
+                    Vector3 position = child.localPosition;
+                    position.x = -position.x;
+                    child.localPosition = position;
+                }
+            }
+            TextMesh text = sign.GetComponentInChildren<TextMesh>();
+            if (text == null) return;
+            Vector3 textScale = text.transform.localScale;
+            textScale.x = -Mathf.Abs(textScale.x);
+            text.transform.localScale = textScale;
         }
 
         private static void BuildGuardBooth(Transform root, Palette palette)
@@ -595,100 +600,13 @@ namespace EcoElectry.Editor.Levels
 
         private static void BuildWalkway(Transform parent, TerrainGrid terrain, Palette palette)
         {
-            const float pavedY = ParkingSurface + 0.065f;
-            Transform pathRoot = Group(SceneManager.GetActiveScene(), parent, "SenderoPeatonal");
-            var mesh = new MeshBuilder();
-            var frontWalk = new PathData(new[]
-            {
-                new Vector3(PedestrianGateX, CampusGrade + 0.04f, GateZ - 2f),
-                new Vector3(PedestrianGateX, pavedY, 3393f),
-                new Vector3(PedestrianGateX, pavedY, 3464f)
-            }.ToList());
-            AddRibbon(mesh, frontWalk, 1.65f);
-            AddRibbon(mesh, new PathData(new List<Vector3>
-            {
-                new Vector3(GuardX - 0.85f, pavedY, GuardZ - 3f),
-                new Vector3(PedestrianGateX - 0.825f, pavedY, GuardZ - 3f)
-            }), 1.65f);
-            AddRibbon(mesh, new PathData(new List<Vector3>
-            {
-                new Vector3(PedestrianGateX + 0.825f, pavedY, 3464f),
-                new Vector3(260f, pavedY, 3464f),
-                new Vector3(260f, CampusGrade + 0.15f, 3466f)
-            }), 1.65f);
-            CreateMeshObject(pathRoot, MeshFolder + "/Level00_Walkway.asset",
-                "Sendero_de_servicio", mesh, palette.Concrete, true);
+            BuildCobblestonePaths(parent);
 
             Transform entrance = Group(SceneManager.GetActiveScene(), parent, "CaminoMantenimiento",
                 new Vector3(258f, GroundAt(terrain, 258f, 3465f) + 0.07f, 3465f));
             entrance.rotation = Quaternion.Euler(0f, 90f, 0f);
             Block(entrance, "Señal", new Vector3(1.0f, 1.3f, 0f), new Vector3(2.0f, 0.75f, 0.12f), palette.Sign);
             Label(entrance, new Vector3(1.0f, 1.3f, -0.075f), "MANTENIMIENTO", 1.8f, 0.55f, palette.SignText, 0.66f);
-        }
-
-        private static void BuildMaintenance(Transform level, TerrainGrid terrain, Palette palette)
-        {
-            Transform maintenance = Group(SceneManager.GetActiveScene(), level, "Maintenance");
-            Transform workRoom = Group(SceneManager.GetActiveScene(), maintenance, "SalaDeMantenimiento",
-                new Vector3(260f, GroundAt(terrain, 260f, 3470f), 3470f));
-            BuildMaintenanceRoom(workRoom, palette);
-
-            Transform link = Group(SceneManager.GetActiveScene(), maintenance, "EnlaceCubierto",
-                new Vector3(253.5f, GroundAt(terrain, 253.5f, 3474f), 3474f));
-            Block(link, "Piso", new Vector3(0f, 0.08f, 0f), new Vector3(3.2f, 0.16f, 4.0f), palette.Concrete);
-            Block(link, "Techo", new Vector3(0f, 2.75f, 0f), new Vector3(3.2f, 0.20f, 4.0f), palette.Roof);
-            Block(link, "Muro_lateral", new Vector3(-1.48f, 1.4f, 0f), new Vector3(0.18f, 2.8f, 4.0f), palette.Wall);
-            Block(link, "Muro_fondo", new Vector3(0f, 1.4f, 1.92f), new Vector3(3.2f, 2.8f, 0.16f), palette.Wall);
-        }
-
-        private static void BuildMaintenanceRoom(Transform root, Palette palette)
-        {
-            const float width = 10f;
-            const float depth = 8f;
-            const float wallHeight = 3.45f;
-            Block(root, "Piso", new Vector3(0f, 0.10f, 0f), new Vector3(width, 0.20f, depth), palette.Concrete);
-            Block(root, "Muro_norte", new Vector3(0f, wallHeight * 0.5f, depth * 0.5f - 0.12f),
-                new Vector3(width, wallHeight, 0.24f), palette.Wall);
-            Block(root, "Muro_oeste", new Vector3(-width * 0.5f + 0.12f, wallHeight * 0.5f, 0f),
-                new Vector3(0.24f, wallHeight, depth), palette.Wall);
-            Block(root, "Muro_este", new Vector3(width * 0.5f - 0.12f, wallHeight * 0.5f, 0f),
-                new Vector3(0.24f, wallHeight, depth), palette.Wall);
-            Block(root, "Frente_izquierda", new Vector3(-3.55f, wallHeight * 0.5f, -depth * 0.5f + 0.12f),
-                new Vector3(2.9f, wallHeight, 0.24f), palette.Wall);
-            Block(root, "Frente_derecha", new Vector3(3.55f, wallHeight * 0.5f, -depth * 0.5f + 0.12f),
-                new Vector3(2.9f, wallHeight, 0.24f), palette.Wall);
-            Block(root, "Dintel_puerta", new Vector3(0f, 2.95f, -depth * 0.5f + 0.12f),
-                new Vector3(4.2f, 1.0f, 0.24f), palette.Wall);
-            Block(root, "Techo", new Vector3(0f, wallHeight + 0.12f, 0f),
-                new Vector3(width + 0.3f, 0.24f, depth + 0.3f), palette.Roof);
-
-            Transform door = Group(SceneManager.GetActiveScene(), root, "Hoja_puerta", new Vector3(0.77f, 1.12f, -3.74f));
-            door.rotation = Quaternion.Euler(0f, -68f, 0f);
-            Block(door, "Hoja", new Vector3(-0.77f, 0f, 0f), new Vector3(1.54f, 2.24f, 0.10f), palette.Door);
-
-            Block(root, "Rotulo_exterior", new Vector3(0f, 3.06f, -4.18f), new Vector3(4.8f, 0.42f, 0.11f), palette.Sign);
-            Label(root, new Vector3(0f, 3.06f, -4.25f), "MANTENIMIENTO", 4.5f, 0.30f, palette.SignText, 0.82f);
-
-            Block(root, "Banco_superficie", new Vector3(0f, 1.04f, 2.20f), new Vector3(4.1f, 0.16f, 0.85f), palette.Wood);
-            for (int side = -1; side <= 1; side += 2)
-            for (int x = -1; x <= 1; x += 2)
-                Block(root, "Banco_pata", new Vector3(x * 1.82f, 0.54f, 2.20f + side * 0.30f),
-                    new Vector3(0.14f, 1.0f, 0.14f), palette.Steel);
-            Block(root, "Televisor_CRT", new Vector3(-0.8f, 1.68f, 2.18f), new Vector3(1.10f, 0.86f, 0.78f), palette.Metal);
-            Block(root, "Pantalla_CRT", new Vector3(-0.8f, 1.73f, 1.775f), new Vector3(0.78f, 0.57f, 0.035f), palette.Screen, false);
-            Block(root, "Videocasetera_VHS", new Vector3(0.82f, 1.34f, 2.12f), new Vector3(0.68f, 0.22f, 0.48f), palette.Metal);
-            Block(root, "Cinta_VHS_Encargo", new Vector3(1.63f, 1.26f, 2.05f), new Vector3(0.20f, 0.07f, 0.13f), palette.Accent);
-            Label(root, new Vector3(1.63f, 1.39f, 2.0f), "VHS", 0.4f, 0.12f, palette.SignText, 0.45f);
-
-            Block(root, "Armario_metalico", new Vector3(-3.75f, 1.35f, 1.45f), new Vector3(1.15f, 2.7f, 0.82f), palette.Metal);
-            Block(root, "Estanteria_lateral", new Vector3(4.1f, 1.65f, 1.10f), new Vector3(0.42f, 3.2f, 3.0f), palette.Steel);
-            Block(root, "Caja_repuestos_1", new Vector3(4.05f, 0.62f, 0.55f), new Vector3(0.58f, 0.48f, 0.54f), palette.Wood);
-            Block(root, "Caja_repuestos_2", new Vector3(4.05f, 1.28f, 1.40f), new Vector3(0.58f, 0.48f, 0.54f), palette.Crate);
-            Block(root, "Carrete_cable", new Vector3(-2.0f, 0.48f, 1.0f), new Vector3(0.8f, 0.82f, 0.38f), palette.Accent);
-            Block(root, "Tablero_herramientas", new Vector3(-4.72f, 2.28f, 0.1f), new Vector3(0.08f, 1.65f, 2.9f), palette.Steel);
-            for (int i = 0; i < 5; i++)
-                Block(root, "Herramienta_" + i, new Vector3(-4.65f, 2.25f, -0.8f + i * 0.42f),
-                    new Vector3(0.10f, 0.78f, 0.08f), i % 2 == 0 ? palette.Accent : palette.Concrete, false);
         }
 
         private static void BuildForestTrail(Transform level, TerrainGrid terrain, Palette palette)
@@ -704,15 +622,16 @@ namespace EcoElectry.Editor.Levels
         private static void BuildMarkers(Transform level, PathData road, TerrainGrid terrain)
         {
             Transform markers = Group(SceneManager.GetActiveScene(), level, "Markers");
-            Vector3 start = road.AtDistance(0f);
-            Vector3 startDirection = FlatDirection(road.AtDistance(0f), road.AtDistance(4f));
+            Vector3 start = road.AtDistance(5.5f);
+            Vector3 startDirection = FlatDirection(start, road.AtDistance(9f));
             Marker(markers, "VehicleStart", start, startDirection);
             Marker(markers, "VehicleParking", new Vector3(TruckX, ParkingSurface, TruckZ), Vector3.right);
             Marker(markers, "OnFootExit", new Vector3(TruckX + 0.8f, ParkingSurface + 0.04f, TruckZ + 2.1f), Vector3.back);
             Marker(markers, "GuardVoicePoint", new Vector3(GuardX, ParkingSurface + 1.665f, GuardZ - 1.65f), Vector3.back);
             Marker(markers, "ForestEdge", new Vector3(305f, GroundAt(terrain, 305f, 3445f), 3445f), Vector3.right);
             Marker(markers, "ForestDepth", new Vector3(430f, GroundAt(terrain, 430f, 3535f), 3535f), Vector3.right);
-            Marker(markers, "VHSPlaybackPoint", new Vector3(260f, GroundAt(terrain, 260f, 3470f) + 1.4f, 3470f), Vector3.forward);
+            Transform room = level.Find("Maintenance/SalaDeMantenimiento");
+            Marker(markers, "VHSPlaybackPoint", room.TransformPoint(VhsAnchor), -room.forward);
             Marker(markers, "Level1Door", new Vector3(SchoolX, GroundAt(terrain, SchoolX, 3465f), 3465f), Vector3.back);
             Marker(markers, "BuildingA_Scale0_65_Dim64x25x9m",
                 new Vector3(SchoolX, GroundAt(terrain, SchoolX, SchoolZ), SchoolZ), Vector3.forward);
@@ -725,74 +644,6 @@ namespace EcoElectry.Editor.Levels
             Transform marker = Group(SceneManager.GetActiveScene(), parent, name, position);
             if (forward.sqrMagnitude > 0.001f)
                 marker.rotation = Quaternion.LookRotation(forward.normalized, Vector3.up);
-        }
-
-        private static void BuildLighting(Transform level)
-        {
-            Transform lighting = Group(SceneManager.GetActiveScene(), level, "Lighting");
-            GameObject sun = new GameObject("Directional Light");
-            sun.transform.SetParent(lighting, false);
-            sun.transform.rotation = Quaternion.Euler(38f, -34f, 0f);
-            Light directional = sun.AddComponent<Light>();
-            directional.type = LightType.Directional;
-            directional.intensity = 1.0f;
-            directional.color = new Color(1f, 0.94f, 0.82f);
-            directional.shadows = LightShadows.Soft;
-            RenderSettings.ambientMode = AmbientMode.Flat;
-            RenderSettings.ambientLight = new Color(0.46f, 0.49f, 0.48f);
-            RenderSettings.ambientIntensity = 1f;
-            RenderSettings.fog = true;
-            RenderSettings.fogMode = FogMode.ExponentialSquared;
-            RenderSettings.fogColor = new Color32(148, 170, 184, 255);
-            RenderSettings.fogDensity = 0.0028f;
-            RenderSettings.sun = directional;
-        }
-
-        private static void BuildPlayer(Transform level)
-        {
-            Transform markers = level.Find("Markers");
-            Vector3 position = new Vector3(TruckX + 3.6f, ParkingSurface + 0.04f, TruckZ - 2.4f);
-            Vector3 direction = FlatDirection(position, new Vector3(GuardX, ParkingSurface, GuardZ));
-            Marker(markers, "PlayerSpawn", position, direction);
-            Transform spawn = markers.Find("PlayerSpawn");
-            Transform player = Group(SceneManager.GetActiveScene(), level, "Player", spawn.position);
-            var controller = player.gameObject.AddComponent<CharacterController>();
-            controller.height = 1.78f;
-            controller.radius = 0.233f;
-            controller.center = Vector3.up * 0.89f;
-            controller.skinWidth = 0.031f;
-            controller.stepOffset = 0.35f;
-            controller.slopeLimit = 45f;
-            controller.minMoveDistance = 0f;
-
-            GameObject avatar = PlacePrefab(LoadPrefab("Assets/ResourcePack/PersonalEscuela/Prefabs/PersonalMantenimiento.prefab"),
-                player, spawn.position, spawn.eulerAngles.y, Vector3.one, "PersonalMantenimiento");
-            avatar.isStatic = false;
-            foreach (Collider collider in avatar.GetComponentsInChildren<Collider>(true))
-            {
-                collider.enabled = false;
-                PrefabUtility.RecordPrefabInstancePropertyModifications(collider);
-            }
-
-            Transform cameraNode = Group(SceneManager.GetActiveScene(), player, "Cámara de exploración");
-            GameObject cameraObject = cameraNode.gameObject;
-            Camera camera = cameraObject.AddComponent<Camera>();
-            Quaternion orbit = Quaternion.Euler(9f, spawn.eulerAngles.y, 0f);
-            cameraNode.SetPositionAndRotation(spawn.position + Vector3.up * 1.42f + orbit * (Vector3.back * 3.35f), orbit);
-            camera.fieldOfView = 58f;
-            camera.nearClipPlane = 0.06f;
-            camera.farClipPlane = 900f;
-            camera.clearFlags = CameraClearFlags.Skybox;
-            cameraObject.tag = "MainCamera";
-            cameraObject.AddComponent<AudioListener>();
-
-            var data = new SerializedObject(player.gameObject.AddComponent<ThirdPersonExplorer>());
-            data.FindProperty("controls").objectReferenceValue =
-                AssetDatabase.LoadMainAssetAtPath("Assets/ResourcePack/InputSystem_Actions.inputactions");
-            data.FindProperty("spawn").objectReferenceValue = spawn;
-            data.FindProperty("avatar").objectReferenceValue = avatar.transform;
-            data.FindProperty("view").objectReferenceValue = camera;
-            data.ApplyModifiedPropertiesWithoutUndo();
         }
 
         private static void AddRibbon(MeshBuilder mesh, PathData path, float width, TerrainGrid terrain = null)
@@ -1225,11 +1076,6 @@ namespace EcoElectry.Editor.Levels
             public readonly Material Sign;
             public readonly Material SignText;
             public readonly Material Door;
-            public readonly Material Wood;
-            public readonly Material Metal;
-            public readonly Material Screen;
-            public readonly Material Accent;
-            public readonly Material Crate;
             public readonly Material DirtPath;
 
             public Palette()
@@ -1246,11 +1092,6 @@ namespace EcoElectry.Editor.Levels
                 Sign = CreateMaterial("M_Level00_Sign", new Color32(53, 82, 72, 255), "Universal Render Pipeline/Lit", 0.08f);
                 SignText = CreateMaterial("M_Level00_SignText", new Color32(245, 231, 190, 255), "Universal Render Pipeline/Lit", 0f);
                 Door = CreateMaterial("M_Level00_Door", new Color32(81, 71, 59, 255), "Universal Render Pipeline/Lit", 0.06f);
-                Wood = CreateMaterial("M_Level00_WorkbenchWood", new Color32(102, 75, 50, 255), "Universal Render Pipeline/Lit", 0.08f);
-                Metal = CreateMaterial("M_Level00_Metal", new Color32(73, 78, 76, 255), "Universal Render Pipeline/Lit", 0.24f);
-                Screen = CreateMaterial("M_Level00_Screen", new Color32(21, 27, 29, 255), "Universal Render Pipeline/Lit", 0.22f);
-                Accent = CreateMaterial("M_Level00_Accent", new Color32(152, 76, 56, 255), "Universal Render Pipeline/Lit", 0.08f);
-                Crate = CreateMaterial("M_Level00_Crate", new Color32(126, 112, 85, 255), "Universal Render Pipeline/Lit", 0.05f);
                 DirtPath = CreateMaterial("M_Level00_DirtPath", new Color32(123, 106, 77, 255), "Universal Render Pipeline/Lit", 0.02f);
             }
         }

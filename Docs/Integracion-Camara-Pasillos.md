@@ -120,7 +120,7 @@ Cuando la luz base esté lista, baja el entorno al **1 %** y alterna **F**. Con 
 
 ## Ejemplo en un escenario abierto
 
-La escena de prueba del bosque reutiliza la misma jerarquía. Usa **Far = 1000 m**, el perfil **FantasyForestNightProfile** con Film Grain, Vignette y Color Adjustments, y la clave de brillo `EcoElectry.FantasyForest.Brightness`. La cámara usa **Displacement = 0,0045** para el glitch de banda horizontal y **Flicker Depth = 0** para el oscurecimiento periódico. El shader también aplica la interferencia de grano alto. La linterna conserva su parpadeo. [Escena del bosque](<../Assets/Fantasy Forest Environment Free Sample/Scenes/demoScene_free.unity>) · [Perfil del bosque](<../Assets/Fantasy Forest Environment Free Sample/Scenes/FantasyForestNightProfile.asset>)
+La escena de prueba del bosque reutiliza la misma jerarquía. Usa **Far = 1000 m**, el perfil **FantasyForestNightProfile** con Film Grain, Vignette y Color Adjustments, y la clave de brillo `EcoElectry.FantasyForest.Brightness`. La cámara usa **Displacement = 0,0045** para el glitch de banda horizontal y **Flicker Depth = 0** para el oscurecimiento periódico. El shader también aplica la interferencia de grano alto. La linterna conserva su parpadeo. [Escena del bosque](../Assets/EcoElectry/ThirdParty/FantasyForest/Scenes/demoScene_free.unity) · [Perfil del bosque](../Assets/EcoElectry/ThirdParty/FantasyForest/Scenes/FantasyForestNightProfile.asset)
 
 El bosque usa iluminación ambiental **Color** `#2B3548`, sin material de skybox, y reduce los reflejos a **0,15**. Su niebla **Exponential Squared** es más azul y densa que la del interior, con color `#0A111F` y densidad **0,042**.
 

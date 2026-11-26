@@ -11,7 +11,7 @@ namespace EcoElectry.Editor.Levels
     internal static partial class Level00IntroductionBuilder
     {
         private const string FantasyTerrainPath =
-            "Assets/Fantasy Forest Environment Free Sample/Scenes/New Terrain.asset";
+            ThirdPartyRoot + "/FantasyForest/Terrain/FantasyForestDemoTerrain.asset";
         private const string UnderstoryName = "Sotobosque";
         private const float TileSize = 300f;
         private const float TerrainX = -480f;

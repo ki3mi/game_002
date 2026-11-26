@@ -12,7 +12,7 @@ namespace EcoElectry.Editor.Levels
     {
         private const string CampusDecorationName = "Decoración del campus";
         private const string FantasyTreePath =
-            "Assets/Fantasy Forest Environment Free Sample/Meshes/Prefabs/tree_1.prefab";
+            ThirdPartyRoot + "/FantasyForest/Prefabs/tree_1.prefab";
 
         [MenuItem("Tools/EcoElectry/Nivel 00/Actualizar decoración del campus")]
         internal static void RefreshCampusDecoration()
@@ -28,6 +28,8 @@ namespace EcoElectry.Editor.Levels
                 throw new InvalidOperationException("El nivel 00 debe tener montado el exterior del colegio y sus terrenos.");
 
             BuildCampusDecoration(school, TerrainGrid.FromRoot(terrains));
+            if (level.transform.Find(ChunkGeometryName) != null)
+                ConfigureChunkRendering(level.transform);
             EditorSceneManager.MarkSceneDirty(scene);
             if (!EditorSceneManager.SaveScene(scene))
                 throw new InvalidOperationException("No se pudo guardar la decoración del campus.");
@@ -50,9 +52,9 @@ namespace EcoElectry.Editor.Levels
                     float x = PedestrianGateX + side * 3.55f;
                     Transform bed = GardenBed(entrance, assets, x, z, ParkingSurface, 2.35f, 5.1f);
                     Plant(assets.Tree, bed, 0f, 0f, 0.29f + i * 0.025f, 30f + 74f * i + 35f * side);
-                    Plant(assets.Flowers, bed, 0.1f, -1.48f, 0.78f, 40f);
-                    Plant(assets.Shrub, bed, -0.35f, 1.46f, 0.9f, 120f);
-                    Plant(assets.Flowers, bed, 0.41f, 1.86f, 0.60f, 82f);
+                    assets.Nature.Flowers.Plant(bed, 0.1f, -1.48f, 0.78f, 40f);
+                    assets.Nature.Shrubs.Plant(bed, -0.35f, 1.46f, 0.9f, 120f);
+                    assets.Nature.Flowers.Plant(bed, 0.41f, 1.86f, 0.60f, 82f);
                 }
                 PlacePrefab(assets.Lamp, entrance, new Vector3(222.15f, ParkingSurface, z + 4.6f), 0f, Vector3.one, "Luminaria del paseo");
             }
@@ -64,9 +66,9 @@ namespace EcoElectry.Editor.Levels
             {
                 const float z = 3385.5f;
                 Transform bed = GardenBed(entrance, assets, x, z, GroundAt(terrain, x, z), 4.0f, 1.65f);
-                Plant(assets.Flowers, bed, -1.22f, 0f, 0.76f, 35f);
-                Plant(assets.Hedge, bed, 0f, 0.2f, 0.85f, 0f);
-                Plant(assets.Flowers, bed, 1.23f, 0f, 0.76f, 85f);
+                assets.Nature.Flowers.Plant(bed, -1.22f, 0f, 0.76f, 35f);
+                assets.Nature.Hedges.Plant(bed, 0f, 0.2f, 0.85f, 0f);
+                assets.Nature.Flowers.Plant(bed, 1.23f, 0f, 0.76f, 85f);
             }
 
             Transform front = Group(scene, campus, "Plaza escolar");
@@ -76,8 +78,8 @@ namespace EcoElectry.Editor.Levels
             {
                 Transform bed = GardenBed(front, assets, x, 3460f, plazaY, 4.25f, 3.05f);
                 Plant(assets.Tree, bed, 0f, 0.25f, x < 200f ? 0.42f : 0.33f, x * 3f);
-                Plant(assets.Flowers, bed, -1.26f, -0.75f, 0.75f, 25f);
-                Plant(assets.Hedge, bed, 0.9f, -0.76f, 0.72f, 0f);
+                assets.Nature.Flowers.Plant(bed, -1.26f, -0.75f, 0.75f, 25f);
+                assets.Nature.Hedges.Plant(bed, 0.9f, -0.76f, 0.72f, 0f);
                 Bench(front, assets, x, plazaY, 3456.9f, 0f);
             }
             NoticeBoard(front, assets, 228.7f, plazaY, 3459.7f);
@@ -129,9 +131,9 @@ namespace EcoElectry.Editor.Levels
         {
             Transform bed = GardenBed(parent, assets, x, z, GroundAt(terrain, x, z), 4.3f, 2.1f, yaw);
             Plant(assets.Tree, bed, 0f, 0.1f, 0.37f, x + z);
-            Plant(assets.Hedge, bed, -1.35f, 0.22f, 0.8f, 90f);
-            Plant(assets.Flowers, bed, 1.1f, -0.45f, 0.84f, 38f);
-            Plant(assets.Shrub, bed, 1.54f, 0.32f, 0.74f, 74f);
+            assets.Nature.Hedges.Plant(bed, -1.35f, 0.22f, 0.8f, 90f);
+            assets.Nature.Flowers.Plant(bed, 1.1f, -0.45f, 0.84f, 38f);
+            assets.Nature.Shrubs.Plant(bed, 1.54f, 0.32f, 0.74f, 74f);
         }
 
         private static Transform GardenBed(Transform parent, CampusAssets assets, float x, float z, float y,
@@ -144,16 +146,21 @@ namespace EcoElectry.Editor.Levels
             return Group(parent.gameObject.scene, bed, "Plantación", Vector3.up * 0.315f);
         }
 
-        private static GameObject Plant(GameObject prefab, Transform parent, float x, float z, float scale, float yaw)
+        private static void Plant(GameObject prefab, Transform parent, float x, float z, float scale, float yaw)
         {
             GameObject item = PlacePrefab(prefab, parent, parent.TransformPoint(x, 0f, z),
                 parent.eulerAngles.y + yaw, Vector3.one * scale, prefab.name);
+            DisablePlantColliders(item);
+        }
+
+        private static void DisablePlantColliders(GameObject item)
+        {
             foreach (Collider collider in item.GetComponentsInChildren<Collider>(true))
             {
+                if (!collider.enabled) continue;
                 collider.enabled = false;
                 PrefabUtility.RecordPrefabInstancePropertyModifications(collider);
             }
-            return item;
         }
 
         private static void Paving(Transform parent, CampusAssets assets, string name, float x, float y, float z, float width, float depth)
@@ -304,9 +311,8 @@ namespace EcoElectry.Editor.Levels
                     Vector3 position = new Vector3(x, GroundAt(terrain, x, z), z);
                     Transform clump = Group(parent.gameObject.scene, parent, "Sotobosque del perímetro", position);
                     bool grass = i == 1;
-                    GameObject plant = Plant(grass ? assets.Grass : assets.Shrub, clump, 0f, 0f,
-                        grass ? 1.4f : 1.15f, (float)random.NextDouble() * 360f);
-                    if (grass) ApplyMaterialOverride(plant, assets.GrassMaterial);
+                    var plants = grass ? assets.Nature.Grass : assets.Nature.Shrubs;
+                    plants.Plant(clump, 0f, 0f, grass ? 1.4f : 1.15f, (float)random.NextDouble() * 360f);
                 }
             }
         }
@@ -321,27 +327,8 @@ namespace EcoElectry.Editor.Levels
             public readonly Material Green = CampusMaterial("Verde", new Color32(40, 80, 64, 255));
             public readonly Material Blue = CampusMaterial("Azul", new Color32(52, 91, 109, 255));
             public readonly GameObject Tree = LoadPrefab(FantasyTreePath);
-            public readonly GameObject Grass = LoadPrefab("Assets/Fantasy Forest Environment Free Sample/Meshes/Prefabs/grass01.prefab");
             public readonly GameObject Lamp = LoadPrefab("Assets/ResourcePack/LuminariaExterior/Prefabs/LuminariaSolarPoste.prefab");
-            public readonly GameObject Flowers = LoadPrefab("Assets/ResourcePack/Arbusto/Prefabs/ArbustoFlorido.prefab");
-            public readonly GameObject Shrub = LoadPrefab("Assets/ResourcePack/Arbusto/Prefabs/ArbustoBajo.prefab");
-            public readonly GameObject Hedge = LoadPrefab("Assets/ResourcePack/Arbusto/Prefabs/Seto.prefab");
-            public readonly Material GrassMaterial;
-
-            public CampusAssets()
-            {
-                Material original = Grass.GetComponentInChildren<Renderer>().sharedMaterial;
-                GrassMaterial = CampusMaterial("Pasto", original.GetColor("_Color"));
-                GrassMaterial.SetTexture("_BaseMap", original.GetTexture("_MainTex"));
-                GrassMaterial.SetFloat("_Cull", 0f);
-                GrassMaterial.SetFloat("_AlphaClip", 1f);
-                GrassMaterial.SetFloat("_Cutoff", original.GetFloat("_Cutoff"));
-                GrassMaterial.EnableKeyword("_ALPHATEST_ON");
-                GrassMaterial.SetOverrideTag("RenderType", "TransparentCutout");
-                GrassMaterial.renderQueue = (int)UnityEngine.Rendering.RenderQueue.AlphaTest;
-                EditorUtility.SetDirty(GrassMaterial);
-                AssetDatabase.SaveAssetIfDirty(GrassMaterial);
-            }
+            public readonly NatureCampusPlants Nature = new NatureCampusPlants();
 
             private static Material CampusMaterial(string name, Color color) =>
                 CreateMaterial("M_Level00_Campus_" + name, color, "Universal Render Pipeline/Lit", 0.16f);

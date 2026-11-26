@@ -12,10 +12,19 @@ namespace EcoElectry.Editor.Levels
         private const string Folder = "Assets/EcoElectry/Content/Rendering";
         private const string ProfilePath = Folder + "/HorrorCorridorProfile.asset";
 
-        internal static void Build(Camera camera)
+        internal static void Build(Camera camera, VolumeProfile profile = null)
         {
             Shader shader = AssetDatabase.LoadAssetAtPath<Shader>(Folder + "/CorridorSignal.shader");
             if (shader == null) throw new InvalidOperationException("Missing corridor signal shader.");
+
+            AddVolume(camera, profile ?? LoadProfile());
+            var signal = new SerializedObject(camera.gameObject.AddComponent<CorridorSignalGlitch>());
+            signal.FindProperty("signalShader").objectReferenceValue = shader;
+            signal.ApplyModifiedPropertiesWithoutUndo();
+        }
+
+        internal static void AddVolume(Camera camera, VolumeProfile profile)
+        {
             var data = camera.GetUniversalAdditionalCameraData();
             data.renderPostProcessing = true;
             int volumeLayer = LayerMask.NameToLayer("TransparentFX");
@@ -25,11 +34,7 @@ namespace EcoElectry.Editor.Levels
             image.transform.SetParent(camera.transform, false);
             var volume = image.AddComponent<Volume>();
             volume.isGlobal = true;
-            volume.sharedProfile = LoadProfile();
-
-            var signal = new SerializedObject(camera.gameObject.AddComponent<CorridorSignalGlitch>());
-            signal.FindProperty("signalShader").objectReferenceValue = shader;
-            signal.ApplyModifiedPropertiesWithoutUndo();
+            volume.sharedProfile = profile;
         }
 
         private static VolumeProfile LoadProfile()
