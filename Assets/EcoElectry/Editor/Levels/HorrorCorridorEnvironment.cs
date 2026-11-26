@@ -193,7 +193,13 @@ namespace EcoElectry.Editor.Levels
                 AssetDatabase.CreateAsset(material, path);
             }
             text.GetComponent<MeshRenderer>().sharedMaterial = material;
-            text.gameObject.AddComponent<CorridorSignText>();
+            if (!text.TryGetComponent<CorridorSignText>(out _))
+                text.gameObject.AddComponent<CorridorSignText>();
+
+            // The shader uses the sign's local front direction to receive light.
+            var flags = GameObjectUtility.GetStaticEditorFlags(text.gameObject);
+            if ((flags & StaticEditorFlags.BatchingStatic) != 0)
+                GameObjectUtility.SetStaticEditorFlags(text.gameObject, flags & ~StaticEditorFlags.BatchingStatic);
         }
 
         private void LightScene()

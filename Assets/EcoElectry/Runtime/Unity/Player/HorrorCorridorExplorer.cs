@@ -10,9 +10,12 @@ namespace EcoElectry.Unity.Player
         [SerializeField] private Camera view;
         [SerializeField] private Light flashlight;
         [SerializeField] private string flashlightBinding = "<Keyboard>/f";
+        [SerializeField] private bool flashlightStartsOn = true;
         [SerializeField, Range(0f, 1f)] private float flashlightFlickerDepth = 0.88f;
         [SerializeField] private Vector2 flashlightFlickerInterval = new Vector2(4f, 9f);
         [SerializeField] private Key brightnessMenuKey = Key.B;
+        [SerializeField] private string brightnessPreferenceKey = "";
+        [SerializeField] private string grainPreferenceKey = "";
         [SerializeField, Min(0.1f)] private float walkSpeed = 1.7f;
         [SerializeField, Min(0.01f)] private float accelerationTime = 0.16f;
         [SerializeField, Min(0f)] private float mouseSensitivity = 0.12f;
@@ -34,6 +37,17 @@ namespace EcoElectry.Unity.Player
         private float pitch;
         private float phase;
         private float bobWeight;
+        internal bool IsImageMenuOpen => brightness?.IsOpen == true;
+
+        internal void ResetMovement()
+        {
+            velocity = Vector3.zero;
+            fallSpeed = 0f;
+            pitch = 0f;
+            phase = 0f;
+            bobWeight = 0f;
+            ApplyView();
+        }
 
         private void Awake()
         {
@@ -48,10 +62,10 @@ namespace EcoElectry.Unity.Player
             }
 
             toggleLight = new InputAction("Flashlight", InputActionType.Button, flashlightBinding);
-            brightness = new CorridorBrightness(view, flashlight);
+            brightness = new CorridorBrightness(view, flashlight, brightnessPreferenceKey, grainPreferenceKey);
             flashlightIntensity = flashlight.intensity;
             flashlightFlicker = new CorridorFlicker(flashlightFlickerInterval, Time.time);
-            flashlight.enabled = true;
+            flashlight.enabled = flashlightStartsOn;
             ApplyView();
         }
 

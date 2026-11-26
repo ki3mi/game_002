@@ -1,5 +1,7 @@
 # Prueba de los pasillos de noche
 
+Para montar esta cámara en otra escena y consultar sus campos del Inspector, abre la [guía de integración de la cámara](Integracion-Camara-Pasillos.md).
+
 Abre [HorrorCorridorPrototype.unity](../Assets/EcoElectry/Content/Scenes/HorrorCorridorPrototype.unity) en Unity y pulsa **Play**. También puedes abrirla desde **Tools → EcoElectry → Prototipos → Abrir pasillos de noche**.
 
 Camina con **WASD**, mira con el **ratón** y pulsa **F** para apagar o encender la linterna. **Esc** libera el cursor y un clic en la vista Game lo captura de nuevo.

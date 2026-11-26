@@ -8,8 +8,8 @@ namespace EcoElectry.Unity.Player
 {
     internal sealed class CorridorBrightness
     {
-        private const string PreferenceKey = "EcoElectry.Corridor.Brightness";
-        private const string GrainPreferenceKey = "EcoElectry.Corridor.FilmGrain";
+        private const string DefaultBrightnessPreferenceKey = "EcoElectry.Corridor.Brightness";
+        private const string DefaultGrainPreferenceKey = "EcoElectry.Corridor.FilmGrain";
         private const int DefaultLevel = 100;
         private const int MinLevel = 1;
         private const int MaxLevel = 220;
@@ -17,6 +17,8 @@ namespace EcoElectry.Unity.Player
         private static readonly int EmissionColor = Shader.PropertyToID("_EmissionColor");
 
         private readonly Camera view;
+        private readonly string brightnessPreferenceKey;
+        private readonly string grainPreferenceKey;
         private readonly Color ambient;
         private readonly Color fog;
         private readonly Color background;
@@ -33,9 +35,13 @@ namespace EcoElectry.Unity.Player
 
         internal bool IsOpen { get; private set; }
 
-        internal CorridorBrightness(Camera view, Light flashlight)
+        internal CorridorBrightness(Camera view, Light flashlight, string brightnessPreferenceKey, string grainPreferenceKey)
         {
             this.view = view;
+            this.brightnessPreferenceKey = string.IsNullOrEmpty(brightnessPreferenceKey)
+                ? DefaultBrightnessPreferenceKey
+                : brightnessPreferenceKey;
+            this.grainPreferenceKey = string.IsNullOrEmpty(grainPreferenceKey) ? DefaultGrainPreferenceKey : grainPreferenceKey;
             cameraSignal = view.GetComponent<CorridorSignalGlitch>();
             ambient = RenderSettings.ambientLight;
             fog = RenderSettings.fogColor;
@@ -61,14 +67,14 @@ namespace EcoElectry.Unity.Player
                 }
             }
 
-            level = Mathf.Clamp(PlayerPrefs.GetInt(PreferenceKey, DefaultLevel), MinLevel, MaxLevel);
+            level = Mathf.Clamp(PlayerPrefs.GetInt(this.brightnessPreferenceKey, DefaultLevel), MinLevel, MaxLevel);
             Apply();
 
             var volume = view.GetComponentInChildren<Volume>();
             if (volume != null && volume.profile.TryGet<FilmGrain>(out grain))
             {
                 defaultGrainLevel = Mathf.RoundToInt(grain.intensity.value * 100f);
-                grainLevel = Mathf.Clamp(PlayerPrefs.GetInt(GrainPreferenceKey, defaultGrainLevel), 0, 100);
+                grainLevel = Mathf.Clamp(PlayerPrefs.GetInt(this.grainPreferenceKey, defaultGrainLevel), 0, 100);
                 ApplyGrain();
             }
         }
@@ -79,8 +85,8 @@ namespace EcoElectry.Unity.Player
         {
             IsOpen = false;
             if (!changed) return;
-            PlayerPrefs.SetInt(PreferenceKey, level);
-            if (grain != null) PlayerPrefs.SetInt(GrainPreferenceKey, grainLevel);
+            PlayerPrefs.SetInt(brightnessPreferenceKey, level);
+            if (grain != null) PlayerPrefs.SetInt(grainPreferenceKey, grainLevel);
             PlayerPrefs.Save();
             changed = false;
         }
@@ -147,9 +153,12 @@ namespace EcoElectry.Unity.Player
             }
         }
 
-        private void Apply()
+        private void Apply() => ApplyEnvironment(level / 100f);
+
+        internal void RestoreEnvironment() => ApplyEnvironment(1f);
+
+        private void ApplyEnvironment(float multiplier)
         {
-            float multiplier = level / 100f;
             if (view.gameObject.scene == SceneManager.GetActiveScene())
             {
                 RenderSettings.ambientLight = ScaleColor(ambient, multiplier);
