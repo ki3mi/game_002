@@ -17,6 +17,7 @@ namespace EcoElectry.Unity.Player
         [SerializeField] private string brightnessPreferenceKey = "";
         [SerializeField] private string grainPreferenceKey = "";
         [SerializeField, Min(0.1f)] private float walkSpeed = 1.7f;
+        [SerializeField, Min(1f)] private float sprintMultiplier = 1.65f;
         [SerializeField, Min(0.01f)] private float accelerationTime = 0.16f;
         [SerializeField, Min(0f)] private float mouseSensitivity = 0.12f;
         [SerializeField, Min(0.1f)] private float eyeHeight = 1.65f;
@@ -28,6 +29,7 @@ namespace EcoElectry.Unity.Player
         private CharacterController body;
         private InputAction move;
         private InputAction look;
+        private InputAction sprint;
         private InputAction toggleLight;
         private CorridorBrightness brightness;
         private CorridorFlicker flashlightFlicker;
@@ -61,6 +63,7 @@ namespace EcoElectry.Unity.Player
                 return;
             }
 
+            sprint = controls.FindAction("Player/Sprint")?.Clone();
             toggleLight = new InputAction("Flashlight", InputActionType.Button, flashlightBinding);
             brightness = new CorridorBrightness(view, flashlight, brightnessPreferenceKey, grainPreferenceKey);
             flashlightIntensity = flashlight.intensity;
@@ -73,6 +76,7 @@ namespace EcoElectry.Unity.Player
         {
             move?.Enable();
             look?.Enable();
+            sprint?.Enable();
             toggleLight?.Enable();
             flashlightFlicker?.Restart(Time.time);
             if (UnityEngine.Application.isFocused) SetCursorLocked(true);
@@ -82,6 +86,7 @@ namespace EcoElectry.Unity.Player
         {
             move?.Disable();
             look?.Disable();
+            sprint?.Disable();
             toggleLight?.Disable();
             brightness?.Close();
             if (flashlightFlicker != null && flashlight != null) flashlight.intensity = flashlightIntensity;
@@ -95,6 +100,7 @@ namespace EcoElectry.Unity.Player
         {
             move?.Dispose();
             look?.Dispose();
+            sprint?.Dispose();
             toggleLight?.Dispose();
         }
 
@@ -157,9 +163,10 @@ namespace EcoElectry.Unity.Player
         private void Walk(Vector2 input, float dt)
         {
             input = Vector2.ClampMagnitude(input, 1f);
-            Vector3 target = transform.TransformDirection(new Vector3(input.x, 0f, input.y)) * walkSpeed;
+            float speed = walkSpeed * (sprint?.IsPressed() == true ? sprintMultiplier : 1f);
+            Vector3 target = transform.TransformDirection(new Vector3(input.x, 0f, input.y)) * speed;
             Vector3 previousVelocity = velocity;
-            velocity = Vector3.MoveTowards(velocity, target, walkSpeed * dt / accelerationTime);
+            velocity = Vector3.MoveTowards(velocity, target, speed * dt / accelerationTime);
             fallSpeed = body.isGrounded ? -2f : fallSpeed + Physics.gravity.y * dt;
             Vector3 before = transform.position;
             CollisionFlags contacts = body.Move(((previousVelocity + velocity) * 0.5f + Vector3.up * fallSpeed) * dt);
@@ -168,7 +175,7 @@ namespace EcoElectry.Unity.Player
             actual.y = 0f;
             float distance = (contacts & CollisionFlags.Below) != 0 ? actual.magnitude : 0f;
             phase = Mathf.Repeat(phase + distance * Mathf.PI / stepLength, Mathf.PI * 2f);
-            float speedWeight = Mathf.Clamp01(distance / (dt * walkSpeed));
+            float speedWeight = Mathf.Clamp01(distance / (dt * speed));
             bobWeight = Mathf.Lerp(bobWeight, speedWeight, 1f - Mathf.Exp(-14f * dt));
         }
 

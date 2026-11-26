@@ -13,6 +13,7 @@ namespace EcoElectry.Unity.Player
         [SerializeField] private Camera view;
         [SerializeField] private string cameraToggleBinding = "<Keyboard>/c";
         [SerializeField, Min(0.1f)] private float walkSpeed = 4f;
+        [SerializeField, Min(1f)] private float sprintMultiplier = 1.65f;
         [SerializeField, Min(0.5f)] private float followDistance = 3.35f;
         [SerializeField, Min(0.05f)] private float cameraRadius = 0.19f;
 
@@ -20,6 +21,7 @@ namespace EcoElectry.Unity.Player
         private CharacterController body;
         private InputAction moveAction;
         private InputAction lookAction;
+        private InputAction sprintAction;
         private Renderer[] avatarRenderers;
         private float yaw;
         private float pitch;
@@ -45,6 +47,7 @@ namespace EcoElectry.Unity.Player
             avatarRenderers = avatar.GetComponentsInChildren<Renderer>();
             moveAction = controls.FindAction("Player/Move").Clone();
             lookAction = controls.FindAction("Player/Look").Clone();
+            sprintAction = controls.FindAction("Player/Sprint")?.Clone();
             CameraToggleAction = new InputAction("ToggleCamera", InputActionType.Button, cameraToggleBinding);
             Respawn();
         }
@@ -53,6 +56,7 @@ namespace EcoElectry.Unity.Player
         {
             moveAction?.Enable();
             lookAction?.Enable();
+            sprintAction?.Enable();
             CameraToggleAction?.Enable();
             GrabCursor();
         }
@@ -61,6 +65,7 @@ namespace EcoElectry.Unity.Player
         {
             moveAction?.Disable();
             lookAction?.Disable();
+            sprintAction?.Disable();
             CameraToggleAction?.Disable();
             if (PlayerApplication.isPlaying) ReleaseCursor();
         }
@@ -69,6 +74,7 @@ namespace EcoElectry.Unity.Player
         {
             moveAction?.Dispose();
             lookAction?.Dispose();
+            sprintAction?.Dispose();
             CameraToggleAction?.Dispose();
         }
 
@@ -116,7 +122,8 @@ namespace EcoElectry.Unity.Player
                 avatar.rotation = Quaternion.RotateTowards(avatar.rotation, Quaternion.LookRotation(planar), 620f * deltaTime);
 
             verticalSpeed = body.isGrounded && verticalSpeed < 0f ? -3f : verticalSpeed - 22f * deltaTime;
-            body.Move((planar * walkSpeed + Vector3.up * verticalSpeed) * deltaTime);
+            float speed = walkSpeed * (sprintAction?.IsPressed() == true ? sprintMultiplier : 1f);
+            body.Move((planar * speed + Vector3.up * verticalSpeed) * deltaTime);
         }
 
         private void LateUpdate() => UpdateView(Time.deltaTime);

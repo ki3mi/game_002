@@ -308,7 +308,7 @@ namespace EcoElectry.Editor.Levels
             camera.fieldOfView = fov;
             camera.nearClipPlane = 0.04f;
             camera.farClipPlane = 675f;
-            camera.clearFlags = CameraClearFlags.SolidColor;
+            camera.clearFlags = CameraClearFlags.Skybox;
             camera.backgroundColor = IntroductionNightFog;
             camera.allowHDR = true;
             camera.GetUniversalAdditionalCameraData().renderShadows = true;

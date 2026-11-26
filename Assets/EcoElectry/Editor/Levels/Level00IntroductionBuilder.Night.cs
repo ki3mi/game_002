@@ -1,4 +1,5 @@
 using System;
+using EcoElectry.Unity.Levels;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -10,6 +11,19 @@ namespace EcoElectry.Editor.Levels
     {
         private const string IntroductionRenderingFolder = "Assets/EcoElectry/Content/Rendering";
         private const string NightProfilePath = IntroductionRenderingFolder + "/Level00NightProfile.asset";
+        private const string SkyFolder = "Assets/EcoElectry/AllSkyFree/";
+        private static readonly string[] IntroductionSkyMaterials =
+        {
+            "Night MoonBurst/Materials/AllSky_Night_MoonBurst Equirect.mat",
+            "Cold Night/Cold Night Equirect.mat",
+            "Cartoon Base NightSky/Cartoon Base NightSky Equirect.mat",
+            "Epic_BlueSunset/Epic_BlueSunset Equirect.mat",
+            "Cold Sunset/Cold Sunset Equirect.mat",
+            "Overcast Low/AllSky_Overcast4_Low Equirect.mat",
+            "Epic_GloriousPink/Epic_GloriousPink Equirect.mat",
+            "Deep Dusk/Deep Dusk Equirect.mat",
+            "Space_AnotherPlanet/AllSky_Space_AnotherPlanet Equirect.mat"
+        };
         private static readonly Color IntroductionNightFog = new Color32(16, 24, 39, 255);
 
         private static VolumeProfile GetIntroductionNightProfile()
@@ -45,7 +59,7 @@ namespace EcoElectry.Editor.Levels
             Transform moon = lighting.Find("Luna") ?? lighting.Find("Directional Light") ??
                              Group(level.gameObject.scene, lighting, "Luna");
             moon.name = "Luna";
-            moon.rotation = Quaternion.Euler(37f, -31f, 0f);
+            moon.rotation = IntroductionSkyCycle.InitialMoonRotation;
             Light moonlight = moon.GetComponent<Light>() ?? moon.gameObject.AddComponent<Light>();
             moonlight.type = LightType.Directional;
             moonlight.color = new Color32(153, 185, 238, 255);
@@ -53,7 +67,7 @@ namespace EcoElectry.Editor.Levels
             moonlight.shadows = LightShadows.Soft;
             moonlight.shadowStrength = 0.79f;
 
-            RenderSettings.skybox = null;
+            ConfigureIntroductionSkyCycle(moon);
             RenderSettings.sun = moonlight;
             RenderSettings.ambientMode = AmbientMode.Flat;
             RenderSettings.ambientLight = new Color32(35, 45, 64, 255);
@@ -73,6 +87,26 @@ namespace EcoElectry.Editor.Levels
             }
             AddGuardLight(level, fixtures);
             AddEntranceLight(level, fixtures);
+        }
+
+        private static void ConfigureIntroductionSkyCycle(Transform moon)
+        {
+            var shader = AssetDatabase.LoadAssetAtPath<Shader>(IntroductionRenderingFolder + "/IntroductionSkyBlend.shader");
+            var cubemaps = new Cubemap[IntroductionSkyMaterials.Length];
+            for (int index = 0; index < cubemaps.Length; index++)
+            {
+                string path = SkyFolder + IntroductionSkyMaterials[index];
+                var material = AssetDatabase.LoadAssetAtPath<Material>(path);
+                cubemaps[index] = material == null ? null : material.GetTexture("_Tex") as Cubemap;
+                if (cubemaps[index] == null)
+                    throw new InvalidOperationException("Falta el cubemap de " + path);
+            }
+
+            if (shader == null) throw new InvalidOperationException("Falta el shader del ciclo de cielo.");
+            var cycle = moon.GetComponent<IntroductionSkyCycle>() ?? moon.gameObject.AddComponent<IntroductionSkyCycle>();
+            cycle.Configure(shader, cubemaps);
+            EditorUtility.SetDirty(cycle);
+            RenderSettings.skybox = AssetDatabase.LoadAssetAtPath<Material>(SkyFolder + IntroductionSkyMaterials[0]);
         }
 
         private static void AddParkingLamp(Transform fixtures, Renderer diffuser)

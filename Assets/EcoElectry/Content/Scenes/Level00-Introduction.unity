@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: e63dd3cc47c335a45b49275d350ec544, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -31844,6 +31844,7 @@ GameObject:
   - component: {fileID: 360733793}
   - component: {fileID: 360733794}
   - component: {fileID: 360733795}
+  - component: {fileID: 360733796}
   m_Layer: 0
   m_Name: Luna
   m_TagString: Untagged
@@ -31859,13 +31860,37 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 360733792}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.3057644, y: -0.2534285, z: 0.084795974, w: 0.91383356}
+  m_LocalRotation: {x: 0, y: 0.9969173, z: -0.0784591, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1093608868}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &360733796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 360733792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8998e14357b4460bb4e33524d02b13fa, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: EcoElectry.Unity::EcoElectry.Unity.Levels.IntroductionSkyCycle
+  blendShader: {fileID: 4800000, guid: 9f6353c229384b58aa6a91fc718487c4, type: 3}
+  skies:
+  - {fileID: 8900000, guid: 34a763168147f4182a21b9fd004d67de, type: 3}
+  - {fileID: 8900000, guid: 97259d0c0ea9f491692be825da27978a, type: 3}
+  - {fileID: 8900000, guid: 7659947706e294d97a22faa1d4011724, type: 3}
+  - {fileID: 8900000, guid: e71fc492f440446b99875b8e1df890ba, type: 3}
+  - {fileID: 8900000, guid: 6fa3f446deee84c52aec507bd0aca28c, type: 3}
+  - {fileID: 8900000, guid: c8f21f62fdb3e43c5b32917c84683698, type: 3}
+  - {fileID: 8900000, guid: 8a293ce833d584fc98516e0e74f495a4, type: 3}
+  - {fileID: 8900000, guid: 66e51860485ae4048a30f7e029e65af7, type: 3}
+  - {fileID: 8900000, guid: 393dd4c82e2a04ec08ef9f57528230c6, type: 3}
+  cycleMinutes: 12
 --- !u!108 &360733794
 Light:
   m_ObjectHideFlags: 0
@@ -47342,7 +47367,7 @@ Camera:
   m_GameObject: {fileID: 539909477}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0.0627451, g: 0.09411765, b: 0.15294118, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -140538,7 +140563,7 @@ Camera:
   m_GameObject: {fileID: 1600488338}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0.0627451, g: 0.09411765, b: 0.15294118, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
