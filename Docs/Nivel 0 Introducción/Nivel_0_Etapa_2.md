@@ -1,5 +1,7 @@
 # Nivel 0 · Etapa 2 · Conducción nocturna y llegada a pie
 
+La salida manual con **E** descrita aquí corresponde a la etapa 2. La [etapa 4](Nivel_0_Etapa_4.md) la sustituye por una llegada cinematográfica que termina directamente a pie.
+
 Implementar en `Assets/EcoElectry/Content/Scenes/Level00-Introduction.unity` el recorrido **conducir desde el inicio de la carretera → detenerse en la entrada del colegio → bajar con E → continuar a pie**. Toda la escena transcurre de noche y ambas perspectivas son en primera persona. El atardecer dinámico queda para una etapa posterior. [Contexto del nivel 0](Nivel_0_Contexto.md) · [Etapa 1](Nivel_0_Etapa_1.md) · [Integración de la cámara de horror](../Integracion-Camara-Pasillos.md)
 
 ## Punto de partida

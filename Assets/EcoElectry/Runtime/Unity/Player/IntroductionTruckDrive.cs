@@ -32,9 +32,15 @@ namespace EcoElectry.Unity.Player
         private Quaternion steeringWheelRest;
         private float steerAngle;
         private bool parked;
+        private bool cinematic;
+        private float cinematicSpeed;
+        private float wheelTravel;
+        private Vector3[] cinematicWheelPositions;
+        private Quaternion[] cinematicWheelRotations;
         internal bool ImageMenuOpen { get; set; }
+        internal bool IsCinematic => cinematic;
 
-        public float Speed => body != null ? body.linearVelocity.magnitude : 0f;
+        public float Speed => cinematic ? cinematicSpeed : body != null ? body.linearVelocity.magnitude : 0f;
         public bool HasGroundContact { get; private set; }
 
         private void Awake()
@@ -65,7 +71,7 @@ namespace EcoElectry.Unity.Player
 
         private void FixedUpdate()
         {
-            if (parked) return;
+            if (parked || cinematic) return;
 
             Vector2 input = ImageMenuOpen ? Vector2.zero : drive.ReadValue<Vector2>();
             float forwardSpeed = forwardSpeedKmh / 3.6f;
@@ -128,6 +134,7 @@ namespace EcoElectry.Unity.Player
 
         private void LateUpdate()
         {
+            if (cinematic) return;
             foreach (Wheel wheel in wheels)
             {
                 if (wheel.visual == null) continue;
@@ -138,17 +145,66 @@ namespace EcoElectry.Unity.Player
                 steeringWheel.localRotation = steeringWheelRest * Quaternion.Euler(0f, 0f, -3f * steerAngle);
         }
 
+        internal void BeginCinematicMotion()
+        {
+            cinematic = true;
+            cinematicSpeed = body.linearVelocity.magnitude;
+            wheelTravel = 0f;
+            cinematicWheelPositions = new Vector3[wheels.Length];
+            cinematicWheelRotations = new Quaternion[wheels.Length];
+            for (int i = 0; i < wheels.Length; i++)
+            {
+                Wheel wheel = wheels[i];
+                wheel.collider.motorTorque = 0f;
+                wheel.collider.brakeTorque = brakeTorque;
+                if (wheel.visual == null) continue;
+                cinematicWheelPositions[i] = transform.InverseTransformPoint(wheel.visual.position);
+                cinematicWheelRotations[i] = Quaternion.Inverse(transform.rotation) * wheel.visual.rotation;
+            }
+            body.linearVelocity = Vector3.zero;
+            body.angularVelocity = Vector3.zero;
+            body.isKinematic = true;
+        }
+
+        internal void SetCinematicPose(Vector3 position, Quaternion rotation, float speed)
+        {
+            wheelTravel += Vector3.Distance(body.position, position);
+            body.position = position;
+            body.rotation = rotation;
+            transform.SetPositionAndRotation(position, rotation);
+            cinematicSpeed = speed;
+            for (int i = 0; i < wheels.Length; i++)
+            {
+                Wheel wheel = wheels[i];
+                if (wheel.visual == null) continue;
+                Quaternion spin = Quaternion.AngleAxis(wheelTravel / wheel.collider.radius * Mathf.Rad2Deg, Vector3.right);
+                wheel.visual.SetPositionAndRotation(transform.TransformPoint(cinematicWheelPositions[i]),
+                    rotation * spin * cinematicWheelRotations[i]);
+            }
+        }
+
+        internal void ResumeDriving(Vector3 velocity)
+        {
+            body.isKinematic = false;
+            body.linearVelocity = velocity;
+            cinematic = false;
+        }
+
         public void Park()
         {
             if (parked) return;
             parked = true;
+            cinematic = false;
             foreach (Wheel wheel in wheels)
             {
                 wheel.collider.motorTorque = 0f;
                 wheel.collider.brakeTorque = brakeTorque * 2f;
             }
-            body.linearVelocity = Vector3.zero;
-            body.angularVelocity = Vector3.zero;
+            if (!body.isKinematic)
+            {
+                body.linearVelocity = Vector3.zero;
+                body.angularVelocity = Vector3.zero;
+            }
             body.isKinematic = true;
             foreach (Light headlight in lowBeams) headlight.enabled = false;
             foreach (Renderer lens in headlightLenses) lens.sharedMaterial = unlitLens;

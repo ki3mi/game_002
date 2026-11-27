@@ -19,6 +19,9 @@ namespace EcoElectry.Unity.Levels
         private Vector2Int currentChunk;
         private bool ready;
 
+        internal float ChunkSize => chunkSize;
+        internal Transform Focus => player;
+
         private void OnEnable()
         {
             if (player == null || terrainRoot == null || chunkSize <= 0f) return;

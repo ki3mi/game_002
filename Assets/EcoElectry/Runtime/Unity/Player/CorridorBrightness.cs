@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using EcoElectry.Unity.Levels;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
@@ -17,6 +18,7 @@ namespace EcoElectry.Unity.Player
         private static readonly int EmissionColor = Shader.PropertyToID("_EmissionColor");
 
         private readonly Camera view;
+        private readonly IntroductionSkyCycle skyCycle;
         private readonly string brightnessPreferenceKey;
         private readonly string grainPreferenceKey;
         private readonly Color ambient;
@@ -38,6 +40,7 @@ namespace EcoElectry.Unity.Player
         internal CorridorBrightness(Camera view, Light flashlight, string brightnessPreferenceKey, string grainPreferenceKey)
         {
             this.view = view;
+            skyCycle = view.transform.root.GetComponentInChildren<IntroductionSkyCycle>(true);
             this.brightnessPreferenceKey = string.IsNullOrEmpty(brightnessPreferenceKey)
                 ? DefaultBrightnessPreferenceKey
                 : brightnessPreferenceKey;
@@ -52,7 +55,8 @@ namespace EcoElectry.Unity.Player
             {
                 foreach (Light light in root.GetComponentsInChildren<Light>(true))
                 {
-                    if (light != flashlight) lights.Add((light, light.intensity));
+                    if (light != flashlight && (skyCycle == null || !skyCycle.ControlsLight(light)))
+                        lights.Add((light, light.intensity));
                 }
 
                 foreach (Renderer surface in root.GetComponentsInChildren<Renderer>(true))
@@ -161,9 +165,14 @@ namespace EcoElectry.Unity.Player
         {
             if (view.gameObject.scene == SceneManager.GetActiveScene())
             {
-                RenderSettings.ambientLight = ScaleColor(ambient, multiplier);
-                RenderSettings.fogColor = ScaleColor(fog, multiplier);
-                RenderSettings.reflectionIntensity = Mathf.Clamp01(reflections * multiplier);
+                // Both introduction cameras adjust the current phase instead of restoring a captured light level.
+                if (skyCycle != null) skyCycle.SetEnvironmentBrightness(multiplier);
+                else
+                {
+                    RenderSettings.ambientLight = ScaleColor(ambient, multiplier);
+                    RenderSettings.fogColor = ScaleColor(fog, multiplier);
+                    RenderSettings.reflectionIntensity = Mathf.Clamp01(reflections * multiplier);
+                }
             }
             view.backgroundColor = ScaleColor(background, multiplier);
 

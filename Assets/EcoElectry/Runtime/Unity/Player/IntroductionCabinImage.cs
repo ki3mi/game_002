@@ -17,42 +17,50 @@ namespace EcoElectry.Unity.Player
 
         private void OnEnable()
         {
+            previousCursorLock = Cursor.lockState;
+            previousCursorVisible = Cursor.visible;
             vehicle = GetComponentInParent<IntroductionTruckDrive>();
             image = new CorridorBrightness(GetComponent<Camera>(), null, BrightnessKey, GrainKey);
+            ApplyCursor(UnityEngine.Application.isFocused);
         }
 
         private void OnDisable()
         {
-            if (IsOpen) CloseMenu();
-            // The walking camera applies the same saved settings from the original light levels.
+            if (IsOpen) SetMenuOpen(false);
             image?.RestoreEnvironment();
+            Cursor.lockState = previousCursorLock;
+            Cursor.visible = previousCursorVisible;
         }
+
+        private void OnApplicationFocus(bool focused) => ApplyCursor(focused);
 
         private void Update()
         {
+            if (vehicle != null && vehicle.IsCinematic) return;
             Keyboard keys = Keyboard.current;
             if (IsOpen)
             {
                 if (keys?.bKey.wasPressedThisFrame == true || keys?.escapeKey.wasPressedThisFrame == true)
-                    CloseMenu();
+                    SetMenuOpen(false);
             }
             else if (keys?.bKey.wasPressedThisFrame == true)
             {
-                previousCursorLock = Cursor.lockState;
-                previousCursorVisible = Cursor.visible;
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-                image.Open();
-                if (vehicle != null) vehicle.ImageMenuOpen = true;
+                SetMenuOpen(true);
             }
         }
 
-        private void CloseMenu()
+        private void SetMenuOpen(bool open)
         {
-            image.Close();
-            if (vehicle != null) vehicle.ImageMenuOpen = false;
-            Cursor.lockState = previousCursorLock;
-            Cursor.visible = previousCursorVisible;
+            if (open) image.Open();
+            else image.Close();
+            if (vehicle != null) vehicle.ImageMenuOpen = open;
+            ApplyCursor(UnityEngine.Application.isFocused);
+        }
+
+        private void ApplyCursor(bool focused)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = !focused || IsOpen;
         }
 
         private void OnGUI()

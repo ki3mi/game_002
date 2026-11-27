@@ -1,74 +1,158 @@
+using System;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.Rendering.RenderGraphModule;
+using UnityEngine.Rendering.Universal;
 
 namespace EcoElectry.Unity.Levels
 {
     [DisallowMultipleComponent, RequireComponent(typeof(Light))]
     public sealed class IntroductionSkyCycle : MonoBehaviour
     {
+        private const float DriveMinutes = 120f;
+        private const float FirstDuskMinutes = 80f;
+        private const float SkyYaw = 253f;
+        private const float ReflectionInterval = 10f;
+        private const float RoadProximity = 10f;
+        private const float DefaultChunkSize = 300f;
         private static readonly Color MoonColor = new Color32(153, 185, 238, 255);
-        private static readonly Color NightAmbient = new Color32(35, 45, 64, 255);
-        private static readonly Color DayAmbient = new Color32(145, 157, 171, 255);
-        private static readonly Color NightFog = new Color32(16, 24, 39, 255);
-        private static readonly Color DayFog = new Color32(153, 174, 194, 255);
+        private static readonly int FogColor = Shader.PropertyToID("_FogColor");
+        private static readonly int FogSettings = Shader.PropertyToID("_FogSettings");
 
-        private readonly struct Phase
+        [Serializable]
+        public struct RouteSample
         {
-            public readonly float Hour, Yaw, Elevation, Sun, Moon;
+            public Vector3 position;
+            public float distance;
 
-            public Phase(float hour, float yaw, float elevation, float sun, float moon)
+            public RouteSample(Vector3 position, float distance)
             {
-                Hour = hour;
-                Yaw = yaw;
-                Elevation = elevation;
-                Sun = sun;
-                Moon = moon;
+                this.position = position;
+                this.distance = distance;
             }
-
-            public Vector3 Direction => Quaternion.Euler(-Elevation, Yaw, 0f) * Vector3.forward;
         }
 
-        // The visible discs are near +Z in the source cubemaps. Yaw rotates both the image and its light.
-        private static readonly Phase[] Phases =
+        private readonly struct Lighting
         {
-            new Phase(0f,   0f,   9f, 0f,    0.23f), // Night MoonBurst at 22:00
-            new Phase(2f,  24f,  14f, 0f,    0.16f), // Cold Night
-            new Phase(5f,  48f,   4f, 0f,    0.03f), // Cartoon Base NightSky
-            new Phase(8f,  90f,   3f, 0.26f, 0f),    // Epic Blue Sunset, used at dawn
-            new Phase(11f, 125f, 15f, 0.92f, 0f),    // Cold Sunset
-            new Phase(14f, 180f, 55f, 0.65f, 0f),    // Overcast Low, diffuse midday
-            new Phase(19f, 253f,  3f, 0.36f, 0f),    // Epic Glorious Pink
-            new Phase(21f, 270f,  6f, 0.06f, 0f),    // Deep Dusk
-            new Phase(22.5f, 0f,  4f, 0f,    0.04f), // Space AnotherPlanet
+            public readonly float Minute, Sky, SunsetWarmth, Sun, Moon, Reflection, FogEndChunks;
+            public readonly Color Ambient, Fog;
+
+            public Lighting(float minute, float sky, float sunsetWarmth, float sun, float moon, float reflection,
+                float fogEndChunks, Color32 ambient, Color32 fog)
+            {
+                Minute = minute;
+                Sky = sky;
+                SunsetWarmth = sunsetWarmth;
+                Sun = sun;
+                Moon = moon;
+                Reflection = reflection;
+                FogEndChunks = fogEndChunks;
+                Ambient = ambient;
+                Fog = fog;
+            }
+        }
+
+        // Minutes since 16:00. The last driving state is also the first night state.
+        private static readonly Lighting[] DriveLighting =
+        {
+            new(0f,   0.85f, 0.90f, 0.75f, 0f,     0.65f, 1.80f, new(149, 128, 105, 255), new(129, 91, 59, 255)),
+            new(45f,  0.62f, 1.00f, 0.38f, 0f,     0.48f, 1.65f, new(111, 89, 79, 255), new(102, 64, 44, 255)),
+            new(80f,  0.24f, 0.12f, 0.065f, 0.03f, 0.14f, 1.50f, new(39, 43, 55, 255), new(20, 22, 30, 255)),
+            new(110f, 0.16f, 0.02f, 0.01f, 0.055f, 0.08f, 1.42f, new(24, 30, 43, 255), new(12, 15, 22, 255)),
+            new(120f, 0.13f, 0f,    0f,    0.07f,  0.07f, 1.38f, new(17, 23, 35, 255), new(8, 11, 17, 255))
         };
 
+        private static readonly Lighting DarkestNight = new(120f, 0.018f, 0f, 0f, 0.04f, 0.035f, 1.30f,
+            new(9, 13, 21, 255), new(4, 6, 9, 255));
+
         [SerializeField] private Shader blendShader;
+        [SerializeField] private Shader distanceFogShader;
         [SerializeField] private Cubemap[] skies;
-        [SerializeField, Min(1f)] private float cycleMinutes = 12f;
+        [SerializeField] private Rigidbody vehicle;
+        [SerializeField] private RouteSample[] route;
+        [SerializeField] private float startDistance;
+        [SerializeField, Min(1f)] private float nightDuration = 120f;
 
         private Light moon;
         private Light sun;
         private Material sky;
+        private Material fogMaterial;
+        private DistanceFogPass fogPass;
+        private ChunkRenderWindow chunks;
         private Material originalSky;
         private Light originalSun;
-        private Color originalAmbient, originalFog;
-        private float originalFogDensity, originalReflection, elapsedHours, nextReflectionUpdate;
-        private int phaseIndex = -1;
+        private Color originalAmbient;
+        private bool originalFogEnabled;
+        private float originalReflection, nextReflectionUpdate, fogEndChunks;
+        private float furthestDistance, nightElapsed;
+        private float appliedMinute = -1f, appliedNight = -1f;
+        private float environmentBrightness = 1f;
+        private int skySegment = -1;
+        private bool reflectionPending;
 
-        public static Quaternion InitialMoonRotation => Quaternion.LookRotation(-Phases[0].Direction);
+        public bool HasArrived { get; private set; }
+        public float DrivingProgress => route != null && route.Length > 1
+            ? Mathf.InverseLerp(startDistance, route[^1].distance, furthestDistance)
+            : 0f;
+        public float TimeOfDayHours => 16f + DrivingProgress * 2f;
+        public float NightProgress => Mathf.Clamp01(nightElapsed / Mathf.Max(1f, nightDuration));
 
-        public void Configure(Shader shader, Cubemap[] cubemaps)
+        public static Quaternion InitialMoonRotation => Quaternion.Euler(11f, 205f, 0f);
+
+        internal bool ControlsLight(Light light) => light.gameObject == gameObject || light == sun;
+
+        internal void SetEnvironmentBrightness(float multiplier)
+        {
+            if (environmentBrightness == multiplier) return;
+            environmentBrightness = multiplier;
+            appliedMinute = -1f;
+            if (sky != null) ApplyLighting();
+        }
+
+        public void Configure(Shader shader, Shader fogShader, Cubemap[] cubemaps, Rigidbody truck, RouteSample[] samples,
+            float origin)
         {
             blendShader = shader;
+            distanceFogShader = fogShader;
             skies = cubemaps;
+            vehicle = truck;
+            route = samples;
+            startDistance = origin;
+        }
+
+        public void BeginNight()
+        {
+            if (HasArrived || sky == null) return;
+            HasArrived = true;
+            furthestDistance = route[^1].distance;
+            ApplyLighting();
+        }
+
+        private void Awake() => furthestDistance = startDistance;
+
+        internal void SampleRoad(float distanceFromStart, out Vector3 point, out Vector3 tangent)
+        {
+            float distance = Mathf.Clamp(startDistance + distanceFromStart, route[0].distance, route[^1].distance);
+            int low = 1;
+            int high = route.Length - 1;
+            while (low < high)
+            {
+                int mid = (low + high) / 2;
+                if (route[mid].distance < distance) low = mid + 1;
+                else high = mid;
+            }
+            RouteSample from = route[low - 1];
+            RouteSample to = route[low];
+            point = Vector3.Lerp(from.position, to.position, Mathf.InverseLerp(from.distance, to.distance, distance));
+            tangent = (to.position - from.position).normalized;
         }
 
         private void OnEnable()
         {
-            if (blendShader == null || skies == null || skies.Length != Phases.Length ||
-                System.Array.Exists(skies, cube => cube == null))
+            if (blendShader == null || skies == null || skies.Length != 3 || Array.Exists(skies, cube => cube == null) ||
+                vehicle == null || route == null || route.Length < 2 || route[^1].distance <= startDistance)
             {
-                Debug.LogWarning("El ciclo de cielo requiere el shader y los nueve cubemaps de AllSkyFree.", this);
+                Debug.LogError("El cielo del nivel 00 requiere tres cubemaps, la camioneta y el eje de la carretera.", this);
                 return;
             }
 
@@ -76,102 +160,201 @@ namespace EcoElectry.Unity.Levels
             originalSky = RenderSettings.skybox;
             originalSun = RenderSettings.sun;
             originalAmbient = RenderSettings.ambientLight;
-            originalFog = RenderSettings.fogColor;
-            originalFogDensity = RenderSettings.fogDensity;
+            originalFogEnabled = RenderSettings.fog;
             originalReflection = RenderSettings.reflectionIntensity;
 
-            var sunObject = new GameObject("Sol del ciclo");
+            if (distanceFogShader != null && distanceFogShader.isSupported)
+            {
+                chunks = GetComponentInParent<ChunkRenderWindow>();
+                fogMaterial = CoreUtils.CreateEngineMaterial(distanceFogShader);
+                fogPass = new DistanceFogPass(fogMaterial);
+                RenderSettings.fog = false;
+                RenderPipelineManager.beginCameraRendering += RenderDistanceFog;
+            }
+            else
+            {
+                Debug.LogWarning("No se pudo activar la niebla de distancia del nivel 00.", this);
+            }
+
+            var sunObject = new GameObject("Sol del atardecer");
             sunObject.transform.SetParent(transform.parent, false);
             sun = sunObject.AddComponent<Light>();
             sun.type = LightType.Directional;
             sun.shadowStrength = moon.shadowStrength;
-            sky = new Material(blendShader) { name = "Cielo del ciclo" };
+            sky = new Material(blendShader) { name = "Cielo de la introducción" };
+            float radians = SkyYaw * Mathf.Deg2Rad;
+            var yaw = new Vector4(Mathf.Cos(radians), Mathf.Sin(radians), 0f, 0f);
+            sky.SetVector("_YawA", yaw);
+            sky.SetVector("_YawB", yaw);
+            if (fogMaterial != null)
+            {
+                fogMaterial.SetVector("_YawA", yaw);
+                fogMaterial.SetVector("_YawB", yaw);
+            }
             RenderSettings.skybox = sky;
-            elapsedHours = 0f;
-            phaseIndex = -1;
+            skySegment = -1;
+            appliedMinute = appliedNight = -1f;
             nextReflectionUpdate = 0f;
-            ApplyPhase();
+            ApplyLighting();
+            UpdateReflection();
         }
 
-        private void Update()
+        private void LateUpdate()
         {
             if (sky == null) return;
-            elapsedHours = Mathf.Repeat(elapsedHours + Time.deltaTime * 24f / (60f * cycleMinutes), 24f);
-            ApplyPhase();
+            if (HasArrived)
+                nightElapsed = Mathf.Min(nightElapsed + Time.deltaTime, Mathf.Max(1f, nightDuration));
+            else
+                furthestDistance = Mathf.Max(furthestDistance, ProjectDistance(vehicle.position));
+
+            ApplyLighting();
+            UpdateReflection();
         }
 
-        private void ApplyPhase()
+        private float ProjectDistance(Vector3 position)
         {
-            int index = Phases.Length - 1;
-            while (Phases[index].Hour > elapsedHours) index--;
-            int next = (index + 1) % Phases.Length;
-            Phase from = Phases[index];
-            Phase to = Phases[next];
-            float blend = Mathf.SmoothStep(0f, 1f,
-                Mathf.InverseLerp(from.Hour, next == 0 ? 24f : to.Hour, elapsedHours));
-            if (index != phaseIndex)
+            // The authored route is ordered by Z. Search only segments crossing the nearby Z band.
+            int low = 1;
+            int high = route.Length - 1;
+            while (low < high)
             {
-                sky.SetTexture("_SkyA", skies[index]);
-                sky.SetTexture("_SkyB", skies[next]);
-                sky.SetVector("_YawA", SkyYaw(from.Yaw));
-                sky.SetVector("_YawB", SkyYaw(to.Yaw));
-                phaseIndex = index;
+                int mid = (low + high) / 2;
+                if (route[mid].position.z < position.z - RoadProximity) low = mid + 1;
+                else high = mid;
             }
-            sky.SetFloat("_Blend", blend);
 
-            ApplyLight(sun, from, to, from.Sun, to.Sun, blend);
-            ApplyLight(moon, from, to, from.Moon, to.Moon, blend);
+            float nearestSquared = RoadProximity * RoadProximity;
+            float distance = furthestDistance;
+            var point = new Vector2(position.x, position.z);
+            for (int i = low; i < route.Length && route[i - 1].position.z <= position.z + RoadProximity; i++)
+            {
+                RouteSample from = route[i - 1];
+                RouteSample to = route[i];
+                var a = new Vector2(from.position.x, from.position.z);
+                var segment = new Vector2(to.position.x, to.position.z) - a;
+                float t = Mathf.Clamp01(Vector2.Dot(point - a, segment) / segment.sqrMagnitude);
+                float squared = (point - (a + segment * t)).sqrMagnitude;
+                if (squared >= nearestSquared) continue;
+                nearestSquared = squared;
+                distance = Mathf.Lerp(from.distance, to.distance, t);
+            }
+            return distance;
+        }
+
+        private void ApplyLighting()
+        {
+            float minute = DrivingProgress * DriveMinutes;
+            float night = NightProgress;
+            if (minute == appliedMinute && night == appliedNight) return;
+            appliedMinute = minute;
+            appliedNight = night;
+
+            int segment = minute < FirstDuskMinutes ? 0 : 1;
+            if (skySegment != segment)
+            {
+                sky.SetTexture("_SkyA", skies[segment]);
+                sky.SetTexture("_SkyB", skies[segment + 1]);
+                if (fogMaterial != null)
+                {
+                    fogMaterial.SetTexture("_SkyA", skies[segment]);
+                    fogMaterial.SetTexture("_SkyB", skies[segment + 1]);
+                }
+                skySegment = segment;
+            }
+            float skyBlend = segment == 0
+                ? Mathf.InverseLerp(0f, FirstDuskMinutes, minute)
+                : Mathf.InverseLerp(FirstDuskMinutes, DriveMinutes, minute);
+            skyBlend = Mathf.SmoothStep(0f, 1f, skyBlend);
+            sky.SetFloat("_Blend", skyBlend);
+
+            int next = 1;
+            while (minute > DriveLighting[next].Minute) next++;
+            Lighting from = DriveLighting[next - 1];
+            Lighting to = DriveLighting[next];
+            float blend = Mathf.SmoothStep(0f, 1f, Mathf.InverseLerp(from.Minute, to.Minute, minute));
+            if (HasArrived)
+            {
+                from = DriveLighting[^1];
+                to = DarkestNight;
+                blend = 1f - Mathf.Pow(1f - night, 2.5f);
+            }
+
+            float luminance = Mathf.Lerp(from.Sky, to.Sky, blend);
+            float warmth = Mathf.Lerp(from.SunsetWarmth, to.SunsetWarmth, blend);
+            sky.SetFloat("_Luminance", luminance);
+            sky.SetFloat("_SunsetWarmth", warmth);
+            sun.transform.rotation = Quaternion.Euler(Mathf.Lerp(13f, 1f, DrivingProgress), SkyYaw + 180f, 0f);
+            sun.color = Color.Lerp(new Color32(255, 199, 125, 255), new Color32(255, 140, 95, 255), DrivingProgress);
+            sun.intensity = Mathf.Lerp(from.Sun, to.Sun, blend) * environmentBrightness;
+            sun.enabled = sun.intensity > 0f;
+            moon.transform.rotation = InitialMoonRotation;
             moon.color = MoonColor;
-            float daylight = Mathf.Clamp01(sun.intensity / 0.75f);
-            sun.color = Color.Lerp(new Color32(255, 156, 113, 255), new Color32(255, 242, 218, 255), daylight);
+            moon.intensity = Mathf.Lerp(from.Moon, to.Moon, blend) * environmentBrightness;
+            moon.enabled = moon.intensity > 0f;
             RenderSettings.sun = sun.intensity > moon.intensity ? sun : moon;
             sun.shadows = RenderSettings.sun == sun ? LightShadows.Soft : LightShadows.None;
             moon.shadows = RenderSettings.sun == moon ? LightShadows.Soft : LightShadows.None;
 
-            RenderSettings.ambientLight = Color.Lerp(NightAmbient, DayAmbient, daylight);
-            RenderSettings.fogColor = Color.Lerp(NightFog, DayFog, daylight);
-            RenderSettings.fogDensity = Mathf.Lerp(0.006f, 0.0017f, daylight);
-            RenderSettings.reflectionIntensity = Mathf.Lerp(0.27f, 0.75f, daylight);
-            if (Time.unscaledTime >= nextReflectionUpdate)
+            Color ambient = Color.Lerp(from.Ambient, to.Ambient, blend);
+            Color adjusted = (ambient.linear * environmentBrightness).gamma;
+            adjusted.a = ambient.a;
+            RenderSettings.ambientLight = adjusted;
+            if (fogMaterial != null)
             {
-                DynamicGI.UpdateEnvironment();
-                nextReflectionUpdate = Time.unscaledTime + 12f;
+                Color haze = Color.Lerp(from.Fog, to.Fog, blend);
+                sky.SetColor(FogColor, haze);
+                fogMaterial.SetColor(FogColor, haze);
+                fogMaterial.SetFloat("_Blend", skyBlend);
+                fogMaterial.SetFloat("_Luminance", luminance);
+                fogMaterial.SetFloat("_SunsetWarmth", warmth);
+                fogEndChunks = Mathf.Lerp(from.FogEndChunks, to.FogEndChunks, blend);
             }
+            RenderSettings.reflectionIntensity = Mathf.Clamp01(
+                Mathf.Lerp(from.Reflection, to.Reflection, blend) * environmentBrightness);
+            reflectionPending = true;
         }
 
-        private static void ApplyLight(Light light, Phase from, Phase to, float start, float end, float blend)
+        private void UpdateReflection()
         {
-            light.intensity = Mathf.Lerp(start, end, blend);
-            light.enabled = light.intensity > 0.001f;
-            if (light.enabled)
-            {
-                float directionBlend = blend * end / light.intensity;
-                light.transform.rotation = Quaternion.LookRotation(-Vector3.Slerp(from.Direction, to.Direction, directionBlend));
-            }
+            if (!reflectionPending || Time.unscaledTime < nextReflectionUpdate) return;
+            DynamicGI.UpdateEnvironment();
+            nextReflectionUpdate = Time.unscaledTime + ReflectionInterval;
+            reflectionPending = false;
         }
 
-        private static Vector4 SkyYaw(float yaw)
+        private void RenderDistanceFog(ScriptableRenderContext context, Camera camera)
         {
-            float radians = yaw * Mathf.Deg2Rad;
-            return new Vector4(Mathf.Cos(radians), Mathf.Sin(radians), 0f, 0f);
+            if (camera.cameraType != CameraType.Game || camera.gameObject.scene != gameObject.scene ||
+                !camera.TryGetComponent(out UniversalAdditionalCameraData cameraData) ||
+                cameraData.renderType != CameraRenderType.Base)
+                return;
+
+            float chunkSize = chunks != null ? chunks.ChunkSize : DefaultChunkSize;
+            Transform focus = chunks != null ? chunks.Focus : null;
+            Vector3 center = focus != null ? focus.position : camera.transform.position;
+            fogMaterial.SetVector(FogSettings, new Vector4(center.x, center.z, chunkSize, chunkSize * fogEndChunks));
+            cameraData.scriptableRenderer.EnqueuePass(fogPass);
         }
 
         private void OnDisable()
         {
+            RenderPipelineManager.beginCameraRendering -= RenderDistanceFog;
+            CoreUtils.Destroy(fogMaterial);
+            fogMaterial = null;
+            fogPass = null;
             if (sky == null) return;
             if (RenderSettings.skybox == sky)
             {
                 RenderSettings.skybox = originalSky;
                 RenderSettings.sun = originalSun;
                 RenderSettings.ambientLight = originalAmbient;
-                RenderSettings.fogColor = originalFog;
-                RenderSettings.fogDensity = originalFogDensity;
+                RenderSettings.fog = originalFogEnabled;
                 RenderSettings.reflectionIntensity = originalReflection;
             }
             if (moon != null)
             {
                 moon.transform.rotation = InitialMoonRotation;
-                moon.intensity = Phases[0].Moon;
+                moon.intensity = 0.23f;
                 moon.shadows = LightShadows.Soft;
                 moon.enabled = true;
             }
@@ -182,6 +365,34 @@ namespace EcoElectry.Unity.Levels
             }
             Destroy(sky);
             sky = null;
+        }
+
+        private sealed class DistanceFogPass : ScriptableRenderPass
+        {
+            private readonly Material material;
+
+            public DistanceFogPass(Material material)
+            {
+                this.material = material;
+                renderPassEvent = RenderPassEvent.BeforeRenderingPostProcessing - 1;
+                ConfigureInput(ScriptableRenderPassInput.Depth);
+            }
+
+            public override void RecordRenderGraph(RenderGraph graph, ContextContainer frame)
+            {
+                var resources = frame.Get<UniversalResourceData>();
+                using var builder = graph.AddRasterRenderPass<PassData>("Introduction distance fog", out var data);
+                data.Material = material;
+                builder.UseTexture(resources.cameraDepthTexture, AccessFlags.Read);
+                builder.SetRenderAttachment(resources.activeColorTexture, 0, AccessFlags.ReadWrite);
+                builder.SetRenderFunc(static (PassData pass, RasterGraphContext context) =>
+                    context.cmd.DrawProcedural(Matrix4x4.identity, pass.Material, 0, MeshTopology.Triangles, 3, 1));
+            }
+
+            private sealed class PassData
+            {
+                public Material Material;
+            }
         }
     }
 }

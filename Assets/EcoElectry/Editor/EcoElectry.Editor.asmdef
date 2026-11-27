@@ -5,7 +5,8 @@
         "EcoElectry.Domain",
         "EcoElectry.Unity",
         "Unity.RenderPipelines.Core.Runtime",
-        "Unity.RenderPipelines.Universal.Runtime"
+        "Unity.RenderPipelines.Universal.Runtime",
+        "Unity.Timeline"
     ],
     "includePlatforms": ["Editor"],
     "autoReferenced": false

@@ -6,8 +6,8 @@ El jugador empieza al volante a las **16:00** y llega al colegio a las **18:00**
 
 | Tramo | Acción del jugador | Qué marca el avance |
 | --- | --- | --- |
-| **Autopista en el bosque** | Conduce desde el asiento del conductor, sigue las curvas y permanece entre las barreras. | La luz diurna baja a medida que avanza hacia el colegio. |
-| **Llegada** | Toma el único desvío, reduce la velocidad y estaciona en el espacio iluminado junto a la entrada principal. | La hora llega a las 18:00. Se habilita bajar del auto cuando está detenido en el estacionamiento. |
+| **Autopista en el bosque** | Tras un plano que sigue a la camioneta en movimiento, recibe el control desde el asiento del conductor y sigue la carretera. | La luz diurna baja a medida que avanza hacia el colegio. |
+| **Llegada** | Toma el desvío y entra despacio al estacionamiento. La cámara muestra el colegio, la caseta y la sala de mantenimiento. | La hora llega a las 18:00. Al terminar la cinemática, recibe el control a pie junto al vehículo. [Plan de las cinemáticas](Nivel_0_Etapa_4.md) |
 | **Caseta de vigilancia** | Se acerca a la puerta principal y oye la voz del guardia desde la caseta. | El guardia indica que el jefe dejó una videocasetera con instrucciones en mantenimiento. Se habilita el paso peatonal. |
 | **Recorrido de servicio** | Sigue un sendero iluminado y la señalización de mantenimiento junto a la fachada. También puede desviarse a pie hacia el bosque. | Encuentra la sala de mantenimiento. Si exploró el bosque, puede recuperar la calma al volver a la entrada. |
 | **Sala de mantenimiento** | Identifica el equipo de video, recoge la cinta y la reproduce. | El encargo de la primera sección se registra al finalizar la cinta y se habilita su puerta. |

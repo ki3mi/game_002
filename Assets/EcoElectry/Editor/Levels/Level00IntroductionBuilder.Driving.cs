@@ -22,6 +22,8 @@ namespace EcoElectry.Editor.Levels
         private const string WalkingCameraName = "Vista a pie";
         private const string ArrivalZoneName = "Zona de llegada al colegio";
         private const string DriverExitName = "Salida por la puerta del conductor";
+        private const float VehicleStartZ = 505.5f;
+        private const float RightLaneOffset = 1.4f;
 
         [MenuItem("Tools/EcoElectry/Nivel 00/Actualizar conducción nocturna")]
         internal static void RefreshNightIntroduction()
@@ -33,14 +35,22 @@ namespace EcoElectry.Editor.Levels
             if (level == null) throw new InvalidOperationException("No se encontró el mapa del nivel 00.");
 
             SceneManager.SetActiveScene(scene);
-            ConfigureNightIntroduction(level.transform);
+            ConfigureNightIntroduction(level.transform, BuildPath(RoadControls, 4f));
             EditorSceneManager.MarkSceneDirty(scene);
             if (!EditorSceneManager.SaveScene(scene))
                 throw new InvalidOperationException("No se pudo guardar la conducción nocturna.");
             AssetDatabase.SaveAssets();
         }
 
-        private static void ConfigureNightIntroduction(Transform level)
+        private static void PositionVehicleStart(Transform start, PathData road)
+        {
+            Vector3 center = RoadAtZ(road, VehicleStartZ);
+            Vector3 direction = FlatDirection(RoadAtZ(road, VehicleStartZ - 1f), RoadAtZ(road, VehicleStartZ + 1f));
+            start.SetPositionAndRotation(center + Vector3.Cross(Vector3.up, direction) * RightLaneOffset,
+                Quaternion.LookRotation(direction));
+        }
+
+        private static void ConfigureNightIntroduction(Transform level, PathData road)
         {
             var controls = AssetDatabase.LoadMainAssetAtPath(PlayerInputPath);
             if (controls == null) throw new InvalidOperationException("Falta el recurso de controles del nivel 00.");
@@ -49,9 +59,7 @@ namespace EcoElectry.Editor.Levels
             Transform parking = RequiredChild(level, "Markers/VehicleParking");
             Transform fallback = RequiredChild(level, "Markers/OnFootExit");
             Transform entrance = RequiredChild(level, "Markers/Level1Door");
-            // Keep both axles on the asphalt when migrating the old marker at the end of the road.
-            if (Mathf.Abs(start.position.x) < 1f && Mathf.Abs(start.position.z) < 1f)
-                start.position += start.forward * 5.5f;
+            PositionVehicleStart(start, road);
 
             VolumeProfile profile = GetIntroductionNightProfile();
             Transform rig = level.Find(CabRigName) ?? Group(level.gameObject.scene, level, CabRigName);
@@ -63,7 +71,8 @@ namespace EcoElectry.Editor.Levels
             Transform driverExit = Group(truck.gameObject.scene, truck, DriverExitName, new Vector3(-1.54f, 0f, 0.38f));
             driverExit.gameObject.isStatic = false;
             CharacterController explorer = BuildWalkingPlayer(level, fallback, entrance, controls, profile);
-            ConfigureIntroductionNightLights(level);
+            Transform moon = ConfigureIntroductionNightLights(level, road);
+            IntroductionSkyCycle skyCycle = ConfigureIntroductionSkyCycle(moon, drive.GetComponent<Rigidbody>(), road, parking);
             OrientApproachSigns(level);
             OrientCampusSignText(level.Find("SchoolExterior/RotuloColegio"));
             KeepLargeFacadeMeshesUnbatched(level.Find("SchoolExterior/BuildingA"));
@@ -79,7 +88,9 @@ namespace EcoElectry.Editor.Levels
             var chunkSetup = new SerializedObject(chunks);
             chunkSetup.FindProperty("player").objectReferenceValue = truck;
             chunkSetup.ApplyModifiedPropertiesWithoutUndo();
-            BuildArrivalZone(rig, drive, cockpit, explorer, driverExit, fallback, parking, entrance, chunks);
+            VehicleArrivalTransition arrival = BuildArrivalZone(rig, drive, cockpit, explorer, driverExit, fallback,
+                parking, entrance, chunks, skyCycle);
+            ConfigureIntroductionCinematics(level, rig, drive, cockpit, arrival, skyCycle, parking, profile);
         }
 
         private static Transform GetDriveTruck(Transform level, Transform rig, Transform start)
@@ -316,9 +327,9 @@ namespace EcoElectry.Editor.Levels
             return camera;
         }
 
-        private static void BuildArrivalZone(Transform rig, IntroductionTruckDrive vehicle, Camera cockpit,
+        private static VehicleArrivalTransition BuildArrivalZone(Transform rig, IntroductionTruckDrive vehicle, Camera cockpit,
             CharacterController explorer, Transform driverExit, Transform fallback, Transform parking, Transform entrance,
-            ChunkRenderWindow chunks)
+            ChunkRenderWindow chunks, IntroductionSkyCycle skyCycle)
         {
             RemoveChild(rig, ArrivalZoneName);
             Transform zone = Group(rig.gameObject.scene, rig, ArrivalZoneName);
@@ -328,7 +339,8 @@ namespace EcoElectry.Editor.Levels
             trigger.size = new Vector3(22f, 3.4f, 27f);
             trigger.isTrigger = true;
 
-            var data = new SerializedObject(zone.gameObject.AddComponent<VehicleArrivalTransition>());
+            var arrival = zone.gameObject.AddComponent<VehicleArrivalTransition>();
+            var data = new SerializedObject(arrival);
             data.FindProperty("vehicle").objectReferenceValue = vehicle;
             data.FindProperty("vehicleBody").objectReferenceValue = vehicle.GetComponent<Rigidbody>();
             data.FindProperty("cockpitView").objectReferenceValue = cockpit.gameObject;
@@ -338,7 +350,9 @@ namespace EcoElectry.Editor.Levels
             data.FindProperty("parking").objectReferenceValue = parking;
             data.FindProperty("schoolEntrance").objectReferenceValue = entrance;
             data.FindProperty("chunks").objectReferenceValue = chunks;
+            data.FindProperty("skyCycle").objectReferenceValue = skyCycle;
             data.ApplyModifiedPropertiesWithoutUndo();
+            return arrival;
         }
 
         private static void OrientApproachSigns(Transform level)

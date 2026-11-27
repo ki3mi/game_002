@@ -12,7 +12,7 @@ namespace EcoElectry.Editor.Levels
 {
     internal static partial class Level00IntroductionBuilder
     {
-        private const string ScenePath = "Assets/EcoElectry/Content/Scenes/Level00-Introduction.unity";
+        internal const string ScenePath = "Assets/EcoElectry/Content/Scenes/Level00-Introduction.unity";
         private const string ThirdPartyRoot = "Assets/EcoElectry/ThirdParty";
         private const string TerrainFolder = "Assets/EcoElectry/Content/Terrain/Level00";
         private const string MeshFolder = TerrainFolder + "/Meshes";
@@ -98,7 +98,7 @@ namespace EcoElectry.Editor.Levels
             BuildMaintenance(level, terrain);
             BuildForestTrail(level, terrain, palette);
             BuildMarkers(level, path, terrain);
-            ConfigureNightIntroduction(level);
+            ConfigureNightIntroduction(level, path);
 
             EditorSceneManager.MarkSceneDirty(scene);
             if (!EditorSceneManager.SaveScene(scene, ScenePath))
@@ -623,9 +623,7 @@ namespace EcoElectry.Editor.Levels
         private static void BuildMarkers(Transform level, PathData road, TerrainGrid terrain)
         {
             Transform markers = Group(SceneManager.GetActiveScene(), level, "Markers");
-            Vector3 start = road.AtDistance(5.5f);
-            Vector3 startDirection = FlatDirection(start, road.AtDistance(9f));
-            Marker(markers, "VehicleStart", start, startDirection);
+            Group(level.gameObject.scene, markers, "VehicleStart");
             Marker(markers, "VehicleParking", new Vector3(TruckX, ParkingSurface, TruckZ), Vector3.right);
             Marker(markers, "OnFootExit", new Vector3(TruckX + 0.8f, ParkingSurface + 0.04f, TruckZ + 2.1f), Vector3.back);
             Marker(markers, "GuardVoicePoint", new Vector3(GuardX, ParkingSurface + 1.665f, GuardZ - 1.65f), Vector3.back);
