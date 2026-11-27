@@ -8,7 +8,7 @@ namespace EcoElectry.Tests.EditMode
     public sealed class DevelopmentSetupTests
     {
         [Test]
-        public void StartupAndFirstLevelAreTheFirstEnabledBuildScenes()
+        public void StartupAndIntroductionAreTheFirstEnabledBuildScenes()
         {
             const string sceneDirectory = "Assets/EcoElectry/Content/Scenes/";
 
@@ -21,7 +21,7 @@ namespace EcoElectry.Tests.EditMode
             Assert.That(firstScenePaths, Is.EqualTo(new[]
             {
                 sceneDirectory + "Startup.unity",
-                sceneDirectory + "Level01-LaPrimeraAula.unity"
+                sceneDirectory + "Level00-Introduction.unity"
             }));
 
             foreach (string path in firstScenePaths)

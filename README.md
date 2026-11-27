@@ -15,12 +15,10 @@ El diseño aborda el **ODS 7** mediante decisiones sobre generación renovable, 
 
 1. Si obtuviste el repositorio mediante Git y faltan los archivos binarios de Git LFS, ejecuta `git lfs pull` en la raíz.
 2. En Unity Hub, agrega la carpeta raíz y abre el proyecto con **Unity `6000.6.0f1`**, la versión registrada en [ProjectVersion.txt](ProjectSettings/ProjectVersion.txt).
-3. En el Editor, abre [`Startup.unity`](Assets/EcoElectry/Content/Scenes/Startup.unity) y pulsa **Play** para cargar el mapa de *La primera aula*. También puedes abrir y recorrer [`Level01-LaPrimeraAula.unity`](Assets/EcoElectry/Content/Scenes/Level01-LaPrimeraAula.unity) directamente.
+3. En el Editor, abre [`Startup.unity`](Assets/EcoElectry/Content/Scenes/Startup.unity) y pulsa **Play** para cargar el prólogo. También puedes abrir [`Level00-Introduction.unity`](Assets/EcoElectry/Content/Scenes/Level00-Introduction.unity) directamente.
 4. En **Window > General > Test Runner** puedes ejecutar las pruebas de configuración en **Edit Mode** y **Play Mode**. Usa **Tools > EcoElectry > Validar definiciones de nivel** para revisar los datos y los identificadores de nivel.
 
-El mapa empieza en la carretera del bosque. Usa **WASD** o las flechas para caminar, el ratón para mirar y **C** para alternar entre primera y tercera persona. Sigue la vía hasta la entrada peatonal y toma el patio como referencia para llegar a las aulas, la cancha o la sala eléctrica. **Esc** libera el cursor y un clic vuelve a capturarlo. [Plan del mapa](Docs/Plan-Mapa-Nivel01.md) · [Inventario 3D](Docs/Inventario-3D-Nivel01.md)
-
-[`SampleScene.unity`](Assets/ResourcePack/Scenes/SampleScene.unity) sigue disponible como referencia en `ResourcePack`. El [diseño del nivel 01](Docs/Nivel01-LaPrimeraAula.md) describe las tareas que se integrarán sobre el mapa.
+El prólogo transcurre en la carretera del bosque y el exterior del colegio. La primera sección interior se montará en una escena propia. [Introducción](Docs/Nivel%200%20Introducci%C3%B3n/Nivel_0_Contexto.md) · [Plan del mapa del nivel 1](Docs/Nivel%201/Nivel_1_Etapa_1.md)
 
 ## Sandbox eléctrico
 
@@ -45,5 +43,5 @@ Los datos y las referencias a los prefabs del circuito están en [SandboxElectri
 | --- | --- |
 | [Contexto](Docs/Context.md) | Premisa, identidad visual, ODS y progresión de la campaña. |
 | [Mecánicas](Docs/Mecanicas.md) | Construcción, cableado, simulación, estrellas, economía y habilidades. |
-| [Nivel 01 · La primera aula](Docs/Nivel01-LaPrimeraAula.md) | Diálogos, tareas del tutorial, prueba y criterios de entrega. |
+| [Nivel 1 · Planta baja](Docs/Nivel%201/Nivel_1_Etapa_1.md) | Distribución del colegio, orden de montaje y pruebas de recorrido. |
 | [Arquitectura](Docs/Arquitectura.md) | Organización del código, escenas, datos, prefabs y modelos 3D. |

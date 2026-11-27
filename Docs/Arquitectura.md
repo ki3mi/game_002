@@ -74,7 +74,7 @@ El responsable de desarrollo integra el modelo en el prefab, configura sus conex
 ## Migración del proyecto actual
 
 1. Usar [HorrorCorridorPrototype.unity](../Assets/EcoElectry/Content/Scenes/HorrorCorridorPrototype.unity) como referencia jugable de marcha, cámara, linterna y posprocesado. Sus parpadeos ambientales ofrecen una referencia visual. En la nueva mecánica, el desenlace de una anomalía y su efecto en el miedo los determina la sesión. [Integración de la cámara](Integracion-Camara-Pasillos.md)
-2. La escena `Startup.unity` carga actualmente `Level01-LaPrimeraAula.unity`. El prólogo, las secciones interiores y su orden de carga corresponden a la implementación del nuevo recorrido.
+2. La escena `Startup.unity` carga `Level00-Introduction.unity`. La primera sección interior se montará en `Level01.unity` y se conectará desde el prólogo al validar la entrada. [Plan del mapa del nivel 1](Nivel%201/Nivel_1_Etapa_1.md)
 3. Evaluar `ModularBoard`, `BoardSlot` y los componentes de tablero existentes para reutilizar los elementos de interacción que sirvan para reparar. Las reglas de las jornadas se integran a través de los ensamblados vigentes. Mientras exista código en `Assembly-CSharp`, mantener la dirección de referencias descrita en la documentación de Unity. [Referencias desde ensamblados personalizados en Unity](https://docs.unity3d.com/es/current/Manual/ScriptCompilationAssemblyDefinitionFiles.html)
 4. Mover scripts, escenas y prefabs en cambios pequeños desde Unity para conservar sus `.meta`. Separar reubicaciones de cambios de nombre, espacio de nombres o formato serializado. Después de cada cambio, reabrir las escenas afectadas y comprobar componentes, referencias y comportamiento antes de retirar la versión anterior.
 
