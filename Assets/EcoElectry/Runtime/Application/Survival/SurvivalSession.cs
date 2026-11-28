@@ -10,6 +10,7 @@ namespace EcoElectry.Application.Survival
         private readonly FearState fear = new();
         private readonly List<BatteryCell> inventory = new();
         private readonly HashSet<string> obtained = new(StringComparer.Ordinal);
+        private readonly Dictionary<string, FuseRepair> repairs = new(StringComparer.Ordinal);
 
         public SurvivalSession(BatteryCell first, BatteryCell second, bool requestedOn, IEnumerable<BatteryCell> spares = null)
         {
@@ -32,7 +33,20 @@ namespace EcoElectry.Application.Survival
         public double TotalCharge => flashlight.TotalCharge;
         public double Fear => fear.Value;
         public bool ShowFear => fear.Visible;
+        public bool SupplyCut { get; private set; }
         public IReadOnlyList<BatteryCell> Inventory { get; }
+
+        public void CutSupply() => SupplyCut = true;
+
+        public FuseRepair GetFuseRepair(string id, string[] required, FuseCartridge[] cartridges)
+        {
+            if (!repairs.TryGetValue(id, out FuseRepair repair))
+            {
+                repair = new FuseRepair(this, required, cartridges);
+                repairs.Add(id, repair);
+            }
+            return repair;
+        }
 
         public BatteryCell GetSlot(int index) => flashlight.GetSlot(index);
         public bool HasCollected(string id) => obtained.Contains(id);

@@ -74,14 +74,18 @@ namespace EcoElectry.Unity.Survival
             }
 
             for (int i = 0; i < probes.Length; i++)
-            {
-                docks[i] = Group("Soporte de punta", workspace, new Vector3(-2.14f + i * .39f, -.98f + i * .08f, -.28f));
-                docks[i].localRotation = Quaternion.Euler(-16, 0, i == 0 ? -23 : -16);
-                probes[i] = Spawn(i == 0 ? assets.BlackProbe : assets.RedProbe, workspace);
-                cableEnds[i] = probes[i].Find("Cable");
-                HitBox(probes[i], new Vector3(0, .405f, 0), new Vector3(.20f, .43f, .19f), new Hit(TargetKind.Probe, i));
-                probes[i].SetPositionAndRotation(docks[i].position, docks[i].rotation);
-            }
+                AddProbe(i, new Vector3(-2.14f + i * .39f, -.98f + i * .08f, -.28f),
+                    Quaternion.Euler(-16, 0, i == 0 ? -23 : -16));
+        }
+
+        private void AddProbe(int index, Vector3 position, Quaternion rotation)
+        {
+            docks[index] = Group("Soporte de punta", workspace, position);
+            docks[index].localRotation = rotation;
+            probes[index] = Spawn(index == 0 ? assets.BlackProbe : assets.RedProbe, workspace);
+            cableEnds[index] = probes[index].Find("Cable");
+            HitBox(probes[index], new Vector3(0, .405f, 0), new Vector3(.20f, .43f, .19f), new Hit(TargetKind.Probe, index));
+            probes[index].SetPositionAndRotation(docks[index].position, docks[index].rotation);
         }
 
         private void AddCell(BatteryCell cell, Transform seat)
@@ -160,6 +164,11 @@ namespace EcoElectry.Unity.Survival
                 position = new Vector3(0, .016f, offset);
                 rotation = Quaternion.FromToRotation(Vector3.up, new Vector3(.49f * direction, .87f, index == 0 ? -.21f : .21f));
             }
+            PoseProbe(index, anchor, position, rotation, seconds);
+        }
+
+        private void PoseProbe(int index, Transform anchor, Vector3 position, Quaternion rotation, float seconds)
+        {
             float speed = 1 - Mathf.Exp(-19 * seconds);
             Transform probe = probes[index];
             if (probe.parent != anchor) probe.SetParent(anchor, true);

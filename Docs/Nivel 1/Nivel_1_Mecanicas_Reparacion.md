@@ -15,14 +15,18 @@ Si el jugador elige un modo que no corresponde a la comprobación, el tutorial i
 
 | Herramienta | Uso en el juego | Cuándo se introduce |
 | --- | --- | --- |
-| **Multímetro · Continuidad** | Comprobar si un tramo simulado está abierto o si la conexión ofrece un camino continuo. | Tutorial y primera avería del corredor. |
+| **Multímetro · Continuidad** | Comprobar si un tramo o componente simulado ofrece un camino continuo. | Tutorial y primera avería en la caja de fusibles. |
 | **Multímetro · Voltaje de corriente continua (V⎓)** | Comparar las dos baterías de la linterna antes de elegir cuál reemplazar. | Segundo ejercicio y comprobación opcional en el Nivel 1. |
 | **Destornillador** | Abrir tapas y fijar conexiones en el montaje simulado. | Primera reparación. |
 | **Pelacables** | Preparar el extremo de un cable de repuesto en un punto interactivo. | Una tarea posterior de reemplazo de cable, después de aprender a identificar la pieza. |
 
 El **Fluke 117** es una referencia visual propuesta. El multímetro del juego ofrece como máximo **dos modos interactivos en el Nivel 1**. Cada reparación pide solo el modo que ayuda a resolverla. [Ficha oficial del Fluke 117](https://www.fluke.com/en-us/product/electrical-testing/digital-multimeters/fluke-117)
 
-## Primera reparación · Tramo interrumpido del corredor
+## Primera reparación · Caja de fusibles de la sala de limpieza
+
+El jugador retira los tornillos, diagnostica tres fusibles y busca el repuesto que falta antes de cerrar la caja. [Plan de implementación](Nivel_1_Plan_Caja_Fusibles.md)
+
+## Reparación posterior · Tramo interrumpido del corredor
 
 1. Abrir la caja de paso con el destornillador. Leer las etiquetas y medir la continuidad del tramo señalado para localizar la interrupción.
 2. Seguir una pista hasta el aula contigua y recuperar el repuesto escondido. Girarlo en el inventario 3D para comprobar su referencia y la forma del conector.

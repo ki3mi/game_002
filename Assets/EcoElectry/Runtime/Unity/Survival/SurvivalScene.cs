@@ -17,6 +17,7 @@ namespace EcoElectry.Unity.Survival
         [SerializeField] private InspectionModels inspectionModels = null;
         [SerializeField] private BatteryPickup[] pickups = System.Array.Empty<BatteryPickup>();
         [SerializeField] private string continuationScene = "";
+        [SerializeField] private bool directEntrySupplyCut;
         [SerializeField, Min(.1f)] private float reach = 2.3f;
 
         private HorrorCorridorExplorer explorer;
@@ -37,7 +38,7 @@ namespace EcoElectry.Unity.Survival
 
         internal bool IsReady => isActiveAndEnabled && session != null;
         internal bool BlocksExplorerInput => IsReady && (paused || loading || session.IsDefeated || Inspecting);
-        private bool Inspecting => session.IsInspecting || openCase != null;
+        private bool Inspecting => session.IsInspecting || openCase != null || repairView != RepairView.None;
 
         private void Awake()
         {
@@ -49,7 +50,8 @@ namespace EcoElectry.Unity.Survival
                 return;
             }
 
-            session = SurvivalRun.Enter(settings);
+            session = SurvivalRun.Enter(settings, directEntrySupplyCut);
+            PrepareRepair();
             fearRules = settings.CreateFearRules();
             foreach (BatteryPickup pickup in pickups)
                 if (pickup != null) pickup.ApplySession(session);
@@ -69,11 +71,17 @@ namespace EcoElectry.Unity.Survival
                 if (session.IsInspecting && preview != null) session.CancelInspection();
             }
             openCase = null;
+            CloseRepair();
+            meterFace.CancelInput();
             preview?.Hide();
             if (paused) ReturnTimeToGame();
         }
 
-        private void OnDestroy() => preview?.Dispose();
+        private void OnDestroy()
+        {
+            preview?.Dispose();
+            if (continuityClip != null) Destroy(continuityClip);
+        }
 
         internal void ToggleFlashlight() => session.ToggleFlashlight();
 
@@ -96,7 +104,15 @@ namespace EcoElectry.Unity.Survival
                 return;
             }
 
-            if (openCase != null || keyboard?.iKey.wasPressedThisFrame != true) return;
+            if (repair != null && keyboard?.jKey.wasPressedThisFrame == true && !session.IsInspecting && openCase == null)
+            {
+                if (repairView == RepairView.None) ShowRepairView(RepairView.Journal);
+                else if (repairView is RepairView.Journal or RepairView.Inventory) CloseInspection();
+                else taskSheetOpen = !taskSheetOpen;
+                return;
+            }
+
+            if (openCase != null || repairView != RepairView.None || keyboard?.iKey.wasPressedThisFrame != true) return;
             if (session.IsInspecting) CloseInspection();
             else if (session.BeginInspection()) ShowCompartment();
             else Notify("Busca una batería de repuesto.");
@@ -109,11 +125,18 @@ namespace EcoElectry.Unity.Survival
             explorer.PresentBeam(session.HasBeam);
             aimedBattery = null;
             aimedCase = null;
+            aimedRepair = null;
             if (paused || loading || session.IsDefeated || Time.timeScale <= 0) return;
 
             if (session.IsInspecting)
             {
                 preview.UpdateCompartment(session.Inspection, selectedCell, Time.deltaTime);
+                return;
+            }
+
+            if (repairView != RepairView.None)
+            {
+                if (repairView == RepairView.Box) preview.UpdateRepair(repair, Time.deltaTime);
                 return;
             }
 
@@ -124,8 +147,11 @@ namespace EcoElectry.Unity.Survival
 
             aimedBattery = hit.collider.GetComponentInParent<BatteryPickup>();
             aimedCase = hit.collider.GetComponentInParent<BatteryCase>();
+            aimedRepair = hit.collider.GetComponentInParent<FuseRepairInteractable>();
             if (Keyboard.current?.eKey.wasPressedThisFrame != true) return;
-            if (aimedBattery != null && Collect(aimedBattery))
+            if (aimedRepair != null && aimedRepair.Definition == repairDefinition && repair != null)
+                InteractRepairWorld(aimedRepair);
+            else if (aimedBattery != null && Collect(aimedBattery))
             {
                 aimedBattery = null;
                 aimedCase = null;
@@ -229,6 +255,8 @@ namespace EcoElectry.Unity.Survival
             heldProbe = null;
             selectedCell = null;
             openCase = null;
+            CloseRepair();
+            meterFace.CancelInput();
             preview?.Hide();
             explorer.PresentBeam(session.HasBeam);
             HorrorCorridorExplorer.SetCursorLocked(!paused && !session.IsDefeated);
@@ -248,7 +276,14 @@ namespace EcoElectry.Unity.Survival
                 paused = true;
                 previousTimeScale = Time.timeScale;
                 Time.timeScale = 0;
+                meterFace.CancelInput();
                 preview?.CancelPointer();
+                if (repairView == RepairView.Box)
+                {
+                    preview.FinishRepairMotion();
+                    StowRepairProbes();
+                    preview.UpdateRepair(repair, 1f);
+                }
             }
             else ReturnTimeToGame();
             HorrorCorridorExplorer.SetCursorLocked(!paused && !Inspecting && !session.IsDefeated);
@@ -272,6 +307,7 @@ namespace EcoElectry.Unity.Survival
             if (paused) ReturnTimeToGame();
             CloseInspection();
             if (restart) SurvivalRun.StartNew();
+            else if (path == continuationScene) SurvivalRun.CutSupply();
             loading = true;
             SceneManager.LoadSceneAsync(index, LoadSceneMode.Single);
         }

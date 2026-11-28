@@ -20,7 +20,9 @@ namespace EcoElectry.Unity.Survival
         private bool draggingKnob;
         private bool turnedKnob;
 
-        public MeterMode Draw(Rect bounds, BatteryMeter meter, bool interact)
+        public void CancelInput() => draggingKnob = false;
+
+        public MeterMode Draw(Rect bounds, IMeterReadout meter, bool interact)
         {
             label ??= new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleCenter, fontStyle = FontStyle.Bold, clipping = TextClipping.Clip };
             float w = bounds.width;
@@ -99,17 +101,24 @@ namespace EcoElectry.Unity.Survival
             return mode;
         }
 
-        private void DrawLcd(Rect rect, BatteryMeter meter)
+        private void DrawLcd(Rect rect, IMeterReadout meter)
         {
             var annunciator = new Rect(rect.x + 5, rect.y + 4, rect.width - 10, 16);
             if (meter.Mode == MeterMode.DirectVoltage) DrawDc(annunciator, LcdInk, TextAnchor.MiddleLeft);
             else Text(annunciator, "CONTINUIDAD", LcdInk, 11, TextAnchor.MiddleLeft);
             bool validReading = meter.Display is MeterDisplay.Voltage or MeterDisplay.ReversePolarity or MeterDisplay.SameTerminal;
-            string digits = validReading ? meter.DisplayVoltage.ToString("0.00", Spanish) : "-";
+            string digits = meter.Display switch
+            {
+                MeterDisplay.OpenCircuit => "OL",
+                MeterDisplay.Continuity => "0",
+                _ => validReading ? meter.Reading.ToString("0.00", Spanish) : "-"
+            };
             var readout = new Rect(rect.x + 9, rect.y + 22, rect.width - 27, rect.height - 45);
             DrawDigits(readout, digits);
             if (validReading)
                 Text(new Rect(rect.xMax - 22, readout.yMax - 18, 16, 18), "V", LcdInk, 14);
+            if (meter.Display == MeterDisplay.Continuity)
+                Text(new Rect(rect.xMax - 22, readout.yMax - 18, 16, 18), "Ω", LcdInk, 14);
 
             string status = meter.Display switch
             {
@@ -117,13 +126,15 @@ namespace EcoElectry.Unity.Survival
                 MeterDisplay.Voltage => "LECTURA FIJADA",
                 MeterDisplay.ReversePolarity => "POLARIDAD INVERTIDA",
                 MeterDisplay.SameTerminal => "MISMO TERMINAL",
+                MeterDisplay.Continuity => "CONTINUIDAD",
+                MeterDisplay.OpenCircuit => "CIRCUITO ABIERTO",
                 MeterDisplay.WrongMode => "MODO DE PRUEBA",
                 _ => "SIN CONTACTO"
             };
             Text(new Rect(rect.x + 5, rect.yMax - 20, rect.width - 10, 16), status, LcdInk, 10, TextAnchor.MiddleLeft);
             if (meter.Display == MeterDisplay.Stabilizing)
             {
-                float progress = Mathf.Clamp01(1 - (float)(meter.Remaining / BatteryMeter.StabilizationSeconds));
+                float progress = Mathf.Clamp01((float)meter.Progress);
                 Round(new Rect(rect.x + 6, rect.yMax - 5, progress * (rect.width - 12), 2), LcdInk, 0);
             }
         }
@@ -151,7 +162,7 @@ namespace EcoElectry.Unity.Survival
                     Segment(new Vector2(x + .15f * w, y + .5f * h), new Vector2(x + .85f * w, y + .5f * h), LcdInk, stroke);
                     continue;
                 }
-                int lit = Segments[digit - '0'];
+                int lit = digit switch { 'O' => 63, 'L' => 56, _ => Segments[digit - '0'] };
                 if ((lit & 1) != 0) Segment(new Vector2(x + 3, y), new Vector2(x + w - 3, y), LcdInk, stroke);
                 if ((lit & 2) != 0) Segment(new Vector2(x + w, y + 3), new Vector2(x + w, y + h / 2 - 3), LcdInk, stroke);
                 if ((lit & 4) != 0) Segment(new Vector2(x + w, y + h / 2 + 3), new Vector2(x + w, y + h - 3), LcdInk, stroke);

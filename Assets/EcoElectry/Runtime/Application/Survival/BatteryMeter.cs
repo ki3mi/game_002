@@ -7,7 +7,15 @@ namespace EcoElectry.Application.Survival
     public enum MeterMode { Off, DirectVoltage, Continuity }
     public enum MeterProbe { Black, Red }
     public enum BatteryTerminal { Negative, Positive }
-    public enum MeterDisplay { Off, NoContact, WrongMode, Stabilizing, Voltage, ReversePolarity, SameTerminal }
+    public enum MeterDisplay { Off, NoContact, WrongMode, Stabilizing, Voltage, ReversePolarity, SameTerminal, Continuity, OpenCircuit }
+
+    public interface IMeterReadout
+    {
+        MeterMode Mode { get; }
+        MeterDisplay Display { get; }
+        double Reading { get; }
+        double Progress { get; }
+    }
 
     public readonly struct ProbeContact
     {
@@ -21,7 +29,7 @@ namespace EcoElectry.Application.Survival
         public BatteryTerminal Terminal { get; }
     }
 
-    public sealed class BatteryMeter
+    public sealed class BatteryMeter : IMeterReadout
     {
         public const double StabilizationSeconds = 1.5;
         private readonly BatteryInspection inspection;
@@ -33,6 +41,8 @@ namespace EcoElectry.Application.Survival
         public MeterDisplay Display { get; private set; }
         public double Remaining { get; private set; }
         public double DisplayVoltage { get; private set; }
+        double IMeterReadout.Reading => DisplayVoltage;
+        double IMeterReadout.Progress => 1 - Remaining / StabilizationSeconds;
 
         public ProbeContact GetContact(MeterProbe probe) => contacts[(int)probe];
 
