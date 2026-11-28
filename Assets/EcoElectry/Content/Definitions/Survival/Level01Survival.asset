@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b087b086f53876468f0626c06e590da, type: 3}
+  m_Name: Level01Survival
+  m_EditorClassIdentifier: EcoElectry.Unity::EcoElectry.Unity.Survival.SurvivalSettings
+  secondsPerBattery: 135
+  firstSlotOccupied: 1
+  firstSlotCharge: 1
+  secondSlotOccupied: 0
+  secondSlotCharge: 1
+  initialSpareCharges: []
+  startsOn: 1
+  alertThreshold: 12
+  safeThreshold: 6
+  fearPerSecond: 3
+  recoveryPerSecond: 5

@@ -11,6 +11,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/EcoElectry/Content/Scenes/Level00-Introduction.unity
     guid: b84016789a8ea2046bcb48df486dd273
+  - enabled: 1
+    path: Assets/EcoElectry/Content/Scenes/Level01.unity
+    guid: fa8d77fba17ecb744af27c6c1d0574a5
+  - enabled: 1
+    path: Assets/EcoElectry/Content/Scenes/FlashlightFearTest.unity
+    guid: 69b56f692b1f501885fca4b5760a845e
   - enabled: 0
     path: Assets/ResourcePack/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05

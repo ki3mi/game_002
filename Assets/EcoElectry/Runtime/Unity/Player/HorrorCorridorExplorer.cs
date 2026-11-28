@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using EcoElectry.Unity.Survival;
 
 namespace EcoElectry.Unity.Player
 {
@@ -33,6 +34,7 @@ namespace EcoElectry.Unity.Player
         private InputAction toggleLight;
         private CorridorBrightness brightness;
         private CorridorFlicker flashlightFlicker;
+        private SurvivalScene survival;
         private float flashlightIntensity;
         private Vector3 velocity;
         private float fallSpeed;
@@ -54,6 +56,7 @@ namespace EcoElectry.Unity.Player
         private void Awake()
         {
             body = GetComponent<CharacterController>();
+            survival = GetComponent<SurvivalScene>();
             move = controls?.FindAction("Player/Move")?.Clone();
             look = controls?.FindAction("Player/Look")?.Clone();
             if (move == null || look == null || view == null || flashlight == null)
@@ -109,7 +112,7 @@ namespace EcoElectry.Unity.Player
             if (!focused) SetCursorLocked(false);
         }
 
-        private static void SetCursorLocked(bool locked)
+        internal static void SetCursorLocked(bool locked)
         {
             Cursor.lockState = locked ? CursorLockMode.Locked : CursorLockMode.None;
             Cursor.visible = !locked;
@@ -117,6 +120,13 @@ namespace EcoElectry.Unity.Player
 
         private void Update()
         {
+            if (survival != null && survival.BlocksExplorerInput)
+            {
+                velocity = Vector3.zero;
+                bobWeight = 0f;
+                return;
+            }
+
             var keyboard = Keyboard.current;
             bool escapePressed = keyboard?.escapeKey.wasPressedThisFrame == true;
             bool brightnessPressed = brightness != null && brightnessMenuKey != Key.None &&
@@ -147,9 +157,8 @@ namespace EcoElectry.Unity.Player
 
             if (toggleLight.WasPressedThisFrame())
             {
-                flashlight.enabled = !flashlight.enabled;
-                flashlight.intensity = flashlightIntensity;
-                flashlightFlicker.Restart(Time.time);
+                if (survival != null && survival.IsReady) survival.ToggleFlashlight();
+                else PresentBeam(!flashlight.enabled);
             }
 
             Vector2 delta = look.ReadValue<Vector2>();
@@ -184,6 +193,14 @@ namespace EcoElectry.Unity.Player
             ApplyView();
             if (flashlight.enabled)
                 flashlight.intensity = flashlightIntensity * (1f - flashlightFlickerDepth * flashlightFlicker.Sample(Time.time));
+        }
+
+        internal void PresentBeam(bool enabled)
+        {
+            if (flashlight == null || flashlight.enabled == enabled) return;
+            flashlight.enabled = enabled;
+            flashlight.intensity = flashlightIntensity;
+            flashlightFlicker.Restart(Time.time);
         }
 
         private void OnGUI()
