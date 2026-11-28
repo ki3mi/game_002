@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1988a552906f4644ea01aec2e617534c, type: 3}
+  m_Name: InspectionModels
+  m_EditorClassIdentifier: EcoElectry.Unity::EcoElectry.Unity.Survival.InspectionModels
+  flashlight: {fileID: 3910000000, guid: a66736a10f505b1d99e7c91858d3689c, type: 3}
+  cell: {fileID: 3910000000, guid: f6550b7b9a7852339556ff9cd9d4067c, type: 3}
+  blackProbe: {fileID: 3910000000, guid: 8fb4a0c7f8c85e67be9b60b04f2fd1f7, type: 3}
+  redProbe: {fileID: 3910000000, guid: bbb82db1227c534296a5395cd5fc9987, type: 3}

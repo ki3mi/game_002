@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using EcoElectry.Unity.Survival;
 
 namespace EcoElectry.Unity.Bootstrap
 {
@@ -17,6 +18,7 @@ namespace EcoElectry.Unity.Bootstrap
                 return;
             }
 
+            SurvivalRun.StartNew();
             SceneManager.LoadSceneAsync(buildIndex, LoadSceneMode.Single);
         }
     }
