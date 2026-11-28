@@ -50,11 +50,9 @@ namespace EcoElectry.Editor.Levels
         {
             const float totalH = YFloor2 + StoryHeight; // 8.55m above Floor 1
 
-            // Floor 1 lower vestibule & landing (West shaft x in [-1.72, 1.72], z in [20.60, 30.10])
-            Slab(stairwellGroup, "Suelo descanso 1P", -1.72f, 1.72f, 20.60f, 30.10f, YFloor1, matFloor);
-            CeilingSlab(stairwellGroup, "Techo vestibulo 1P", -1.72f, 1.72f, 20.60f, 24.80f, YFloor2 - 0.22f);
-            TallWall(stairwellGroup, true, -1.72f, 20.60f, 22.80f, YFloor1, YFloor2 - 0.20f);
-            TallWall(stairwellGroup, true, 1.72f, 20.60f, 22.80f, YFloor1, YFloor2 - 0.20f);
+            // Floor 1 stairwell landing slab (West shaft x in [-1.72, 1.72], z in [24.80, 30.10])
+            Slab(stairwellGroup, "Suelo descanso 1P", -1.72f, 1.72f, 24.80f, 30.10f, YFloor1, matFloor);
+            Slab(stairwellGroup, "Repisa hueco escalera", -1.72f, 1.72f, 22.80f, 24.80f, YFloor2, matPlaster);
 
             // Solid foundation under East shaft so nothing is open beneath Floor 2
             Box(stairwellGroup, "Base estructural este", new Vector3(3.44f, YFloor2 * 0.5f, 24.45f),
@@ -66,8 +64,8 @@ namespace EcoElectry.Editor.Levels
             // Full stairwell ceiling at Floor 2 roof height (y = 8.55)
             CeilingSlab(stairwellGroup, "Techo caja de escalera", -1.72f, 5.16f, 22.80f, 32.40f, totalH);
 
-            // Outer stairwell perimeter walls: plaster inside the tall shaft, Floor 2 wainscot only on the outer room faces!
-            TallWall(stairwellGroup, true, -1.72f, 22.80f, 32.40f, YFloor1, YFloor2);
+            // Outer stairwell perimeter walls: z in [21.70, 24.80] on West is open to Floor 1 side corridor (matching Level01!)
+            TallWall(stairwellGroup, true, -1.72f, 24.80f, 32.40f, YFloor1, YFloor2);
             SingleSidedUpperWall(stairwellGroup, true, -1.72f, 22.80f, 32.40f, YFloor2, StoryHeight, trimSideSign: -1f);
             TallWall(stairwellGroup, true, 5.16f, 22.80f, 32.40f, YFloor1, YFloor2);
             SingleSidedUpperWall(stairwellGroup, true, 5.16f, 22.80f, 32.40f, YFloor2, StoryHeight, trimSideSign: 1f);
@@ -83,20 +81,25 @@ namespace EcoElectry.Editor.Levels
             Box(stairwellGroup, "Zocalo descanso este", new Vector3(5.05f, YLandingMid + 0.58f, 31.20f), new Vector3(0.02f, 1.16f, 2.40f), matDado);
             Box(stairwellGroup, "Guarda descanso este", new Vector3(5.04f, YLandingMid + 1.17f, 31.20f), new Vector3(0.03f, 0.035f, 2.40f), matTrim);
 
-            // South wall of Floor 1 vestibule (locked fire door representing Planta Baja connection, no extra sign clutter)
-            WallSpan(stairwellGroup, false, 20.60f, -1.72f, 1.72f, YFloor1, YFloor2 - 0.20f,
-                new WallOpening(0f, OpeningKind.FireDoorLocked, 0f));
+            // Lintel & iconic "2.º PISO" plaque at z = 24.80 (seals cleanly up to YFloor2, exact match to Level01!)
+            Box(stairwellGroup, "Dintel de la caja de escalera", new Vector3(0f, 3.50f, 24.80f),
+                new Vector3(3.45f, 1.84f, 0.23f), matPlaster, solid: true);
+            Sign(stairwellGroup, new Vector3(0f, 2.87f, 24.67f), 0f, "2.º PISO", 0.91f);
 
-            // Lintel & iconic "2.º PISO" plaque at z = 24.80 (exact match to Level01 stairs photo!)
-            Box(stairwellGroup, "Dintel de la caja de escalera", new Vector3(0f, 3.39f, 24.80f),
-                new Vector3(3.44f, 1.62f, 0.22f), matPlaster, solid: true);
-            Sign(stairwellGroup, new Vector3(0f, 2.74f, 24.67f), 0f, "2.º PISO", 0.91f);
-
-            // Central spine wall separating Flight 1 (West) and Flight 2 (East), flush 0.20m width
+            // Central spine wall separating Flight 1 (West) and Flight 2 (East), with continuous Floor 1 dado on West face
             Box(stairwellGroup, "Muro central de escalera", new Vector3(1.72f, (YFloor2 + 1.12f) * 0.5f, 26.35f),
                 new Vector3(0.20f, YFloor2 + 1.12f, 7.10f), matPlaster, solid: true);
             Box(stairwellGroup, "Remate muro central", new Vector3(1.72f, YFloor2 + 1.13f, 26.35f),
                 new Vector3(0.26f, 0.05f, 7.14f), matTrim);
+            Box(stairwellGroup, "Zocalo muro central 1P", new Vector3(1.615f, YFloor1 + 0.58f, 27.35f),
+                new Vector3(0.02f, 1.16f, 5.10f), matDado);
+            Box(stairwellGroup, "Guarda muro central 1P", new Vector3(1.608f, YFloor1 + 1.17f, 27.35f),
+                new Vector3(0.03f, 0.035f, 5.10f), matTrim);
+            Box(stairwellGroup, "Rodapie muro central 1P", new Vector3(1.604f, YFloor1 + 0.055f, 27.35f),
+                new Vector3(0.035f, 0.11f, 5.10f), matTrim);
+
+            // Build Floor 1 MainCorridor approach, left side turn (CafeteriaShortcut), and glazed Planta Baja doors matching Level01
+            BuildLevel1CorridorConnection();
 
             // Floor 2 parapet overlooking Flight 1 void along z = 22.80, x in [-1.72, 1.72]
             Box(stairwellGroup, "Antepecho hueco escalera", new Vector3(0f, YFloor2 + 0.56f, 22.80f),
@@ -125,15 +128,94 @@ namespace EcoElectry.Editor.Levels
             BuildStairFlight(stairwellGroup, "Tramo 2", centerX: 3.44f, zStart: 30.00f, zEnd: 26.10f,
                 yStart: YLandingMid, yEnd: YFloor2, steps: 13, width: 3.24f);
 
-            // Stairwell lighting (no redundant directional signs inside stairwell)
+            // Stairwell lighting (exact Level01 spotlight position behind lintel!)
             EmergencyPilot(stairwellGroup, new Vector3(0f, YLandingMid + 1.65f, 32.26f), 0f);
             EmergencyPilot(stairwellGroup, new Vector3(3.44f, YLandingMid + 2.10f, 32.26f), 0f);
-            Spotlight(stairwellGroup, "Luz descansillo inferior", new Vector3(0f, 3.40f, 24.10f),
-                new Vector3(0f, -0.82f, 0.57f), new Color(0.68f, 0.78f, 0.87f, 1f), 4.8f, 8.2f, 98f, shadows: true);
+            Spotlight(stairwellGroup, "Luz descansillo inferior", new Vector3(0f, 3.40f, 25.45f),
+                new Vector3(0f, -0.84f, 0.54f), new Color(0.68f, 0.78f, 0.87f, 1f), 4.6f, 8.2f, 98f, shadows: true);
             Spotlight(stairwellGroup, "Luz descansillo intermedio", new Vector3(2.40f, YLandingMid + 3.45f, 31.10f),
                 Vector3.down, new Color(0.76f, 0.84f, 0.82f, 1f), 2.8f, 7.5f, 118f, shadows: false);
             FluorescentFixture(stairwellGroup, new Vector3(3.44f, totalH - 0.62f, 24.60f), 0f, lit: true, intensity: 2.5f, range: 8.5f);
             FluorescentFixture(stairwellGroup, new Vector3(1.72f, totalH - 0.62f, 31.10f), 0f, lit: false);
+        }
+
+        private void BuildLevel1CorridorConnection()
+        {
+            float ceilBottom = YFloor2 - 0.22f;
+            float wallTop = YFloor2 - 0.20f;
+            Transform lower = Group("Conexion Nivel 01", stairwellGroup);
+
+            // 1. MainCorridor approach (x in [-1.72, 1.72], z in [15.60, 24.80]) — exact Level01 geometry!
+            Slab(lower, "Suelo pasillo 1P", -1.72f, 1.72f, 15.60f, 24.80f, YFloor1, matFloor);
+            CeilingSlab(lower, "Techo pasillo 1P", -1.72f, 1.72f, 15.60f, 24.80f, ceilBottom);
+            TallWall(lower, true, 1.72f, 15.60f, 24.80f, YFloor1, wallTop);
+            TallWall(lower, true, -1.72f, 15.60f, 21.70f, YFloor1, wallTop); // [21.70..24.80] open to West side turn!
+
+            Beam(lower, new Vector3(0f, 4.04f, 19.63f), new Vector3(3.38f, 0.20f, 0.24f));
+            Beam(lower, new Vector3(0f, 3.98f, 15.72f), new Vector3(3.38f, 0.30f, 0.24f));
+            Box(lower, "Canaleta pasillo 1P", new Vector3(1.58f, YFloor1 + 2.90f, 19.49f),
+                new Vector3(0.06f, 0.05f, 2.94f), matIron);
+
+            // Iconic red-orange EmergencyPilot on right/East wall right before the stairs (exact Level01 pos!)
+            EmergencyPilot(lower, new Vector3(1.60f, YFloor1 + 2.36f, 23.50f), 90f);
+            FluorescentFixture(lower, new Vector3(0f, YFloor1 + 3.66f, 21.15f), 0f, lit: false);
+            FluorescentFixture(lower, new Vector3(0f, YFloor1 + 3.66f, 17.90f), 0f, lit: true, intensity: 1.95f, range: 7.4f);
+
+            // 2. West side turn (CafeteriaShortcut from Level01: [-5.40, -1.72] x [21.70, 24.80] + [-5.40, -3.40] x [24.80, 28.20])
+            Slab(lower, "Suelo recodo oeste 1P", -5.40f, -1.72f, 21.70f, 24.80f, YFloor1, matFloor);
+            CeilingSlab(lower, "Techo recodo oeste 1P", -5.40f, -1.72f, 21.70f, 24.80f, ceilBottom);
+            Slab(lower, "Suelo paso lateral 1P", -5.40f, -3.40f, 24.80f, 28.20f, YFloor1, matFloor);
+            CeilingSlab(lower, "Techo paso lateral 1P", -5.40f, -3.40f, 24.80f, 28.20f, ceilBottom);
+
+            TallWall(lower, false, 21.70f, -5.50f, -1.62f, YFloor1, wallTop);
+            TallWall(lower, true, -5.40f, 21.70f, 28.20f, YFloor1, wallTop);
+            TallWall(lower, false, 24.80f, -3.50f, -1.62f, YFloor1, wallTop);
+            TallWall(lower, true, -3.40f, 24.80f, 28.20f, YFloor1, wallTop);
+            WallSpan(lower, false, 28.20f, -5.40f, -3.40f, YFloor1, wallTop,
+                new WallOpening(-4.40f, OpeningKind.DoorLocked, 0f));
+
+            FluorescentFixture(lower, new Vector3(-3.84f, YFloor1 + 3.66f, 23.18f), 90f, lit: true, intensity: 2.0f, range: 7.0f);
+            FluorescentFixture(lower, new Vector3(-4.29f, YFloor1 + 3.66f, 26.08f), 90f, lit: false);
+
+            // 3. Locked Double Glazed Doors at z = 15.60 (matching Level01 blue-framed double glass doors!)
+            TallWall(lower, false, 15.60f, -1.72f, -1.30f, YFloor1, wallTop);
+            TallWall(lower, false, 15.60f, 1.30f, 1.72f, YFloor1, wallTop);
+
+            Transform dblDoors = Group("Puertas acristaladas Planta Baja", lower);
+            dblDoors.localPosition = new Vector3(0f, YFloor1, 15.60f);
+            float lintelH = wallTop - 2.38f;
+            Box(dblDoors, "Dintel", new Vector3(0f, 2.38f + lintelH * 0.5f, 0f),
+                new Vector3(2.64f, lintelH, 0.20f), matPlaster, solid: true);
+            Box(dblDoors, "Umbral", new Vector3(0f, 0.006f, 0f), new Vector3(2.60f, 0.012f, 0.24f), matIron);
+            InvisibleCollider(dblDoors, "LowerCorridor_Blocker", new Vector3(0f, 1.20f, 0f), new Vector3(2.64f, 2.40f, 0.22f));
+
+            foreach (float sx in new[] { -0.64f, 0.64f })
+            {
+                Transform leaf = InstantiateResourcePrefab("Ventana", "VentanaFija", dblDoors, new Vector3(sx, 0.21f, 0f), 0f);
+                leaf.localScale = new Vector3(1.091f, 1.808f, 1.300f);
+                Box(dblDoors, "Zocalo de la hoja", new Vector3(sx, 0.108f, 0f), new Vector3(1.30f, 0.216f, 0.13f), matIron);
+                foreach (float sz in new[] { -1f, 1f })
+                {
+                    Box(dblDoors, "Barra de empuje", new Vector3(sx, 1.02f, sz * 0.133f), new Vector3(0.84f, 0.044f, 0.048f), matIron);
+                    Box(dblDoors, "Soporte de barra", new Vector3(sx - 0.39f, 1.02f, sz * 0.087f), new Vector3(0.043f, 0.05f, 0.09f), matIron);
+                    Box(dblDoors, "Soporte de barra", new Vector3(sx + 0.39f, 1.02f, sz * 0.087f), new Vector3(0.043f, 0.05f, 0.09f), matIron);
+                }
+            }
+
+            // 4. Visible Level01 Cross-Corridor beyond the locked glass doors (z in [12.00, 15.60], x in [-7.40, 7.40])
+            Slab(lower, "Suelo cruce 1P", -7.40f, 7.40f, 12.00f, 15.60f, YFloor1, matFloor);
+            CeilingSlab(lower, "Techo cruce 1P", -7.40f, 7.40f, 12.00f, 15.60f, ceilBottom);
+            TallWall(lower, false, 12.00f, -7.40f, 7.40f, YFloor1, wallTop);
+            TallWall(lower, false, 15.60f, -7.40f, -1.72f, YFloor1, wallTop);
+            TallWall(lower, false, 15.60f, 1.72f, 7.40f, YFloor1, wallTop);
+            TallWall(lower, true, -7.40f, 12.00f, 15.60f, YFloor1, wallTop);
+            TallWall(lower, true, 7.40f, 12.00f, 15.60f, YFloor1, wallTop);
+
+            WallClock(lower, new Vector3(0f, YFloor1 + 2.72f, 12.14f), 180f);
+            NoticeBoard(lower, new Vector3(-4.40f, YFloor1 + 1.63f, 12.14f), 180f);
+            FluorescentFixture(lower, new Vector3(0f, YFloor1 + 3.66f, 13.70f), 0f, lit: true, intensity: 1.75f, range: 7.5f);
+            FluorescentFixture(lower, new Vector3(-4.80f, YFloor1 + 3.66f, 13.70f), 0f, lit: false);
+            FluorescentFixture(lower, new Vector3(4.80f, YFloor1 + 3.66f, 13.70f), 0f, lit: false);
         }
 
         private void BuildStairFlight(Transform parent, string name, float centerX, float zStart, float zEnd,

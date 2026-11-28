@@ -181,7 +181,7 @@ namespace EcoElectry.Editor.Levels
         {
             var player = new GameObject("Explorador");
             player.transform.SetParent(root, false);
-            player.transform.localPosition = new Vector3(0f, YFloor1 + 0.025f, 22.10f);
+            player.transform.localPosition = new Vector3(0f, YFloor1 + 0.025f, 19.80f);
             player.transform.localRotation = Quaternion.identity;
 
             var body = player.AddComponent<CharacterController>();
@@ -257,8 +257,8 @@ namespace EcoElectry.Editor.Levels
 
         private void BuildMarkers()
         {
-            CreateMarker(markersGroup, "PlayerSpawn", new Vector3(0f, YFloor1 + 0.025f, 22.10f), 0f);
-            CreateMarker(markersGroup, "Level01Connection", new Vector3(0f, YFloor1, 20.85f), 180f);
+            CreateMarker(markersGroup, "PlayerSpawn", new Vector3(0f, YFloor1 + 0.025f, 19.80f), 0f);
+            CreateMarker(markersGroup, "Level01Connection", new Vector3(0f, YFloor1, 16.20f), 180f);
             CreateMarker(markersGroup, "UpperFloorLanding", new Vector3(3.44f, YFloor2, 24.50f), 180f);
             CreateMarker(markersGroup, "Level03Connection", new Vector3(-3.46f, YFloor2, 23.20f), 0f);
             CreateMarker(markersGroup, "ServiceShortcut", new Vector3(6.68f, YFloor2, 27.60f), 0f);

@@ -405,6 +405,10 @@ namespace EcoElectry.Editor.Levels
 
         private void BuildVentilationSystem()
         {
+            float ductY1 = YFloor1 + 3.76f;
+            DuctRun(new Vector3(1.18f, ductY1, 15.80f), new Vector3(1.18f, ductY1, 23.80f), grilleEvery: 5.5f);
+            DuctRun(new Vector3(-4.80f, ductY1, 23.25f), new Vector3(-1.85f, ductY1, 23.25f), grilleEvery: 4.0f);
+
             float ductY = YFloor2 + StoryHeight - 0.36f;
             DuctRun(new Vector3(-12.30f, ductY, 21.10f), new Vector3(12.30f, ductY, 21.10f), grilleEvery: 7.5f);
             DuctRun(new Vector3(-12.30f, ductY, 21.10f), new Vector3(-12.30f, ductY, 38.00f), grilleEvery: 6.0f);
@@ -439,30 +443,34 @@ namespace EcoElectry.Editor.Levels
 
         private void BuildExteriorCourtyardAndMoonlight()
         {
-            // 1st-floor roof cornice right below the 2nd-floor South & West/East windows (y = 4.22)
-            Box(exteriorViewsGroup, "Cornisa primer piso sur", new Vector3(0f, YFloor2 - 0.18f, 19.12f),
-                new Vector3(45.20f, 0.20f, 0.44f), matPlaster);
+            // 1st-floor building roof deck & cornice beneath the 2nd-floor South gallery windows (z in [11.90, 19.40])
+            Box(exteriorViewsGroup, "Cubierta ala planta baja", new Vector3(0f, YFloor2 - 0.14f, 15.65f),
+                new Vector3(28.40f, 0.18f, 7.50f), matRubber);
+            Box(exteriorViewsGroup, "Muro exterior planta baja sur", new Vector3(0f, (YFloor2 - 0.22f) * 0.5f, 11.90f),
+                new Vector3(28.40f, YFloor2 - 0.22f, 0.20f), matPlaster);
+            Box(exteriorViewsGroup, "Cornisa primer piso sur", new Vector3(0f, YFloor2 - 0.14f, 11.78f),
+                new Vector3(28.80f, 0.22f, 0.44f), matPlaster);
             Box(exteriorViewsGroup, "Cornisa primer piso oeste", new Vector3(-22.68f, YFloor2 - 0.18f, 29.30f),
                 new Vector3(0.44f, 0.20f, 20.20f), matPlaster);
             Box(exteriorViewsGroup, "Cornisa primer piso este", new Vector3(22.68f, YFloor2 - 0.18f, 29.30f),
                 new Vector3(0.44f, 0.20f, 20.20f), matPlaster);
 
-            // Ground-level courtyard 4.40 m BELOW the 2nd floor (visible when looking down from AtriumGallery windows!)
-            Box(exteriorViewsGroup, "Patio escolar inferior", new Vector3(0f, YFloor1 - 0.12f, 8.50f),
+            // Ground-level courtyard 4.40 m BELOW the 2nd floor, cleanly South of the 1st-floor wing (z < 11.80)
+            Box(exteriorViewsGroup, "Patio escolar inferior", new Vector3(0f, YFloor1 - 0.14f, -0.20f),
                 new Vector3(58f, 0.24f, 24f), matRubber);
             InstantiatePrefabAtPath("Assets/EcoElectry/Content/Prefabs/Level01/PF_BasketballCourt.prefab",
-                exteriorViewsGroup, new Vector3(0f, YFloor1, 10.60f), 0f);
+                exteriorViewsGroup, new Vector3(0f, YFloor1, 2.20f), 0f);
             InstantiateResourcePrefab("LuminariaExterior", "LuminariaSolarPoste",
-                exteriorViewsGroup, new Vector3(-13.20f, YFloor1, 10.60f), 90f);
+                exteriorViewsGroup, new Vector3(-13.20f, YFloor1, 2.20f), 90f);
             InstantiateResourcePrefab("LuminariaExterior", "LuminariaSolarPoste",
-                exteriorViewsGroup, new Vector3(13.20f, YFloor1, 10.60f), 270f);
+                exteriorViewsGroup, new Vector3(13.20f, YFloor1, 2.20f), 270f);
 
-            // Walkways, hedges, and tall trees strictly outside the building envelope
+            // Walkways, hedges, and tall trees strictly outside the 1st-floor & 2nd-floor building envelope
             for (int i = -2; i <= 2; i++)
-                InstantiateResourcePrefab("Arbusto", "Seto", exteriorViewsGroup, new Vector3(i * 4.2f, YFloor1, 18.20f), 0f);
+                InstantiateResourcePrefab("Arbusto", "Seto", exteriorViewsGroup, new Vector3(i * 4.2f, YFloor1, 10.60f), 0f);
 
-            InstantiateResourcePrefab("Arbol", "ArbolGrande", exteriorViewsGroup, new Vector3(-18.50f, YFloor1, 9.80f), 25f);
-            InstantiateResourcePrefab("Arbol", "ArbolGrande", exteriorViewsGroup, new Vector3(18.80f, YFloor1, 10.20f), 140f);
+            InstantiateResourcePrefab("Arbol", "ArbolGrande", exteriorViewsGroup, new Vector3(-18.50f, YFloor1, 1.80f), 25f);
+            InstantiateResourcePrefab("Arbol", "ArbolGrande", exteriorViewsGroup, new Vector3(18.80f, YFloor1, 2.20f), 140f);
             InstantiateResourcePrefab("Arbol", "ArbolMediano", exteriorViewsGroup, new Vector3(-27.20f, YFloor1, 30.20f), 60f);
             InstantiateResourcePrefab("Arbol", "ArbolGrande", exteriorViewsGroup, new Vector3(29.00f, YFloor1, 29.50f), 215f);
             InstantiateResourcePrefab("Arbol", "ArbolMediano", exteriorViewsGroup, new Vector3(3.60f, YFloor1, 48.20f), 110f);
