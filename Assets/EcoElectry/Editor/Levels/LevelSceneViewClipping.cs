@@ -8,6 +8,7 @@ namespace EcoElectry.Editor.Levels
     internal static class LevelSceneViewClipping
     {
         private const string InteriorScenePath = "Assets/EcoElectry/Content/Scenes/Level01.unity";
+        private const string SecondFloorScenePath = "Assets/EcoElectry/Content/Scenes/Level02.unity";
         private static readonly Dictionary<SceneView, ((float Near, float Far) Prior, (float Near, float Far) Applied)> Previous = new();
 
         static LevelSceneViewClipping()
@@ -23,6 +24,7 @@ namespace EcoElectry.Editor.Levels
             {
                 Level00IntroductionBuilder.ScenePath => (0.05f, 6500f),
                 InteriorScenePath => (0.025f, 250f),
+                SecondFloorScenePath => (0.025f, 250f),
                 _ => null
             };
 
