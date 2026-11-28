@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/EcoElectry/Content/Scenes/Startup.unity
     guid: 7e237c7464654fac9efca51210fc32cb
   - enabled: 1
+    path: Assets/EcoElectry/Content/Scenes/HorrorCorridorPrototype.unity
+    guid: 2e70ed9446ad3f54fa22b00f5bdc60d2
+  - enabled: 1
     path: Assets/EcoElectry/Content/Scenes/Level00-Introduction.unity
     guid: b84016789a8ea2046bcb48df486dd273
   - enabled: 1

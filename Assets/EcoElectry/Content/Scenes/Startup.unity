@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7021b3d6a28d470cbb8fa5776ef7d624, type: 3}
   m_Name:
   m_EditorClassIdentifier:
-  firstLevelScenePath: Assets/EcoElectry/Content/Scenes/Level00-Introduction.unity
+  firstLevelScenePath: Assets/EcoElectry/Content/Scenes/HorrorCorridorPrototype.unity
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

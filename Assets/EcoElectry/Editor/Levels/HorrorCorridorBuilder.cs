@@ -11,7 +11,10 @@ namespace EcoElectry.Editor.Levels
     {
         private const string ScenePath = "Assets/EcoElectry/Content/Scenes/HorrorCorridorPrototype.unity";
         private const string InputPath = "Assets/ResourcePack/InputSystem_Actions.inputactions";
-        private const string MusicPath = "Assets/Music/Untitled #9 (Smáskífa 1).mp3";
+        private const string MusicPath = "Assets/Music/music_corridor.mp3";
+        private const string IntroductionPath = "Assets/EcoElectry/Content/Scenes/Level00-Introduction.unity";
+        private const string AnomalyPath = "Assets/EcoElectry/Content/Prefabs/Anomalias/Anomalia01_Filamentos.prefab";
+        private const string StingPath = "Assets/EcoElectry/Content/Audio/HorrorPrologueSting.wav";
 
         [MenuItem("Tools/EcoElectry/Prototipos/Abrir pasillos de noche")]
         public static void OpenOrCreate()
@@ -34,8 +37,19 @@ namespace EcoElectry.Editor.Levels
             Camera camera = CreateExplorer();
             HorrorCorridorImage.Build(camera);
             AddMusic(camera);
+            AddPrologue(camera);
             if (!EditorSceneManager.SaveScene(scene, ScenePath))
                 throw new InvalidOperationException("No se pudo guardar el prototipo de pasillos.");
+        }
+
+        private static void AddPrologue(Camera camera)
+        {
+            var prologue = new SerializedObject(camera.transform.parent.gameObject.AddComponent<HorrorPrologue>());
+            prologue.FindProperty("view").objectReferenceValue = camera;
+            prologue.FindProperty("anomalyPrefab").objectReferenceValue = AssetDatabase.LoadAssetAtPath<GameObject>(AnomalyPath);
+            prologue.FindProperty("sting").objectReferenceValue = AssetDatabase.LoadAssetAtPath<AudioClip>(StingPath);
+            prologue.FindProperty("introductionScene").stringValue = IntroductionPath;
+            prologue.ApplyModifiedPropertiesWithoutUndo();
         }
 
         internal static void AddMusic(Camera camera)

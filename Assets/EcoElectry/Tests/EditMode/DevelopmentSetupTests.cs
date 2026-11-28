@@ -8,19 +8,20 @@ namespace EcoElectry.Tests.EditMode
     public sealed class DevelopmentSetupTests
     {
         [Test]
-        public void StartupAndIntroductionAreTheFirstEnabledBuildScenes()
+        public void StartupPrologueAndIntroductionAreTheFirstEnabledBuildScenes()
         {
             const string sceneDirectory = "Assets/EcoElectry/Content/Scenes/";
 
             string[] firstScenePaths = EditorBuildSettings.scenes
                 .Where(scene => scene.enabled)
-                .Take(2)
+                .Take(3)
                 .Select(scene => scene.path)
                 .ToArray();
 
             Assert.That(firstScenePaths, Is.EqualTo(new[]
             {
                 sceneDirectory + "Startup.unity",
+                sceneDirectory + "HorrorCorridorPrototype.unity",
                 sceneDirectory + "Level00-Introduction.unity"
             }));
 

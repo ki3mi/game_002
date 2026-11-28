@@ -892,6 +892,7 @@ GameObject:
   - component: {fileID: 164118136}
   - component: {fileID: 164118135}
   - component: {fileID: 164118134}
+  - component: {fileID: 4510000001}
   m_Layer: 0
   m_Name: Explorador
   m_TagString: Untagged
@@ -926,6 +927,26 @@ MonoBehaviour:
   stepLength: 0.72
   verticalBob: 0.015
   rollDegrees: 0.28
+--- !u!114 &4510000001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164118133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40fe22cf803a4cfd8b2029b641b14173, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: EcoElectry.Unity::EcoElectry.Unity.Player.HorrorPrologue
+  view: {fileID: 2010504430}
+  anomalyPrefab: {fileID: 8999397618085796783, guid: 40c051517f9124549ace08515f87f1ba, type: 3}
+  sting: {fileID: 8300000, guid: 757f9529103446858e6b796d6c22527e, type: 3}
+  apparitionPosition: {x: 0.55, y: 0.04, z: 12.2}
+  classroom:
+    m_Center: {x: 11.17, y: 1, z: 12.2}
+    m_Extent: {x: 2.32, y: 1.25, z: 2.61}
+  introductionScene: Assets/EcoElectry/Content/Scenes/Level00-Introduction.unity
 --- !u!143 &164118135
 CharacterController:
   m_ObjectHideFlags: 0
@@ -12956,7 +12977,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 877c6ecf94c3587428e6d753bd77d6b3, type: 3}
+  m_Resource: {fileID: 8300000, guid: 42956561cc5333a4ca0cbaf6a2be63d8, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.32
   m_Pitch: 1
