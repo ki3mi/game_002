@@ -285,8 +285,7 @@ namespace EcoElectry.Editor.Levels
             WallSpan(eastWingGroup, true, 14.00f, 25.40f, 31.40f, YFloor2, StoryHeight,
                 new WallOpening(28.40f, OpeningKind.DoorClosed, 90f, "DIRECCIÓN"));
             WallSpan(eastWingGroup, true, 14.00f, 31.40f, 39.20f, YFloor2, StoryHeight,
-                new WallOpening(33.80f, OpeningKind.DoorOpen, 90f, "CÓMPUTO"),
-                new WallOpening(37.60f, OpeningKind.FireDoorClosed, 90f));
+                new WallOpening(33.80f, OpeningKind.DoorOpen, 90f, "CÓMPUTO"));
             // West wall of EastCorridor: [22.80..32.40] ArchiveRoom w/ door, [32.40..35.80] OPEN to NorthBridge, [35.80..39.20] ElectricalRoom east wall
             WallSpan(eastWingGroup, true, 10.60f, 22.80f, 32.40f, YFloor2, StoryHeight,
                 new WallOpening(27.60f, OpeningKind.DoorClosed, 270f));
