@@ -45,17 +45,16 @@ namespace EcoElectry.Editor.Levels
             InstantiateResourcePrefab("Sensor", "SensorPresencia",
                 eastWingGroup, new Vector3(12.30f, YFloor2 + StoryHeight - 0.02f, 32.40f), 0f);
 
-            // ServiceShortcut wall conduits, junction boxes, and emergency light
-            for (int i = 0; i < 4; i++)
+            // ServiceShortcut flush wall conduits, junction boxes, and emergency light
+            for (int i = 0; i < 3; i++)
             {
-                Transform tray = InstantiateResourcePrefab("Canaleta", "CanaletaIndustrial",
-                    serviceShortcutGroup, new Vector3(5.30f, YFloor2 + 2.65f, 24.10f + i * 2.15f), 90f);
-                tray.localScale = new Vector3(1.05f, 1f, 1f);
+                InstantiateResourcePrefab("Canaleta", "CanaletaSuperficial",
+                    serviceShortcutGroup, new Vector3(5.265f, YFloor2 + 2.42f, 24.80f + i * 2.0f), 90f);
             }
             InstantiateResourcePrefab("CajaConexion", "CajaDerivacion",
-                serviceShortcutGroup, new Vector3(5.28f, YFloor2 + 2.40f, 26.20f), 90f);
+                serviceShortcutGroup, new Vector3(5.27f, YFloor2 + 2.40f, 26.20f), 90f);
             InstantiateResourcePrefab("CajaConexion", "CajaEmpalme",
-                serviceShortcutGroup, new Vector3(5.28f, YFloor2 + 2.40f, 29.50f), 90f);
+                serviceShortcutGroup, new Vector3(5.27f, YFloor2 + 2.40f, 29.50f), 90f);
             InstantiateResourcePrefab("LuminariaInterior", "LuminariaEmergencia",
                 serviceShortcutGroup, new Vector3(8.08f, YFloor2 + 2.75f, 27.60f), 270f);
         }
@@ -323,14 +322,14 @@ namespace EcoElectry.Editor.Levels
             InstantiateResourcePrefab("Ventilador", "VentiladorIndustrial",
                 electricalRoomGroup, new Vector3(2.90f, YFloor2, 37.20f), 42f);
 
-            // Overhead cable trays feeding into the main cabinet
-            for (int i = 0; i < 4; i++)
+            // Flush wall conduit along the solid East equipment wall & junction box clear of windows
+            for (int i = 0; i < 2; i++)
             {
-                InstantiateResourcePrefab("Canaleta", "CanaletaIndustrial",
-                    electricalRoomGroup, new Vector3(3.20f + i * 2.0f, YFloor2 + 2.85f, 42.35f), 0f);
+                InstantiateResourcePrefab("Canaleta", "CanaletaSuperficial",
+                    electricalRoomGroup, new Vector3(10.49f, YFloor2 + 1.92f, 38.90f + i * 2.0f), 270f);
             }
             InstantiateResourcePrefab("CajaConexion", "CajaEstancaExterior",
-                electricalRoomGroup, new Vector3(4.10f, YFloor2 + 2.25f, 42.44f), 180f);
+                electricalRoomGroup, new Vector3(2.85f, YFloor2 + 1.55f, 42.46f), 180f);
             InstantiateResourcePrefab("Tomacorriente", "TomacorrienteIndustrial",
                 electricalRoomGroup, new Vector3(1.92f, YFloor2 + 1.10f, 37.80f), 90f);
 
