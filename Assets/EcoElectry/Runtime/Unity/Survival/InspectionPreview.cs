@@ -97,17 +97,8 @@ namespace EcoElectry.Unity.Survival
         public void ShowCase(bool opened, bool hasBattery)
         {
             BeginModel(false);
-            Block("Fondo", new Vector3(0, -.23f, 0), new Vector3(1.81f, .15f, 1.13f), Graphite, true);
-            foreach (float x in new[] { -.85f, .85f })
-                Block("Costado", new Vector3(x, -.075f, 0), new Vector3(.102f, .31f, 1.13f), Graphite, true);
-            foreach (float z in new[] { -.518f, .518f })
-                Block("Frente", new Vector3(0, -.075f, z), new Vector3(1.62f, .31f, .099f), Graphite, true);
-            caseHinge = Group("Bisagra", model, new Vector3(0, .09f, -.54f));
-            Block("Tapa", new Vector3(0, .016f, .54f), new Vector3(1.82f, .103f, 1.13f), Graphite, true, caseHinge);
-            foreach (float x in new[] { -.66f, .66f })
-                Block("Refuerzo", new Vector3(x, .077f, .54f), new Vector3(.061f, .031f, .99f), Steel, false, caseHinge);
-            Collider latch = Block("Cierre", new Vector3(0, -.032f, 1.128f), new Vector3(.28f, .18f, .075f), Copper, true, caseHinge)
-                .GetComponent<Collider>();
+            Collider latch;
+            (caseHinge, latch) = SupplyCaseGeometry.Build(model, Block);
             targets.Add(latch, new Hit(TargetKind.Latch));
             caseBattery = Group("Contenido", model, new Vector3(.11f, .015f, -.09f)).gameObject;
             Spawn(assets.Cell, caseBattery.transform);
@@ -117,7 +108,7 @@ namespace EcoElectry.Unity.Survival
 
         public void SetCaseOpen(bool opened, bool hasBattery)
         {
-            caseHinge.localRotation = Quaternion.Euler(opened ? -105 : 0, 0, 0);
+            caseHinge.localRotation = Quaternion.Euler(opened ? SupplyCaseGeometry.OpenAngle : 0, 0, 0);
             caseBattery.SetActive(opened && hasBattery);
             if (opened) Rotate(new Vector2(156, 7) - angle);
         }

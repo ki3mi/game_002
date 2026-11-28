@@ -35,10 +35,54 @@ namespace EcoElectry.Unity.Survival
         private bool loading;
         private string message = "";
         private float messageUntil;
+        private bool tutorialMode;
+        private bool tutorialStarted;
+        private bool equipped = true;
+        private bool externalMenu;
+        private bool tutorialTasks;
+        private bool tutorialMounted;
+        private bool tutorialLightTried;
+        private GameObject workshopFlashlight;
+        private bool aimedFlashlight;
+        private string inspectedPart;
+        private string aimedPart;
 
         internal bool IsReady => isActiveAndEnabled && session != null;
         internal bool BlocksExplorerInput => IsReady && (paused || loading || session.IsDefeated || Inspecting);
         private bool Inspecting => session.IsInspecting || openCase != null || repairView != RepairView.None;
+        internal bool BlocksExplorerInput => IsReady && (externalMenu || paused || loading || session.IsDefeated || Inspecting);
+        internal Transform UncollectedFlashlight => !equipped && workshopFlashlight != null ? workshopFlashlight.transform : null;
+        private bool Inspecting => session.IsInspecting || openCase != null || inspectedPart != null;
+
+        internal void ConfigureTutorial(SurvivalSettings configuration, Camera camera, Material material,
+            InspectionModels models, GameObject flashlightObject)
+        {
+            settings = configuration;
+            view = camera;
+            previewMaterial = material;
+            inspectionModels = models;
+            workshopFlashlight = flashlightObject;
+            tutorialMode = true;
+            equipped = false;
+        }
+
+        internal void SetTutorialStarted(bool value)
+        {
+            tutorialStarted = value;
+            if (!value) tutorialTasks = false;
+        }
+
+        internal void SetExternalMenu(bool value)
+        {
+            externalMenu = value;
+            if (value) preview?.CancelPointer();
+            HorrorCorridorExplorer.SetCursorLocked(!value && !paused && !Inspecting);
+        }
+
+        internal void CloseWorkshopInspection()
+        {
+            if (IsReady && Inspecting) CloseInspection();
+        }
 
         private void Awake()
         {
@@ -55,7 +99,7 @@ namespace EcoElectry.Unity.Survival
             fearRules = settings.CreateFearRules();
             foreach (BatteryPickup pickup in pickups)
                 if (pickup != null) pickup.ApplySession(session);
-            explorer.PresentBeam(session.HasBeam);
+            explorer.PresentBeam(equipped && session.HasBeam);
         }
 
         private void OnEnable()
@@ -83,11 +127,17 @@ namespace EcoElectry.Unity.Survival
             if (continuityClip != null) Destroy(continuityClip);
         }
 
-        internal void ToggleFlashlight() => session.ToggleFlashlight();
+        internal void ToggleFlashlight()
+        {
+            if (!equipped || externalMenu) return;
+            session.ToggleFlashlight();
+            if (tutorialMode && tutorialMounted) tutorialLightTried = true;
+        }
 
         private void Update()
         {
-            if (loading || session.IsDefeated || explorer.IsImageMenuOpen || gameObject.scene != SceneManager.GetActiveScene())
+            if (externalMenu || (tutorialMode && !tutorialStarted) || loading || session.IsDefeated ||
+                explorer.IsImageMenuOpen || gameObject.scene != SceneManager.GetActiveScene())
                 return;
 
             var keyboard = Keyboard.current;
@@ -98,6 +148,8 @@ namespace EcoElectry.Unity.Survival
             }
 
             if (paused || Time.timeScale <= 0) return;
+            if (tutorialMode && !Inspecting && keyboard?.jKey.wasPressedThisFrame == true)
+                tutorialTasks = !tutorialTasks;
             if (keyboard?.escapeKey.wasPressedThisFrame == true && Inspecting)
             {
                 CloseInspection();
@@ -113,6 +165,7 @@ namespace EcoElectry.Unity.Survival
             }
 
             if (openCase != null || repairView != RepairView.None || keyboard?.iKey.wasPressedThisFrame != true) return;
+            if (!equipped || openCase != null || inspectedPart != null || keyboard?.iKey.wasPressedThisFrame != true) return;
             if (session.IsInspecting) CloseInspection();
             else if (session.BeginInspection()) ShowCompartment();
             else Notify("Busca una batería de repuesto.");
@@ -121,12 +174,16 @@ namespace EcoElectry.Unity.Survival
         private void LateUpdate()
         {
             if (gameObject.scene != SceneManager.GetActiveScene()) return;
-            session.Advance(Time.deltaTime, settings.SecondsPerBattery, fearRules, paused || loading);
-            explorer.PresentBeam(session.HasBeam);
+            if (!tutorialMode)
+                session.Advance(Time.deltaTime, settings.SecondsPerBattery, fearRules, paused || loading);
+            explorer.PresentBeam(equipped && session.HasBeam);
             aimedBattery = null;
             aimedCase = null;
             aimedRepair = null;
             if (paused || loading || session.IsDefeated || Time.timeScale <= 0) return;
+            aimedFlashlight = false;
+            aimedPart = null;
+            if (externalMenu || (tutorialMode && !tutorialStarted) || paused || loading || session.IsDefeated || Time.timeScale <= 0) return;
 
             if (session.IsInspecting)
             {
@@ -141,6 +198,7 @@ namespace EcoElectry.Unity.Survival
             }
 
             if (openCase != null || explorer.IsImageMenuOpen || Cursor.lockState != CursorLockMode.Locked) return;
+            if (Inspecting || explorer.IsImageMenuOpen || Cursor.lockState != CursorLockMode.Locked) return;
             Ray aim = view.ViewportPointToRay(new Vector3(.5f, .5f, 0));
             if (!Physics.Raycast(aim, out RaycastHit hit, reach, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Collide))
                 return;
@@ -151,6 +209,19 @@ namespace EcoElectry.Unity.Survival
             if (Keyboard.current?.eKey.wasPressedThisFrame != true) return;
             if (aimedRepair != null && aimedRepair.Definition == repairDefinition && repair != null)
                 InteractRepairWorld(aimedRepair);
+            aimedFlashlight = !equipped && workshopFlashlight != null && hit.transform.IsChildOf(workshopFlashlight.transform);
+            if (tutorialMode && equipped) aimedPart = hit.collider.GetComponentInParent<WorkshopInspection>()?.Description;
+            if (Keyboard.current?.eKey.wasPressedThisFrame != true) return;
+            if (aimedFlashlight)
+            {
+                equipped = true;
+                workshopFlashlight.SetActive(false);
+                aimedFlashlight = false;
+                session.TryCollect(new BatteryCell("level00/linterna/repuesto", 1.0));
+                if (session.BeginInspection()) ShowCompartment();
+                Notify("Linterna equipada. F para encenderla · I para revisar las baterías.");
+            }
+            else if (!equipped) return;
             else if (aimedBattery != null && Collect(aimedBattery))
             {
                 aimedBattery = null;
@@ -161,6 +232,11 @@ namespace EcoElectry.Unity.Survival
                 openCase = aimedCase;
                 panelScroll = Vector2.zero;
                 GetPreview().ShowCase(openCase.IsOpen, openCase.Battery != null && openCase.Battery.Available);
+                HorrorCorridorExplorer.SetCursorLocked(false);
+            }
+            else if (aimedPart != null)
+            {
+                inspectedPart = aimedPart;
                 HorrorCorridorExplorer.SetCursorLocked(false);
             }
         }
@@ -223,7 +299,8 @@ namespace EcoElectry.Unity.Survival
 
             if (inspection.FindOnTray(cell) < 0) return;
             selectedCell = selectedCell == cell ? null : cell;
-            if ((inspection.Slots[0] == null) != (inspection.Slots[1] == null))
+            if ((!tutorialMode || tutorialMounted) && selectedCell != null &&
+                (inspection.Slots[0] == null) != (inspection.Slots[1] == null))
                 PlaceSelectedCell(inspection.Slots[0] == null ? 0 : 1);
         }
 
@@ -244,10 +321,14 @@ namespace EcoElectry.Unity.Survival
 
         private void ConfirmCompartment()
         {
-            if (preview.IsMovingCell || !session.ConfirmInspection()) return;
+            if (preview.IsMovingCell || !CanConfirmTutorialMount(session.Inspection) || !session.ConfirmInspection()) return;
+            if (tutorialMode) tutorialMounted = true;
             CloseInspection();
             Notify("Montaje de la linterna guardado.");
         }
+
+        private bool CanConfirmTutorialMount(BatteryInspection inspection) =>
+            !tutorialMode || tutorialMounted || (inspection.Slots[0] != null && inspection.Slots[1] != null);
 
         private void CloseInspection()
         {
@@ -257,9 +338,10 @@ namespace EcoElectry.Unity.Survival
             openCase = null;
             CloseRepair();
             meterFace.CancelInput();
+            inspectedPart = null;
             preview?.Hide();
-            explorer.PresentBeam(session.HasBeam);
-            HorrorCorridorExplorer.SetCursorLocked(!paused && !session.IsDefeated);
+            explorer.PresentBeam(equipped && session.HasBeam);
+            HorrorCorridorExplorer.SetCursorLocked(!externalMenu && !paused && !session.IsDefeated);
         }
 
         private void OnFainted()

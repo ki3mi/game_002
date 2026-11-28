@@ -18,7 +18,8 @@ namespace EcoElectry.Unity.Survival
 
         private void OnGUI()
         {
-            if (!IsReady || gameObject.scene != UnityEngine.SceneManagement.SceneManager.GetActiveScene()) return;
+            if (!IsReady || externalMenu || (tutorialMode && !tutorialStarted) ||
+                gameObject.scene != UnityEngine.SceneManagement.SceneManager.GetActiveScene()) return;
             PrepareStyles();
             if (session.IsDefeated || loading)
             {
@@ -28,6 +29,14 @@ namespace EcoElectry.Unity.Survival
             if (session.IsInspecting) DrawCompartmentInspection();
             else if (openCase != null) DrawCaseInspection();
             else if (repairView != RepairView.None) DrawRepair();
+            else if (inspectedPart != null)
+            {
+                Rect panel = ModalRect(138);
+                Paint(panel, Surface);
+                GUI.Label(new Rect(panel.x + 15, panel.y + 9, panel.width - 30, 32), "Repuestos del taller", titleStyle);
+                GUI.Label(new Rect(panel.x + 15, panel.y + 48, panel.width - 30, 53), inspectedPart, labelStyle);
+                if (GUI.Button(new Rect(panel.xMax - 106, panel.yMax - 31, 90, 24), "Esc · Salir")) CloseInspection();
+            }
             DrawStatus();
             if (paused) DrawPause();
         }
@@ -46,6 +55,15 @@ namespace EcoElectry.Unity.Survival
 
         private void DrawStatus()
         {
+            if (tutorialMode && !equipped)
+            {
+                var guide = new Rect(18, Screen.height - 53, 330, 35);
+                Paint(guide, Surface);
+                GUI.Label(new Rect(28, guide.y + 6, 314, 22), "Tutorial · Recoge la linterna sobre la mesa.", labelStyle);
+                if (aimedFlashlight) DrawAction("E  Recoger linterna");
+                return;
+            }
+
             var batteryPanel = new Rect(18, Screen.height - 84, 195, 66);
             Paint(batteryPanel, Surface);
             Paint(new Rect(batteryPanel.x, batteryPanel.y, 2, batteryPanel.height), Power);
@@ -61,6 +79,15 @@ namespace EcoElectry.Unity.Survival
                 Paint(new Rect(bar.x + 1, bar.y + 1, (bar.width - 2) * Mathf.Clamp01(bars - i), bar.height - 2), Power);
             }
             GUI.Label(new Rect(28, batteryPanel.y + 44, 180, 18), $"F  Luz     I  Repuestos ({session.Inventory.Count})", noteStyle);
+            if (tutorialMode)
+            {
+                string task = !tutorialMounted ? "I  Abre el compartimento y monta las dos baterías." :
+                    !tutorialLightTried ? "F  Prueba la linterna." :
+                    tutorialTasks ? "F: luz · I: baterías · E: inspecciona una caja del estante" : "J  Tareas del taller";
+                var tasks = new Rect(18, batteryPanel.y - 33, !tutorialMounted || tutorialTasks ? 358 : 215, 29);
+                Paint(tasks, Surface);
+                GUI.Label(new Rect(28, tasks.y + 4, tasks.width - 18, 22), task, noteStyle);
+            }
 
             if (session.ShowFear)
             {
@@ -93,6 +120,15 @@ namespace EcoElectry.Unity.Survival
                 aimedCase != null ? "E  Inspeccionar caja" : null;
             if (prompt == null) return;
             var action = new Rect((Screen.width - 246) * .5f, Screen.height * .5f + 18, 246, 28);
+            string prompt = aimedBattery != null && aimedBattery.Available ? "E  Recoger batería" :
+                aimedCase != null ? "E  Inspeccionar caja" : aimedPart != null ? "E  Inspeccionar repuesto" : null;
+            if (prompt == null) return;
+            DrawAction(prompt);
+        }
+
+        private void DrawAction(string prompt)
+        {
+            var action = new Rect((Screen.width - 196) * .5f, Screen.height * .5f + 18, 196, 28);
             Paint(action, Surface);
             GUI.Label(action, prompt, centeredStyle);
         }
@@ -105,7 +141,7 @@ namespace EcoElectry.Unity.Survival
             var panel = new Rect((Screen.width - width) * .5f, (Screen.height - height) * .5f, width, height);
             Paint(panel, Surface);
             Paint(new Rect(panel.x, panel.y, width, 2), Power);
-            GUI.Label(new Rect(panel.x + 17, panel.y + 10, width - 36, 33), "Caja de suministros", titleStyle);
+            GUI.Label(new Rect(panel.x + 17, panel.y + 10, width - 36, 33), openCase.Title, titleStyle);
             GUI.Label(new Rect(panel.x + 17, panel.y + 47, width - 36, 22), "Arrastra para girar · Rueda para acercar", noteStyle);
 
             float sideWidth = Mathf.Min(342, width * .46f);
@@ -140,6 +176,7 @@ namespace EcoElectry.Unity.Survival
 
         private void DrawCaseOptions()
         {
+            if (!string.IsNullOrEmpty(openCase.Description)) GUILayout.Label(openCase.Description, noteStyle);
             if (!openCase.IsOpen) GUILayout.Label("Gira la caja y pulsa el cierre metálico para abrirla.", labelStyle);
             else if (openCase.Battery != null && openCase.Battery.Available)
             {
