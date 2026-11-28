@@ -204,14 +204,11 @@ namespace EcoElectry.Editor.Levels
             InstantiateResourcePrefab("Silla", "SillaDocente", comp, new Vector3(15.65f, YFloor2, 31.92f), 0f);
             InstantiateResourcePrefab("Monitor", "MonitorUltrawide", comp, new Vector3(15.65f, YFloor2 + 0.75f, 32.52f), 180f);
 
-            // 6 double computer desks (12 PCs!) + floor cable raceways
+            // Double computer desks + PCs
             float[] cols = { 16.50f, 19.85f };
             float[] rows = { 34.10f, 35.75f, 37.40f };
             for (int r = 0; r < rows.Length; r++)
             {
-                InstantiateResourcePrefab("Canaleta", "CanaletaBajoPiso",
-                    comp, new Vector3(18.20f, YFloor2, rows[r] - 0.35f), 0f).localScale = new Vector3(2.90f, 1f, 1f);
-
                 for (int c = 0; c < cols.Length; c++)
                 {
                     if (c == 1 && r == 2) continue; // Reserve NE corner for UPS & Server rack!
