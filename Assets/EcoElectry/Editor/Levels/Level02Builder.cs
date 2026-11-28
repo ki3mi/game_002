@@ -89,7 +89,6 @@ namespace EcoElectry.Editor.Levels
             builder.BuildAll();
             if (!EditorSceneManager.SaveScene(scene, ScenePath))
                 throw new InvalidOperationException("No se pudo guardar la escena Level02 en " + ScenePath);
-            AssetDatabase.SaveAssets();
         }
 
         private void BuildAll()

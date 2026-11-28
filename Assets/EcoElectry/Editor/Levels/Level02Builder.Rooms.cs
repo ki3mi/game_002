@@ -125,7 +125,6 @@ namespace EcoElectry.Editor.Levels
                 lab, new Vector3(-14.13f, YFloor2 + 1.42f, 31.85f), 270f);
             InstantiateResourcePrefab("Tomacorriente", "TomacorrienteIndustrial",
                 lab, new Vector3(-22.29f, YFloor2 + 1.12f, 30.30f), 90f);
-            Sign(lab, new Vector3(-14.13f, YFloor2 + 1.82f, 32.30f), 90f, "CORTE GENERAL · LAB", 0.92f);
 
             // Prep Room 201-B ([-22.40, -14.00] x [34.40, 39.20])
             Transform prep = Group("Preparacion201B", classroomsAndLabsGroup);
@@ -241,7 +240,6 @@ namespace EcoElectry.Editor.Levels
             InstantiateResourcePrefab("Bateria", "Bateria3", comp, new Vector3(20.85f, YFloor2 + 0.02f, 38.55f), 180f);
             InstantiateResourcePrefab("Bateria", "Bateria2", comp, new Vector3(21.85f, YFloor2 + 0.02f, 38.55f), 180f);
             EmergencyPilot(comp, new Vector3(20.85f, YFloor2 + 2.45f, 39.06f), 180f);
-            Sign(comp, new Vector3(20.85f, YFloor2 + 2.08f, 39.05f), 0f, "RESPALDO UPS · CÓMPUTO", 1.24f);
         }
 
         private void FurnishAudiovisualRoom()
@@ -346,8 +344,6 @@ namespace EcoElectry.Editor.Levels
                 electricalRoomGroup, new Vector3(8.55f, YFloor2 + 0.89f, 36.85f), -25f);
             Spotlight(electricalRoomGroup, "Luz banco tecnico", new Vector3(7.90f, YFloor2 + 2.45f, 36.85f),
                 Vector3.down, new Color(1.0f, 0.84f, 0.62f, 1f), 2.9f, 4.8f, 92f, shadows: false);
-
-            Sign(electricalRoomGroup, new Vector3(6.20f, YFloor2 + 2.55f, 42.45f), 0f, "SUBESTACIÓN 2.º PISO · 220 V", 1.32f);
         }
 
         private void FurnishRestrooms2F()
@@ -480,8 +476,6 @@ namespace EcoElectry.Editor.Levels
                 new Vector3(0f, -0.45f, 1f), moonColor, 5.4f, 16f, 88f, shadows: true);
             Spotlight(exteriorViewsGroup, "Luna patio cancha", new Vector3(0f, YFloor2 + 7.20f, 6.50f),
                 new Vector3(0f, -0.85f, 0.32f), moonColor, 5.2f, 24f, 114f, shadows: false);
-            Spotlight(exteriorViewsGroup, "Luna escalera norte", new Vector3(3.40f, YLandingMid + 3.80f, 35.80f),
-                new Vector3(-0.18f, -0.48f, -1f), moonColor, 4.8f, 13f, 82f, shadows: true);
             Spotlight(exteriorViewsGroup, "Luna lab ciencias", new Vector3(-26.20f, YFloor2 + 3.40f, 30.30f),
                 new Vector3(1f, -0.44f, 0.12f), moonColor, 5.0f, 14f, 86f, shadows: true);
             Spotlight(exteriorViewsGroup, "Luna lab informatica", new Vector3(26.20f, YFloor2 + 3.40f, 35.30f),

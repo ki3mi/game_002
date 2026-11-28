@@ -60,36 +60,43 @@ namespace EcoElectry.Editor.Levels
             Box(stairwellGroup, "Base estructural este", new Vector3(3.44f, YFloor2 * 0.5f, 24.45f),
                 new Vector3(3.44f, YFloor2, 3.30f), matPlaster, solid: true);
 
-            // Floor 2 upper landing (East shaft x in [1.72, 5.16], z in [22.80, 26.10])
+            // Floor 2 upper landing (East shaft x in [1.72, 5.16], z in [22.80, 26.15])
             Slab(stairwellGroup, "Suelo llegada 2P", 1.72f, 5.16f, 22.80f, 26.15f, YFloor2, matFloor);
 
             // Full stairwell ceiling at Floor 2 roof height (y = 8.55)
             CeilingSlab(stairwellGroup, "Techo caja de escalera", -1.72f, 5.16f, 22.80f, 32.40f, totalH);
 
-            // Outer stairwell perimeter walls (full height y = 0 .. 8.55)
-            TallWall(stairwellGroup, true, -1.72f, 22.80f, 32.40f, YFloor1, totalH);
-            TallWall(stairwellGroup, true, 5.16f, 22.80f, 32.40f, YFloor1, totalH);
+            // Outer stairwell perimeter walls: plaster inside the tall shaft, Floor 2 wainscot only on the outer room faces!
+            TallWall(stairwellGroup, true, -1.72f, 22.80f, 32.40f, YFloor1, YFloor2);
+            SingleSidedUpperWall(stairwellGroup, true, -1.72f, 22.80f, 32.40f, YFloor2, StoryHeight, trimSideSign: -1f);
+            TallWall(stairwellGroup, true, 5.16f, 22.80f, 32.40f, YFloor1, YFloor2);
+            SingleSidedUpperWall(stairwellGroup, true, 5.16f, 22.80f, 32.40f, YFloor2, StoryHeight, trimSideSign: 1f);
 
-            // North stairwell wall: solid lower section + upper stairwell Ventanal above intermediate landing
+            // North stairwell wall (z = 32.40): landing wainscot inside stairwell at YLandingMid, corridor wainscot outside on +Z at YFloor2!
             TallWall(stairwellGroup, false, 32.40f, -1.72f, 5.16f, YFloor1, YLandingMid);
-            WallSpan(stairwellGroup, false, 32.40f, -1.72f, 5.16f, YLandingMid, totalH - YLandingMid,
-                new WallOpening(3.48f, OpeningKind.Ventanal, 180f));
+            SingleSidedUpperWall(stairwellGroup, false, 32.40f, -1.72f, 5.16f, YLandingMid, YFloor2 - YLandingMid, trimSideSign: -1f);
+            SingleSidedUpperWall(stairwellGroup, false, 32.40f, -1.72f, 5.16f, YFloor2, StoryHeight, trimSideSign: 1f);
 
-            // South wall of Floor 1 vestibule (locked fire door representing Planta Baja connection)
+            // Side wainscot along intermediate landing (z in [30.00, 32.40] at y = YLandingMid)
+            Box(stairwellGroup, "Zocalo descanso oeste", new Vector3(-1.61f, YLandingMid + 0.58f, 31.20f), new Vector3(0.02f, 1.16f, 2.40f), matDado);
+            Box(stairwellGroup, "Guarda descanso oeste", new Vector3(-1.60f, YLandingMid + 1.17f, 31.20f), new Vector3(0.03f, 0.035f, 2.40f), matTrim);
+            Box(stairwellGroup, "Zocalo descanso este", new Vector3(5.05f, YLandingMid + 0.58f, 31.20f), new Vector3(0.02f, 1.16f, 2.40f), matDado);
+            Box(stairwellGroup, "Guarda descanso este", new Vector3(5.04f, YLandingMid + 1.17f, 31.20f), new Vector3(0.03f, 0.035f, 2.40f), matTrim);
+
+            // South wall of Floor 1 vestibule (locked fire door representing Planta Baja connection, no extra sign clutter)
             WallSpan(stairwellGroup, false, 20.60f, -1.72f, 1.72f, YFloor1, YFloor2 - 0.20f,
-                new WallOpening(0f, OpeningKind.FireDoorLocked, 0f, "PLANTA BAJA"));
-            Sign(stairwellGroup, new Vector3(0f, YFloor1 + 2.68f, 20.73f), 180f, "1.er PISO · CERRADO", 1.15f);
+                new WallOpening(0f, OpeningKind.FireDoorLocked, 0f));
 
             // Lintel & iconic "2.º PISO" plaque at z = 24.80 (exact match to Level01 stairs photo!)
             Box(stairwellGroup, "Dintel de la caja de escalera", new Vector3(0f, 3.39f, 24.80f),
                 new Vector3(3.44f, 1.62f, 0.22f), matPlaster, solid: true);
             Sign(stairwellGroup, new Vector3(0f, 2.74f, 24.67f), 0f, "2.º PISO", 0.91f);
 
-            // Central spine wall separating Flight 1 (West) and Flight 2 (East), up to parapet height on Floor 2
+            // Central spine wall separating Flight 1 (West) and Flight 2 (East), flush 0.20m width
             Box(stairwellGroup, "Muro central de escalera", new Vector3(1.72f, (YFloor2 + 1.12f) * 0.5f, 26.35f),
-                new Vector3(0.22f, YFloor2 + 1.12f, 7.10f), matPlaster, solid: true);
+                new Vector3(0.20f, YFloor2 + 1.12f, 7.10f), matPlaster, solid: true);
             Box(stairwellGroup, "Remate muro central", new Vector3(1.72f, YFloor2 + 1.13f, 26.35f),
-                new Vector3(0.28f, 0.05f, 7.14f), matTrim);
+                new Vector3(0.26f, 0.05f, 7.14f), matTrim);
 
             // Floor 2 parapet overlooking Flight 1 void along z = 22.80, x in [-1.72, 1.72]
             Box(stairwellGroup, "Antepecho hueco escalera", new Vector3(0f, YFloor2 + 0.56f, 22.80f),
@@ -102,29 +109,29 @@ namespace EcoElectry.Editor.Levels
             InvisibleCollider(stairwellGroup, "GuardRail_Safety", new Vector3(0f, YFloor2 + 0.75f, 22.80f),
                 new Vector3(3.44f, 1.50f, 0.24f));
             InvisibleCollider(stairwellGroup, "SpineRail_Safety", new Vector3(1.72f, YFloor2 + 0.75f, 26.35f),
-                new Vector3(0.26f, 1.50f, 7.10f));
+                new Vector3(0.24f, 1.50f, 7.10f));
 
-            // Intermediate Landing (y = 2.20, spanning both shafts x in [-1.72, 5.16], z in [30.00, 32.40])
-            Box(stairwellGroup, "Descansillo intermedio", new Vector3(1.72f, YLandingMid * 0.5f, 31.20f),
-                new Vector3(6.88f, YLandingMid, 2.40f), matPlaster, solid: true);
-            Box(stairwellGroup, "Pavimento descansillo", new Vector3(1.72f, YLandingMid - 0.01f, 31.20f),
-                new Vector3(6.84f, 0.03f, 2.38f), matFloor);
+            // Intermediate Landing (y = 2.20, spanning full clear stairwell width x in [-1.62, 5.06], z in [30.00, 32.30])
+            Box(stairwellGroup, "Descansillo intermedio", new Vector3(1.72f, YLandingMid * 0.5f, 31.15f),
+                new Vector3(6.68f, YLandingMid, 2.30f), matPlaster, solid: true);
+            Box(stairwellGroup, "Pavimento descansillo", new Vector3(1.72f, YLandingMid - 0.01f, 31.15f),
+                new Vector3(6.68f, 0.03f, 2.30f), matFloor);
 
-            // Flight 1: climbs North (+Z) at x = 0.00 from (z = 26.10, y = 0.00) to (z = 30.00, y = 2.20)
+            // Flight 1: full shaft width 3.24m (flush with walls -1.62..+1.62, zero side gaps!)
             BuildStairFlight(stairwellGroup, "Tramo 1", centerX: 0f, zStart: 26.10f, zEnd: 30.00f,
-                yStart: YFloor1, yEnd: YLandingMid, steps: 13, width: 2.68f);
+                yStart: YFloor1, yEnd: YLandingMid, steps: 13, width: 3.24f);
 
-            // Flight 2: climbs South (-Z) at x = 3.44 from (z = 30.00, y = 2.20) to (z = 26.10, y = 4.40)
+            // Flight 2: full shaft width 3.24m (flush with walls +1.82..+5.06, zero side gaps!)
             BuildStairFlight(stairwellGroup, "Tramo 2", centerX: 3.44f, zStart: 30.00f, zEnd: 26.10f,
-                yStart: YLandingMid, yEnd: YFloor2, steps: 13, width: 2.68f);
+                yStart: YLandingMid, yEnd: YFloor2, steps: 13, width: 3.24f);
 
-            // Stairwell signage & lighting matching the Level01 photo
-            Sign(stairwellGroup, new Vector3(1.10f, YLandingMid + 1.88f, 32.26f), 0f, "SUBIDA 2.º PISO ›", 1.16f);
-            Sign(stairwellGroup, new Vector3(3.44f, YFloor2 + 2.55f, 26.05f), 180f, "‹ BAJADA 1.er PISO", 1.16f);
-
+            // Stairwell lighting (no redundant directional signs inside stairwell)
             EmergencyPilot(stairwellGroup, new Vector3(0f, YLandingMid + 1.65f, 32.26f), 0f);
+            EmergencyPilot(stairwellGroup, new Vector3(3.44f, YLandingMid + 2.10f, 32.26f), 0f);
             Spotlight(stairwellGroup, "Luz descansillo inferior", new Vector3(0f, 3.40f, 24.10f),
                 new Vector3(0f, -0.82f, 0.57f), new Color(0.68f, 0.78f, 0.87f, 1f), 4.8f, 8.2f, 98f, shadows: true);
+            Spotlight(stairwellGroup, "Luz descansillo intermedio", new Vector3(2.40f, YLandingMid + 3.45f, 31.10f),
+                Vector3.down, new Color(0.76f, 0.84f, 0.82f, 1f), 2.8f, 7.5f, 118f, shadows: false);
             FluorescentFixture(stairwellGroup, new Vector3(3.44f, totalH - 0.62f, 24.60f), 0f, lit: true, intensity: 2.5f, range: 8.5f);
             FluorescentFixture(stairwellGroup, new Vector3(1.72f, totalH - 0.62f, 31.10f), 0f, lit: false);
         }
@@ -161,7 +168,7 @@ namespace EcoElectry.Editor.Levels
             ramp.transform.localPosition = new Vector3(centerX, (yStart + yEnd) * 0.5f, (zStart + zEnd) * 0.5f) + normalOffset;
             ramp.transform.localRotation = Quaternion.Euler(pitchDeg, 0f, 0f);
             var rampCol = ramp.AddComponent<BoxCollider>();
-            rampCol.size = new Vector3(width + 0.72f, rampThickness, slopeLength + 0.12f);
+            rampCol.size = new Vector3(width, rampThickness, slopeLength + 0.12f);
 
             // Iron balusters and angled handrails on both sides
             foreach (float side in new[] { -1f, 1f })
@@ -200,28 +207,25 @@ namespace EcoElectry.Editor.Levels
             // [-14.00..-10.60] OPEN to WestWing
             // [-10.60..-5.20] Restrooms2F entrance
             WallSpan(atriumGalleryGroup, false, 22.80f, -10.60f, -5.20f, YFloor2, StoryHeight,
-                new WallOpening(-7.90f, OpeningKind.DoorClosed, 0f, "BAÑOS 2.º PISO"));
+                new WallOpening(-7.90f, OpeningKind.DoorClosed, 0f, "BAÑOS"));
             // [-5.20..-1.72] Locked 3rd-floor stairwell entrance (with glass door so player sees stairs rising!)
             WallSpan(atriumGalleryGroup, false, 22.80f, -5.20f, -1.72f, YFloor2, StoryHeight,
-                new WallOpening(-3.46f, OpeningKind.DoorLocked, 0f, "3.er PISO · AZOTEA"));
+                new WallOpening(-3.46f, OpeningKind.DoorLocked, 0f, "3.er PISO"));
             // [-1.72..+1.72] Stairwell parapet already built; add upper soffit beam at ceiling
             Beam(atriumGalleryGroup, new Vector3(0f, YFloor2 + StoryHeight - 0.14f, 22.80f), new Vector3(3.44f, 0.28f, 0.24f));
             // [+1.72..+5.16] OPEN to Stairwell 2nd-floor arrival! Add framing header beam
             Beam(atriumGalleryGroup, new Vector3(3.44f, YFloor2 + StoryHeight - 0.14f, 22.80f), new Vector3(3.44f, 0.28f, 0.24f));
-            // [+5.16..+8.20] ServiceShortcut fire door
+            // [+5.16..+8.20] ServiceShortcut fire door (no sign clutter)
             WallSpan(atriumGalleryGroup, false, 22.80f, 5.16f, 8.20f, YFloor2, StoryHeight,
-                new WallOpening(6.68f, OpeningKind.FireDoorClosed, 0f, "PASO TÉCNICO"));
+                new WallOpening(6.68f, OpeningKind.FireDoorClosed, 0f));
             // [+8.20..+10.60] South wall of ArchiveRoom
             WallSpan(atriumGalleryGroup, false, 22.80f, 8.20f, 10.60f, YFloor2, StoryHeight);
             // [+10.60..+14.00] OPEN to EastWing!
 
-            // Structural ceiling beams & wayfinding across AtriumGallery
+            // Structural ceiling beams across AtriumGallery (no floating directional signs on corridor corners!)
             foreach (float bx in new[] { -10.60f, -5.20f, 5.16f, 10.60f })
                 Beam(atriumGalleryGroup, new Vector3(bx, YFloor2 + StoryHeight - 0.12f, 21.10f), new Vector3(0.24f, 0.24f, 3.36f));
 
-            Sign(atriumGalleryGroup, new Vector3(3.44f, YFloor2 + 2.62f, 19.54f), 180f, "2.º PISO · GALERÍA DEL PATIO", 1.48f);
-            Sign(atriumGalleryGroup, new Vector3(-10.60f, YFloor2 + 2.68f, 22.66f), 0f, "‹  CIENCIAS · AULA 202", 1.28f);
-            Sign(atriumGalleryGroup, new Vector3(10.60f, YFloor2 + 2.68f, 22.66f), 0f, "DIRECCIÓN · CÓMPUTO  ›", 1.28f);
             WallClock(atriumGalleryGroup, new Vector3(8.95f, YFloor2 + 2.68f, 22.68f), 0f);
             NoticeBoard(atriumGalleryGroup, new Vector3(-6.20f, YFloor2 + 1.65f, 22.68f), 0f);
 
@@ -238,7 +242,7 @@ namespace EcoElectry.Editor.Levels
             WallSpan(stairwellGroup, true, -5.20f, 22.80f, 29.00f, YFloor2, StoryHeight);
             WallSpan(stairwellGroup, false, 29.00f, -5.20f, -1.72f, YFloor2, StoryHeight);
             BuildStairFlight(stairwellGroup, "Tramo bloqueado 3P", centerX: -3.46f, zStart: 24.40f, zEnd: 28.30f,
-                yStart: YFloor2, yEnd: YFloor2 + 2.15f, steps: 11, width: 2.50f);
+                yStart: YFloor2, yEnd: YFloor2 + 2.15f, steps: 11, width: 3.24f);
             InvisibleCollider(stairwellGroup, "ThirdFloor_Blocker", new Vector3(-3.46f, YFloor2 + 1.20f, 24.20f),
                 new Vector3(3.40f, 2.40f, 0.12f));
             EmergencyPilot(stairwellGroup, new Vector3(-3.46f, YFloor2 + 3.15f, 28.86f), 0f);
@@ -249,13 +253,13 @@ namespace EcoElectry.Editor.Levels
             // North end exterior wall of WestCorridor with Ventanal
             WallSpan(westWingGroup, false, 39.20f, -14.00f, -10.60f, YFloor2, StoryHeight,
                 new WallOpening(-12.30f, OpeningKind.Ventanal, 180f));
-            // West wall of WestCorridor (doors to Classroom202, ScienceLab, PrepRoom)
+            // West wall of WestCorridor (only primary room plaques, no secondary/arrow signs)
             WallSpan(westWingGroup, true, -14.00f, 22.80f, 26.20f, YFloor2, StoryHeight,
                 new WallOpening(24.50f, OpeningKind.DoorOpen, 270f, "AULA 202"));
             WallSpan(westWingGroup, true, -14.00f, 26.20f, 34.40f, YFloor2, StoryHeight,
-                new WallOpening(29.80f, OpeningKind.DoorClosed, 270f, "LAB. CIENCIAS 201"));
+                new WallOpening(29.80f, OpeningKind.DoorClosed, 270f, "LAB. CIENCIAS"));
             WallSpan(westWingGroup, true, -14.00f, 34.40f, 39.20f, YFloor2, StoryHeight,
-                new WallOpening(36.80f, OpeningKind.DoorClosed, 270f, "PREPARACIÓN 201-B"));
+                new WallOpening(36.80f, OpeningKind.DoorClosed, 270f));
             // East wall of WestCorridor: [22.80..29.00] Restrooms wall, [29.00..32.40] Lightwell window, [32.40..35.80] OPEN to NorthBridge, [35.80..39.20] AudiovisualRoom west wall
             WallSpan(westWingGroup, true, -10.60f, 22.80f, 29.00f, YFloor2, StoryHeight);
             WallSpan(westWingGroup, true, -10.60f, 29.00f, 32.40f, YFloor2, StoryHeight,
@@ -268,7 +272,6 @@ namespace EcoElectry.Editor.Levels
             FluorescentFixture(westWingGroup, new Vector3(-12.30f, YFloor2 + 3.65f, 37.80f), 90f, lit: false);
             EmergencyPilot(westWingGroup, new Vector3(-10.72f, YFloor2 + 2.35f, 32.15f), 90f);
             NoticeBoard(westWingGroup, new Vector3(-10.72f, YFloor2 + 1.65f, 26.80f), 90f);
-            Sign(westWingGroup, new Vector3(-12.30f, YFloor2 + 2.68f, 32.45f), 0f, "AUDIOVISUAL · CUARTO ELÉCTRICO  ›", 1.56f);
 
             // 4. EAST CORRIDOR ([10.60, 14.00] x [22.80, 39.20])
             Slab(eastWingGroup, "Suelo pasillo este", 10.60f, 14.00f, 22.80f, 39.20f, YFloor2, matFloor);
@@ -276,17 +279,17 @@ namespace EcoElectry.Editor.Levels
             // North end exterior wall of EastCorridor with Ventanal
             WallSpan(eastWingGroup, false, 39.20f, 10.60f, 14.00f, YFloor2, StoryHeight,
                 new WallOpening(12.30f, OpeningKind.Ventanal, 180f));
-            // East wall of EastCorridor (doors to Secretaria, PrincipalOffice, ComputerLab x2)
+            // East wall of EastCorridor (minimal plaques on key rooms only)
             WallSpan(eastWingGroup, true, 14.00f, 22.80f, 25.40f, YFloor2, StoryHeight,
-                new WallOpening(24.10f, OpeningKind.DoorOpen, 90f, "SECRETARÍA"));
+                new WallOpening(24.10f, OpeningKind.DoorOpen, 90f));
             WallSpan(eastWingGroup, true, 14.00f, 25.40f, 31.40f, YFloor2, StoryHeight,
                 new WallOpening(28.40f, OpeningKind.DoorClosed, 90f, "DIRECCIÓN"));
             WallSpan(eastWingGroup, true, 14.00f, 31.40f, 39.20f, YFloor2, StoryHeight,
-                new WallOpening(33.80f, OpeningKind.DoorOpen, 90f, "LAB. INFORMÁTICA 204"),
-                new WallOpening(37.60f, OpeningKind.FireDoorClosed, 90f, "RACK SERVIDORES"));
+                new WallOpening(33.80f, OpeningKind.DoorOpen, 90f, "CÓMPUTO"),
+                new WallOpening(37.60f, OpeningKind.FireDoorClosed, 90f));
             // West wall of EastCorridor: [22.80..32.40] ArchiveRoom w/ door, [32.40..35.80] OPEN to NorthBridge, [35.80..39.20] ElectricalRoom east wall
             WallSpan(eastWingGroup, true, 10.60f, 22.80f, 32.40f, YFloor2, StoryHeight,
-                new WallOpening(27.60f, OpeningKind.DoorClosed, 270f, "ARCHIVO ACADÉMICO"));
+                new WallOpening(27.60f, OpeningKind.DoorClosed, 270f));
             WallSpan(eastWingGroup, true, 10.60f, 35.80f, 39.20f, YFloor2, StoryHeight);
 
             FluorescentFixture(eastWingGroup, new Vector3(12.30f, YFloor2 + 3.65f, 24.80f), 90f, lit: true);
@@ -294,7 +297,6 @@ namespace EcoElectry.Editor.Levels
             FluorescentFixture(eastWingGroup, new Vector3(12.30f, YFloor2 + 3.65f, 34.10f), 90f, lit: false);
             FluorescentFixture(eastWingGroup, new Vector3(12.30f, YFloor2 + 3.65f, 37.60f), 90f, lit: true);
             NoticeBoard(eastWingGroup, new Vector3(10.72f, YFloor2 + 1.65f, 30.40f), 270f);
-            Sign(eastWingGroup, new Vector3(12.30f, YFloor2 + 2.68f, 32.45f), 0f, "‹  PASILLO TÉCNICO · AUDIOVISUAL", 1.56f);
 
             // 5. NORTH SERVICE BRIDGE ([-10.60, 10.60] x [32.40, 35.80])
             Slab(northBridgeGroup, "Suelo pasillo norte", -10.60f, 10.60f, 32.40f, 35.80f, YFloor2, matFloor);
@@ -304,24 +306,24 @@ namespace EcoElectry.Editor.Levels
             // [-10.60..-5.20] Lightwell window
             WallSpan(northBridgeGroup, false, 32.40f, -10.60f, -5.20f, YFloor2, StoryHeight,
                 new WallOpening(-7.90f, OpeningKind.Ventanal, 0f));
-            // [-5.20..-1.72] StorageCloset2F door
+            // [-5.20..-1.72] StorageCloset2F door (unlabeled utility door)
             WallSpan(northBridgeGroup, false, 32.40f, -5.20f, -1.72f, YFloor2, StoryHeight,
-                new WallOpening(-3.46f, OpeningKind.DoorClosed, 180f, "DEPÓSITO 2P"));
-            // [-1.72..+5.16] Stairwell north wall already built!
-            // [+5.16..+8.20] ServiceShortcut north fire door
+                new WallOpening(-3.46f, OpeningKind.DoorClosed, 180f));
+            // [-1.72..+5.16] Stairwell north wall already built with Floor 2 wainscot!
+            // [+5.16..+8.20] ServiceShortcut north fire door (unlabeled)
             WallSpan(northBridgeGroup, false, 32.40f, 5.16f, 8.20f, YFloor2, StoryHeight,
-                new WallOpening(6.68f, OpeningKind.FireDoorClosed, 180f, "ATAJO GALERÍA"));
+                new WallOpening(6.68f, OpeningKind.FireDoorClosed, 180f));
             // [+8.20..+10.60] ArchiveRoom north wall
             WallSpan(northBridgeGroup, false, 32.40f, 8.20f, 10.60f, YFloor2, StoryHeight);
 
             // North wall of NorthServiceBridge (z = 35.80):
-            // [-10.60..+1.80] AudiovisualRoom (2 doors)
+            // [-10.60..+1.80] AudiovisualRoom (only main entrance has plaque)
             WallSpan(northBridgeGroup, false, 35.80f, -10.60f, 1.80f, YFloor2, StoryHeight,
-                new WallOpening(-6.80f, OpeningKind.DoorOpen, 0f, "SALA AUDIOVISUAL 203"),
-                new WallOpening(0.10f, OpeningKind.DoorClosed, 0f, "CABINA PROYECCIÓN"));
+                new WallOpening(-6.80f, OpeningKind.DoorOpen, 0f, "AUDIOVISUAL"),
+                new WallOpening(0.10f, OpeningKind.DoorClosed, 0f));
             // [+1.80..+10.60] ElectricalRoom (fire door)
             WallSpan(northBridgeGroup, false, 35.80f, 1.80f, 10.60f, YFloor2, StoryHeight,
-                new WallOpening(4.80f, OpeningKind.FireDoorClosed, 0f, "CUARTO ELÉCTRICO 2P"));
+                new WallOpening(4.80f, OpeningKind.FireDoorClosed, 0f, "CUARTO ELÉCTRICO"));
 
             FluorescentFixture(northBridgeGroup, new Vector3(-7.60f, YFloor2 + 3.65f, 34.10f), 0f, lit: true);
             FluorescentFixture(northBridgeGroup, new Vector3(-2.20f, YFloor2 + 3.65f, 34.10f), 0f, lit: false);
@@ -335,7 +337,6 @@ namespace EcoElectry.Editor.Levels
             WallSpan(serviceShortcutGroup, true, 8.20f, 22.80f, 32.40f, YFloor2, StoryHeight);
             FluorescentFixture(serviceShortcutGroup, new Vector3(6.68f, YFloor2 + 3.65f, 25.60f), 90f, lit: true, intensity: 1.7f);
             FluorescentFixture(serviceShortcutGroup, new Vector3(6.68f, YFloor2 + 3.65f, 29.80f), 90f, lit: false);
-            Sign(serviceShortcutGroup, new Vector3(8.07f, YFloor2 + 1.75f, 27.60f), 90f, "GALERÍA  ‹   |   ›  NORTE", 1.18f);
 
             Slab(adminSuiteGroup, "Suelo archivo", 8.20f, 10.60f, 22.80f, 32.40f, YFloor2, matLaminate);
             CeilingSlab(adminSuiteGroup, "Techo archivo", 8.20f, 10.60f, 22.80f, 32.40f, YFloor2 + StoryHeight);
@@ -352,7 +353,8 @@ namespace EcoElectry.Editor.Levels
             // Interior lightwell walls (from Floor 1 up to Floor 2 roof so looking down through lightwell glass looks into a real 2-story shaft!)
             Slab(exteriorViewsGroup, "Fondo patio de luz", -10.60f, -5.20f, 29.00f, 32.40f, YFloor1, matRubber);
             TallWall(exteriorViewsGroup, true, -10.60f, 29.00f, 32.40f, YFloor1, YFloor2);
-            TallWall(exteriorViewsGroup, true, -5.20f, 29.00f, 32.40f, YFloor1, YFloor2 + StoryHeight);
+            TallWall(exteriorViewsGroup, true, -5.20f, 29.00f, 32.40f, YFloor1, YFloor2);
+            WallSpan(northBridgeGroup, true, -5.20f, 29.00f, 32.40f, YFloor2, StoryHeight);
             TallWall(exteriorViewsGroup, false, 29.00f, -10.60f, -5.20f, YFloor1, YFloor2);
             TallWall(exteriorViewsGroup, false, 32.40f, -10.60f, -5.20f, YFloor1, YFloor2);
 
@@ -378,7 +380,7 @@ namespace EcoElectry.Editor.Levels
                 new WallOpening(28.50f, OpeningKind.Ventanal, 270f),
                 new WallOpening(32.10f, OpeningKind.Ventanal, 270f));
             WallSpan(classroomsAndLabsGroup, false, 34.40f, -22.40f, -14.00f, YFloor2, StoryHeight,
-                new WallOpening(-18.20f, OpeningKind.DoorOpen, 0f, "INSTRUMENTAL"));
+                new WallOpening(-18.20f, OpeningKind.DoorOpen, 0f));
 
             // Prep Room 201-B: [-22.40, -14.00] x [34.40, 39.20]
             Slab(classroomsAndLabsGroup, "Suelo Preparacion", -22.40f, -14.00f, 34.40f, 39.20f, YFloor2, matTileFloor);
@@ -397,7 +399,7 @@ namespace EcoElectry.Editor.Levels
                 new WallOpening(22.40f, OpeningKind.SlidingWindow, 90f));
             WallSpan(adminSuiteGroup, true, 14.00f, 19.40f, 22.80f, YFloor2, StoryHeight);
             WallSpan(adminSuiteGroup, false, 25.40f, 14.00f, 22.40f, YFloor2, StoryHeight,
-                new WallOpening(19.20f, OpeningKind.DoorClosed, 0f, "DESPACHO DIRECCIÓN"));
+                new WallOpening(19.20f, OpeningKind.DoorClosed, 0f));
 
             // Principal Office: [14.00, 22.40] x [25.40, 31.40]
             Slab(adminSuiteGroup, "Suelo Direccion", 14.00f, 22.40f, 25.40f, 31.40f, YFloor2, matWood);
@@ -422,7 +424,7 @@ namespace EcoElectry.Editor.Levels
             WallSpan(audiovisualGroup, true, 1.80f, 35.80f, 42.60f, YFloor2, StoryHeight);
             // Internal booth partition inside AudiovisualRoom at x = -1.20 with glass observation window & door!
             WallSpan(audiovisualGroup, true, -1.20f, 35.80f, 42.60f, YFloor2, StoryHeight,
-                new WallOpening(37.20f, OpeningKind.DoorOpen, 90f, "CABINA"),
+                new WallOpening(37.20f, OpeningKind.DoorOpen, 90f),
                 new WallOpening(40.10f, OpeningKind.Ventanal, 90f));
 
             Slab(electricalRoomGroup, "Suelo Cuarto Electrico", 1.80f, 10.60f, 35.80f, 42.60f, YFloor2, matFloor);
@@ -483,6 +485,23 @@ namespace EcoElectry.Editor.Levels
         private void TallWall(Transform parent, bool alongZ, float fixedCoord, float from, float to, float baseY, float topY)
         {
             WallSegment(parent, alongZ, fixedCoord, from, to, baseY, topY - baseY);
+        }
+
+        private void SingleSidedUpperWall(Transform parent, bool alongZ, float fixedCoord, float from, float to,
+            float baseY, float height, float trimSideSign)
+        {
+            float length = Mathf.Abs(to - from);
+            float mid = (from + to) * 0.5f;
+            Transform wall = Group("Muro", parent);
+            wall.localPosition = alongZ ? new Vector3(fixedCoord, baseY, mid) : new Vector3(mid, baseY, fixedCoord);
+            wall.localRotation = Quaternion.Euler(0f, alongZ ? 90f : 0f, 0f);
+
+            // For alongZ=true (rot Y=90), local +Z points in world +X; for alongZ=false (rot Y=0), local +Z points in world +Z
+            float zOff = trimSideSign * 0.012f;
+            Box(wall, "Yeso", new Vector3(0f, height * 0.5f, 0f), new Vector3(length, height, 0.20f), matPlaster, solid: true);
+            Box(wall, "Zocalo", new Vector3(0f, 0.58f, zOff), new Vector3(length, 1.16f, 0.188f), matDado);
+            Box(wall, "Guarda", new Vector3(0f, 1.17f, zOff * 1.35f), new Vector3(length, 0.035f, 0.194f), matTrim);
+            Box(wall, "Rodapie", new Vector3(0f, 0.055f, zOff * 1.55f), new Vector3(length, 0.11f, 0.198f), matTrim);
         }
 
         private void PlaceOpening(Transform parent, Vector3 pos, WallOpening op, float wallHeight)
