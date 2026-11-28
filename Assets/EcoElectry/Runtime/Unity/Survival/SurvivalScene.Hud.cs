@@ -117,10 +117,6 @@ namespace EcoElectry.Unity.Survival
             GUI.Label(new Rect(Screen.width - 79, Screen.height - 35, 71, 19), "P  Pausa", noteStyle);
             string prompt = aimedRepair != null ? RepairPrompt(aimedRepair.Type) :
                 aimedBattery != null && aimedBattery.Available ? "E  Recoger batería" :
-                aimedCase != null ? "E  Inspeccionar caja" : null;
-            if (prompt == null) return;
-            var action = new Rect((Screen.width - 246) * .5f, Screen.height * .5f + 18, 246, 28);
-            string prompt = aimedBattery != null && aimedBattery.Available ? "E  Recoger batería" :
                 aimedCase != null ? "E  Inspeccionar caja" : aimedPart != null ? "E  Inspeccionar repuesto" : null;
             if (prompt == null) return;
             DrawAction(prompt);
@@ -128,7 +124,7 @@ namespace EcoElectry.Unity.Survival
 
         private void DrawAction(string prompt)
         {
-            var action = new Rect((Screen.width - 196) * .5f, Screen.height * .5f + 18, 196, 28);
+            var action = new Rect((Screen.width - 246) * .5f, Screen.height * .5f + 18, 246, 28);
             Paint(action, Surface);
             GUI.Label(action, prompt, centeredStyle);
         }
