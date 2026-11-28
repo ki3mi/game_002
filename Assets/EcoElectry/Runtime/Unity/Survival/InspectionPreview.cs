@@ -10,20 +10,22 @@ namespace EcoElectry.Unity.Survival
 {
     internal sealed partial class InspectionPreview : IDisposable
     {
-        internal enum TargetKind { None, Latch, Slot, Cell, Terminal, Probe }
+        internal enum TargetKind { None, Latch, Slot, Cell, Terminal, Probe, Cover, Screw, Fuse, FuseSlot, FuseTerminal }
 
         internal readonly struct Hit
         {
-            public Hit(TargetKind kind, int index = -1, BatteryCell cell = null)
+            public Hit(TargetKind kind, int index = -1, BatteryCell cell = null, int terminal = -1)
             {
                 Kind = kind;
                 Index = index;
                 Cell = cell;
+                Terminal = terminal;
             }
 
             public TargetKind Kind { get; }
             public int Index { get; }
             public BatteryCell Cell { get; }
+            public int Terminal { get; }
         }
 
         private const int PreviewLayer = 30;
@@ -122,6 +124,12 @@ namespace EcoElectry.Unity.Survival
             pivot.localPosition = compartment ? new Vector3(.31f, -.48f, 0) : Vector3.zero;
             pivot.localScale = Vector3.one;
             Rotate(compartment ? new Vector2(-13, -42) : Vector2.zero);
+            if (repairModel)
+            {
+                camera.transform.SetLocalPositionAndRotation(new Vector3(0, 0, -7f), Quaternion.identity);
+                camera.orthographicSize = 1.73f;
+                Rotate(new Vector2(-7f, 8f));
+            }
         }
 
         public void CancelPointer() => dragging = false;
@@ -138,7 +146,8 @@ namespace EcoElectry.Unity.Survival
                     zoom = Mathf.Clamp(zoom - input.delta.y * .054f, .71f, 1.23f);
                     pivot.localScale = Vector3.one * zoom;
                 }
-                else camera.orthographicSize = Mathf.Clamp(camera.orthographicSize + input.delta.y * .064f, .60f, 1.67f);
+                else camera.orthographicSize = Mathf.Clamp(camera.orthographicSize + input.delta.y * .064f,
+                    repairModel ? 1.12f : .60f, repairModel ? 2.28f : 1.67f);
                 input.Use();
                 return true;
             }
@@ -188,7 +197,7 @@ namespace EcoElectry.Unity.Survival
                 distance = candidate.distance;
                 behindProbe = target;
             }
-            return behindProbe.Kind == TargetKind.Terminal ? behindProbe : first;
+            return behindProbe.Kind is TargetKind.Terminal or TargetKind.FuseTerminal ? behindProbe : first;
         }
 
         private void Rotate(Vector2 movement)
@@ -213,6 +222,8 @@ namespace EcoElectry.Unity.Survival
             }
             targets.Clear();
             compartment = showCompartment;
+            repairModel = false;
+            repairMotion = null;
             compartmentCells.Clear();
             movingCell = null;
             model = Group("Modelo", pivot, Vector3.zero);
@@ -270,12 +281,12 @@ namespace EcoElectry.Unity.Survival
         public void Hide()
         {
             dragging = false;
-            stage.SetActive(false);
+            if (stage != null) stage.SetActive(false);
         }
 
         public void Dispose()
         {
-            camera.targetTexture = null;
+            if (camera != null) camera.targetTexture = null;
             Texture.Release();
             Object.Destroy(Texture);
             Object.Destroy(stage);

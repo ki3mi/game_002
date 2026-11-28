@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1faad39094e5ce344b6fad45d1f29184, type: 3}
+  m_Name: Level01FuseRepair
+  m_EditorClassIdentifier: EcoElectry.Unity::EcoElectry.Unity.Survival.FuseRepairDefinition
+  repairId: level01-cleaning-fuses
+  references:
+  - F-01
+  - F-02
+  - F-03
+  cartridges:
+  - id: original-1
+    reference: F-01
+    conducts: 1
+  - id: original-2
+    reference: F-02
+    conducts: 0
+  - id: original-3
+    reference: F-03
+    conducts: 1
+  - id: repuesto-105
+    reference: F-02
+    conducts: 1
+  clue: "Nota de reposici\xF3n: el fusible F-02 est\xE1 encima del armario auxiliar del Aula 105, junto a la pared de la entrada, a mano derecha."
+  box: {fileID: 265343948535394908, guid: 714cba1d41564a4468c7ce324f9138f0, type: 3}
+  fuse: {fileID: 2064072075450726810, guid: b26226db149214343b08c42f4422e7b5, type: 3}
+  screwdriver: {fileID: 387706481094531920, guid: a7c83d924a30558459170786833a4b0e, type: 3}
+  spares: {fileID: 6712008626063393447, guid: ddd56b395ce15a6439665bf6cb97c8e2, type: 3}

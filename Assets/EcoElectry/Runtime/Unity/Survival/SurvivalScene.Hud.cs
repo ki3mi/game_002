@@ -28,6 +28,7 @@ namespace EcoElectry.Unity.Survival
             }
             if (session.IsInspecting) DrawCompartmentInspection();
             else if (openCase != null) DrawCaseInspection();
+            else if (repairView != RepairView.None) DrawRepair();
             else if (inspectedPart != null)
             {
                 Rect panel = ModalRect(138);
@@ -106,7 +107,19 @@ namespace EcoElectry.Unity.Survival
             }
 
             if (paused || Inspecting || explorer.IsImageMenuOpen) return;
+            if (repair != null)
+            {
+                var task = new Rect(18, batteryPanel.y - 31, 242, 25);
+                Paint(task, Surface);
+                GUI.Label(new Rect(task.x + 9, task.y + 2, task.width - 16, 22),
+                    repair.Completed ? "J  Caja de fusibles · reparada" : "J  Tareas · caja de fusibles", noteStyle);
+            }
             GUI.Label(new Rect(Screen.width - 79, Screen.height - 35, 71, 19), "P  Pausa", noteStyle);
+            string prompt = aimedRepair != null ? RepairPrompt(aimedRepair.Type) :
+                aimedBattery != null && aimedBattery.Available ? "E  Recoger batería" :
+                aimedCase != null ? "E  Inspeccionar caja" : null;
+            if (prompt == null) return;
+            var action = new Rect((Screen.width - 246) * .5f, Screen.height * .5f + 18, 246, 28);
             string prompt = aimedBattery != null && aimedBattery.Available ? "E  Recoger batería" :
                 aimedCase != null ? "E  Inspeccionar caja" : aimedPart != null ? "E  Inspeccionar repuesto" : null;
             if (prompt == null) return;

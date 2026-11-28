@@ -844,7 +844,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 18653938}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 13
   m_Type: 0
   m_Color: {r: 0.8235294, g: 0.8784314, b: 0.7921569, a: 1}
@@ -28258,7 +28258,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 417637243}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 13
   m_Type: 0
   m_Color: {r: 0.8235294, g: 0.8784314, b: 0.7921569, a: 1}
@@ -28345,6 +28345,90 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!1001 &418313230
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4100000106}
+    m_Modifications:
+    - target: {fileID: 6712008626063393447, guid: ddd56b395ce15a6439665bf6cb97c8e2, type: 3}
+      propertyPath: m_Name
+      value: "Repuestos de fusibles \xB7 Caja vac\xEDa"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7410054180487821820, guid: ddd56b395ce15a6439665bf6cb97c8e2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7410054180487821820, guid: ddd56b395ce15a6439665bf6cb97c8e2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.875
+      objectReference: {fileID: 0}
+    - target: {fileID: 7410054180487821820, guid: ddd56b395ce15a6439665bf6cb97c8e2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 9.86
+      objectReference: {fileID: 0}
+    - target: {fileID: 7410054180487821820, guid: ddd56b395ce15a6439665bf6cb97c8e2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 7410054180487821820, guid: ddd56b395ce15a6439665bf6cb97c8e2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7410054180487821820, guid: ddd56b395ce15a6439665bf6cb97c8e2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 7410054180487821820, guid: ddd56b395ce15a6439665bf6cb97c8e2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7410054180487821820, guid: ddd56b395ce15a6439665bf6cb97c8e2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7410054180487821820, guid: ddd56b395ce15a6439665bf6cb97c8e2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7410054180487821820, guid: ddd56b395ce15a6439665bf6cb97c8e2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6712008626063393447, guid: ddd56b395ce15a6439665bf6cb97c8e2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 418313233}
+  m_SourcePrefab: {fileID: 100100000, guid: ddd56b395ce15a6439665bf6cb97c8e2, type: 3}
+--- !u!4 &418313231 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7410054180487821820, guid: ddd56b395ce15a6439665bf6cb97c8e2, type: 3}
+  m_PrefabInstance: {fileID: 418313230}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &418313232 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6712008626063393447, guid: ddd56b395ce15a6439665bf6cb97c8e2, type: 3}
+  m_PrefabInstance: {fileID: 418313230}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &418313233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 418313232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e14a50f83eb5184188a47751e659366, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: EcoElectry.Unity::EcoElectry.Unity.Survival.FuseRepairInteractable
+  kind: 1
+  definition: {fileID: 11400000, guid: b64c16286ceaec9489f93348d95fa552, type: 2}
 --- !u!1 &420043888
 GameObject:
   m_ObjectHideFlags: 0
@@ -30721,7 +30805,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 455357452}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 13
   m_Type: 0
   m_Color: {r: 0.8235294, g: 0.8784314, b: 0.7921569, a: 1}
@@ -32230,7 +32314,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 472809458}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 13
   m_Type: 0
   m_Color: {r: 0.8627451, g: 0.8509804, b: 0.76862746, a: 1}
@@ -39727,7 +39811,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 611246904}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 13
   m_Type: 0
   m_Color: {r: 0.8235294, g: 0.8784314, b: 0.7921569, a: 1}
@@ -41327,7 +41411,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 632102746}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 13
   m_Type: 0
   m_Color: {r: 0.8784314, g: 0.8901961, b: 0.8117647, a: 1}
@@ -47114,7 +47198,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 713715198}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 13
   m_Type: 0
   m_Color: {r: 0.8235294, g: 0.8784314, b: 0.7921569, a: 1}
@@ -47838,7 +47922,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 718061801}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 13
   m_Type: 0
   m_Color: {r: 0.7490196, g: 0.8392157, b: 0.8392157, a: 1}
@@ -54815,7 +54899,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 842255418}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 13
   m_Type: 0
   m_Color: {r: 0.8235294, g: 0.8784314, b: 0.7921569, a: 1}
@@ -58813,7 +58897,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 904333628}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 13
   m_Type: 0
   m_Color: {r: 0.8235294, g: 0.8784314, b: 0.7921569, a: 1}
@@ -62180,7 +62264,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 958991205}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 13
   m_Type: 0
   m_Color: {r: 0.8235294, g: 0.8784314, b: 0.7921569, a: 1}
@@ -74406,7 +74490,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1146374925}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 13
   m_Type: 0
   m_Color: {r: 0.6784314, g: 0.7764706, b: 0.8666667, a: 1}
@@ -84882,7 +84966,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1312408865}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 13
   m_Type: 0
   m_Color: {r: 0.8980392, g: 0.8392157, b: 0.7137255, a: 1}
@@ -92780,6 +92864,102 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1421508232}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &1424715867
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4100000106}
+    m_Modifications:
+    - target: {fileID: 600051825069982783, guid: 714cba1d41564a4468c7ce324f9138f0, type: 3}
+      propertyPath: m_Name
+      value: Caja mural de fusibles
+      objectReference: {fileID: 0}
+    - target: {fileID: 7717454744718205395, guid: 714cba1d41564a4468c7ce324f9138f0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 7717454744718205395, guid: 714cba1d41564a4468c7ce324f9138f0, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 7717454744718205395, guid: 714cba1d41564a4468c7ce324f9138f0, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 7717454744718205395, guid: 714cba1d41564a4468c7ce324f9138f0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 7717454744718205395, guid: 714cba1d41564a4468c7ce324f9138f0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 7717454744718205395, guid: 714cba1d41564a4468c7ce324f9138f0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 10.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 7717454744718205395, guid: 714cba1d41564a4468c7ce324f9138f0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7717454744718205395, guid: 714cba1d41564a4468c7ce324f9138f0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7717454744718205395, guid: 714cba1d41564a4468c7ce324f9138f0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7717454744718205395, guid: 714cba1d41564a4468c7ce324f9138f0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7717454744718205395, guid: 714cba1d41564a4468c7ce324f9138f0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7717454744718205395, guid: 714cba1d41564a4468c7ce324f9138f0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7717454744718205395, guid: 714cba1d41564a4468c7ce324f9138f0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 600051825069982783, guid: 714cba1d41564a4468c7ce324f9138f0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1424715870}
+  m_SourcePrefab: {fileID: 100100000, guid: 714cba1d41564a4468c7ce324f9138f0, type: 3}
+--- !u!4 &1424715868 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7717454744718205395, guid: 714cba1d41564a4468c7ce324f9138f0, type: 3}
+  m_PrefabInstance: {fileID: 1424715867}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1424715869 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 600051825069982783, guid: 714cba1d41564a4468c7ce324f9138f0, type: 3}
+  m_PrefabInstance: {fileID: 1424715867}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1424715870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424715869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e14a50f83eb5184188a47751e659366, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: EcoElectry.Unity::EcoElectry.Unity.Survival.FuseRepairInteractable
+  kind: 0
+  definition: {fileID: 11400000, guid: b64c16286ceaec9489f93348d95fa552, type: 2}
 --- !u!1 &1425271802
 GameObject:
   m_ObjectHideFlags: 0
@@ -98646,7 +98826,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1504005214}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 13
   m_Type: 0
   m_Color: {r: 0.8235294, g: 0.8784314, b: 0.7921569, a: 1}
@@ -99002,7 +99182,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1509131541}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 13
   m_Type: 0
   m_Color: {r: 0.8235294, g: 0.8784314, b: 0.7921569, a: 1}
@@ -99291,6 +99471,126 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1512740916}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &1515735158
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4200000515}
+    m_Modifications:
+    - target: {fileID: 2064072075450726810, guid: b26226db149214343b08c42f4422e7b5, type: 3}
+      propertyPath: m_Name
+      value: Fusible de repuesto F-02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4582401225708509687, guid: b26226db149214343b08c42f4422e7b5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.235
+      objectReference: {fileID: 0}
+    - target: {fileID: 4582401225708509687, guid: b26226db149214343b08c42f4422e7b5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.235
+      objectReference: {fileID: 0}
+    - target: {fileID: 4582401225708509687, guid: b26226db149214343b08c42f4422e7b5, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.235
+      objectReference: {fileID: 0}
+    - target: {fileID: 4582401225708509687, guid: b26226db149214343b08c42f4422e7b5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -24.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4582401225708509687, guid: b26226db149214343b08c42f4422e7b5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.162
+      objectReference: {fileID: 0}
+    - target: {fileID: 4582401225708509687, guid: b26226db149214343b08c42f4422e7b5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 37.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 4582401225708509687, guid: b26226db149214343b08c42f4422e7b5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4582401225708509687, guid: b26226db149214343b08c42f4422e7b5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4582401225708509687, guid: b26226db149214343b08c42f4422e7b5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4582401225708509687, guid: b26226db149214343b08c42f4422e7b5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4582401225708509687, guid: b26226db149214343b08c42f4422e7b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4582401225708509687, guid: b26226db149214343b08c42f4422e7b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4582401225708509687, guid: b26226db149214343b08c42f4422e7b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2064072075450726810, guid: b26226db149214343b08c42f4422e7b5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1515735162}
+    - targetCorrespondingSourceObject: {fileID: 2064072075450726810, guid: b26226db149214343b08c42f4422e7b5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1515735161}
+  m_SourcePrefab: {fileID: 100100000, guid: b26226db149214343b08c42f4422e7b5, type: 3}
+--- !u!1 &1515735159 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2064072075450726810, guid: b26226db149214343b08c42f4422e7b5, type: 3}
+  m_PrefabInstance: {fileID: 1515735158}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1515735160 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4582401225708509687, guid: b26226db149214343b08c42f4422e7b5, type: 3}
+  m_PrefabInstance: {fileID: 1515735158}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1515735161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1515735159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e14a50f83eb5184188a47751e659366, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: EcoElectry.Unity::EcoElectry.Unity.Survival.FuseRepairInteractable
+  kind: 2
+  definition: {fileID: 11400000, guid: b64c16286ceaec9489f93348d95fa552, type: 2}
+--- !u!65 &1515735162
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1515735159}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.84, y: 0.31, z: 0.36}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1520319275
 GameObject:
   m_ObjectHideFlags: 0
@@ -106216,7 +106516,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1634823907}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 13
   m_Type: 0
   m_Color: {r: 0.8235294, g: 0.8784314, b: 0.7921569, a: 1}
@@ -106545,7 +106845,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1642198969}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 13
   m_Type: 0
   m_Color: {r: 0.8980392, g: 0.8627451, b: 0.75686276, a: 1}
@@ -108700,7 +109000,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1675620286}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 13
   m_Type: 0
   m_Color: {r: 0.8235294, g: 0.8784314, b: 0.7921569, a: 1}
@@ -112576,7 +112876,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1725352272}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 13
   m_Type: 0
   m_Color: {r: 0.8235294, g: 0.8784314, b: 0.7921569, a: 1}
@@ -115332,7 +115632,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1768477997}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 13
   m_Type: 0
   m_Color: {r: 0.8235294, g: 0.8784314, b: 0.7921569, a: 1}
@@ -128405,7 +128705,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1988583476}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 13
   m_Type: 0
   m_Color: {r: 0.8235294, g: 0.8784314, b: 0.7921569, a: 1}
@@ -129004,7 +129304,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2000307492}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 13
   m_Type: 0
   m_Color: {r: 0.8235294, g: 0.8784314, b: 0.7921569, a: 1}
@@ -133805,7 +134105,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2075611967}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 13
   m_Type: 0
   m_Color: {r: 0.8235294, g: 0.8784314, b: 0.7921569, a: 1}
@@ -135908,7 +136208,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2107419622}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 13
   m_Type: 0
   m_Color: {r: 0.8235294, g: 0.8784314, b: 0.7921569, a: 1}
@@ -140857,7 +141157,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4100000102}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 13
   m_Type: 0
   m_Color: {r: 0.83, g: 0.89, b: 0.83, a: 1}
@@ -140978,6 +141278,8 @@ Transform:
   - {fileID: 4200000259}
   - {fileID: 4200000263}
   - {fileID: 4400000009}
+  - {fileID: 1424715868}
+  - {fileID: 418313231}
   m_Father: {fileID: 1854139741}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4100000107
@@ -142570,7 +142872,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4100000176}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 13
   m_Type: 0
   m_Color: {r: 0.83, g: 0.89, b: 0.83, a: 1}
@@ -152936,7 +153238,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4200000395}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 13
   m_Type: 0
   m_Color: {r: 0.8235294, g: 0.8784314, b: 0.7921569, a: 1}
@@ -153550,7 +153852,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4200000421}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 13
   m_Type: 0
   m_Color: {r: 0.8235294, g: 0.8784314, b: 0.7921569, a: 1}
@@ -154164,7 +154466,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4200000447}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 13
   m_Type: 0
   m_Color: {r: 0.8235294, g: 0.8784314, b: 0.7921569, a: 1}
@@ -154778,7 +155080,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4200000473}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 13
   m_Type: 0
   m_Color: {r: 0.8235294, g: 0.8784314, b: 0.7921569, a: 1}
@@ -155392,7 +155694,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4200000499}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 13
   m_Type: 0
   m_Color: {r: 0.8235294, g: 0.8784314, b: 0.7921569, a: 1}
@@ -155824,6 +156126,7 @@ Transform:
   - {fileID: 4200001175}
   - {fileID: 4200001186}
   - {fileID: 4200001212}
+  - {fileID: 1515735160}
   m_Father: {fileID: 938611808}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &4200000516
@@ -167489,7 +167792,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4200001017}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 13
   m_Type: 0
   m_Color: {r: 0.8235294, g: 0.8784314, b: 0.7921569, a: 1}
@@ -168103,7 +168406,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4200001043}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 13
   m_Type: 0
   m_Color: {r: 0.8235294, g: 0.8784314, b: 0.7921569, a: 1}
@@ -169813,7 +170116,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4200001109}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 13
   m_Type: 0
   m_Color: {r: 0.8235294, g: 0.8784314, b: 0.7921569, a: 1}
@@ -170427,7 +170730,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4200001135}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 13
   m_Type: 0
   m_Color: {r: 0.8235294, g: 0.8784314, b: 0.7921569, a: 1}
@@ -172137,7 +172440,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4200001201}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 13
   m_Type: 0
   m_Color: {r: 0.8235294, g: 0.8784314, b: 0.7921569, a: 1}
@@ -172751,7 +173054,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4200001227}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 13
   m_Type: 0
   m_Color: {r: 0.8235294, g: 0.8784314, b: 0.7921569, a: 1}
@@ -182103,7 +182406,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4200001642}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 13
   m_Type: 0
   m_Color: {r: 0.8235294, g: 0.8784314, b: 0.7921569, a: 1}
@@ -182717,7 +183020,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4200001668}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 13
   m_Type: 0
   m_Color: {r: 0.8235294, g: 0.8784314, b: 0.7921569, a: 1}
@@ -186499,7 +186802,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4200001833}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 13
   m_Type: 0
   m_Color: {r: 0.8235294, g: 0.8784314, b: 0.7921569, a: 1}
@@ -187113,7 +187416,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4200001859}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 13
   m_Type: 0
   m_Color: {r: 0.8235294, g: 0.8784314, b: 0.7921569, a: 1}
@@ -187727,7 +188030,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4200001885}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 13
   m_Type: 0
   m_Color: {r: 0.8235294, g: 0.8784314, b: 0.7921569, a: 1}
@@ -188341,7 +188644,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4200001911}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 13
   m_Type: 0
   m_Color: {r: 0.8235294, g: 0.8784314, b: 0.7921569, a: 1}
@@ -188955,7 +189258,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4200001937}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 13
   m_Type: 0
   m_Color: {r: 0.8235294, g: 0.8784314, b: 0.7921569, a: 1}
@@ -209674,7 +209977,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4200002845}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 13
   m_Type: 0
   m_Color: {r: 0.8235294, g: 0.8784314, b: 0.7921569, a: 1}
@@ -210288,7 +210591,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4200002871}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 13
   m_Type: 0
   m_Color: {r: 0.8235294, g: 0.8784314, b: 0.7921569, a: 1}
@@ -210902,7 +211205,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4200002897}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 13
   m_Type: 0
   m_Color: {r: 0.8235294, g: 0.8784314, b: 0.7921569, a: 1}
@@ -220362,7 +220665,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4200003324}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 13
   m_Type: 0
   m_Color: {r: 0.8235294, g: 0.8784314, b: 0.7921569, a: 1}
@@ -220976,7 +221279,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4200003350}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 13
   m_Type: 0
   m_Color: {r: 0.8235294, g: 0.8784314, b: 0.7921569, a: 1}
@@ -221590,7 +221893,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4200003376}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 13
   m_Type: 0
   m_Color: {r: 0.8235294, g: 0.8784314, b: 0.7921569, a: 1}
@@ -222204,7 +222507,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4200003402}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 13
   m_Type: 0
   m_Color: {r: 0.8235294, g: 0.8784314, b: 0.7921569, a: 1}
@@ -274344,6 +274647,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80ffd2cd162ebd74ea0eccea685fb99d, type: 3}
   m_Name:
   m_EditorClassIdentifier: EcoElectry.Unity::EcoElectry.Unity.Survival.SurvivalScene
+  repairDefinition: {fileID: 11400000, guid: b64c16286ceaec9489f93348d95fa552, type: 2}
+  fuseSpare: {fileID: 1515735161}
   settings: {fileID: 11400000, guid: 859f24d79a70566aa3b323ae6643562b, type: 2}
   view: {fileID: 535255525}
   previewMaterial: {fileID: 2100000, guid: 9f3cb21db77a8c4499c49d5070cbc3af, type: 2}
@@ -274353,6 +274658,7 @@ MonoBehaviour:
   - {fileID: 4400000007}
   - {fileID: 4400000052}
   continuationScene:
+  directEntrySupplyCut: 1
   reach: 2.3
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
