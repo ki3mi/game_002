@@ -65,7 +65,7 @@ namespace EcoElectry.Editor.Levels
             FluorescentFixture(room, new Vector3(-17.20f, YFloor2 + 3.65f, 22.80f), 90f, lit: true);
             FluorescentFixture(room, new Vector3(-20.20f, YFloor2 + 3.65f, 22.80f), 90f, lit: false);
 
-            InstantiateResourcePrefab("Pizarra", "PizarraBlanca", room, new Vector3(-22.26f, YFloor2 + 1.05f, 24.45f), 90f);
+            InstantiateResourcePrefab("Pizarra", "PizarraBlanca", room, new Vector3(-18.20f, YFloor2 + 1.08f, 26.08f), 180f);
             InstantiateResourcePrefab("EscritorioDocente", "EscritorioBasico", room, new Vector3(-20.80f, YFloor2, 20.85f), 85f);
             InstantiateResourcePrefab("Silla", "SillaDocente", room, new Vector3(-21.48f, YFloor2, 20.85f), 90f);
 
@@ -81,10 +81,9 @@ namespace EcoElectry.Editor.Levels
                 }
             }
 
-            InstantiateResourcePrefab("Ventilador", "VentiladorPared", room, new Vector3(-18.20f, YFloor2 + 2.55f, 26.08f), 180f);
+            InstantiateResourcePrefab("Ventilador", "VentiladorPared", room, new Vector3(-22.28f, YFloor2 + 2.48f, 24.75f), 90f);
             InstantiateResourcePrefab("Interruptor", "InterruptorPared", room, new Vector3(-14.11f, YFloor2 + 1.22f, 23.55f), 270f);
             InstantiateResourcePrefab("Tomacorriente", "TomacorrienteDoble", room, new Vector3(-22.29f, YFloor2 + 0.35f, 20.60f), 90f);
-            NoticeBoard(room, new Vector3(-17.40f, YFloor2 + 1.62f, 26.08f), 180f);
             LowCabinet(room, "Armario Aula 202", new Vector3(-15.20f, YFloor2, 25.75f), 0f);
         }
 
