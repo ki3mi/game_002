@@ -157,8 +157,7 @@ namespace EcoElectry.Editor.Levels
 
             InstantiateResourcePrefab("EscritorioDocente", "EscritorioConCajones", sec, new Vector3(19.60f, YFloor2, 21.30f), 270f);
             InstantiateResourcePrefab("Silla", "SillaDocente", sec, new Vector3(20.32f, YFloor2, 21.30f), 270f);
-            InstantiateResourcePrefab("Computadora", "ComputadoraCompacta", sec, new Vector3(19.58f, YFloor2 + 0.75f, 21.30f), 270f);
-            InstantiateResourcePrefab("Monitor", "MonitorBasico", sec, new Vector3(19.52f, YFloor2 + 0.75f, 21.82f), 250f);
+            InstantiateResourcePrefab("Computadora", "ComputadoraCompacta", sec, new Vector3(19.58f, YFloor2 + 0.75f, 21.30f), 90.935f);
 
             Bench(sec, new Vector3(15.20f, YFloor2, 20.05f), 0f);
             Bookcase(sec, "Estanteria expedientes", new Vector3(21.95f, YFloor2, 24.10f), 270f);
@@ -171,7 +170,7 @@ namespace EcoElectry.Editor.Levels
 
             InstantiateResourcePrefab("EscritorioDocente", "EscritorioModular", dir, new Vector3(20.30f, YFloor2, 29.20f), 270f);
             InstantiateResourcePrefab("Silla", "SillaDocente", dir, new Vector3(21.15f, YFloor2, 29.20f), 270f);
-            InstantiateResourcePrefab("Computadora", "ComputadoraAllInOne", dir, new Vector3(20.28f, YFloor2 + 0.75f, 29.20f), 270f);
+            InstantiateResourcePrefab("Computadora", "ComputadoraAllInOne", dir, new Vector3(20.596f, YFloor2 + 0.75f, 29.182f), 93.322f);
 
             // Meeting table + 4 chairs
             MeetingTable(dir, new Vector3(16.75f, YFloor2, 28.40f), 1.90f, 1.05f);
