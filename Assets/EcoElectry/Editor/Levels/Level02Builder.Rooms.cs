@@ -62,29 +62,28 @@ namespace EcoElectry.Editor.Levels
         private void FurnishClassroom202()
         {
             Transform room = Group("Aula202", classroomsAndLabsGroup);
-            FluorescentFixture(room, new Vector3(-17.20f, YFloor2 + 3.65f, 22.80f), 90f, lit: true);
-            FluorescentFixture(room, new Vector3(-20.20f, YFloor2 + 3.65f, 22.80f), 90f, lit: false);
+            FluorescentFixture(room, new Vector3(-18.20f, YFloor2 + 3.65f, 24.45f), 0f, lit: true);
+            FluorescentFixture(room, new Vector3(-18.20f, YFloor2 + 3.65f, 21.35f), 0f, lit: false);
 
             InstantiateResourcePrefab("Pizarra", "PizarraBlanca", room, new Vector3(-18.20f, YFloor2 + 1.08f, 26.08f), 180f);
-            InstantiateResourcePrefab("EscritorioDocente", "EscritorioBasico", room, new Vector3(-20.80f, YFloor2, 20.85f), 85f);
-            InstantiateResourcePrefab("Silla", "SillaDocente", room, new Vector3(-21.48f, YFloor2, 20.85f), 90f);
+            InstantiateResourcePrefab("EscritorioDocente", "EscritorioBasico", room, new Vector3(-20.85f, YFloor2, 24.80f), 180f);
+            InstantiateResourcePrefab("Silla", "SillaDocente", room, new Vector3(-20.85f, YFloor2, 25.42f), 180f);
 
-            float[] cols = { -19.20f, -17.65f, -16.10f };
-            float[] rows = { 21.10f, 22.80f, 24.50f };
+            float[] cols = { -19.90f, -18.20f, -16.50f };
+            float[] rows = { 20.65f, 22.00f, 23.35f };
             for (int c = 0; c < cols.Length; c++)
             {
                 for (int r = 0; r < rows.Length; r++)
                 {
-                    float angle = (c == 2 && r == 0) ? -76f : -90f;
                     InstantiateResourcePrefab("CarpetaEscolar", "CarpetaConBandeja",
-                        room, new Vector3(cols[c], YFloor2, rows[r]), angle);
+                        room, new Vector3(cols[c], YFloor2, rows[r]), 180f);
                 }
             }
 
             InstantiateResourcePrefab("Ventilador", "VentiladorPared", room, new Vector3(-22.28f, YFloor2 + 2.48f, 24.75f), 90f);
             InstantiateResourcePrefab("Interruptor", "InterruptorPared", room, new Vector3(-14.11f, YFloor2 + 1.22f, 23.55f), 270f);
             InstantiateResourcePrefab("Tomacorriente", "TomacorrienteDoble", room, new Vector3(-22.29f, YFloor2 + 0.35f, 20.60f), 90f);
-            LowCabinet(room, "Armario Aula 202", new Vector3(-15.20f, YFloor2, 25.75f), 0f);
+            LowCabinet(room, "Armario Aula 202", new Vector3(-15.10f, YFloor2, 19.82f), 180f);
         }
 
         private void FurnishScienceLabAndPrep()
