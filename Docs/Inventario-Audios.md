@@ -50,6 +50,13 @@ Los nombres siguientes reservan la ranura de cada clip. Los archivos marcados co
 | `sfx_tires_asphalt.wav` | Neumáticos sobre la calzada a velocidad. | Bucle opcional. |
 | `sfx_barrier_scrape.wav` | Roce con barreras laterales. | One-shot espacial. |
 
+### Pisadas por superficie
+
+| Nombre | Momento o lugar | Tipo |
+| --- | --- | --- |
+| `sfx_step_grass.wav` | Césped del desvío hacia el bosque, jardinería y márgenes del colegio. | One-shot espacial; un disparo por paso, con referencia de 0,72 m. |
+| `sfx_step_concrete.wav` | Hormigón de accesos, sendero de servicio, patio y estacionamiento. | One-shot espacial; un disparo por paso, con referencia de 0,72 m. |
+
 ### Puertas, inventario y reparación
 
 | Nombre | Momento o lugar | Tipo |
@@ -96,6 +103,7 @@ Los nombres siguientes reservan la ranura de cada clip. Los archivos marcados co
 | Ambientes | `0` para globales; espacial para fuentes localizadas | Sí | Según escena; bosque `0,085` |
 | Motor | `0` en la configuración actual | Sí | `0,2` |
 | Efectos de mundo | Espacial | No | Ajustar en pruebas |
+| Pisadas | Espacial | No | Ajustar en pruebas; un disparo cada 0,72 m |
 | Interfaz e inventario | `0` | No | Ajustar en pruebas |
 | Voces de teléfono o grabación | `0` | No | Ajustar con subtítulos |
 | Voz del guardia | Espacial desde la caseta | No | Ajustar con la distancia al acceso |
@@ -105,4 +113,5 @@ Los nombres siguientes reservan la ranura de cada clip. Los archivos marcados co
 1. Confirmar que el archivo y su `.meta` están en `Assets/Music/` con el nombre de este inventario.
 2. Comprobar que el `AudioSource` use el clip correcto y que `Play On Awake`, `Loop`, `Spatial Blend` y volumen correspondan a su categoría.
 3. Si el clip sustituye a otro ya referenciado, revisar las escenas `Level00-Introduction.unity`, `HorrorCorridorPrototype.unity` y `demoScene_free.unity` antes de retirar el original.
-4. Probar el momento de activación en Play Mode: llegada, conducción, puertas, inventario, reparación, anomalías y menús.
+4. Probar el momento de activación en Play Mode: llegada, conducción, pisadas sobre césped y hormigón, puertas, inventario, reparación, anomalías y menús.
+5. Comprobar que las pisadas cambien al cruzar entre césped y hormigón y que no se reproduzcan cuando el jugador esté detenido.
