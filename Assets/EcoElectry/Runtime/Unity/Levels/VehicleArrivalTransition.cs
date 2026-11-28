@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using EcoElectry.Unity.Player;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace EcoElectry.Unity.Levels
 {
@@ -45,6 +44,7 @@ namespace EcoElectry.Unity.Levels
         private Vector3[] approachPath;
         private float[] approachDistances;
         private float approachSpeed;
+        internal Transform Walker => explorer.transform;
 
         private bool IsParked => !walking && contacts.Count > 0 && InsideZone(vehicleBody.worldCenterOfMass) &&
                                  vehicle.Speed <= exitSpeed && vehicle.HasGroundContact;
@@ -82,13 +82,7 @@ namespace EcoElectry.Unity.Levels
         {
             Vector3 previous = previousRoadPosition;
             previousRoadPosition = vehicleBody.position;
-            if (!walking && !cinematics.IsDriving) return;
-            if (Keyboard.current?.lKey.wasPressedThisFrame == true &&
-                cabinImage?.IsOpen != true && walkingExplorer?.IsImageMenuOpen != true)
-            {
-                GoToParking();
-                return;
-            }
+            if (Time.timeScale <= 0f || (!walking && !cinematics.IsDriving)) return;
 
             if (walking || cabinImage?.IsOpen == true) return;
             if (PassedFourthLight(previous) && PrepareHighwayArrival())
@@ -217,7 +211,7 @@ namespace EcoElectry.Unity.Levels
                    duration * ((t3 - 2f * t2 + t) * fromSpeed + (t3 - t2) * toSpeed);
         }
 
-        private void GoToParking()
+        internal bool GoToParking()
         {
             if (walking)
             {
@@ -231,13 +225,13 @@ namespace EcoElectry.Unity.Levels
                 }
                 explorer.enabled = true;
                 if (!clear) parkingBlockedUntil = Time.unscaledTime + 4f;
-                return;
+                return clear;
             }
 
             if (!VehiclePoseClear(parking.position, parking.rotation))
             {
                 parkingBlockedUntil = Time.unscaledTime + 4f;
-                return;
+                return false;
             }
 
             contacts.Clear();
@@ -248,6 +242,21 @@ namespace EcoElectry.Unity.Levels
             vehicleBody.rotation = parking.rotation;
             vehicleBody.linearVelocity = Vector3.zero;
             vehicleBody.angularVelocity = Vector3.zero;
+            return true;
+        }
+
+        internal bool MoveWalker(Vector3 position, Vector3 facing)
+        {
+            if (!walking) return false;
+            explorer.enabled = false;
+            bool clear = TryPlaceCapsule(position, out Vector3 feet, groundReference: position.y);
+            if (clear)
+            {
+                explorer.transform.SetPositionAndRotation(feet, Quaternion.LookRotation(facing));
+                walkingExplorer?.ResetMovement();
+            }
+            explorer.enabled = true;
+            return clear;
         }
 
         private bool IsManoeuvreClear()
@@ -315,9 +324,10 @@ namespace EcoElectry.Unity.Levels
                    Mathf.Abs(local.z) >= VehicleClearance.z + explorer.radius;
         }
 
-        private bool TryPlaceCapsule(Vector3 target, out Vector3 feet, bool ignoreTruck = false)
+        private bool TryPlaceCapsule(Vector3 target, out Vector3 feet, bool ignoreTruck = false, float? groundReference = null)
         {
-            var origin = new Vector3(target.x, parking.position.y + 2f, target.z);
+            float groundHeight = groundReference ?? parking.position.y;
+            var origin = new Vector3(target.x, groundHeight + 2f, target.z);
             int count = Physics.RaycastNonAlloc(origin, Vector3.down, hits, 3f,
                 Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore);
             float nearest = float.PositiveInfinity;
@@ -327,7 +337,7 @@ namespace EcoElectry.Unity.Levels
             {
                 RaycastHit hit = hits[i];
                 if (hit.collider.attachedRigidbody == vehicleBody || hit.distance >= nearest ||
-                    hit.normal.y < minSlope || Mathf.Abs(hit.point.y - parking.position.y) > 0.42f)
+                    hit.normal.y < minSlope || Mathf.Abs(hit.point.y - groundHeight) > 0.42f)
                     continue;
 
                 feet = hit.point + Vector3.up * (explorer.skinWidth + 0.025f);
@@ -412,29 +422,28 @@ namespace EcoElectry.Unity.Levels
             if ((!walking && !cinematics.IsDriving) || cabinImage?.IsOpen == true ||
                 walkingExplorer?.IsImageMenuOpen == true) return;
             bool parkingBlocked = parkingBlockedUntil > Time.unscaledTime;
-            if (walking && !parkingBlocked) return;
+            bool exitBlocked = !walking && IsParked && blockedUntil > Time.unscaledTime;
+            if (!parkingBlocked && !exitBlocked) return;
             if (promptStyle == null)
             {
                 promptStyle = new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleCenter, wordWrap = true };
                 promptStyle.normal.textColor = Color.white;
             }
 
-            if (!walking) DrawLabel($"{Mathf.RoundToInt(vehicle.Speed * 3.6f):0} km/h", 18f, 116f, false);
             if (parkingBlocked)
             {
-                DrawLabel("El punto de llegada al estacionamiento está ocupado.", 18f, 375f, true);
+                DrawLabel("El punto de llegada al estacionamiento está ocupado.", 18f, 375f);
                 return;
             }
-            if (!walking && IsParked && blockedUntil > Time.unscaledTime)
-                DrawLabel("Acércate a la plaza y deja espacio junto a la puerta.", 18f, 455f, true);
+            DrawLabel("Acércate a la plaza y deja espacio junto a la puerta.", 18f, 455f);
         }
 
-        private void DrawLabel(string text, float margin, float maxWidth, bool centered)
+        private void DrawLabel(string text, float margin, float maxWidth)
         {
             float scale = Mathf.Clamp(Screen.height / 720f, 0.8f, 1.5f);
             float width = Mathf.Min(maxWidth * scale, Screen.width - margin * 2f);
             float height = 44f * scale;
-            Rect area = new Rect(centered ? (Screen.width - width) * 0.5f : margin,
+            Rect area = new Rect((Screen.width - width) * 0.5f,
                 Screen.height - height - margin, width, height);
             Color previous = GUI.color;
             GUI.color = new Color(0.035f, 0.055f, 0.075f, 0.88f);

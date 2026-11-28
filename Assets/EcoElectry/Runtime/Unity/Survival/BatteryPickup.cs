@@ -13,6 +13,8 @@ namespace EcoElectry.Unity.Survival
         private string Id => $"{gameObject.scene.path}/{pickupId}";
         public bool Available => !string.IsNullOrWhiteSpace(pickupId) && gameObject.activeInHierarchy;
 
+        internal void ConfigureWorkshop(string id) => pickupId = id;
+
         internal void ApplySession(SurvivalSession session)
         {
             if (session.HasCollected(Id)) gameObject.SetActive(false);

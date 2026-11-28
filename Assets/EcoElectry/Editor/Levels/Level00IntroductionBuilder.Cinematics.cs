@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using EcoElectry.Unity.Levels;
 using EcoElectry.Unity.Player;
+using EcoElectry.Unity.Survival;
 using UnityEditor;
 using UnityEditor.Events;
 using UnityEditor.SceneManagement;
@@ -19,6 +20,7 @@ namespace EcoElectry.Editor.Levels
     {
         private const string TimelineFolder = "Assets/EcoElectry/Content/Timeline/Level00";
         private const string SoundFolder = "Assets/EcoElectry/Content/Audio/Level00";
+        private const string CallFolder = SoundFolder + "/SoundTracks";
         private const string CinematicsName = "Cinemáticas";
         private const string OpeningViewName = "Seguimiento de la camioneta";
 
@@ -65,7 +67,6 @@ namespace EcoElectry.Editor.Levels
 
             Vector3 truckSpot = parking.position;
             Vector3 faculty = new Vector3(SchoolX, truckSpot.y + 5.5f, 3476f);
-            Vector3 window = guard.TransformPoint(0.3f, 1.65f, -2.0f);
             Vector3 door = workshop.TransformPoint(0f, 2.08f, -3.90f);
             Vector3 trailStart = path.position + new Vector3(-23f, 2.5f, -4.25f);
             Vector3 trailEnd = door + new Vector3(-0.8f, 0.45f, -6.0f);
@@ -77,13 +78,13 @@ namespace EcoElectry.Editor.Levels
                 new Shot("Frontis del colegio", gateCut, parkedCut,
                     LocalLook(root, new Vector3(SchoolX - 1.1f, truckSpot.y + 14.2f, 3440f), faculty),
                     LocalLook(root, new Vector3(SchoolX + 1.15f, truckSpot.y + 12.3f, 3446.5f), faculty)),
-                new Shot("Camioneta estacionada", parkedCut, 13.65f,
+                new Shot("Camioneta estacionada", parkedCut, IntroductionCinematics.GuardShotStart,
                     LocalLook(root, truckSpot + new Vector3(-6.6f, 7.4f, -4.5f), truckSpot + Vector3.up),
                     LocalLook(root, truckSpot + new Vector3(-4.9f, 6.7f, -3.4f), truckSpot + Vector3.up)),
-                new Shot("Ventanilla de vigilancia", 13.65f, 16.25f,
-                    LocalLook(root, guard.position + new Vector3(5.3f, 2.35f, -7.4f), window),
-                    LocalLook(root, guard.position + new Vector3(4.2f, 2.2f, -6.2f), window)),
-                new Shot("Camino y puerta de mantenimiento", 16.25f, 19.85f,
+                new Shot("Ventanilla de vigilancia", IntroductionCinematics.GuardShotStart, IntroductionCinematics.GuardShotEnd,
+                    LocalPose(root, IntroductionCinematics.GuardShotPose(guard, 0f)),
+                    LocalPose(root, IntroductionCinematics.GuardShotPose(guard, 1f))),
+                new Shot("Camino y puerta de mantenimiento", IntroductionCinematics.GuardShotEnd, 19.85f,
                     LocalLook(root, trailStart, door + Vector3.left * 2.7f), doorFrame),
                 new Shot("Entrega junto a la camioneta", 19.85f, 21f, doorFrame, doorFrame)
             }, (gateCut, "Corte al frontis del colegio", sequence.CutToFacade),
@@ -119,6 +120,15 @@ namespace EcoElectry.Editor.Levels
             setup.FindProperty("cockpit").objectReferenceValue = cockpit.gameObject;
             setup.FindProperty("motor").objectReferenceValue = motor;
             setup.FindProperty("forest").objectReferenceValue = forest;
+            setup.FindProperty("guardWaypoint").objectReferenceValue = guard;
+            setup.FindProperty("maintenanceWaypoint").objectReferenceValue = RequiredChild(workshop, "Acceso/Placa de sala");
+            setup.FindProperty("tutorialSettings").objectReferenceValue = AssetDatabase.LoadAssetAtPath<SurvivalSettings>(
+                "Assets/EcoElectry/Content/Definitions/Survival/Level01Survival.asset");
+            setup.FindProperty("tutorialModels").objectReferenceValue = AssetDatabase.LoadAssetAtPath<InspectionModels>(
+                "Assets/EcoElectry/Content/Definitions/Survival/InspectionModels.asset");
+            setup.FindProperty("tutorialPreviewMaterial").objectReferenceValue = AssetDatabase.LoadAssetAtPath<Material>(
+                "Assets/EcoElectry/Content/Models/HorrorCorridor/Iron.mat");
+            ConfigureDrivingCall(setup.FindProperty("guilleCallClips"));
             setup.ApplyModifiedPropertiesWithoutUndo();
 
             var arrivalSetup = new SerializedObject(arrival);
@@ -127,6 +137,23 @@ namespace EcoElectry.Editor.Levels
             arrivalSetup.ApplyModifiedPropertiesWithoutUndo();
             openingView.gameObject.SetActive(false);
             arrivalView.gameObject.SetActive(false);
+        }
+
+        private static void ConfigureDrivingCall(SerializedProperty clips)
+        {
+            string[] names =
+            {
+                "Asignacion", "Colegio_Aislado", "Contrato_y_Estancia", "Turno_Nocturno", "Advertencia_y_Llegada",
+                "Despues_de_Estacionar", "Indicaciones_Caseta"
+            };
+            clips.arraySize = names.Length;
+            for (int i = 0; i < names.Length; i++)
+            {
+                string path = $"{CallFolder}/L00_Llamada_{i + 1:00}_{names[i]}.wav";
+                AudioClip clip = AssetDatabase.LoadAssetAtPath<AudioClip>(path);
+                if (clip == null) throw new InvalidOperationException("Falta el audio " + path);
+                clips.GetArrayElementAtIndex(i).objectReferenceValue = clip;
+            }
         }
 
         private static void ConfigureHighwayArrival(Transform root, Transform parking, SerializedObject setup)
@@ -188,6 +215,9 @@ namespace EcoElectry.Editor.Levels
 
         private static Pose LocalLook(Transform parent, Vector3 position, Vector3 target) =>
             Look(parent.InverseTransformPoint(position), parent.InverseTransformPoint(target));
+
+        private static Pose LocalPose(Transform parent, Pose pose) =>
+            new(parent.InverseTransformPoint(pose.position), Quaternion.Inverse(parent.rotation) * pose.rotation);
 
         private static Shot[] OpeningShots()
         {

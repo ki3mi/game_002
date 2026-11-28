@@ -73,8 +73,11 @@ namespace EcoElectry.Unity.Survival
                 GUI.enabled = oldEnabled;
                 return;
             }
-            GUI.enabled &= !preview.IsMovingCell;
+            GUI.enabled &= !preview.IsMovingCell && CanConfirmTutorialMount(inspection);
+            Color oldButton = GUI.backgroundColor;
+            if (tutorialMode && !tutorialMounted && GUI.enabled) GUI.backgroundColor = Power;
             if (GUI.Button(new Rect(frame.xMax - 191, buttons, 172, 25), "Confirmar montaje")) ConfirmCompartment();
+            GUI.backgroundColor = oldButton;
             GUI.enabled = oldEnabled;
         }
 
@@ -86,7 +89,10 @@ namespace EcoElectry.Unity.Survival
                 BatteryCell cell = inspection.Tray[i];
                 Vector2 labelPosition = preview.ProjectTray(i, picture) + new Vector2(0, 27);
                 string caption = i < inspection.ReserveCount ? $"Repuesto {i + 1}" : $"Retirada {(char)('A' + i - inspection.ReserveCount)}";
-                DrawTag(labelPosition, caption, cell != null && cell == selectedCell ? Brass : Ink, 87);
+                bool pick = tutorialMode && !tutorialMounted && selectedCell == null && cell != null &&
+                    !CanConfirmTutorialMount(inspection);
+                DrawTag(labelPosition, pick ? "1 · " + caption : caption,
+                    pick || (cell != null && cell == selectedCell) ? Brass : Ink, pick ? 110 : 87);
                 if (cell != null && inspection.Meter.TryGetReading(cell, out double volts))
                     DrawTag(labelPosition + new Vector2(0, -48), FormatVoltage(volts), Power, 56);
             }
@@ -97,7 +103,8 @@ namespace EcoElectry.Unity.Survival
                 string suffix = cell == null ? " · Libre" :
                     inspection.Meter.TryGetReading(cell, out double volts) ? $" · {FormatVoltage(volts)}" : "";
                 float side = i == 0 ? 1 : -1;
-                DrawTag(position + new Vector2(0, 29 * side), $"{(char)('A' + i)}{suffix}",
+                bool insert = tutorialMode && !tutorialMounted && cell == null && selectedCell != null;
+                DrawTag(position + new Vector2(0, 29 * side), (insert ? "2 · " : "") + $"{(char)('A' + i)}{suffix}",
                     cell == null && selectedCell != null ? Brass : Ink, suffix.Length > 0 ? 90 : 24);
                 if (!heldProbe.HasValue || cell == null || preview.IsMovingCell) continue;
                 DrawTag(preview.ProjectTerminal(cell, BatteryTerminal.Negative, picture), "−", Ink, 16);
@@ -118,6 +125,13 @@ namespace EcoElectry.Unity.Survival
         {
             if (preview.IsMovingCell) return "Colocando batería…";
             if (heldProbe.HasValue) return "Pulsa un terminal visible de una batería instalada.";
+            if (tutorialMode && !tutorialMounted)
+            {
+                if (CanConfirmTutorialMount(inspection)) return "3 · Pulsa «Confirmar montaje» para guardar las baterías.";
+                if (selectedCell == null) return "1 · Haz clic en una batería de la bandeja.";
+                string slot = inspection.Slots[0] == null ? "A" : "B";
+                return $"2 · Haz clic en la ranura {slot}, marcada como libre.";
+            }
             if (selectedCell != null)
                 return inspection.Slots[0] != null && inspection.Slots[1] != null
                     ? "Retira una batería para liberar su ranura."
