@@ -217,9 +217,14 @@ namespace EcoElectry.Editor.Levels
                     InstantiateResourcePrefab("CarpetaEscolar", "CarpetaDoble", comp, new Vector3(x, YFloor2, z), 0f);
 
                     string pcModel = (r + c) % 2 == 0 ? "ComputadoraAllInOne" : "ComputadoraEscritorio";
-                    Transform pc1 = InstantiateResourcePrefab("Computadora", pcModel, comp, new Vector3(x - 0.30f, YFloor2 + 0.80f, z - 0.05f), 180f);
-                    pc1.localScale = Vector3.one * 0.72f;
-                    Transform pc2 = InstantiateResourcePrefab("Computadora", "ComputadoraAllInOne", comp, new Vector3(x + 0.30f, YFloor2 + 0.80f, z - 0.05f), 180f);
+                    float pc1Scale = pcModel == "ComputadoraEscritorio" ? 0.66f : 0.72f;
+                    float pc1X = pcModel == "ComputadoraEscritorio" ? x - 0.31f : x - 0.30f;
+                    Transform pc1 = InstantiateResourcePrefab("Computadora", pcModel,
+                        comp, new Vector3(pc1X, YFloor2 + 0.73f, z - 0.24f), 0f);
+                    pc1.localScale = Vector3.one * pc1Scale;
+
+                    Transform pc2 = InstantiateResourcePrefab("Computadora", "ComputadoraAllInOne",
+                        comp, new Vector3(x + 0.30f, YFloor2 + 0.73f, z - 0.24f), 0f);
                     pc2.localScale = Vector3.one * 0.72f;
                 }
             }
