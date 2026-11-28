@@ -195,18 +195,18 @@ namespace EcoElectry.Editor.Levels
             FluorescentFixture(comp, new Vector3(20.10f, YFloor2 + 3.65f, 36.90f), 0f, lit: false);
 
             // Smartboard + ceiling projector at south wall of ComputerLab (z = 31.54)
-            InstantiateResourcePrefab("Pizarra", "PizarraDigital", comp, new Vector3(18.20f, YFloor2 + 1.12f, 31.54f), 0f);
-            InstantiateResourcePrefab("Proyector", "ProyectorTecho", comp, new Vector3(18.20f, YFloor2 + StoryHeight - 0.02f, 33.80f), 180f);
-            InstantiateResourcePrefab("Ventilador", "VentiladorTecho", comp, new Vector3(18.20f, YFloor2 + StoryHeight - 0.02f, 36.40f), 0f);
+            InstantiateResourcePrefab("Pizarra", "PizarraDigital", comp, new Vector3(18.60f, YFloor2 + 1.12f, 31.54f), 0f);
+            InstantiateResourcePrefab("Proyector", "ProyectorTecho", comp, new Vector3(18.60f, YFloor2 + StoryHeight - 0.02f, 33.80f), 180f);
+            InstantiateResourcePrefab("Ventilador", "VentiladorTecho", comp, new Vector3(18.60f, YFloor2 + StoryHeight - 0.02f, 36.40f), 0f);
 
-            // Instructor workstation
-            InstantiateResourcePrefab("EscritorioDocente", "EscritorioConCajones", comp, new Vector3(15.65f, YFloor2, 32.55f), 0f);
-            InstantiateResourcePrefab("Silla", "SillaDocente", comp, new Vector3(15.65f, YFloor2, 31.92f), 0f);
-            InstantiateResourcePrefab("Monitor", "MonitorUltrawide", comp, new Vector3(15.65f, YFloor2 + 0.75f, 32.52f), 180f);
+            // Instructor workstation at SE front facing the student rows
+            InstantiateResourcePrefab("EscritorioDocente", "EscritorioConCajones", comp, new Vector3(20.65f, YFloor2, 32.55f), 180f);
+            InstantiateResourcePrefab("Silla", "SillaDocente", comp, new Vector3(20.65f, YFloor2, 31.92f), 0f);
+            InstantiateResourcePrefab("Monitor", "MonitorUltrawide", comp, new Vector3(20.65f, YFloor2 + 0.75f, 32.55f), 180f);
 
-            // Double computer desks + PCs
-            float[] cols = { 16.50f, 19.85f };
-            float[] rows = { 34.10f, 35.75f, 37.40f };
+            // Double computer desks oriented South (yaw = 0) facing PizarraDigital with clear door aisle
+            float[] cols = { 17.05f, 20.15f };
+            float[] rows = { 34.05f, 35.65f, 37.25f };
             for (int r = 0; r < rows.Length; r++)
             {
                 for (int c = 0; c < cols.Length; c++)
@@ -214,7 +214,7 @@ namespace EcoElectry.Editor.Levels
                     if (c == 1 && r == 2) continue; // Reserve NE corner for UPS & Server rack!
                     float x = cols[c];
                     float z = rows[r];
-                    InstantiateResourcePrefab("CarpetaEscolar", "CarpetaDoble", comp, new Vector3(x, YFloor2, z), 180f);
+                    InstantiateResourcePrefab("CarpetaEscolar", "CarpetaDoble", comp, new Vector3(x, YFloor2, z), 0f);
 
                     string pcModel = (r + c) % 2 == 0 ? "ComputadoraAllInOne" : "ComputadoraEscritorio";
                     Transform pc1 = InstantiateResourcePrefab("Computadora", pcModel, comp, new Vector3(x - 0.30f, YFloor2 + 0.80f, z - 0.05f), 180f);
